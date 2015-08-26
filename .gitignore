@@ -232,3 +232,4 @@ $RECYCLE.BIN/
 *.lnk
 *.csproj
 *.sln
+ProjectSettings/ProjectVersion.txt

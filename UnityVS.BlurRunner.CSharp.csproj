@@ -74,9 +74,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Engine\Moving\CharacterMoving.cs" />
     <Compile Include="Assets\Scripts\Engine\Moving\HeroMovingController.cs" />
     <Compile Include="Assets\Scripts\Engine\Moving\IMoving.cs" />
-    <Compile Include="Assets\Scripts\Engine\Moving\KeyboardMoving.cs" />
+    <Compile Include="Assets\Scripts\Engine\Moving\RigidbodyMoving.cs" />
     <Compile Include="Assets\Scripts\Engine\ObjectAnchor.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Game.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Heroes\Hero.cs" />
