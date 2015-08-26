@@ -1,7 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
+# Visual Studio 2015
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityVS.BlurRunner.CSharp.Plugins", "UnityVS.BlurRunner.CSharp.Plugins.csproj", "{F1ED7E48-E66B-8248-DB19-4788C2B75555}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityVS.BlurRunner.CSharp", "UnityVS.BlurRunner.CSharp.csproj", "{F53BD4E0-2A93-A473-B0E3-7064D727E3B0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,6 +15,10 @@ Global
 		{F1ED7E48-E66B-8248-DB19-4788C2B75555}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F1ED7E48-E66B-8248-DB19-4788C2B75555}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F1ED7E48-E66B-8248-DB19-4788C2B75555}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F53BD4E0-2A93-A473-B0E3-7064D727E3B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F53BD4E0-2A93-A473-B0E3-7064D727E3B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F53BD4E0-2A93-A473-B0E3-7064D727E3B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F53BD4E0-2A93-A473-B0E3-7064D727E3B0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
