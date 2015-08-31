@@ -79,6 +79,7 @@
     <Compile Include="Assets\Scripts\EndlessEngine\Ground\GroundPool.cs" />
     <Compile Include="Assets\Scripts\EndlessEngine\Ground\IGroundBlock.cs" />
     <Compile Include="Assets\Scripts\EndlessEngine\Ground\UI\GroundBlockUI.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\Ground\UI\GroundGeneratorUI.cs" />
     <Compile Include="Assets\Scripts\Engine\Extensions\EnumerableExtensions.cs" />
     <Compile Include="Assets\Scripts\Engine\Factory\AbstractGameObjectFactory.cs" />
     <Compile Include="Assets\Scripts\Engine\Factory\GameObjectFactory.cs" />
