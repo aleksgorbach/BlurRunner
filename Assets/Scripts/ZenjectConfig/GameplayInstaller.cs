@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Assets.Scripts.EndlessEngine.Ground.Generators;
 using Assets.Scripts.EndlessEngine.Ground.UI;
 using Assets.Scripts.Engine.Factory;
 using UnityEngine;
@@ -13,6 +14,7 @@ namespace Assets.Scripts.ZenjectConfig {
             Container.Bind<Engine.Factory.IFactory<GroundBlockUI>>()
                 .ToTransient<RandomGameObjectFactory<GroundBlockUI>>();
             Container.Bind<RandomGameObjectFactory<GroundBlockUI>.ISettings>().ToInstance(_blockSettings);
+            Container.Bind<IGroundGenerator>().ToSingle<GroundGenerator>();
         }
 
         [Serializable]
