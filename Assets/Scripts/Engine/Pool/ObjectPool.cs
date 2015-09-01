@@ -20,6 +20,7 @@ namespace Assets.Scripts.Engine.Pool {
             if (_canGrow) {
                 var created = GetNew();
                 _pool.Add(new Item {Object = created, Free = false});
+                return created;
             }
             throw new PoolBusyException<T>();
         }

@@ -8,5 +8,6 @@ namespace Assets.Scripts.EndlessEngine.Ground.Generators {
 
     internal interface IGroundGenerator {
         GroundBlockUI GetCompatibleBlock(GroundBlockUI origin, BlockPosition position = BlockPosition.Left);
+        void ReturnBlock(GroundBlockUI block);
     }
 }

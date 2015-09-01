@@ -1,16 +1,23 @@
 ﻿using Assets.Scripts.EndlessEngine.Ground.UI;
-using Assets.Scripts.Engine.Factory;
+using Assets.Scripts.Engine.Pool;
 
 namespace Assets.Scripts.EndlessEngine.Ground.Generators {
     internal class GroundGenerator : IGroundGenerator {
-        private readonly IFactory<GroundBlockUI> _factory;
+        private readonly IObjectPool<GroundBlockUI> _pool;
 
-        public GroundGenerator(IFactory<GroundBlockUI> factory) {
-            _factory = factory;
+        public GroundGenerator(IObjectPool<GroundBlockUI> pool) {
+            _pool = pool;
         }
 
         public GroundBlockUI GetCompatibleBlock(GroundBlockUI origin, BlockPosition position = BlockPosition.Left) {
-            return _factory.Create();
+            var obj = _pool.Get();
+            obj.gameObject.SetActive(true);
+            return obj;
+        }
+
+        public void ReturnBlock(GroundBlockUI block) {
+            block.gameObject.SetActive(false);
+            _pool.Release(block);
         }
     }
 }
