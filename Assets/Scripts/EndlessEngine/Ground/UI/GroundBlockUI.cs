@@ -8,8 +8,24 @@ namespace Assets.Scripts.EndlessEngine.Ground.UI {
         private Collider2D _collider;
         private bool _isDestroying;
         public IGroundBlock Block { get; private set; }
-        public float Length { get; private set; }
+
+        public float Edge {
+            get {
+                var rectTransform = GetComponent<RectTransform>();
+                return rectTransform.anchoredPosition.x + rectTransform.sizeDelta.x;
+            }
+        }
+
         public event HidingDelegate BecameInvisible;
+
+        public bool IsVisible {
+            get {
+                return GeometryUtility.TestPlanesAABB(GeometryUtility.CalculateFrustumPlanes(_camera),
+                    _collider.bounds);
+            }
+        }
+
+        public float Length { get; private set; }
 
         private void Awake() {
             _collider = GetComponent<Collider2D>();
@@ -22,17 +38,28 @@ namespace Assets.Scripts.EndlessEngine.Ground.UI {
         }
 
         private void Update() {
-            if (!_isDestroying &&
-                !GeometryUtility.TestPlanesAABB(GeometryUtility.CalculateFrustumPlanes(_camera), _collider.bounds)) {
-                OnBecameInvisible();
+            if (_isDestroying) {
+                return;
             }
+            //var inFrustum = GeometryUtility.TestPlanesAABB(GeometryUtility.CalculateFrustumPlanes(_camera),
+            //    _collider.bounds);
+            //if (!inFrustum) {
+            //    OnBecameInvisible();
+            //}
         }
 
         private void OnBecameInvisible() {
-            _isDestroying = true;
             if (BecameInvisible != null) {
                 BecameInvisible(this);
             }
+        }
+
+        private void OnEnable() {
+            _isDestroying = false;
+        }
+
+        private void OnDisable() {
+            _isDestroying = true;
         }
     }
 }

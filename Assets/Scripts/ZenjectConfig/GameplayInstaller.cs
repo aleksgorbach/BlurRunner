@@ -10,6 +10,7 @@ using Zenject;
 
 namespace Assets.Scripts.ZenjectConfig {
     internal class GameplayInstaller : MonoInstaller {
+        [SerializeField] private int _initialPoolSize = 10;
         [SerializeField] private BlockSettings _blockSettings;
 
         public override void InstallBindings() {
@@ -17,8 +18,13 @@ namespace Assets.Scripts.ZenjectConfig {
                 .ToTransient<RandomGameObjectFactory<GroundBlockUI>>();
             Container.Bind<RandomGameObjectFactory<GroundBlockUI>.ISettings>().ToInstance(_blockSettings);
             Container.Bind<IGroundGenerator>().ToSingle<GroundGenerator>();
-            Container.Bind<IObjectPool<GroundBlockUI>>().ToSingle<GroundPool>();
-            Container.Bind<bool>().ToInstance(true).WhenInjectedInto<GroundPool>();
+            Container.Bind<IObjectPool<GroundBlockUI>>().ToSingleGameObject<GroundPool>("GroundBlocksPool");
+            Container.Bind<bool>(GameObjectPool<GroundBlockUI>.CAN_GROW_KEY)
+                .ToInstance(true)
+                .WhenInjectedInto<GroundPool>();
+            Container.Bind<int>(GameObjectPool<GroundBlockUI>.INITIAL_SIZE_KEY)
+                .ToInstance(_initialPoolSize)
+                .WhenInjectedInto<GroundPool>();
         }
 
         [Serializable]

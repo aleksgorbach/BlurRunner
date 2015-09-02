@@ -2,9 +2,6 @@
     internal delegate void HidingDelegate(IHiding obj);
 
     internal interface IHiding {
-        /// <summary>
-        /// Fired when object became invisible
-        /// </summary>
-        event HidingDelegate BecameInvisible;
+        bool IsVisible { get; }
     }
 }

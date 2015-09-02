@@ -11,8 +11,12 @@ namespace Assets.Scripts.Engine.Factory {
 
         protected abstract T PrefabToInstantiate { get; }
 
+        private static int index = 0;
+
         public T Create() {
-            return _instantiator.InstantiatePrefab(PrefabToInstantiate.gameObject).GetComponent<T>();
+            var created = _instantiator.InstantiatePrefab(PrefabToInstantiate.gameObject).GetComponent<T>();
+            created.name = string.Format("{0} [{1}]", created.name, index++);
+            return created;
         }
     }
 }

@@ -16,7 +16,6 @@ namespace Assets.Scripts.EndlessEngine.Ground.Generators {
         }
 
         public void ReturnBlock(GroundBlockUI block) {
-            block.gameObject.SetActive(false);
             _pool.Release(block);
         }
     }
