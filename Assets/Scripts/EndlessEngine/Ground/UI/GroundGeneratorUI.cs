@@ -7,12 +7,10 @@ using Zenject;
 namespace Assets.Scripts.EndlessEngine.Ground.UI {
     internal class GroundGeneratorUI : MonoBehaviour {
         private Queue<GroundBlockUI> _blocks;
-        [Inject] private IGroundGenerator _generator;
-
-        private GroundBlockUI _lastAddedBlock;
-
-        private float _length;
         private float _cameraWidth;
+        [Inject] private IGroundGenerator _generator;
+        private GroundBlockUI _lastAddedBlock;
+        private float _length;
 
         private void Add() {
             var block = GenerateBlock(_lastAddedBlock);
@@ -25,7 +23,7 @@ namespace Assets.Scripts.EndlessEngine.Ground.UI {
         }
 
         private void AddMissingBlocks() {
-            while (_length < _cameraWidth) {
+            while (_length < _cameraWidth*1.1f) {
                 Add();
             }
         }
@@ -50,7 +48,7 @@ namespace Assets.Scripts.EndlessEngine.Ground.UI {
             UpdateLength();
         }
 
-        private void Update() {
+        private void FixedUpdate() {
             if (_blocks.Count == 0) {
                 return;
             }

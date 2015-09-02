@@ -2,8 +2,7 @@
 
 namespace Assets.Scripts.Gameplay.Heroes {
     internal class Hero : MonoBehaviour {
-        [SerializeField] private Rigidbody2D _rigidbody;
-        [SerializeField] private float _force;
+        //[SerializeField] private Rigidbody2D _rigidbody;
         //[SerializeField] private float _speed;
         //[SerializeField] private float _jumpForce;
 
@@ -14,8 +13,5 @@ namespace Assets.Scripts.Gameplay.Heroes {
         //    _rigidbody.velocity = new Vector2(_speed, 0);
         //}
 
-        private void FixedUpdate() {
-            _rigidbody.AddForce(new Vector2(0, _force));
-        }
     }
 }
