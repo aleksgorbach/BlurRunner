@@ -234,3 +234,4 @@ $RECYCLE.BIN/
 *.sln
 ProjectSettings/ProjectVersion.txt
 ProjectSettings/ProjectVersion.txt
+/*.userprefs

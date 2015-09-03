@@ -6,8 +6,10 @@ using Zenject;
 
 namespace Assets.Scripts.EndlessEngine.Ground.UI {
     internal class GroundGeneratorUI : MonoBehaviour {
+        [SerializeField] private GameObject _treePrefab;
         private Queue<GroundBlockUI> _blocks;
         private float _cameraWidth;
+        private Camera _camera;
         [Inject] private IGroundGenerator _generator;
         private GroundBlockUI _lastAddedBlock;
         private float _length;
@@ -20,6 +22,22 @@ namespace Assets.Scripts.EndlessEngine.Ground.UI {
             _blocks.Enqueue(block);
             _lastAddedBlock = block;
             UpdateLength();
+            GenerateStuff(rectTransform.position);
+        }
+
+        private void GenerateStuff(Vector3 blockPosition) {
+            //var tree = Instantiate(_treePrefab);
+            //tree.transform.SetParent(transform);
+            //tree.transform.position = position;
+        }
+
+        private void Update() {
+            foreach (var block in _blocks) {
+                var origin = _camera.transform.position;
+                var direction = (block.transform.position - origin);
+                //var ray = new Ray(origin, direction);
+                Debug.DrawRay(origin, direction);
+            }
         }
 
         private void AddMissingBlocks() {
@@ -39,7 +57,8 @@ namespace Assets.Scripts.EndlessEngine.Ground.UI {
 
         [PostInject]
         private void Init() {
-            _cameraWidth = Camera.main.GetWidth(transform.position.z);
+            _camera = Camera.main;
+            _cameraWidth = _camera.GetWidth(transform.position.z);
             AddMissingBlocks();
         }
 
