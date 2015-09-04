@@ -13,7 +13,7 @@ namespace Assets.Scripts.ZenjectConfig {
     internal class GameplayInstaller : MonoInstaller {
         [SerializeField] private int _initialPoolSize = 10;
         [SerializeField] private BlockSettings _blockSettings;
-        [SerializeField] private DecorationGeneratorUI _decorationGenerator;
+        [SerializeField] private TreeSettings _treeSettings;
 
         public override void InstallBindings() {
             BindGround();
@@ -21,7 +21,9 @@ namespace Assets.Scripts.ZenjectConfig {
         }
 
         private void BindDecorations() {
-            Container.Bind<IGeneratingStrategy>().ToSingleMonoBehaviour<RandomStrategy>(_decorationGenerator.gameObject);
+            Container.Bind<Engine.Factory.IFactory<DecorationItemUI>>()
+                .ToTransient<RandomGameObjectFactory<DecorationItemUI>>();
+            Container.Bind<RandomGameObjectFactory<DecorationItemUI>.ISettings>().ToInstance(_treeSettings);
             Container.Bind<IDecorationGenerator>().ToSingle<DecorationGenerator>();
             Container.Bind<IObjectPool<DecorationItemUI>>().ToSingleGameObject<DecorationPool>("DecorationsPool");
             Container.Bind<bool>(GameObjectPool<DecorationItemUI>.CAN_GROW_KEY)
@@ -51,6 +53,15 @@ namespace Assets.Scripts.ZenjectConfig {
             [SerializeField] private GroundBlockUI[] _prefabs;
 
             public IEnumerable<GroundBlockUI> Prefabs {
+                get { return _prefabs; }
+            }
+        }
+
+        [Serializable]
+        public class TreeSettings : RandomGameObjectFactory<DecorationItemUI>.ISettings {
+            [SerializeField] private DecorationItemUI[] _prefabs;
+
+            public IEnumerable<DecorationItemUI> Prefabs {
                 get { return _prefabs; }
             }
         }

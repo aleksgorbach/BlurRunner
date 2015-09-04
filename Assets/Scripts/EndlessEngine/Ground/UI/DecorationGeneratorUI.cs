@@ -8,7 +8,7 @@ namespace Assets.Scripts.EndlessEngine.Ground.UI {
         [SerializeField] private GroundGeneratorUI _groundGenerator;
 
         [Inject] private IDecorationGenerator _generator;
-        [Inject] private IGeneratingStrategy _strategy;
+        [SerializeField] private GeneratingStrategy _strategy;
 
         [PostInject]
         private void Init() {

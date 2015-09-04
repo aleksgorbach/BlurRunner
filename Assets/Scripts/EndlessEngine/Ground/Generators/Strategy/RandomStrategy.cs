@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
 
 namespace Assets.Scripts.EndlessEngine.Ground.Generators.Strategy {
-    internal class RandomStrategy : MonoBehaviour, IGeneratingStrategy {
+    internal class RandomStrategy : GeneratingStrategy {
         [SerializeField] private float _minInterval;
         [SerializeField] private float _maxInterval;
         private GeneratingDelegate _method;
 
-        public void Init(GeneratingDelegate generatingMethod) {
+        public override void Init(GeneratingDelegate generatingMethod) {
             _method = generatingMethod;
             StartWaiting();
         }
