@@ -6,7 +6,7 @@ using Zenject;
 
 namespace Assets.Scripts.EndlessEngine.Ground.UI {
     internal class GroundGeneratorUI : MonoBehaviour {
-        [SerializeField] private GameObject _treePrefab;
+        [SerializeField] private GameObject[] _treePrefabs;
         private Queue<GroundBlockUI> _blocks;
         private float _cameraWidth;
         private Camera _camera;
@@ -22,26 +22,27 @@ namespace Assets.Scripts.EndlessEngine.Ground.UI {
             _blocks.Enqueue(block);
             _lastAddedBlock = block;
             UpdateLength();
-            GenerateStuff(rectTransform.position);
+            GenerateStuff(block);
         }
 
-        private void GenerateStuff(Vector3 blockPosition) {
-            //var tree = Instantiate(_treePrefab);
-            //tree.transform.SetParent(transform);
-            //tree.transform.position = position;
-        }
-
-        private void Update() {
-            foreach (var block in _blocks) {
-                var origin = _camera.transform.position;
-                var direction = (block.transform.position - origin);
-                //var ray = new Ray(origin, direction);
-                Debug.DrawRay(origin, direction);
+        private void GenerateStuff(GroundBlockUI block) {
+            if (block.TreeContainer.childCount > 0) {
+                return;
             }
+            if (Random.Range(0, 2) == 0) {
+                return;
+            }
+
+            var tree = Instantiate(_treePrefabs.Random());
+            tree.transform.SetParent(block.TreeContainer);
+            var origin = _camera.transform.position;
+            var direction = (block.transform.position - origin);
+            var point = new Ray(origin, direction).GetPoint(Random.Range(100, 300));
+            tree.transform.localPosition = new Vector3(0, point.y, point.z);
         }
 
         private void AddMissingBlocks() {
-            while (_length < _cameraWidth*1.1f) {
+            while (_length < _cameraWidth*1.2f) {
                 Add();
             }
         }

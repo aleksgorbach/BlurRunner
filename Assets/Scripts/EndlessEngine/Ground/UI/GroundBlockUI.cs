@@ -8,6 +8,7 @@ namespace Assets.Scripts.EndlessEngine.Ground.UI {
         private Collider2D _collider;
         private bool _isDestroying;
         public IGroundBlock Block { get; private set; }
+        [SerializeField] private Transform _treeContainer;
 
         public float Edge {
             get {
@@ -26,6 +27,10 @@ namespace Assets.Scripts.EndlessEngine.Ground.UI {
         }
 
         public float Length { get; private set; }
+
+        public Transform TreeContainer {
+            get { return _treeContainer; }
+        }
 
         private void Awake() {
             _collider = GetComponent<Collider2D>();
