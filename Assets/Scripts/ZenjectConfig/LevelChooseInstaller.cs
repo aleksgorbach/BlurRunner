@@ -1,5 +1,5 @@
 ﻿// Created 15.10.2015
-// Modified by Александр 15.10.2015 at 21:21
+// Modified by Александр 18.10.2015 at 19:03
 
 namespace Assets.Scripts.ZenjectConfig {
     #region References
@@ -18,7 +18,7 @@ namespace Assets.Scripts.ZenjectConfig {
         [SerializeField] private LevelItemUI _levelPrefab;
 
         public override void InstallBindings() {
-            Container.BindGameObjectFactory<LevelItemUI>(_levelPrefab.gameObject);
+            Container.BindGameObjectFactory<LevelItemUI.Factory>(_levelPrefab.gameObject);
             Container.Bind<IPresenter<ILevelChoosingMenuUI>>().ToTransient<LevelChoosingPresenter>();
             Container.Bind<ILevelStorage>().ToSingle<LevelStorage>();
         }
