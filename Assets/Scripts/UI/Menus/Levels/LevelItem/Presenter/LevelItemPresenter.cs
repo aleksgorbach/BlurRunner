@@ -1,5 +1,5 @@
 ﻿// Created 15.10.2015
-// Modified by Александр 15.10.2015 at 21:06
+// Modified by Александр 20.10.2015 at 20:23
 
 namespace Assets.Scripts.UI.Menus.Levels.LevelItem.Presenter {
     #region References
@@ -8,6 +8,6 @@ namespace Assets.Scripts.UI.Menus.Levels.LevelItem.Presenter {
 
     #endregion
 
-    internal class LevelItemPresenter : Presenter<ILevelItemUI> {
+    internal class LevelItemPresenter : Presenter<ILevelItem> {
     }
 }

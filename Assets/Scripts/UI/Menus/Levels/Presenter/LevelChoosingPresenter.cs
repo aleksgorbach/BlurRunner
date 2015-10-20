@@ -1,24 +1,29 @@
 ﻿// Created 15.10.2015
-// Modified by Александр 15.10.2015 at 21:09
+// Modified by Александр 20.10.2015 at 20:27
 
 namespace Assets.Scripts.UI.Menus.Levels.Presenter {
     #region References
 
+    #region References
+
     using Engine.Presenter;
     using State.Levels.Storage;
+    using Zenject;
 
     #endregion
 
-    internal class LevelChoosingPresenter : Presenter<ILevelChoosingMenuUI> {
-        private readonly ILevelStorage _storage;
+    #endregion
 
-        public LevelChoosingPresenter(ILevelStorage storage) {
-            _storage = storage;
+    internal class LevelChoosingPresenter : Presenter<ILevelChoosingMenu> {
+        private ILevelStorage _storage;
+
+        internal void Init(int fromLevel, int toLevel) {
+            View.Levels = _storage.Get(fromLevel, toLevel);
         }
 
-        public override void Init(ILevelChoosingMenuUI view) {
-            base.Init(view);
-            view.Init(_storage.TotalLevelsCount);
+        [PostInject]
+        private void Init(ILevelStorage storage) {
+            _storage = storage;
         }
     }
 }
