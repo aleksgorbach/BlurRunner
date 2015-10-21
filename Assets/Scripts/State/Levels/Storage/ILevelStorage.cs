@@ -7,5 +7,6 @@ namespace Assets.Scripts.State.Levels.Storage {
     internal interface ILevelStorage {
         int TotalLevelsCount { get; }
         IEnumerable<ILevel> Get(int fromLevel, int toLevel);
+        ILevel this[int levelNumber] { get; }
     }
 }

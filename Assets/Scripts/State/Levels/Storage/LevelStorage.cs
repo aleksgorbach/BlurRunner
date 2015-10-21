@@ -1,5 +1,5 @@
 ﻿// Created 15.10.2015
-// Modified by Александр 20.10.2015 at 20:39
+// Modified by Александр 21.10.2015 at 20:33
 
 namespace Assets.Scripts.State.Levels.Storage {
     #region References
@@ -27,6 +27,10 @@ namespace Assets.Scripts.State.Levels.Storage {
             for (var i = fromLevel; i <= toLevel; i++) {
                 yield return _levels[i];
             }
+        }
+
+        public ILevel this[int levelNumber] {
+            get { return _levels[levelNumber]; }
         }
     }
 }

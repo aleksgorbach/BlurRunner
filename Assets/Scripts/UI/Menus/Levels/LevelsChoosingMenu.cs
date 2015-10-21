@@ -1,5 +1,5 @@
 ﻿// Created 15.10.2015
-// Modified by Александр 20.10.2015 at 20:29
+// Modified by Александр 21.10.2015 at 20:36
 
 namespace Assets.Scripts.UI.Menus.Levels {
     #region References
@@ -22,9 +22,8 @@ namespace Assets.Scripts.UI.Menus.Levels {
     #endregion
 
     internal class LevelsChoosingMenu : MonoBehaviour, ILevelChoosingMenu {
-        private IFactory<LevelItem.LevelItem> _factory;
-
         private readonly int _fromLevel = 0;
+        private IFactory<LevelItem.LevelItem> _factory;
         private IList<ILevelItem> _levels;
 
         [SerializeField]
