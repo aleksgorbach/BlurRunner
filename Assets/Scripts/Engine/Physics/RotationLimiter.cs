@@ -1,12 +1,22 @@
-﻿using UnityEngine;
+﻿// Created 20.10.2015 
+// Modified by Gorbach Alex 22.10.2015 at 15:31
 
 namespace Assets.Scripts.Engine.Physics {
-    [RequireComponent(typeof (Rigidbody2D))]
-    internal class RotationLimiter : MonoBehaviour {
-        [SerializeField] private float _maxAngle;
+    #region References
+
+    using UnityEngine;
+
+    #endregion
+
+    [RequireComponent(typeof(Rigidbody2D))]
+    internal class RotationLimiter : MonoBehaviourBase {
+        [SerializeField]
+        private float _maxAngle;
+
         private Rigidbody2D _rigidbody;
 
-        private void Awake() {
+        protected override void Awake() {
+            base.Awake();
             _rigidbody = GetComponent<Rigidbody2D>();
         }
 

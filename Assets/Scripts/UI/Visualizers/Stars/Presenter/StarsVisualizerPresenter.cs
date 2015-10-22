@@ -1,5 +1,5 @@
-﻿// Created 21.10.2015
-// Modified by Александр 21.10.2015 at 20:29
+﻿// Created 22.10.2015 
+// Modified by Gorbach Alex 22.10.2015 at 13:16
 
 namespace Assets.Scripts.UI.Visualizers.Stars.Presenter {
     #region References
@@ -15,7 +15,7 @@ namespace Assets.Scripts.UI.Visualizers.Stars.Presenter {
 
         public void Init(int levelNumber) {
             var progress = _storage[levelNumber];
-            View.Stars = progress.Stars;
+            View.Stars = progress != null ? progress.Stars : 0;
         }
 
         [PostInject]

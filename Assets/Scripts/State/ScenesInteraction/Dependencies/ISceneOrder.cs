@@ -1,7 +1,7 @@
 ﻿// Created 20.10.2015
 // Modified by Александр 20.10.2015 at 20:56
 
-namespace Assets.Scripts.UI.ScenesInteraction.Dependencies {
+namespace Assets.Scripts.State.ScenesInteraction.Dependencies {
     internal interface ISceneOrder {
         /// <summary>
         /// 

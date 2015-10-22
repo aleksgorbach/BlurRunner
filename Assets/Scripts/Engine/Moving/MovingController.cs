@@ -1,16 +1,31 @@
-﻿using UnityEngine;
+﻿// Created 20.10.2015 
+// Modified by Gorbach Alex 22.10.2015 at 15:57
+
+#region References
+
+using UnityEngine;
+
+#endregion
 
 namespace Assets.Scripts.Engine.Moving {
-    internal class MovingController : MonoBehaviour {
-        [SerializeField] private int _jumpForce;
+    internal class MovingController : MonoBehaviourBase {
+        [SerializeField]
+        private int _jumpForce;
+
         private Vector2 _jumpVector;
-        [SerializeField] private Rigidbody2D _rigidbody;
-        [SerializeField] private int _runForce;
+
+        [SerializeField]
+        private Rigidbody2D _rigidbody;
+
+        [SerializeField]
+        private int _runForce;
+
         private Vector2 _runVector;
 
-        private void Awake() {
-            _runVector = Vector2.right*_runForce;
-            _jumpVector = Vector2.up*_jumpForce;
+        protected override void Awake() {
+            base.Awake();
+            _runVector = Vector2.right * _runForce;
+            _jumpVector = Vector2.up * _jumpForce;
         }
 
         public void Run() {

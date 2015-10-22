@@ -1,16 +1,34 @@
-﻿using System.Collections.Generic;
+﻿// Created 20.10.2015 
+// Modified by Gorbach Alex 22.10.2015 at 15:58
+
+#region References
+
+using System.Collections.Generic;
 using Assets.Scripts.EndlessEngine.Ground.Generators;
 using Assets.Scripts.Engine.Extensions;
 using UnityEngine;
 using Zenject;
 
+#endregion
+
 namespace Assets.Scripts.EndlessEngine.Ground.UI {
-    internal class GroundGeneratorUI : MonoBehaviour {
-        [SerializeField] private GameObject[] _treePrefabs;
+    #region References
+
+    using Engine;
+
+    #endregion
+
+    internal class GroundGeneratorUI : MonoBehaviourBase {
+        [SerializeField]
+        private GameObject[] _treePrefabs;
+
         private Queue<GroundBlockUI> _blocks;
         private float _cameraWidth;
         private Camera _camera;
-        [Inject] private IGroundGenerator _generator;
+
+        [Inject]
+        private IGroundGenerator _generator;
+
         private GroundBlockUI _lastAddedBlock;
         private float _length;
 
@@ -42,12 +60,13 @@ namespace Assets.Scripts.EndlessEngine.Ground.UI {
         }
 
         private void AddMissingBlocks() {
-            while (_length < _cameraWidth*1.2f) {
+            while (_length < _cameraWidth * 1.2f) {
                 Add();
             }
         }
 
-        private void Awake() {
+        protected override void Awake() {
+            base.Awake();
             _blocks = new Queue<GroundBlockUI>();
         }
 
