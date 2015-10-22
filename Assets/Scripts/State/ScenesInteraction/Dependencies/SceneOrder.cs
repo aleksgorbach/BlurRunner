@@ -1,5 +1,5 @@
-﻿// Created 20.10.2015
-// Modified by Александр 20.10.2015 at 20:54
+﻿// Created 22.10.2015
+// Modified by Александр 22.10.2015 at 21:39
 
 namespace Assets.Scripts.State.ScenesInteraction.Dependencies {
     #region References
@@ -13,7 +13,7 @@ namespace Assets.Scripts.State.ScenesInteraction.Dependencies {
         private int _currentSceneIndex;
 
         public SceneOrder() {
-            _scenes = new List<string> {"LevelChooseScene", "GameScene"};
+            _scenes = new List<string> {"LogoScene", "LevelChooseScene", "GameScene"};
             _currentSceneIndex = 0;
         }
 

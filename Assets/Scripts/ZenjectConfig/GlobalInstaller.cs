@@ -1,13 +1,13 @@
-﻿// Created 22.10.2015 
-// Modified by Gorbach Alex 22.10.2015 at 15:12
+﻿// Created 22.10.2015
+// Modified by Александр 22.10.2015 at 20:21
 
 namespace Assets.Scripts.ZenjectConfig {
     #region References
 
+    using State.Levels.Storage;
     using State.Progress.Storage;
     using State.ScenesInteraction.Dependencies;
     using State.ScenesInteraction.Loaders;
-    using State.Levels.Storage;
     using Zenject;
 
     #endregion

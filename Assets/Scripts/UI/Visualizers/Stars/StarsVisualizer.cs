@@ -1,10 +1,9 @@
-﻿// Created 22.10.2015 
-// Modified by Gorbach Alex 22.10.2015 at 14:07
+﻿// Created 22.10.2015
+// Modified by Александр 22.10.2015 at 19:59
 
 namespace Assets.Scripts.UI.Visualizers.Stars {
     #region References
 
-    using Engine.Utils.StatedObjects;
     using Engine;
     using Engine.Presenter;
     using Presenter;
@@ -14,16 +13,14 @@ namespace Assets.Scripts.UI.Visualizers.Stars {
     #endregion
 
     internal class StarsVisualizer : MonoBehaviourBase, IStarsVisualizer {
-        [SerializeField]
-        private Transform[] _starsContainers;
-
         private GameObjectFactory<StatedStar> _factory;
         private StarsVisualizerPresenter _presenter;
 
+        [SerializeField]
+        private Transform[] _starsContainers;
+
         public int LevelNumber {
-            set {
-                _presenter.Init(value);
-            }
+            set { _presenter.Init(value); }
         }
 
         public int Stars {
