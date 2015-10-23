@@ -1,4 +1,9 @@
-﻿using System;
+﻿// Created 20.10.2015 
+// Modified by Gorbach Alex 23.10.2015 at 10:16
+
+#region References
+
+using System;
 using System.Collections.Generic;
 using Assets.Scripts.EndlessEngine.Ground;
 using Assets.Scripts.EndlessEngine.Ground.Generators;
@@ -9,11 +14,18 @@ using Assets.Scripts.Engine.Pool;
 using UnityEngine;
 using Zenject;
 
+#endregion
+
 namespace Assets.Scripts.ZenjectConfig {
     internal class GameplayInstaller : MonoInstaller {
-        [SerializeField] private int _initialPoolSize = 10;
-        [SerializeField] private BlockSettings _blockSettings;
-        [SerializeField] private TreeSettings _treeSettings;
+        [SerializeField]
+        private int _initialPoolSize = 10;
+
+        [SerializeField]
+        private BlockSettings _blockSettings;
+
+        [SerializeField]
+        private TreeSettings _treeSettings;
 
         public override void InstallBindings() {
             BindGround();
@@ -50,19 +62,25 @@ namespace Assets.Scripts.ZenjectConfig {
 
         [Serializable]
         public class BlockSettings : RandomGameObjectFactory<GroundBlockUI>.ISettings {
-            [SerializeField] private GroundBlockUI[] _prefabs;
+            [SerializeField]
+            private GroundBlockUI[] _prefabs;
 
             public IEnumerable<GroundBlockUI> Prefabs {
-                get { return _prefabs; }
+                get {
+                    return _prefabs;
+                }
             }
         }
 
         [Serializable]
         public class TreeSettings : RandomGameObjectFactory<DecorationItemUI>.ISettings {
-            [SerializeField] private DecorationItemUI[] _prefabs;
+            [SerializeField]
+            private DecorationItemUI[] _prefabs;
 
             public IEnumerable<DecorationItemUI> Prefabs {
-                get { return _prefabs; }
+                get {
+                    return _prefabs;
+                }
             }
         }
     }

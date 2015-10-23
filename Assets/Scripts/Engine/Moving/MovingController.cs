@@ -1,5 +1,5 @@
 ﻿// Created 20.10.2015 
-// Modified by Gorbach Alex 22.10.2015 at 15:57
+// Modified by Gorbach Alex 23.10.2015 at 12:11
 
 #region References
 
@@ -8,11 +8,16 @@ using UnityEngine;
 #endregion
 
 namespace Assets.Scripts.Engine.Moving {
+    #region References
+
+    using Input;
+    using Zenject;
+
+    #endregion
+
     internal class MovingController : MonoBehaviourBase {
         [SerializeField]
         private int _jumpForce;
-
-        private Vector2 _jumpVector;
 
         [SerializeField]
         private Rigidbody2D _rigidbody;
@@ -20,6 +25,9 @@ namespace Assets.Scripts.Engine.Moving {
         [SerializeField]
         private int _runForce;
 
+        private IInputController _controller;
+
+        private Vector2 _jumpVector;
         private Vector2 _runVector;
 
         protected override void Awake() {
@@ -28,11 +36,26 @@ namespace Assets.Scripts.Engine.Moving {
             _jumpVector = Vector2.up * _jumpForce;
         }
 
-        public void Run() {
+        [PostInject]
+        private void Inject(IInputController inputController) {
+            _controller = inputController;
+            _controller.Click += OnClick;
+        }
+
+        private void FixedUpdate() {
+            Run();
+        }
+
+        private void OnClick(Vector2 screenpos) {
+            Debug.Log("jump");
+            Jump();
+        }
+
+        private void Run() {
             _rigidbody.velocity = _runVector;
         }
 
-        public void Jump() {
+        private void Jump() {
             _rigidbody.AddForce(_jumpVector);
         }
     }
