@@ -1,5 +1,5 @@
-﻿// Created 20.10.2015 
-// Modified by Gorbach Alex 26.10.2015 at 13:27
+﻿// Created 26.10.2015
+// Modified by Александр 26.10.2015 at 20:07
 
 #region References
 
@@ -10,13 +10,13 @@ namespace Assets.Scripts.ZenjectConfig {
 
     using System;
     using System.Collections.Generic;
-    using EndlessEngine.Ground.Decorations.Strategy;
-    using Engine.Factory.Strategy;
-    using EndlessEngine.Ground.Decorations;
-    using EndlessEngine.Ground.Decorations.UI;
     using EndlessEngine.Ground;
+    using EndlessEngine.Ground.Decorations;
+    using EndlessEngine.Ground.Decorations.Strategy;
+    using EndlessEngine.Ground.Decorations.UI;
     using EndlessEngine.Ground.UI;
     using Engine.Factory;
+    using Engine.Factory.Strategy;
     using Engine.Pool;
     using Gameplay;
     using Gameplay.GameState.Manager;
@@ -39,6 +39,7 @@ namespace Assets.Scripts.ZenjectConfig {
             Container.Bind<IGame>().ToSingle<Game>();
             Container.Bind<IGameStateManager>().ToSingle<GameStateManager>();
             Container.Bind<IGettingStrategy>().ToTransient<Engine.Factory.Strategy.RandomStrategy>();
+            Container.Bind<Camera>().ToSingleInstance(Camera.main);
             BindGround();
             BindDecorations();
         }
@@ -77,51 +78,41 @@ namespace Assets.Scripts.ZenjectConfig {
         [Serializable]
         public class BlockSettings : RandomGameObjectFactory<GroundBlockUI>.ISettings {
             [SerializeField]
-            private GroundBlockUI[] _prefabs;
-
-            [SerializeField]
             private GroundGeneratorUI _generator;
 
+            [SerializeField]
+            private GroundBlockUI[] _prefabs;
+
             public IGroundGeneratorUI Generator {
-                get {
-                    return _generator;
-                }
+                get { return _generator; }
             }
 
             public IEnumerable<GroundBlockUI> Prefabs {
-                get {
-                    return _prefabs;
-                }
+                get { return _prefabs; }
             }
         }
 
         [Serializable]
         public class TreeSettings : RandomGameObjectFactory<DecorationItemUI>.ISettings {
             [SerializeField]
-            private DecorationItemUI[] _prefabs;
+            private DecorationGeneratorUI _generator;
 
             [SerializeField]
-            private DecorationGeneratorUI _generator;
+            private DecorationItemUI[] _prefabs;
 
             [SerializeField]
             private AbstractStrategy _strategy;
 
             public AbstractStrategy Strategy {
-                get {
-                    return _strategy;
-                }
+                get { return _strategy; }
             }
 
             public IDecorationGeneratorUI Generator {
-                get {
-                    return _generator;
-                }
+                get { return _generator; }
             }
 
             public IEnumerable<DecorationItemUI> Prefabs {
-                get {
-                    return _prefabs;
-                }
+                get { return _prefabs; }
             }
         }
     }

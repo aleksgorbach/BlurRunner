@@ -4,6 +4,7 @@
 namespace Assets.Scripts.EndlessEngine.Ground.Decorations.UI {
     #region References
 
+    using System;
     using Ground.UI;
 
     #endregion
@@ -15,5 +16,10 @@ namespace Assets.Scripts.EndlessEngine.Ground.Decorations.UI {
         /// <param name="created">Decoration item to add</param>
         /// <param name="block">Block that item has to matched with</param>
         void Add(DecorationItemUI created, GroundBlockUI block);
+
+        /// <summary>
+        /// Raised when decoration item make hidden
+        /// </summary>
+        event Action<DecorationItemUI> ItemHidden;
     }
 }

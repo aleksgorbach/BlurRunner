@@ -1,21 +1,20 @@
-﻿// Created 26.10.2015 
-// Modified by Gorbach Alex 26.10.2015 at 13:42
+﻿// Created 26.10.2015
+// Modified by Александр 26.10.2015 at 21:07
 
 namespace Assets.Scripts.EndlessEngine.Ground.Decorations {
     #region References
 
-    using Strategy;
-    using Ground.UI;
-    using UI;
     using Engine.Pool;
-    using JetBrains.Annotations;
+    using Ground.UI;
+    using Strategy;
+    using UI;
 
     #endregion
 
     internal class DecorationGenerator : IDecorationGenerator {
-        private readonly IDecorationGeneratorUI _view;
         private readonly IObjectPool<DecorationItemUI> _pool;
         private readonly IGeneratingStrategy _strategy;
+        private readonly IDecorationGeneratorUI _view;
 
         public DecorationGenerator(
             IDecorationGeneratorUI view,
@@ -26,10 +25,7 @@ namespace Assets.Scripts.EndlessEngine.Ground.Decorations {
             _pool = pool;
             _strategy = strategy;
             groundGenerator.BlockCreated += OnBlockCreated;
-            groundGenerator.BlockRemoved += OnBlockRemoved;
-        }
-
-        private void OnBlockRemoved(GroundBlockUI block) {
+            view.ItemHidden += Release;
         }
 
         private void OnBlockCreated(GroundBlockUI block) {

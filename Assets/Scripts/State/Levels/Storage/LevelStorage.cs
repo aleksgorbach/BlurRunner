@@ -1,22 +1,22 @@
 ﻿// Created 15.10.2015
-// Modified by Александр 21.10.2015 at 20:33
+// Modified by Александр 26.10.2015 at 21:26
 
 namespace Assets.Scripts.State.Levels.Storage {
     #region References
 
     using System.Collections.Generic;
+    using System.Linq;
+    using DataContracts.Models.Levels;
+    using Loaders;
 
     #endregion
 
     internal class LevelStorage : ILevelStorage {
-        private readonly IDictionary<int, ILevel> _levels;
+        private Dictionary<int, Level> _levels;
 
-        public LevelStorage() {
-            _levels = new Dictionary<int, ILevel>();
-
-            for (var i = 0; i < 10; i++) {
-                _levels.Add(i, new Level(i));
-            }
+        public LevelStorage(ILevelLoader loader) {
+            loader.Loaded += OnLoaded;
+            loader.Load();
         }
 
         public int TotalLevelsCount {
@@ -31,6 +31,10 @@ namespace Assets.Scripts.State.Levels.Storage {
 
         public ILevel this[int levelNumber] {
             get { return _levels[levelNumber]; }
+        }
+
+        private void OnLoaded(IEnumerable<LevelData> data) {
+            _levels = data.ToDictionary(x => x.Number, x => new Level(x));
         }
     }
 }
