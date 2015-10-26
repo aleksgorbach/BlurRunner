@@ -1,12 +1,13 @@
 ﻿// Created 20.10.2015 
-// Modified by Gorbach Alex 22.10.2015 at 15:32
+// Modified by Gorbach Alex 26.10.2015 at 13:27
 
 namespace Assets.Scripts.Engine.Pool {
     #region References
 
+    using System;
     using System.Collections.Generic;
     using System.Linq;
-    using Extensions;
+    using Factory.Strategy;
     using UnityEngine;
     using Zenject;
 
@@ -20,18 +21,24 @@ namespace Assets.Scripts.Engine.Pool {
         private bool _canGrow;
         private List<Item> _pool;
         private Factory.IFactory<T> _factory;
+        private IGettingStrategy _strategy;
 
         public T Get() {
-            var free = _pool.Where(item => item.Free).Random();
-            if (free != null) {
-                free.Free = false;
-                return free.Object;
+            Item obj;
+            try {
+                obj = _strategy.Get(_pool.Where(item => item.Free));
             }
-            if (_canGrow) {
-                var created = AddNew();
-                created.Free = false;
+            catch (ArgumentOutOfRangeException) {
+                if (_canGrow) {
+                    obj = AddNew();
+                }
+                else {
+                    throw new PoolBusyException<T>();
+                }
             }
-            throw new PoolBusyException<T>();
+
+            obj.Free = false;
+            return obj.Object;
         }
 
         public virtual void Release(T obj) {
@@ -50,9 +57,11 @@ namespace Assets.Scripts.Engine.Pool {
         protected void Init(
             [Inject(CAN_GROW_KEY)] bool canGrow,
             [Inject(INITIAL_SIZE_KEY)] int initialSize,
-            Factory.IFactory<T> factory) {
+            Factory.IFactory<T> factory,
+            IGettingStrategy strategy) {
             _canGrow = canGrow;
             _factory = factory;
+            _strategy = strategy;
             AddInitialItems(initialSize);
         }
 

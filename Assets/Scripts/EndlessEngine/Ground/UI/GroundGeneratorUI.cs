@@ -1,5 +1,5 @@
-﻿// Created 22.10.2015
-// Modified by Александр 25.10.2015 at 21:32
+﻿// Created 20.10.2015 
+// Modified by Gorbach Alex 26.10.2015 at 11:20
 
 #region References
 
@@ -11,7 +11,6 @@ namespace Assets.Scripts.EndlessEngine.Ground.UI {
     using System.Collections.Generic;
     using Engine;
     using Engine.Extensions;
-    using Generators;
     using UnityEngine;
     using Zenject;
 
@@ -25,10 +24,6 @@ namespace Assets.Scripts.EndlessEngine.Ground.UI {
         private GroundBlockUI _lastAddedBlock;
         private float _length;
 
-        [SerializeField]
-        private GameObject[] _treePrefabs;
-
-
         public event BlockEventDelegate NewBlockNeed;
         public event BlockEventDelegate RemoveBlockNeeded;
 
@@ -38,7 +33,6 @@ namespace Assets.Scripts.EndlessEngine.Ground.UI {
             _blocks.Enqueue(block);
             _lastAddedBlock = block;
             UpdateLength();
-            //GenerateStuff(block);
         }
 
         public void RemoveBlock() {
@@ -51,27 +45,8 @@ namespace Assets.Scripts.EndlessEngine.Ground.UI {
             AddMissingBlock();
         }
 
-        //private void GenerateStuff(GroundBlockUI block) {
-        //    if (block.TreeContainer.childCount > 0) {
-        //        return;
-        //    }
-        //    if (Random.Range(0, 2) == 0) {
-        //        return;
-        //    }
-
-        //    var tree = Instantiate(_treePrefabs.Random());
-        //    tree.transform.SetParent(block.TreeContainer);
-        //    var origin = _camera.transform.position;
-        //    var direction = (block.transform.position - origin);
-        //    var point = new Ray(origin, direction).GetPoint(Random.Range(100, 300));
-        //    tree.transform.localPosition = new Vector3(0, point.y, point.z);
-        //}
-
         private void AddMissingBlock() {
-            //while (_length < _cameraWidth*1.2f) {
-            //    OnNewBlockNeeded(_lastAddedBlock);
-            //}
-            if (_length < _cameraWidth*1.2f) {
+            if (_length < _cameraWidth * 1.2f) {
                 OnNewBlockNeeded(_lastAddedBlock);
             }
         }
@@ -81,7 +56,6 @@ namespace Assets.Scripts.EndlessEngine.Ground.UI {
             _blocks = new Queue<GroundBlockUI>();
             _camera = Camera.main;
             _cameraWidth = _camera.GetWidth(transform.position.z);
-            //AddMissingBlock();
         }
 
         private void FixedUpdate() {

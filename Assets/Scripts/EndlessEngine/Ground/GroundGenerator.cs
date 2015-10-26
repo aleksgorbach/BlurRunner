@@ -1,11 +1,11 @@
-﻿// Created 15.10.2015
-// Modified by Александр 25.10.2015 at 19:38
+﻿// Created 26.10.2015 
+// Modified by Gorbach Alex 26.10.2015 at 13:47
 
-namespace Assets.Scripts.EndlessEngine.Ground.Generators {
+namespace Assets.Scripts.EndlessEngine.Ground {
     #region References
 
-    using Engine.Pool;
     using UI;
+    using Engine.Pool;
     using UnityEngine;
 
     #endregion
@@ -27,7 +27,7 @@ namespace Assets.Scripts.EndlessEngine.Ground.Generators {
         private void CreateBlock(GroundBlockUI block) {
             var groundBlock = GetCompatibleBlock(block);
             _view.AddBlock(groundBlock);
-            OnBlockCreated(block);
+            OnBlockCreated(groundBlock);
         }
 
         private void RemoveBlock(GroundBlockUI block) {

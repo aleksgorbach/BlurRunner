@@ -1,7 +1,7 @@
-﻿// Created 15.10.2015
-// Modified by Александр 25.10.2015 at 18:12
+﻿// Created 26.10.2015 
+// Modified by Gorbach Alex 26.10.2015 at 13:42
 
-namespace Assets.Scripts.EndlessEngine.Ground.Generators {
+namespace Assets.Scripts.EndlessEngine.Ground {
     #region References
 
     using UI;
@@ -9,9 +9,6 @@ namespace Assets.Scripts.EndlessEngine.Ground.Generators {
     #endregion
 
     internal interface IGroundGenerator {
-        //GroundBlockUI GetCompatibleBlock(GroundBlockUI origin, BlockPosition position = BlockPosition.Left);
-        //void ReturnBlock(GroundBlockUI block);
-
         /// <summary>
         /// Raised when new block was created
         /// </summary>

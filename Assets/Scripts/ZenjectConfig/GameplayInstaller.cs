@@ -1,5 +1,5 @@
-﻿// Created 24.10.2015
-// Modified by Александр 25.10.2015 at 21:31
+﻿// Created 20.10.2015 
+// Modified by Gorbach Alex 26.10.2015 at 13:27
 
 #region References
 
@@ -10,8 +10,11 @@ namespace Assets.Scripts.ZenjectConfig {
 
     using System;
     using System.Collections.Generic;
+    using EndlessEngine.Ground.Decorations.Strategy;
+    using Engine.Factory.Strategy;
+    using EndlessEngine.Ground.Decorations;
+    using EndlessEngine.Ground.Decorations.UI;
     using EndlessEngine.Ground;
-    using EndlessEngine.Ground.Generators;
     using EndlessEngine.Ground.UI;
     using Engine.Factory;
     using Engine.Pool;
@@ -30,14 +33,12 @@ namespace Assets.Scripts.ZenjectConfig {
         private BlockSettings _blockSettings;
 
         [SerializeField]
-        private GroundGeneratorUI _groundGenerator;
-
-        [SerializeField]
         private TreeSettings _treeSettings;
 
         public override void InstallBindings() {
             Container.Bind<IGame>().ToSingle<Game>();
             Container.Bind<IGameStateManager>().ToSingle<GameStateManager>();
+            Container.Bind<IGettingStrategy>().ToTransient<Engine.Factory.Strategy.RandomStrategy>();
             BindGround();
             BindDecorations();
         }
@@ -47,6 +48,8 @@ namespace Assets.Scripts.ZenjectConfig {
                 .ToTransient<RandomGameObjectFactory<DecorationItemUI>>();
             Container.Bind<RandomGameObjectFactory<DecorationItemUI>.ISettings>().ToInstance(_treeSettings);
             Container.Bind<IDecorationGenerator>().ToSingle<DecorationGenerator>();
+            Container.Bind<IDecorationGeneratorUI>().ToInstance(_treeSettings.Generator);
+            Container.Bind<IGeneratingStrategy>().ToInstance(_treeSettings.Strategy);
             Container.Bind<IObjectPool<DecorationItemUI>>().ToSingleGameObject<DecorationPool>("DecorationsPool");
             Container.Bind<bool>(GameObjectPool<DecorationItemUI>.CAN_GROW_KEY)
                 .ToInstance(true)
@@ -61,7 +64,7 @@ namespace Assets.Scripts.ZenjectConfig {
                 .ToTransient<RandomGameObjectFactory<GroundBlockUI>>();
             Container.Bind<RandomGameObjectFactory<GroundBlockUI>.ISettings>().ToInstance(_blockSettings);
             Container.Bind<IGroundGenerator>().ToSingle<GroundGenerator>();
-            Container.Bind<IGroundGeneratorUI>().ToSingleInstance(_groundGenerator);
+            Container.Bind<IGroundGeneratorUI>().ToInstance(_blockSettings.Generator);
             Container.Bind<IObjectPool<GroundBlockUI>>().ToSingleGameObject<GroundPool>("GroundBlocksPool");
             Container.Bind<bool>(GameObjectPool<GroundBlockUI>.CAN_GROW_KEY)
                 .ToInstance(true)
@@ -76,8 +79,19 @@ namespace Assets.Scripts.ZenjectConfig {
             [SerializeField]
             private GroundBlockUI[] _prefabs;
 
+            [SerializeField]
+            private GroundGeneratorUI _generator;
+
+            public IGroundGeneratorUI Generator {
+                get {
+                    return _generator;
+                }
+            }
+
             public IEnumerable<GroundBlockUI> Prefabs {
-                get { return _prefabs; }
+                get {
+                    return _prefabs;
+                }
             }
         }
 
@@ -86,8 +100,28 @@ namespace Assets.Scripts.ZenjectConfig {
             [SerializeField]
             private DecorationItemUI[] _prefabs;
 
+            [SerializeField]
+            private DecorationGeneratorUI _generator;
+
+            [SerializeField]
+            private AbstractStrategy _strategy;
+
+            public AbstractStrategy Strategy {
+                get {
+                    return _strategy;
+                }
+            }
+
+            public IDecorationGeneratorUI Generator {
+                get {
+                    return _generator;
+                }
+            }
+
             public IEnumerable<DecorationItemUI> Prefabs {
-                get { return _prefabs; }
+                get {
+                    return _prefabs;
+                }
             }
         }
     }

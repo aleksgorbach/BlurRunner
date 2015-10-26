@@ -1,5 +1,5 @@
 ﻿// Created 20.10.2015 
-// Modified by Gorbach Alex 23.10.2015 at 12:11
+// Modified by Gorbach Alex 26.10.2015 at 9:49
 
 #region References
 
@@ -47,7 +47,6 @@ namespace Assets.Scripts.Engine.Moving {
         }
 
         private void OnClick(Vector2 screenpos) {
-            Debug.Log("jump");
             Jump();
         }
 
