@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<levelsData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <levels>
+    <level number="0">
+      <hardness>Easy</hardness>
+      <length>200</length>
+    </level>
+    <level number="1">
+      <hardness>Easy</hardness>
+      <length>300</length>
+    </level>
+  </levels>
+</levelsData>

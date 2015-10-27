@@ -1,5 +1,5 @@
 ﻿// Created 22.10.2015
-// Modified by Александр 25.10.2015 at 11:03
+// Modified by Александр 27.10.2015 at 21:22
 
 namespace Assets.Scripts.Gameplay {
     #region References
@@ -8,6 +8,7 @@ namespace Assets.Scripts.Gameplay {
     using System.Collections.Generic;
     using GameState.Manager;
     using GameState.Pause;
+    using State.Levels;
 
     #endregion
 
@@ -16,11 +17,16 @@ namespace Assets.Scripts.Gameplay {
         private readonly IGameStateManager _stateManager;
 
         private bool _isPaused;
+        private ILevel _level;
 
         public Game(IGameStateManager stateManager, List<IPauseHandler> pauseHandlers) {
             _stateManager = stateManager;
             _pauseHandlers = pauseHandlers;
             _stateManager.StateChanged += OnStateChanged;
+        }
+
+        public void StartLevel(ILevel level) {
+            _level = level;
         }
 
         private void OnStateChanged(Consts.GameState state) {

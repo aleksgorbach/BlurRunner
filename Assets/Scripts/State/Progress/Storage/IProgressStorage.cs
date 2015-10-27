@@ -9,5 +9,10 @@ namespace Assets.Scripts.State.Progress.Storage {
         /// <param name="levelNumber">Level number</param>
         /// <returns></returns>
         ILevelProgress this[int levelNumber] { get; }
+
+        /// <summary>
+        /// Returns current level number
+        /// </summary>
+        int CurrentLevel { get; }
     }
 }

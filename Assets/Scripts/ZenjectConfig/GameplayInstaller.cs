@@ -1,5 +1,5 @@
 ﻿// Created 26.10.2015
-// Modified by Александр 26.10.2015 at 20:07
+// Modified by Александр 27.10.2015 at 21:30
 
 #region References
 
@@ -20,6 +20,7 @@ namespace Assets.Scripts.ZenjectConfig {
     using Engine.Pool;
     using Gameplay;
     using Gameplay.GameState.Manager;
+    using Gameplay.GameState.Pause;
     using UnityEngine;
     using Zenject;
 
@@ -36,10 +37,11 @@ namespace Assets.Scripts.ZenjectConfig {
         private TreeSettings _treeSettings;
 
         public override void InstallBindings() {
-            Container.Bind<IGame>().ToSingle<Game>();
+            Container.Bind<IGame>().ToTransient<Game>();
             Container.Bind<IGameStateManager>().ToSingle<GameStateManager>();
             Container.Bind<IGettingStrategy>().ToTransient<Engine.Factory.Strategy.RandomStrategy>();
             Container.Bind<Camera>().ToSingleInstance(Camera.main);
+            Container.Bind<IPauseHandler>().ToSingle<GameStateManager>();
             BindGround();
             BindDecorations();
         }

@@ -1,11 +1,10 @@
 ﻿// Created 26.10.2015
-// Modified by Александр 26.10.2015 at 21:33
+// Modified by Александр 27.10.2015 at 20:24
 
 namespace Assets.Scripts.State.Levels.Loaders {
     #region References
 
     using System;
-    using System.Collections.Generic;
     using System.IO;
     using System.Xml.Serialization;
     using DataContracts.Models.Levels;
@@ -21,14 +20,14 @@ namespace Assets.Scripts.State.Levels.Loaders {
         }
 
         public void Load() {
-            var serializer = new XmlSerializer(typeof (IEnumerable<LevelData>));
-            var data = (IEnumerable<LevelData>) serializer.Deserialize(new StringReader(_text));
+            var serializer = new XmlSerializer(typeof (LevelsCollectionData));
+            var data = (LevelsCollectionData) serializer.Deserialize(new StringReader(_text));
             OnLoaded(data);
         }
 
-        public event Action<IEnumerable<LevelData>> Loaded;
+        public event Action<LevelsCollectionData> Loaded;
 
-        private void OnLoaded(IEnumerable<LevelData> data) {
+        private void OnLoaded(LevelsCollectionData data) {
             var handler = Loaded;
             if (handler != null) {
                 handler.Invoke(data);

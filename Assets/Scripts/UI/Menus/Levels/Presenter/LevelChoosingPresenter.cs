@@ -1,15 +1,16 @@
-﻿// Created 20.10.2015 
-// Modified by Gorbach Alex 22.10.2015 at 15:11
+﻿// Created 22.10.2015
+// Modified by Александр 27.10.2015 at 20:43
 
 namespace Assets.Scripts.UI.Menus.Levels.Presenter {
     #region References
 
     #region References
 
-    using Assets.Scripts.State.ScenesInteraction.Loaders;
-    using State.Levels;
+    using System.Linq;
     using Engine.Presenter;
+    using State.Levels;
     using State.Levels.Storage;
+    using State.ScenesInteraction.Loaders;
     using UnityEngine;
     using Zenject;
 
@@ -18,12 +19,12 @@ namespace Assets.Scripts.UI.Menus.Levels.Presenter {
     #endregion
 
     internal class LevelChoosingPresenter : Presenter<ILevelChoosingMenu> {
-        private ILevelStorage _storage;
         private ISceneLoader _loader;
+        private ILevelStorage _storage;
 
         internal void Init(int fromLevel, int toLevel) {
             View.LevelChoosed += OnLevelChoosed;
-            View.Levels = _storage.Get(fromLevel, toLevel);
+            View.Levels = _storage.Where(level => level.Number >= fromLevel && level.Number <= toLevel);
         }
 
         private void OnLevelChoosed(ILevel level) {
