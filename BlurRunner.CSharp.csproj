@@ -1,0 +1,258 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4C00C0B4-A449-A57F-B3A9-1ABEB6B3DC06}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
+    <CompilerResponseFile></CompilerResponseFile>
+    <UnityProjectType>Game:1</UnityProjectType>
+    <UnityBuildTarget>Android:13</UnityBuildTarget>
+    <UnityVersion>5.2.1f1</UnityVersion>
+    <RootNamespace></RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Temp\UnityVS_bin\Debug\</OutputPath>
+    <IntermediateOutputPath>Temp\UnityVS_obj\Debug\</IntermediateOutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DefineConstants>DEBUG;TRACE;UNITY_5_2_1;UNITY_5_2;UNITY_5;ENABLE_NEW_BUGREPORTER;ENABLE_2D_PHYSICS;ENABLE_4_6_FEATURES;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_REFLECTION_BUFFERS;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;INCLUDE_DIRECTX12;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;ENABLE_LOCALIZATION;ENABLE_ANDROID_ATLAS_ETC1_COMPRESSION;UNITY_ANDROID;UNITY_ANDROID_API;ENABLE_SUBSTANCE;UNITY_ANDROID_API;ENABLE_TEXTUREID_MAP;ENABLE_EGL;ENABLE_NETWORK;ENABLE_RUNTIME_GI;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYADS_RUNTIME;UNITY_UNITYADS_API;ENABLE_MONO;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN</DefineConstants>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Temp\UnityVS_bin\Release\</OutputPath>
+    <IntermediateOutputPath>Temp\UnityVS_obj\Release\</IntermediateOutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DefineConstants>TRACE;UNITY_5_2_1;UNITY_5_2;UNITY_5;ENABLE_NEW_BUGREPORTER;ENABLE_2D_PHYSICS;ENABLE_4_6_FEATURES;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_REFLECTION_BUFFERS;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;INCLUDE_DIRECTX12;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;ENABLE_LOCALIZATION;ENABLE_ANDROID_ATLAS_ETC1_COMPRESSION;UNITY_ANDROID;UNITY_ANDROID_API;ENABLE_SUBSTANCE;UNITY_ANDROID_API;ENABLE_TEXTUREID_MAP;ENABLE_EGL;ENABLE_NETWORK;ENABLE_RUNTIME_GI;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYADS_RUNTIME;UNITY_UNITYADS_API;ENABLE_MONO;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN</DefineConstants>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="System" />
+    <Reference Include="System.XML" />
+    <Reference Include="System.Core" />
+    <Reference Include="Boo.Lang" />
+    <Reference Include="UnityScript.Lang" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="UnityEngine">
+      <HintPath>Library\UnityAssemblies\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Networking">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor">
+      <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Cecil">
+      <HintPath>Library\UnityAssemblies\Mono.Cecil.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+    </Reference>
+    <Reference Include="DataContracts">
+      <HintPath>Assets\Plugins\DataContracts.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assets\Extensions\LoggingHelper\Scripts\LoggingHelper.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Internal\Assert.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Internal\Func.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Internal\LinqExtensions.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Internal\Log.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Internal\MiscExtensions.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Internal\ProfileBlock.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Internal\ReflectionUtil.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Internal\Tuple.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Internal\TypeExtensions.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Binders\BindScope.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Binders\Binder.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Binders\BinderGeneric.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Binders\BinderUntyped.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Binders\BindingConditionSetter.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Binders\IFactoryBinder.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Binders\IFactoryUntypedBinder.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Binders\InjectContext.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Exceptions\ZenjectException.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Factories\Factory.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Factories\FactoryMethod.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Factories\FactoryMethodUntyped.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Factories\FactoryNested.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Factories\FactoryUntyped.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Factories\GameObjectFactory.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Factories\GameObjectInstantiator.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Factories\IFactory.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Factories\IFactoryUntyped.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Factories\IValidatable.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Factories\IValidatableFactory.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Factories\InstantiateUtil.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Factories\KeyedFactory.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Factories\ListFactory.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Injection\InjectableInfo.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Injection\TypeAnalyzer.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Injection\ZenjectTypeInfo.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Main\BindingId.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Main\BindingValidator.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Main\CompositionRoot.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Main\CompositionRootHelper.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Main\DiContainer.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Main\GlobalCompositionRoot.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Main\GlobalInstallerConfig.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Main\IBinder.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Main\IInstaller.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Main\IInstantiator.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Main\IResolver.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Main\Installer.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Main\MonoInstaller.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Misc\DisposableManager.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Misc\DisposablePrioritiesInstaller.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Misc\FixedTickablePrioritiesInstaller.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Misc\IDependencyRoot.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Misc\IInitializable.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Misc\ITickable.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Misc\InitializableManager.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Misc\InitializablePrioritiesInstaller.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Misc\KernelUtil.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Misc\SingletonInstanceHelper.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Misc\StandardUnityInstaller.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Misc\TaskUpdater.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Misc\TickableManager.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Misc\TickablePrioritiesInstaller.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Misc\UnityDependencyRoot.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Misc\UnityEventManager.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Misc\ZenUtil.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Providers\DiContainerProvider.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Providers\GameObjectSingletonProvider.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Providers\GameObjectTransientProviderFromPrefab.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Providers\InstanceProvider.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Providers\MethodProvider.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Providers\MonoBehaviourSingletonProvider.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Providers\PrefabSingletonId.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Providers\PrefabSingletonLazyCreator.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Providers\PrefabSingletonProvider.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Providers\PrefabSingletonProviderMap.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Providers\ProviderBase.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Providers\SingletonId.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Providers\SingletonLazyCreator.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Providers\SingletonProvider.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Providers\SingletonProviderMap.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Providers\TransientProvider.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Usage\InjectAttribute.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Usage\InjectOptionalAttribute.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Usage\PostInjectAttribute.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Util\AutoBindInstaller.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Util\DecoratorInstaller.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Util\SceneDecoratorCompositionRoot.cs" />
+    <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Util\UnityUtil.cs" />
+    <Compile Include="Assets\Scripts\Debug\TimeStop.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\Ground\Decorations\DecorationGenerator.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\Ground\Decorations\DecorationPool.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\Ground\Decorations\IDecorationGenerator.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\Ground\Decorations\Strategy\AbstractStrategy.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\Ground\Decorations\Strategy\IGeneratingStrategy.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\Ground\Decorations\Strategy\RandomStrategy.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\Ground\Decorations\UI\DecorationGeneratorUI.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\Ground\Decorations\UI\DecorationItemUI.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\Ground\Decorations\UI\IDecorationGeneratorUI.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\Ground\GroundBlock.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\Ground\GroundGenerator.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\Ground\GroundPool.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\Ground\IGroundBlock.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\Ground\IGroundGenerator.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\Ground\UI\GroundBlockUI.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\Ground\UI\GroundGeneratorUI.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\Ground\UI\IGroundGeneratorUI.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\Interfaces\IHiding.cs" />
+    <Compile Include="Assets\Scripts\Engine\Extensions\CameraExtensions.cs" />
+    <Compile Include="Assets\Scripts\Engine\Extensions\EnumerableExtensions.cs" />
+    <Compile Include="Assets\Scripts\Engine\Factory\AbstractGameObjectFactory.cs" />
+    <Compile Include="Assets\Scripts\Engine\Factory\GameObjectFactory.cs" />
+    <Compile Include="Assets\Scripts\Engine\Factory\IFactory.cs" />
+    <Compile Include="Assets\Scripts\Engine\Factory\RandomGameObjectFactory.cs" />
+    <Compile Include="Assets\Scripts\Engine\Factory\Strategy\FirstAvailableStrategy.cs" />
+    <Compile Include="Assets\Scripts\Engine\Factory\Strategy\IGettingStrategy.cs" />
+    <Compile Include="Assets\Scripts\Engine\Factory\Strategy\RandomStrategy.cs" />
+    <Compile Include="Assets\Scripts\Engine\Input\IInputController.cs" />
+    <Compile Include="Assets\Scripts\Engine\Input\InputController.cs" />
+    <Compile Include="Assets\Scripts\Engine\MonoBehaviourBase.cs" />
+    <Compile Include="Assets\Scripts\Engine\Moving\MovingController.cs" />
+    <Compile Include="Assets\Scripts\Engine\ObjectAnchor.cs" />
+    <Compile Include="Assets\Scripts\Engine\Physics\CenterOfMass.cs" />
+    <Compile Include="Assets\Scripts\Engine\Physics\RotationLimiter.cs" />
+    <Compile Include="Assets\Scripts\Engine\Pool\GameObjectPool.cs" />
+    <Compile Include="Assets\Scripts\Engine\Pool\IObjectPool.cs" />
+    <Compile Include="Assets\Scripts\Engine\Pool\PoolBusyException.cs" />
+    <Compile Include="Assets\Scripts\Engine\Presenter\IPresenter.cs" />
+    <Compile Include="Assets\Scripts\Engine\Presenter\Presenter.cs" />
+    <Compile Include="Assets\Scripts\Engine\Presenter\PresenterFactory.cs" />
+    <Compile Include="Assets\Scripts\Engine\Utils\StatedObjects\ImageStatesObject.cs" />
+    <Compile Include="Assets\Scripts\Engine\Utils\StatedObjects\StatedObject.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\Consts\GameState.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\Game.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\GameState\Manager\GameStateManager.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\GameState\Manager\IGameStateManager.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\GameState\Pause\IPauseHandler.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\Heroes\Hero.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\IGame.cs" />
+    <Compile Include="Assets\Scripts\State\Levels\ILevel.cs" />
+    <Compile Include="Assets\Scripts\State\Levels\Level.cs" />
+    <Compile Include="Assets\Scripts\State\Levels\Loaders\ILevelLoader.cs" />
+    <Compile Include="Assets\Scripts\State\Levels\Loaders\ResourcesLevelLoader.cs" />
+    <Compile Include="Assets\Scripts\State\Levels\Storage\ILevelStorage.cs" />
+    <Compile Include="Assets\Scripts\State\Levels\Storage\LevelStorage.cs" />
+    <Compile Include="Assets\Scripts\State\Progress\ILevelProgress.cs" />
+    <Compile Include="Assets\Scripts\State\Progress\LevelProgress.cs" />
+    <Compile Include="Assets\Scripts\State\Progress\Storage\IProgressStorage.cs" />
+    <Compile Include="Assets\Scripts\State\Progress\Storage\ProgressStorage.cs" />
+    <Compile Include="Assets\Scripts\State\ScenesInteraction\Dependencies\ISceneOrder.cs" />
+    <Compile Include="Assets\Scripts\State\ScenesInteraction\Dependencies\SceneOrder.cs" />
+    <Compile Include="Assets\Scripts\State\ScenesInteraction\Loaders\ISceneLoader.cs" />
+    <Compile Include="Assets\Scripts\State\ScenesInteraction\Loaders\SceneLoader.cs" />
+    <Compile Include="Assets\Scripts\UI\Menus\Game\GuiController.cs" />
+    <Compile Include="Assets\Scripts\UI\Menus\Levels\ILevelChoosingMenu.cs" />
+    <Compile Include="Assets\Scripts\UI\Menus\Levels\LevelItem\ILevelItem.cs" />
+    <Compile Include="Assets\Scripts\UI\Menus\Levels\LevelItem\LevelItem.cs" />
+    <Compile Include="Assets\Scripts\UI\Menus\Levels\LevelItem\Presenter\LevelItemPresenter.cs" />
+    <Compile Include="Assets\Scripts\UI\Menus\Levels\LevelsChoosingMenu.cs" />
+    <Compile Include="Assets\Scripts\UI\Menus\Levels\Presenter\LevelChoosingPresenter.cs" />
+    <Compile Include="Assets\Scripts\UI\Menus\Logo\LogoSceneController.cs" />
+    <Compile Include="Assets\Scripts\UI\Popups\Controller\IPopupController.cs" />
+    <Compile Include="Assets\Scripts\UI\Popups\Controller\PopupController.cs" />
+    <Compile Include="Assets\Scripts\UI\Popups\Factory\PopupPool.cs" />
+    <Compile Include="Assets\Scripts\UI\Popups\IPopup.cs" />
+    <Compile Include="Assets\Scripts\UI\Popups\Implementations\PausePopup\PausePopup.cs" />
+    <Compile Include="Assets\Scripts\UI\Popups\Popup.cs" />
+    <Compile Include="Assets\Scripts\UI\Visualizers\Stars\IStarsVisualizer.cs" />
+    <Compile Include="Assets\Scripts\UI\Visualizers\Stars\Presenter\StarsVisualizerPresenter.cs" />
+    <Compile Include="Assets\Scripts\UI\Visualizers\Stars\StarFactory.cs" />
+    <Compile Include="Assets\Scripts\UI\Visualizers\Stars\StarsVisualizer.cs" />
+    <Compile Include="Assets\Scripts\UI\Visualizers\Stars\StatedStar.cs" />
+    <Compile Include="Assets\Scripts\ZenjectConfig\DebugInstaller.cs" />
+    <Compile Include="Assets\Scripts\ZenjectConfig\GameplayInstaller.cs" />
+    <Compile Include="Assets\Scripts\ZenjectConfig\GlobalInstaller.cs" />
+    <Compile Include="Assets\Scripts\ZenjectConfig\GuiInstaller.cs" />
+    <Compile Include="Assets\Scripts\ZenjectConfig\InputInstaller.cs" />
+    <Compile Include="Assets\Scripts\ZenjectConfig\LevelChooseInstaller.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Extensions\Zenject\LICENSE.txt" />
+    <None Include="Assets\StaticAssets\Common\Levels\levels.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
+</Project>

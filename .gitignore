@@ -20,6 +20,7 @@ bld/
 [Oo]bj/
 Library/
 Temp/
+Editor/
 
 # Roslyn cache directories
 *.ide/
@@ -230,8 +231,6 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
-*.csproj
-*.sln
 ProjectSettings/ProjectVersion.txt
 ProjectSettings/ProjectVersion.txt
 /*.userprefs
