@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>Android:13</UnityBuildTarget>
     <UnityVersion>5.2.1f1</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -161,6 +163,15 @@
     <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Util\SceneDecoratorCompositionRoot.cs" />
     <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Util\UnityUtil.cs" />
     <Compile Include="Assets\Scripts\Debug\TimeStop.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\Bonuses\BonusesPool.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\Bonuses\BonusGenerator.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\Bonuses\BonusCollector.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\Bonuses\IBonusGenerator.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\Bonuses\Strategy\AbstractBonusStrategy.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\Bonuses\Strategy\IBonusStrategy.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\Bonuses\Strategy\TimeBonusStrategy.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\Bonuses\UI\BonusGeneratorUI.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\Bonuses\UI\IBonusGeneratorUI.cs" />
     <Compile Include="Assets\Scripts\EndlessEngine\Ground\Decorations\DecorationGenerator.cs" />
     <Compile Include="Assets\Scripts\EndlessEngine\Ground\Decorations\DecorationPool.cs" />
     <Compile Include="Assets\Scripts\EndlessEngine\Ground\Decorations\IDecorationGenerator.cs" />
@@ -181,6 +192,7 @@
     <Compile Include="Assets\Scripts\EndlessEngine\Interfaces\IHiding.cs" />
     <Compile Include="Assets\Scripts\Engine\Extensions\CameraExtensions.cs" />
     <Compile Include="Assets\Scripts\Engine\Extensions\EnumerableExtensions.cs" />
+    <Compile Include="Assets\Scripts\Engine\Extensions\TransformExtensions.cs" />
     <Compile Include="Assets\Scripts\Engine\Factory\AbstractGameObjectFactory.cs" />
     <Compile Include="Assets\Scripts\Engine\Factory\GameObjectFactory.cs" />
     <Compile Include="Assets\Scripts\Engine\Factory\IFactory.cs" />
@@ -203,6 +215,11 @@
     <Compile Include="Assets\Scripts\Engine\Presenter\PresenterFactory.cs" />
     <Compile Include="Assets\Scripts\Engine\Utils\StatedObjects\ImageStatesObject.cs" />
     <Compile Include="Assets\Scripts\Engine\Utils\StatedObjects\StatedObject.cs" />
+    <Compile Include="Assets\Scripts\Engine\Utils\Timer.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\Bonuses\Bonus.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\Bonuses\IBonus.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\Bonuses\UI\BonusUI.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\Bonuses\UI\IBonusUI.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Consts\GameState.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Game.cs" />
     <Compile Include="Assets\Scripts\Gameplay\GameState\Manager\GameStateManager.cs" />
@@ -220,6 +237,7 @@
     <Compile Include="Assets\Scripts\State\Progress\LevelProgress.cs" />
     <Compile Include="Assets\Scripts\State\Progress\Storage\IProgressStorage.cs" />
     <Compile Include="Assets\Scripts\State\Progress\Storage\ProgressStorage.cs" />
+    <Compile Include="Assets\Scripts\State\ScenesInteraction\Controllers\GameController.cs" />
     <Compile Include="Assets\Scripts\State\ScenesInteraction\Dependencies\ISceneOrder.cs" />
     <Compile Include="Assets\Scripts\State\ScenesInteraction\Dependencies\SceneOrder.cs" />
     <Compile Include="Assets\Scripts\State\ScenesInteraction\Loaders\ISceneLoader.cs" />

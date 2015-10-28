@@ -1,12 +1,11 @@
 ﻿// Created 26.10.2015 
-// Modified by Gorbach Alex 26.10.2015 at 13:47
+// Modified by Gorbach Alex 28.10.2015 at 12:27
 
 namespace Assets.Scripts.EndlessEngine.Ground {
     #region References
 
     using UI;
     using Engine.Pool;
-    using UnityEngine;
 
     #endregion
 

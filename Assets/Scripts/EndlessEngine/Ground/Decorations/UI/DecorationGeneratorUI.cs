@@ -1,11 +1,12 @@
-﻿// Created 26.10.2015
-// Modified by Александр 26.10.2015 at 21:09
+﻿// Created 26.10.2015 
+// Modified by Gorbach Alex 28.10.2015 at 9:59
 
 namespace Assets.Scripts.EndlessEngine.Ground.Decorations.UI {
     #region References
 
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using Engine;
     using Ground.UI;
     using UnityEngine;
@@ -23,26 +24,28 @@ namespace Assets.Scripts.EndlessEngine.Ground.Decorations.UI {
         private List<DecorationItemUI> _items;
 
         public void Add(DecorationItemUI created, GroundBlockUI block) {
+            CheckInvisibleItems();
             created.transform.SetParent(transform, false);
             var dir = (block.TreeContainer.position - _camera.transform.position);
-            created.transform.position = _camera.transform.position + dir/dir.z*Random.Range(600, 850);
+            created.transform.position = _camera.transform.position + dir / dir.z * Random.Range(600, 850);
             _items.Add(created);
         }
 
         public event Action<DecorationItemUI> ItemHidden;
 
         private void OnItemHide(DecorationItemUI item) {
+            _items.Remove(item);
             var handler = ItemHidden;
             if (handler != null) {
                 handler.Invoke(item);
             }
         }
 
-        private void FixedUpdate() {
-            //todo убрать foreach из update (непроизводительно)
-            //foreach (var item in _items.Where(x => !x.IsVisible)) {
-            //    OnItemHide(item);
-            //}
+        private void CheckInvisibleItems() {
+            var itemsToRemove = _items.Where(x => !x.IsVisible).ToList();
+            foreach (var item in itemsToRemove) {
+                OnItemHide(item);
+            }
         }
 
         [PostInject]

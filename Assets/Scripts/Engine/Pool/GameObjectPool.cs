@@ -1,5 +1,5 @@
 ﻿// Created 20.10.2015 
-// Modified by Gorbach Alex 26.10.2015 at 13:27
+// Modified by Gorbach Alex 28.10.2015 at 14:05
 
 namespace Assets.Scripts.Engine.Pool {
     #region References
@@ -29,10 +29,7 @@ namespace Assets.Scripts.Engine.Pool {
                 obj = _strategy.Get(_pool.Where(item => item.Free));
             }
             catch (ArgumentOutOfRangeException) {
-                if (_canGrow) {
-                    obj = AddNew();
-                }
-                else {
+                if (!_canGrow || (obj = AddNew()) == null) {
                     throw new PoolBusyException<T>();
                 }
             }
@@ -73,6 +70,9 @@ namespace Assets.Scripts.Engine.Pool {
 
         private Item AddNew() {
             var obj = GetNew();
+            if (obj == null) {
+                return null;
+            }
             obj.transform.SetParent(transform);
             obj.gameObject.SetActive(false);
             var item = new Item { Object = obj, Free = true };
