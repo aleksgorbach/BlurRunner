@@ -1,5 +1,5 @@
 ﻿// Created 22.10.2015
-// Modified by Александр 22.10.2015 at 20:55
+// Modified by Александр 29.10.2015 at 21:48
 
 namespace Assets.Scripts.ZenjectConfig {
     #region References
@@ -9,12 +9,17 @@ namespace Assets.Scripts.ZenjectConfig {
     using UI.Popups;
     using UI.Popups.Controller;
     using UI.Popups.Factory;
+    using UI.Visualizers.Bonuses;
+    using UI.Visualizers.Bonuses.Presenter;
     using UnityEngine;
     using Zenject;
 
     #endregion
 
     internal class GuiInstaller : MonoInstaller {
+        [SerializeField]
+        private BonusVisualizerUI _bonusVisualizer;
+
         [SerializeField]
         private PopupController _popupController;
 
@@ -25,6 +30,8 @@ namespace Assets.Scripts.ZenjectConfig {
             Container.Bind<IPopupController>().ToSingleInstance(_popupController);
             Container.Bind<PopupPool.ISettings>().ToSingleInstance(_settings);
             Container.Bind<PopupPool>().ToSingle();
+            Container.Bind<IBonusVisualizer>().ToTransient<BonusVisualizer>();
+            Container.Bind<IBonusVisualizerUI>().ToInstance(_bonusVisualizer);
         }
 
         [Serializable]

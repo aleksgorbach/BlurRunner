@@ -1,5 +1,5 @@
-﻿// Created 20.10.2015 
-// Modified by Gorbach Alex 28.10.2015 at 12:54
+﻿// Created 28.10.2015
+// Modified by Александр 29.10.2015 at 21:47
 
 #region References
 
@@ -10,10 +10,9 @@ namespace Assets.Scripts.ZenjectConfig {
 
     using System;
     using System.Collections.Generic;
-    using Assets.Scripts.EndlessEngine.Bonuses;
-    using Assets.Scripts.EndlessEngine.Bonuses.Strategy;
-    using Assets.Scripts.EndlessEngine.Bonuses.UI;
-    using Assets.Scripts.Gameplay.Bonuses.UI;
+    using EndlessEngine.Bonuses;
+    using EndlessEngine.Bonuses.Strategy;
+    using EndlessEngine.Bonuses.UI;
     using EndlessEngine.Ground;
     using EndlessEngine.Ground.Decorations;
     using EndlessEngine.Ground.Decorations.Strategy;
@@ -23,6 +22,7 @@ namespace Assets.Scripts.ZenjectConfig {
     using Engine.Factory.Strategy;
     using Engine.Pool;
     using Gameplay;
+    using Gameplay.Bonuses.UI;
     using Gameplay.GameState.Manager;
     using Gameplay.GameState.Pause;
     using UnityEngine;
@@ -38,10 +38,10 @@ namespace Assets.Scripts.ZenjectConfig {
         private BlockSettings _blockSettings;
 
         [SerializeField]
-        private DecorationsSettings _decorationsSettings;
+        private BonusSettings _bonusesSettings;
 
         [SerializeField]
-        private BonusSettings _bonusesSettings;
+        private DecorationsSettings _decorationsSettings;
 
         public override void InstallBindings() {
             Container.Bind<IGame>().ToTransient<Game>();
@@ -57,7 +57,7 @@ namespace Assets.Scripts.ZenjectConfig {
         private void BindBonuses() {
             Container.Bind<Engine.Factory.IFactory<BonusUI>>().ToTransient<RandomGameObjectFactory<BonusUI>>();
             Container.Bind<IBonusStrategy>().ToInstance(_bonusesSettings.Strategy);
-            Container.Bind<IBonusGenerator>().ToTransient<BonusGenerator>();
+            Container.Bind<IBonusGenerator>().ToSingle<BonusGenerator>();
             Container.Bind<IBonusGeneratorUI>().ToInstance(_bonusesSettings.Generator);
             Container.Bind<RandomGameObjectFactory<BonusUI>.ISettings>().ToInstance(_bonusesSettings);
             Container.Bind<IObjectPool<BonusUI>>().ToSingleGameObject<BonusesPool>("BonusesPool");
@@ -79,7 +79,7 @@ namespace Assets.Scripts.ZenjectConfig {
                 .ToInstance(true)
                 .WhenInjectedInto<DecorationPool>();
             Container.Bind<int>(GameObjectPool<DecorationItemUI>.INITIAL_SIZE_KEY)
-                .ToInstance(_initialPoolSize * 2)
+                .ToInstance(_initialPoolSize*2)
                 .WhenInjectedInto<DecorationPool>();
         }
 
@@ -107,15 +107,11 @@ namespace Assets.Scripts.ZenjectConfig {
             private GroundBlockUI[] _prefabs;
 
             public IGroundGeneratorUI Generator {
-                get {
-                    return _generator;
-                }
+                get { return _generator; }
             }
 
             public IEnumerable<GroundBlockUI> Prefabs {
-                get {
-                    return _prefabs;
-                }
+                get { return _prefabs; }
             }
         }
 
@@ -131,21 +127,15 @@ namespace Assets.Scripts.ZenjectConfig {
             private AbstractStrategy _strategy;
 
             public AbstractStrategy Strategy {
-                get {
-                    return _strategy;
-                }
+                get { return _strategy; }
             }
 
             public IDecorationGeneratorUI Generator {
-                get {
-                    return _generator;
-                }
+                get { return _generator; }
             }
 
             public IEnumerable<DecorationItemUI> Prefabs {
-                get {
-                    return _prefabs;
-                }
+                get { return _prefabs; }
             }
         }
 
@@ -161,21 +151,15 @@ namespace Assets.Scripts.ZenjectConfig {
             private AbstractBonusStrategy _strategy;
 
             public AbstractBonusStrategy Strategy {
-                get {
-                    return _strategy;
-                }
+                get { return _strategy; }
             }
 
             public IBonusGeneratorUI Generator {
-                get {
-                    return _generator;
-                }
+                get { return _generator; }
             }
 
             public IEnumerable<BonusUI> Prefabs {
-                get {
-                    return _prefabs;
-                }
+                get { return _prefabs; }
             }
         }
     }

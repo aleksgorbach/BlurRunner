@@ -1,9 +1,7 @@
-﻿// Created 20.10.2015 
-// Modified by Gorbach Alex 28.10.2015 at 16:32
+﻿// Created 28.10.2015
+// Modified by Александр 29.10.2015 at 21:05
 
 #region References
-
-using UnityEngine;
 
 #endregion
 
@@ -11,29 +9,27 @@ namespace Assets.Scripts.Engine.Moving {
     #region References
 
     using Input;
+    using UnityEngine;
     using Zenject;
 
     #endregion
 
-    internal class MovingController : MonoBehaviourBase {
+    internal class MovingController : MonoBehaviourBase, IMovingController {
+        private IInputController _controller;
+
         [SerializeField]
         private int _jumpForce;
 
-        [SerializeField]
-        private Rigidbody2D _rigidbody;
+        private IMovable _movable;
+
 
         [SerializeField]
         private int _runForce;
 
-        private IInputController _controller;
 
-        private Vector2 _jumpVector;
-        private Vector2 _runVector;
-
-        protected override void Awake() {
-            base.Awake();
-            _runVector = Vector2.right * _runForce;
-            _jumpVector = Vector2.up * _jumpForce;
+        public void Add(IMovable movable) {
+            _movable = movable;
+            _movable.Run(_runForce);
         }
 
         [PostInject]
@@ -42,20 +38,8 @@ namespace Assets.Scripts.Engine.Moving {
             _controller.Click += OnClick;
         }
 
-        private void FixedUpdate() {
-            Run();
-        }
-
         private void OnClick(Vector2 screenpos) {
-            Jump();
-        }
-
-        private void Run() {
-            _rigidbody.velocity = _runVector;
-        }
-
-        private void Jump() {
-            _rigidbody.AddForce(_jumpVector);
+            _movable.Jump(_jumpForce);
         }
     }
 }

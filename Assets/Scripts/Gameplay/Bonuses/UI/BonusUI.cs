@@ -1,5 +1,5 @@
-﻿// Created 28.10.2015 
-// Modified by Gorbach Alex 28.10.2015 at 16:46
+﻿// Created 28.10.2015
+// Modified by Александр 29.10.2015 at 21:57
 
 namespace Assets.Scripts.Gameplay.Bonuses.UI {
     #region References
@@ -11,19 +11,25 @@ namespace Assets.Scripts.Gameplay.Bonuses.UI {
 
     #endregion
 
-    [RequireComponent(typeof(Collider2D))]
+    [RequireComponent(typeof (Collider2D))]
     internal class BonusUI : MonoBehaviourBase, IBonusUI {
+        private bool _isCollectedNow = false;
+        public IBonus Bonus { get; private set; }
         public event Action<BonusUI> Collected;
 
         public void OnTriggerEnter2D(Collider2D collision) {
+            if (_isCollectedNow) {
+                return;
+            }
             var collector = collision.GetComponent<BonusCollector>();
             if (collector != null) {
-                Debug.Log(collector.name);
-                Invoke("OnCollected", 1);
+                Collect();
+                _isCollectedNow = true;
             }
         }
 
         private void OnCollected() {
+            _isCollectedNow = false;
             var handler = Collected;
             if (handler != null) {
                 handler.Invoke(this);
