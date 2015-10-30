@@ -1,5 +1,5 @@
 ﻿// Created 28.10.2015 
-// Modified by Gorbach Alex 28.10.2015 at 16:27
+// Modified by Gorbach Alex 30.10.2015 at 15:03
 
 namespace Assets.Scripts.EndlessEngine.Bonuses.UI {
     #region References
@@ -14,20 +14,32 @@ namespace Assets.Scripts.EndlessEngine.Bonuses.UI {
 
     #endregion
 
-    internal class BonusGeneratorUI : MonoBehaviourBase, IBonusGeneratorUI {
+    internal class BonusGeneratorUI : HidingItemGenerator<BonusUI>, IBonusGeneratorUI {
         [SerializeField]
         private Transform _bonusesContainer;
 
         private IGroundGenerator _groundGenerator;
 
-        public void Add(BonusUI bonus) {
+        public override void Add(BonusUI bonus) {
+            base.Add(bonus);
             bonus.transform.SetParent(_bonusesContainer);
             bonus.transform.position = transform.position;
             bonus.transform.SetLocalZ(0);
             bonus.Collected += OnCollected;
+            _items.Add(bonus);
         }
 
         public event Action<BonusUI> Collected;
+        public event Action<BonusUI> RemoveNeeded;
+
+        public void RemoveBonus(BonusUI bonus) {
+            _items.Remove(bonus);
+            bonus.Collected -= OnCollected;
+        }
+
+        protected override void OnItemHide(BonusUI item) {
+            OnRemoveNeeded(item);
+        }
 
         private void OnCollected(BonusUI bonus) {
             var handler = Collected;
@@ -39,6 +51,13 @@ namespace Assets.Scripts.EndlessEngine.Bonuses.UI {
         [PostInject]
         public void Inject(IGroundGenerator groundGenerator, IBonusGenerator generator) {
             _groundGenerator = groundGenerator;
+        }
+
+        private void OnRemoveNeeded(BonusUI item) {
+            var handler = RemoveNeeded;
+            if (handler != null) {
+                handler.Invoke(item);
+            }
         }
     }
 }

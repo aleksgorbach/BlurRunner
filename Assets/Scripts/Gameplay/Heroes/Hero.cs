@@ -1,5 +1,5 @@
-﻿// Created 22.10.2015
-// Modified by Александр 29.10.2015 at 21:22
+﻿// Created 20.10.2015 
+// Modified by Gorbach Alex 30.10.2015 at 11:18
 
 namespace Assets.Scripts.Gameplay.Heroes {
     #region References
@@ -11,8 +11,10 @@ namespace Assets.Scripts.Gameplay.Heroes {
 
     #endregion
 
+    [RequireComponent(typeof(Animator))]
     internal class Hero : MonoBehaviourBase, IMovable {
         private bool _isJumping;
+        private Animator _animator;
 
         [SerializeField]
         private Rigidbody2D _rigidbody;
@@ -22,12 +24,17 @@ namespace Assets.Scripts.Gameplay.Heroes {
         private Stand[] _stands;
 
         public Vector2 Velocity {
-            get { return _rigidbody.velocity; }
-            set { _rigidbody.velocity = value; }
+            get {
+                return _rigidbody.velocity;
+            }
+            set {
+                _rigidbody.velocity = value;
+            }
         }
 
         public void Jump(float jumpForce) {
             if (!_isJumping) {
+                _animator.SetTrigger("jump");
                 _rigidbody.velocity += new Vector2(0, jumpForce);
                 _isJumping = true;
             }
@@ -45,8 +52,19 @@ namespace Assets.Scripts.Gameplay.Heroes {
         private void Inject(IMovingController movingController) {
             movingController.Add(this);
             foreach (var stand in GetComponentsInChildren<Stand>()) {
-                stand.Grounded += () => _isJumping = false;
+                stand.Grounded += OnGrounded;
             }
+        }
+
+        protected override void Awake() {
+            base.Awake();
+            _animator = GetComponent<Animator>();
+        }
+
+        private void OnGrounded() {
+            Debug.Log("ground");
+            _isJumping = false;
+            _animator.SetTrigger("run");
         }
     }
 }

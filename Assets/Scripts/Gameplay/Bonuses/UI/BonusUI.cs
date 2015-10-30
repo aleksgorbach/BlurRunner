@@ -1,18 +1,17 @@
-﻿// Created 28.10.2015
-// Modified by Александр 29.10.2015 at 21:57
+﻿// Created 28.10.2015 
+// Modified by Gorbach Alex 30.10.2015 at 14:54
 
 namespace Assets.Scripts.Gameplay.Bonuses.UI {
     #region References
 
     using System;
+    using EndlessEngine;
     using EndlessEngine.Bonuses;
-    using Engine;
     using UnityEngine;
 
     #endregion
 
-    [RequireComponent(typeof (Collider2D))]
-    internal class BonusUI : MonoBehaviourBase, IBonusUI {
+    internal class BonusUI : HidingItem, IBonusUI {
         private bool _isCollectedNow = false;
         public IBonus Bonus { get; private set; }
         public event Action<BonusUI> Collected;
