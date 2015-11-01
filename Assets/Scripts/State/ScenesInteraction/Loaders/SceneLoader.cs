@@ -1,35 +1,20 @@
-﻿// Created 22.10.2015 
-// Modified by Gorbach Alex 22.10.2015 at 14:55
+﻿// Created 22.10.2015
+// Modified by Александр 01.11.2015 at 17:34
 
 namespace Assets.Scripts.State.ScenesInteraction.Loaders {
     #region References
 
-    using Dependencies;
     using UnityEngine;
 
     #endregion
 
     internal class SceneLoader : ISceneLoader {
-        private readonly ISceneOrder _sceneOrder;
-
-        public SceneLoader(ISceneOrder sceneOrder) {
-            _sceneOrder = sceneOrder;
+        public void GoToScene(Scene scene) {
+            LoadScene(string.Format("{0}{1}", scene, "Scene"));
         }
 
-        public bool GoToNextScene() {
-            return LoadScene(_sceneOrder.GetNextScene());
-        }
-
-        public bool GoToPreviousScene() {
-            return LoadScene(_sceneOrder.GetPreviousScene());
-        }
-
-        private bool LoadScene(string sceneName) {
-            if (string.IsNullOrEmpty(sceneName)) {
-                return false;
-            }
+        private void LoadScene(string sceneName) {
             Application.LoadLevel(sceneName);
-            return true;
         }
     }
 }

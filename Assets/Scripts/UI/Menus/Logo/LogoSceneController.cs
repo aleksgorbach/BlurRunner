@@ -29,7 +29,7 @@ namespace Assets.Scripts.UI.Menus.Logo {
         }
 
         private void GoToMenu() {
-            _loader.GoToNextScene();
+            _loader.GoToScene(Scene.LevelChoose);
         }
     }
 }

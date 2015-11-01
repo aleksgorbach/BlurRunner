@@ -1,20 +1,18 @@
-﻿// Created 20.10.2015 
-// Modified by Gorbach Alex 30.10.2015 at 11:18
+﻿// Created 30.10.2015
+// Modified by Александр 01.11.2015 at 12:32
 
 namespace Assets.Scripts.Gameplay.Heroes {
     #region References
 
-    using Engine;
     using Engine.Moving;
     using UnityEngine;
-    using Zenject;
 
     #endregion
 
-    [RequireComponent(typeof(Animator))]
-    internal class Hero : MonoBehaviourBase, IMovable {
-        private bool _isJumping;
+    [RequireComponent(typeof (Animator))]
+    internal class Hero : Movable {
         private Animator _animator;
+        private bool _isJumping;
 
         [SerializeField]
         private Rigidbody2D _rigidbody;
@@ -23,16 +21,7 @@ namespace Assets.Scripts.Gameplay.Heroes {
 
         private Stand[] _stands;
 
-        public Vector2 Velocity {
-            get {
-                return _rigidbody.velocity;
-            }
-            set {
-                _rigidbody.velocity = value;
-            }
-        }
-
-        public void Jump(float jumpForce) {
+        public override void Jump(float jumpForce) {
             if (!_isJumping) {
                 _animator.SetTrigger("jump");
                 _rigidbody.velocity += new Vector2(0, jumpForce);
@@ -40,7 +29,7 @@ namespace Assets.Scripts.Gameplay.Heroes {
             }
         }
 
-        public void Run(float speed) {
+        public override void Run(float speed) {
             _speed = speed;
         }
 
@@ -48,21 +37,15 @@ namespace Assets.Scripts.Gameplay.Heroes {
             _rigidbody.velocity = new Vector2(_speed, _rigidbody.velocity.y);
         }
 
-        [PostInject]
-        private void Inject(IMovingController movingController) {
-            movingController.Add(this);
+        protected override void Awake() {
+            base.Awake();
+            _animator = GetComponent<Animator>();
             foreach (var stand in GetComponentsInChildren<Stand>()) {
                 stand.Grounded += OnGrounded;
             }
         }
 
-        protected override void Awake() {
-            base.Awake();
-            _animator = GetComponent<Animator>();
-        }
-
         private void OnGrounded() {
-            Debug.Log("ground");
             _isJumping = false;
             _animator.SetTrigger("run");
         }

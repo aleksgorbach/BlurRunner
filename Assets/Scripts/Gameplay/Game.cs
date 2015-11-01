@@ -1,32 +1,55 @@
 ﻿// Created 22.10.2015
-// Modified by Александр 27.10.2015 at 21:22
+// Modified by Александр 01.11.2015 at 17:10
 
 namespace Assets.Scripts.Gameplay {
     #region References
 
     using System;
     using System.Collections.Generic;
+    using Engine;
     using GameState.Manager;
     using GameState.Pause;
     using State.Levels;
+    using UnityEngine;
+    using UnityEngine.UI;
+    using Zenject;
 
     #endregion
 
-    internal class Game : IGame {
-        private readonly List<IPauseHandler> _pauseHandlers;
-        private readonly IGameStateManager _stateManager;
+    internal class Game : MonoBehaviourBase, IGame {
+        [SerializeField]
+        private Image _background;
+
+        [SerializeField]
+        private ObjectAnchor _cameraAnchor;
+
+        [Inject]
+        private IInstantiator _container;
+
+        [SerializeField]
+        private Transform _heroSpawner;
 
         private bool _isPaused;
         private ILevel _level;
 
-        public Game(IGameStateManager stateManager, List<IPauseHandler> pauseHandlers) {
-            _stateManager = stateManager;
-            _pauseHandlers = pauseHandlers;
-            _stateManager.StateChanged += OnStateChanged;
-        }
+        [Inject]
+        private List<IPauseHandler> _pauseHandlers;
+
+        [Inject]
+        private IGameStateManager _stateManager;
 
         public void StartLevel(ILevel level) {
             _level = level;
+            _background.sprite = level.Background;
+        }
+
+        [PostInject]
+        private void PostInject() {
+            _stateManager.StateChanged += OnStateChanged;
+            var hero = _container.InstantiatePrefab(_level.Hero.gameObject);
+            hero.transform.SetParent(_heroSpawner);
+            hero.transform.localPosition = Vector3.zero;
+            _cameraAnchor.SetTarget(hero.transform);
         }
 
         private void OnStateChanged(Consts.GameState state) {

@@ -14,5 +14,11 @@ namespace Assets.Scripts.State.Progress.Storage {
         /// Returns current level number
         /// </summary>
         int CurrentLevel { get; }
+
+        /// <summary>
+        /// Sets current level
+        /// </summary>
+        /// <param name="number">Level number to make current</param>
+        void SetCurrentLevel(int number);
     }
 }

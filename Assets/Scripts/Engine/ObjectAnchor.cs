@@ -27,10 +27,17 @@ namespace Assets.Scripts.Engine {
 
         protected override void Update() {
             base.Update();
+            if (_anchoredObject == null) {
+                return;
+            }
             transform.position = new Vector3(
                 _xAnchor ? _anchoredObject.position.x : _initialPos.x,
                 _yAnchor ? _anchoredObject.position.y : _initialPos.y,
                 _initialPos.z);
+        }
+
+        public void SetTarget(Transform transf) {
+            _anchoredObject = transf;
         }
     }
 }

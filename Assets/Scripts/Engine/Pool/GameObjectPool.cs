@@ -19,7 +19,7 @@ namespace Assets.Scripts.Engine.Pool {
         public const string CAN_GROW_KEY = "canGrow";
 
         private bool _canGrow;
-        private List<Item> _pool;
+        protected List<Item> _pool;
         private Factory.IFactory<T> _factory;
         private IGettingStrategy _strategy;
 
@@ -84,7 +84,7 @@ namespace Assets.Scripts.Engine.Pool {
             return _factory.Create();
         }
 
-        private class Item {
+        protected class Item {
             public T Object { get; set; }
             public bool Free { get; set; }
         }

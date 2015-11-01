@@ -1,35 +1,35 @@
 ﻿// Created 20.10.2015
-// Modified by Александр 26.10.2015 at 21:26
+// Modified by Александр 01.11.2015 at 12:21
 
 namespace Assets.Scripts.State.Levels {
     #region References
 
-    using DataContracts.Models.Levels;
-    using JetBrains.Annotations;
+    using Data;
+    using Gameplay.Heroes;
+    using UnityEngine;
 
     #endregion
 
-    internal class Level : ILevel {
-        private readonly Difficulty _difficulty;
-        private readonly float _length;
-        private readonly int _number;
+    #region References
 
-        public Level([NotNull] LevelData data) {
-            _number = data.Number;
-            _difficulty = data.Difficulty;
-            _length = data.Length;
+    #endregion
+
+    
+    internal class Level : ILevel {
+        private readonly LevelData _data;
+
+        public Level(LevelData data) {
+            _data = data;
         }
 
         public int Number {
-            get { return _number; }
+            get { return _data.Number; }
         }
 
-        public Difficulty Difficulty {
-            get { return _difficulty; }
+        public Sprite Background {
+            get { return _data.Background; }
         }
 
-        public float Length {
-            get { return _length; }
-        }
+        public Hero Hero { get { return _data.Hero; } }
     }
 }

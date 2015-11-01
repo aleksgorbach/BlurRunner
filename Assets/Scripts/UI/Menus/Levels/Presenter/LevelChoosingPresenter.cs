@@ -1,5 +1,5 @@
 ﻿// Created 22.10.2015
-// Modified by Александр 27.10.2015 at 20:43
+// Modified by Александр 01.11.2015 at 17:32
 
 namespace Assets.Scripts.UI.Menus.Levels.Presenter {
     #region References
@@ -10,6 +10,7 @@ namespace Assets.Scripts.UI.Menus.Levels.Presenter {
     using Engine.Presenter;
     using State.Levels;
     using State.Levels.Storage;
+    using State.Progress.Storage;
     using State.ScenesInteraction.Loaders;
     using UnityEngine;
     using Zenject;
@@ -19,7 +20,13 @@ namespace Assets.Scripts.UI.Menus.Levels.Presenter {
     #endregion
 
     internal class LevelChoosingPresenter : Presenter<ILevelChoosingMenu> {
+        [Inject]
         private ISceneLoader _loader;
+
+        [Inject]
+        private IProgressStorage _progressStorage;
+
+        [Inject]
         private ILevelStorage _storage;
 
         internal void Init(int fromLevel, int toLevel) {
@@ -29,13 +36,8 @@ namespace Assets.Scripts.UI.Menus.Levels.Presenter {
 
         private void OnLevelChoosed(ILevel level) {
             Debug.Log("Choosed level: " + level.Number);
-            _loader.GoToNextScene();
-        }
-
-        [PostInject]
-        private void Init(ILevelStorage storage, ISceneLoader sceneLoader) {
-            _storage = storage;
-            _loader = sceneLoader;
+            _progressStorage.SetCurrentLevel(level.Number);
+            _loader.GoToScene(Scene.Game);
         }
     }
 }

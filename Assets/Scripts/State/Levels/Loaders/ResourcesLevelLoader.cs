@@ -1,33 +1,33 @@
 ﻿// Created 26.10.2015
-// Modified by Александр 27.10.2015 at 20:24
+// Modified by Александр 01.11.2015 at 12:01
 
 namespace Assets.Scripts.State.Levels.Loaders {
     #region References
 
     using System;
-    using System.IO;
-    using System.Xml.Serialization;
-    using DataContracts.Models.Levels;
+    using System.Collections.Generic;
+    using System.Linq;
+    using Data;
     using UnityEngine;
 
     #endregion
 
     internal class ResourcesLevelLoader : ILevelLoader {
-        private readonly string _text;
+        private readonly string _path;
 
-        public ResourcesLevelLoader(TextAsset textAsset) {
-            _text = textAsset.text;
+        public ResourcesLevelLoader(string path) {
+            _path = path;
         }
 
         public void Load() {
-            var serializer = new XmlSerializer(typeof (LevelsCollectionData));
-            var data = (LevelsCollectionData) serializer.Deserialize(new StringReader(_text));
-            OnLoaded(data);
+            var data = Resources.LoadAll<LevelData>(_path);
+            OnLoaded(data.ToList());
         }
 
-        public event Action<LevelsCollectionData> Loaded;
+        public event Action<List<LevelData>> Loaded;
 
-        private void OnLoaded(LevelsCollectionData data) {
+
+        private void OnLoaded(List<LevelData> data) {
             var handler = Loaded;
             if (handler != null) {
                 handler.Invoke(data);

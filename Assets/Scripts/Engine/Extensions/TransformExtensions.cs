@@ -1,5 +1,5 @@
-﻿// Created 28.10.2015 
-// Modified by Gorbach Alex 28.10.2015 at 16:18
+﻿// Created 28.10.2015
+// Modified by Александр 01.11.2015 at 20:27
 
 namespace Assets.Scripts.Engine.Extensions {
     #region References
@@ -12,6 +12,11 @@ namespace Assets.Scripts.Engine.Extensions {
         public static void SetLocalZ(this Transform transform, float z) {
             var pos = transform.localPosition;
             transform.localPosition = new Vector3(pos.x, pos.y, z);
+        }
+
+        public static void SetLocalY(this Transform transform, float y) {
+            var pos = transform.localPosition;
+            transform.localPosition = new Vector3(pos.x, y, pos.z);
         }
     }
 }

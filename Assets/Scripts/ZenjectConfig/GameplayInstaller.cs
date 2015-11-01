@@ -1,5 +1,5 @@
-﻿// Created 20.10.2015 
-// Modified by Gorbach Alex 30.10.2015 at 13:56
+﻿// Created 30.10.2015
+// Modified by Александр 01.11.2015 at 12:41
 
 #region References
 
@@ -31,7 +31,6 @@ namespace Assets.Scripts.ZenjectConfig {
     #endregion
 
     internal class GameplayInstaller : MonoInstaller {
-        [SerializeField]
         private readonly int _initialPoolSize = 10;
 
         [SerializeField]
@@ -43,8 +42,11 @@ namespace Assets.Scripts.ZenjectConfig {
         [SerializeField]
         private DecorationsSettings _decorationsSettings;
 
+        [SerializeField]
+        private Game _game;
+
         public override void InstallBindings() {
-            Container.Bind<IGame>().ToTransient<Game>();
+            Container.Bind<IGame>().ToInstance(_game);
             Container.Bind<IGameStateManager>().ToSingle<GameStateManager>();
             Container.Bind<IGettingStrategy>().ToTransient<Engine.Factory.Strategy.RandomStrategy>();
             Container.Bind<Camera>().ToSingleInstance(Camera.main);
@@ -79,7 +81,7 @@ namespace Assets.Scripts.ZenjectConfig {
                 .ToInstance(true)
                 .WhenInjectedInto<DecorationPool>();
             Container.Bind<int>(GameObjectPool<DecorationItemUI>.INITIAL_SIZE_KEY)
-                .ToInstance(_initialPoolSize * 2)
+                .ToInstance(_initialPoolSize*2)
                 .WhenInjectedInto<DecorationPool>();
         }
 
@@ -107,15 +109,11 @@ namespace Assets.Scripts.ZenjectConfig {
             private GroundBlockUI[] _prefabs;
 
             public IGroundGeneratorUI Generator {
-                get {
-                    return _generator;
-                }
+                get { return _generator; }
             }
 
             public IEnumerable<GroundBlockUI> Prefabs {
-                get {
-                    return _prefabs;
-                }
+                get { return _prefabs; }
             }
         }
 
@@ -131,21 +129,15 @@ namespace Assets.Scripts.ZenjectConfig {
             private AbstractStrategy _strategy;
 
             public AbstractStrategy Strategy {
-                get {
-                    return _strategy;
-                }
+                get { return _strategy; }
             }
 
             public IDecorationGeneratorUI Generator {
-                get {
-                    return _generator;
-                }
+                get { return _generator; }
             }
 
             public IEnumerable<DecorationItemUI> Prefabs {
-                get {
-                    return _prefabs;
-                }
+                get { return _prefabs; }
             }
         }
 
@@ -161,21 +153,15 @@ namespace Assets.Scripts.ZenjectConfig {
             private AbstractBonusStrategy _strategy;
 
             public AbstractBonusStrategy Strategy {
-                get {
-                    return _strategy;
-                }
+                get { return _strategy; }
             }
 
             public IBonusGeneratorUI Generator {
-                get {
-                    return _generator;
-                }
+                get { return _generator; }
             }
 
             public IEnumerable<BonusUI> Prefabs {
-                get {
-                    return _prefabs;
-                }
+                get { return _prefabs; }
             }
         }
     }

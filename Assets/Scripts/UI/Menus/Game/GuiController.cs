@@ -1,5 +1,5 @@
 ﻿// Created 22.10.2015
-// Modified by Александр 22.10.2015 at 22:08
+// Modified by Александр 01.11.2015 at 17:34
 
 namespace Assets.Scripts.UI.Menus.Game {
     #region References
@@ -38,7 +38,7 @@ namespace Assets.Scripts.UI.Menus.Game {
         }
 
         private void Exit() {
-            _sceneLoader.GoToPreviousScene();
+            _sceneLoader.GoToScene(Scene.LevelChoose);
         }
 
         private void Pause() {

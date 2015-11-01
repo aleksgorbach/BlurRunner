@@ -1,10 +1,9 @@
-﻿// Created 22.10.2015 
-// Modified by Gorbach Alex 22.10.2015 at 13:01
+﻿// Created 22.10.2015
+// Modified by Александр 01.11.2015 at 17:54
 
 namespace Assets.Scripts.UI.Menus.Levels.LevelItem {
     #region References
 
-    using Visualizers.Stars;
     using Engine;
     using State.Levels;
     using UnityEngine;
@@ -14,22 +13,15 @@ namespace Assets.Scripts.UI.Menus.Levels.LevelItem {
     #endregion
 
     internal class LevelItem : MonoBehaviourBase, ILevelItem {
+        [SerializeField]
+        private Image _background;
+
         private ILevel _level;
 
-        [SerializeField]
-        private Text _levelNumber;
-
-        [SerializeField]
-        private StarsVisualizer _starsVisualizer;
-
         public ILevel Level {
-            get {
-                return _level;
-            }
             set {
                 _level = value;
-                _levelNumber.text = "" + _level.Number;
-                _starsVisualizer.LevelNumber = _level.Number;
+                _background.sprite = _level.Background;
             }
         }
 
@@ -43,9 +35,7 @@ namespace Assets.Scripts.UI.Menus.Levels.LevelItem {
         }
 
         public Transform Transform {
-            get {
-                return transform;
-            }
+            get { return transform; }
         }
 
         public void OnClick() {

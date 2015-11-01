@@ -15,12 +15,8 @@ namespace Assets.Scripts.ZenjectConfig {
         [SerializeField]
         private InputController _inputController;
 
-        [SerializeField]
-        private MovingController _movingController;
-
         public override void InstallBindings() {
             Container.Bind<IInputController>().ToInstance(_inputController);
-            Container.Bind<IMovingController>().ToInstance(_movingController);
         }
     }
 }

@@ -3,6 +3,5 @@
 
 namespace Assets.Scripts.Engine.Moving {
     internal interface IMovingController {
-        void Add(IMovable runnable);
     }
 }

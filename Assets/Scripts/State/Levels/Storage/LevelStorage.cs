@@ -1,5 +1,5 @@
 ﻿// Created 15.10.2015
-// Modified by Александр 27.10.2015 at 20:44
+// Modified by Александр 01.11.2015 at 17:28
 
 namespace Assets.Scripts.State.Levels.Storage {
     #region References
@@ -7,7 +7,7 @@ namespace Assets.Scripts.State.Levels.Storage {
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
-    using DataContracts.Models.Levels;
+    using Data;
     using Loaders;
 
     #endregion
@@ -18,10 +18,6 @@ namespace Assets.Scripts.State.Levels.Storage {
         public LevelStorage(ILevelLoader loader) {
             loader.Loaded += OnLoaded;
             loader.Load();
-        }
-
-        public int TotalLevelsCount {
-            get { return _levels.Count; }
         }
 
         public ILevel this[int levelNumber] {
@@ -36,8 +32,8 @@ namespace Assets.Scripts.State.Levels.Storage {
             return GetEnumerator();
         }
 
-        private void OnLoaded(LevelsCollectionData data) {
-            _levels = data.Levels.ToDictionary(x => x.Number, x => new Level(x));
+        private void OnLoaded(List<LevelData> data) {
+            _levels = data.ToDictionary(x => x.Number, x => new Level(x));
         }
     }
 }

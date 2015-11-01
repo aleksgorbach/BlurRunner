@@ -1,5 +1,5 @@
 ﻿// Created 21.10.2015
-// Modified by Александр 27.10.2015 at 21:26
+// Modified by Александр 01.11.2015 at 17:30
 
 namespace Assets.Scripts.State.Progress.Storage {
     #region References
@@ -22,5 +22,9 @@ namespace Assets.Scripts.State.Progress.Storage {
         }
 
         public int CurrentLevel { get; private set; }
+
+        public void SetCurrentLevel(int number) {
+            CurrentLevel = number;
+        }
     }
 }

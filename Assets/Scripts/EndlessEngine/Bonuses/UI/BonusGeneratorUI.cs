@@ -1,14 +1,13 @@
-﻿// Created 28.10.2015 
-// Modified by Gorbach Alex 30.10.2015 at 15:03
+﻿// Created 30.10.2015
+// Modified by Александр 01.11.2015 at 20:39
 
 namespace Assets.Scripts.EndlessEngine.Bonuses.UI {
     #region References
 
     using System;
-    using Assets.Scripts.Engine.Extensions;
-    using Ground;
+    using Engine.Extensions;
     using Gameplay.Bonuses.UI;
-    using Engine;
+    using Ground;
     using UnityEngine;
     using Zenject;
 
@@ -24,6 +23,7 @@ namespace Assets.Scripts.EndlessEngine.Bonuses.UI {
             base.Add(bonus);
             bonus.transform.SetParent(_bonusesContainer);
             bonus.transform.position = transform.position;
+            bonus.transform.SetLocalY(UnityEngine.Random.Range(-150, 250));
             bonus.transform.SetLocalZ(0);
             bonus.Collected += OnCollected;
             _items.Add(bonus);

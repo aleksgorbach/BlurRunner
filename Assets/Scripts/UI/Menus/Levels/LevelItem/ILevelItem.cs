@@ -1,5 +1,5 @@
 ﻿// Created 15.10.2015
-// Modified by Александр 20.10.2015 at 18:57
+// Modified by Александр 01.11.2015 at 17:53
 
 namespace Assets.Scripts.UI.Menus.Levels.LevelItem {
     #region References
@@ -14,7 +14,7 @@ namespace Assets.Scripts.UI.Menus.Levels.LevelItem {
     internal interface ILevelItem {
         Vector2 Size { get; }
         Transform Transform { get; }
-        ILevel Level { get; set; }
+        ILevel Level { set; }
         event LevelChoosedDelegate LevelChoosed;
     }
 }

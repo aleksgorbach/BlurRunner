@@ -5,12 +5,13 @@ namespace Assets.Scripts.State.Levels.Loaders {
     #region References
 
     using System;
-    using DataContracts.Models.Levels;
+    using System.Collections.Generic;
+    using Data;
 
     #endregion
 
     internal interface ILevelLoader {
         void Load();
-        event Action<LevelsCollectionData> Loaded;
+        event Action<List<LevelData>> Loaded;
     }
 }
