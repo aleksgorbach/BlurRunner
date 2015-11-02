@@ -1,5 +1,5 @@
-﻿// Created 30.10.2015
-// Modified by Александр 01.11.2015 at 12:32
+﻿// Created 20.10.2015 
+// Modified by Gorbach Alex 02.11.2015 at 10:53
 
 namespace Assets.Scripts.Gameplay.Heroes {
     #region References
@@ -9,7 +9,7 @@ namespace Assets.Scripts.Gameplay.Heroes {
 
     #endregion
 
-    [RequireComponent(typeof (Animator))]
+    [RequireComponent(typeof(Animator))]
     internal class Hero : Movable {
         private Animator _animator;
         private bool _isJumping;
@@ -17,13 +17,19 @@ namespace Assets.Scripts.Gameplay.Heroes {
         [SerializeField]
         private Rigidbody2D _rigidbody;
 
+        [SerializeField]
+        private Transform _groundCheck;
+
+        [SerializeField]
+        private LayerMask _groundLayer;
+
         private float _speed;
 
         private Stand[] _stands;
 
         public override void Jump(float jumpForce) {
             if (!_isJumping) {
-                _animator.SetTrigger("jump");
+                //_animator.SetTrigger("jump");
                 _rigidbody.velocity += new Vector2(0, jumpForce);
                 _isJumping = true;
             }
@@ -34,15 +40,18 @@ namespace Assets.Scripts.Gameplay.Heroes {
         }
 
         private void FixedUpdate() {
+            bool grounded = Physics2D.OverlapCircle(_groundCheck.position, 35f, _groundLayer);
+            _animator.SetBool("grounded", grounded);
+            _isJumping = !grounded;
             _rigidbody.velocity = new Vector2(_speed, _rigidbody.velocity.y);
         }
 
         protected override void Awake() {
             base.Awake();
             _animator = GetComponent<Animator>();
-            foreach (var stand in GetComponentsInChildren<Stand>()) {
-                stand.Grounded += OnGrounded;
-            }
+            //foreach (var stand in GetComponentsInChildren<Stand>()) {
+            //    stand.Grounded += OnGrounded;
+            //}
         }
 
         private void OnGrounded() {

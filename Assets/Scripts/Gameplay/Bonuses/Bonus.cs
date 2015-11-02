@@ -1,5 +1,5 @@
 ﻿// Created 28.10.2015 
-// Modified by Gorbach Alex 28.10.2015 at 11:12
+// Modified by Gorbach Alex 02.11.2015 at 9:32
 
 namespace Assets.Scripts.Gameplay.Bonuses {
     #region References
@@ -8,11 +8,16 @@ namespace Assets.Scripts.Gameplay.Bonuses {
 
     #endregion
 
-    internal class Bonus : IBonus {
-        private readonly IBonusUI _view;
+    internal abstract class Bonus : IBonus {
+        protected abstract int Direction { get; }
+        protected abstract float Force { get; }
 
-        public Bonus(IBonusUI view) {
-            _view = view;
+        public float Strength {
+            get {
+                return Force * Direction;
+            }
         }
+
+        public abstract void Apply();
     }
 }

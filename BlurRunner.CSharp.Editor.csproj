@@ -111,11 +111,18 @@
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
     </Reference>
-    <Reference Include="DataContracts">
-      <HintPath>Assets\Plugins\DataContracts.dll</HintPath>
+    <Reference Include="DOTween">
+      <HintPath>Assets\Plugins\Demigiant\DOTween\DOTween.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTweenEditor">
+      <HintPath>Assets\Plugins\Demigiant\DOTween\Editor\DOTweenEditor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="BlurRunner.CSharp.Plugins.csproj">
+      <Project>{4977E29E-4143-8CD2-E6A9-AB8E9DDFCFFC}</Project>
+      <Name>BlurRunner.CSharp.Plugins</Name>
+    </ProjectReference>
     <ProjectReference Include="BlurRunner.CSharp.csproj">
       <Project>{4C00C0B4-A449-A57F-B3A9-1ABEB6B3DC06}</Project>
       <Name>BlurRunner.CSharp</Name>
@@ -129,6 +136,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Extensions\Zenject\LICENSE.txt" />
+    <None Include="Assets\Plugins\Demigiant\DOTween\DOTween.XML" />
+    <None Include="Assets\Plugins\Demigiant\DOTween\Editor\DOTweenEditor.XML" />
+    <None Include="Assets\Plugins\Demigiant\DOTween\readme.txt" />
     <None Include="Assets\StaticAssets\Common\Levels\levels.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />

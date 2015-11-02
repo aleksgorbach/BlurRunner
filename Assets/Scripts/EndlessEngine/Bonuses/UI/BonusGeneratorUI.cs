@@ -1,5 +1,5 @@
-﻿// Created 30.10.2015
-// Modified by Александр 01.11.2015 at 20:39
+﻿// Created 28.10.2015 
+// Modified by Gorbach Alex 02.11.2015 at 10:07
 
 namespace Assets.Scripts.EndlessEngine.Bonuses.UI {
     #region References
@@ -26,15 +26,25 @@ namespace Assets.Scripts.EndlessEngine.Bonuses.UI {
             bonus.transform.SetLocalY(UnityEngine.Random.Range(-150, 250));
             bonus.transform.SetLocalZ(0);
             bonus.Collected += OnCollected;
+            bonus.Collect += OnCollect;
             _items.Add(bonus);
         }
 
         public event Action<BonusUI> Collected;
+        public event Action<BonusUI> Collect;
         public event Action<BonusUI> RemoveNeeded;
 
         public void RemoveBonus(BonusUI bonus) {
             _items.Remove(bonus);
             bonus.Collected -= OnCollected;
+            bonus.Collect -= OnCollect;
+        }
+
+        private void OnCollect(BonusUI bonus) {
+            var handler = Collect;
+            if (handler != null) {
+                handler.Invoke(bonus);
+            }
         }
 
         protected override void OnItemHide(BonusUI item) {

@@ -68,9 +68,15 @@
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
     </Reference>
-    <Reference Include="DataContracts">
-      <HintPath>Assets\Plugins\DataContracts.dll</HintPath>
+    <Reference Include="DOTween">
+      <HintPath>Assets\Plugins\Demigiant\DOTween\DOTween.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="BlurRunner.CSharp.Plugins.csproj">
+      <Project>{4977E29E-4143-8CD2-E6A9-AB8E9DDFCFFC}</Project>
+      <Name>BlurRunner.CSharp.Plugins</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Extensions\LoggingHelper\Scripts\LoggingHelper.cs" />
@@ -163,9 +169,9 @@
     <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Util\SceneDecoratorCompositionRoot.cs" />
     <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Util\UnityUtil.cs" />
     <Compile Include="Assets\Scripts\Debug\TimeStop.cs" />
-    <Compile Include="Assets\Scripts\EndlessEngine\Bonuses\BonusesPool.cs" />
-    <Compile Include="Assets\Scripts\EndlessEngine\Bonuses\BonusGenerator.cs" />
     <Compile Include="Assets\Scripts\EndlessEngine\Bonuses\BonusCollector.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\Bonuses\BonusGenerator.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\Bonuses\BonusesPool.cs" />
     <Compile Include="Assets\Scripts\EndlessEngine\Bonuses\IBonusGenerator.cs" />
     <Compile Include="Assets\Scripts\EndlessEngine\Bonuses\Strategy\AbstractBonusStrategy.cs" />
     <Compile Include="Assets\Scripts\EndlessEngine\Bonuses\Strategy\IBonusStrategy.cs" />
@@ -189,44 +195,76 @@
     <Compile Include="Assets\Scripts\EndlessEngine\Ground\UI\GroundBlockUI.cs" />
     <Compile Include="Assets\Scripts\EndlessEngine\Ground\UI\GroundGeneratorUI.cs" />
     <Compile Include="Assets\Scripts\EndlessEngine\Ground\UI\IGroundGeneratorUI.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\HidingItem.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\HidingItemGenerator.cs" />
     <Compile Include="Assets\Scripts\EndlessEngine\Interfaces\IHiding.cs" />
     <Compile Include="Assets\Scripts\Engine\Extensions\CameraExtensions.cs" />
     <Compile Include="Assets\Scripts\Engine\Extensions\EnumerableExtensions.cs" />
+    <Compile Include="Assets\Scripts\Engine\Extensions\ListExtensions.cs" />
     <Compile Include="Assets\Scripts\Engine\Extensions\TransformExtensions.cs" />
     <Compile Include="Assets\Scripts\Engine\Factory\AbstractGameObjectFactory.cs" />
     <Compile Include="Assets\Scripts\Engine\Factory\GameObjectFactory.cs" />
     <Compile Include="Assets\Scripts\Engine\Factory\IFactory.cs" />
     <Compile Include="Assets\Scripts\Engine\Factory\RandomGameObjectFactory.cs" />
+    <Compile Include="Assets\Scripts\Engine\Factory\Strategy\CompatibleStrategy.cs" />
     <Compile Include="Assets\Scripts\Engine\Factory\Strategy\FirstAvailableStrategy.cs" />
     <Compile Include="Assets\Scripts\Engine\Factory\Strategy\IGettingStrategy.cs" />
     <Compile Include="Assets\Scripts\Engine\Factory\Strategy\RandomStrategy.cs" />
     <Compile Include="Assets\Scripts\Engine\Input\IInputController.cs" />
     <Compile Include="Assets\Scripts\Engine\Input\InputController.cs" />
     <Compile Include="Assets\Scripts\Engine\MonoBehaviourBase.cs" />
+    <Compile Include="Assets\Scripts\Engine\Moving\IMovingController.cs" />
+    <Compile Include="Assets\Scripts\Engine\Moving\Movable.cs" />
     <Compile Include="Assets\Scripts\Engine\Moving\MovingController.cs" />
     <Compile Include="Assets\Scripts\Engine\ObjectAnchor.cs" />
     <Compile Include="Assets\Scripts\Engine\Physics\CenterOfMass.cs" />
     <Compile Include="Assets\Scripts\Engine\Physics\RotationLimiter.cs" />
+    <Compile Include="Assets\Scripts\Engine\Pool\CompatiblePool.cs" />
     <Compile Include="Assets\Scripts\Engine\Pool\GameObjectPool.cs" />
+    <Compile Include="Assets\Scripts\Engine\Pool\ICompatible.cs" />
     <Compile Include="Assets\Scripts\Engine\Pool\IObjectPool.cs" />
     <Compile Include="Assets\Scripts\Engine\Pool\PoolBusyException.cs" />
     <Compile Include="Assets\Scripts\Engine\Presenter\IPresenter.cs" />
     <Compile Include="Assets\Scripts\Engine\Presenter\Presenter.cs" />
     <Compile Include="Assets\Scripts\Engine\Presenter\PresenterFactory.cs" />
+    <Compile Include="Assets\Scripts\Engine\Scrollers\IScrollerItem.cs" />
+    <Compile Include="Assets\Scripts\Engine\Scrollers\RoundScroller.cs" />
     <Compile Include="Assets\Scripts\Engine\Utils\StatedObjects\ImageStatesObject.cs" />
     <Compile Include="Assets\Scripts\Engine\Utils\StatedObjects\StatedObject.cs" />
     <Compile Include="Assets\Scripts\Engine\Utils\Timer.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Bonuses\Bonus.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Bonuses\IBonus.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\Bonuses\Implementations\Negative\BrokenLifeBonus.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\Bonuses\Implementations\Negative\FastfoodBonus.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\Bonuses\Implementations\Negative\NegativeBonus.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\Bonuses\Implementations\Positive\BarbellBonus.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\Bonuses\Implementations\Positive\KettlebellBonus.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\Bonuses\Implementations\Positive\LifeBonus.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\Bonuses\Implementations\Positive\PositiveBonus.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\Bonuses\Implementations\Positive\VitamineBonus.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Bonuses\UI\BonusUI.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Bonuses\UI\IBonusUI.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\Bonuses\UI\Implementations\Negative\BrokenLifeBonusUI.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\Bonuses\UI\Implementations\Negative\FastfoodBonusUI.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\Bonuses\UI\Implementations\Negative\NegativeBonusUI.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\Bonuses\UI\Implementations\Positive\BarbellBonusUI.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\Bonuses\UI\Implementations\Positive\KettlebelBonusUI.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\Bonuses\UI\Implementations\Positive\LifeBonusUI.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\Bonuses\UI\Implementations\Positive\PositiveBonusUI.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\Bonuses\UI\Implementations\Positive\VitamineBonusUI.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Consts\GameState.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Game.cs" />
     <Compile Include="Assets\Scripts\Gameplay\GameState\Manager\GameStateManager.cs" />
     <Compile Include="Assets\Scripts\Gameplay\GameState\Manager\IGameStateManager.cs" />
     <Compile Include="Assets\Scripts\Gameplay\GameState\Pause\IPauseHandler.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Heroes\Hero.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\Heroes\Stand.cs" />
     <Compile Include="Assets\Scripts\Gameplay\IGame.cs" />
+    <Compile Include="Assets\Scripts\Purchases\IPurchase.cs" />
+    <Compile Include="Assets\Scripts\Purchases\Purchase.cs" />
+    <Compile Include="Assets\Scripts\Purchases\UI\PurchaseUI.cs" />
+    <Compile Include="Assets\Scripts\Purchases\UI\Wheel\PurchaseWheelController.cs" />
+    <Compile Include="Assets\Scripts\State\Levels\Data\LevelData.cs" />
     <Compile Include="Assets\Scripts\State\Levels\ILevel.cs" />
     <Compile Include="Assets\Scripts\State\Levels\Level.cs" />
     <Compile Include="Assets\Scripts\State\Levels\Loaders\ILevelLoader.cs" />
@@ -238,8 +276,6 @@
     <Compile Include="Assets\Scripts\State\Progress\Storage\IProgressStorage.cs" />
     <Compile Include="Assets\Scripts\State\Progress\Storage\ProgressStorage.cs" />
     <Compile Include="Assets\Scripts\State\ScenesInteraction\Controllers\GameController.cs" />
-    <Compile Include="Assets\Scripts\State\ScenesInteraction\Dependencies\ISceneOrder.cs" />
-    <Compile Include="Assets\Scripts\State\ScenesInteraction\Dependencies\SceneOrder.cs" />
     <Compile Include="Assets\Scripts\State\ScenesInteraction\Loaders\ISceneLoader.cs" />
     <Compile Include="Assets\Scripts\State\ScenesInteraction\Loaders\SceneLoader.cs" />
     <Compile Include="Assets\Scripts\UI\Menus\Game\GuiController.cs" />
@@ -256,6 +292,10 @@
     <Compile Include="Assets\Scripts\UI\Popups\IPopup.cs" />
     <Compile Include="Assets\Scripts\UI\Popups\Implementations\PausePopup\PausePopup.cs" />
     <Compile Include="Assets\Scripts\UI\Popups\Popup.cs" />
+    <Compile Include="Assets\Scripts\UI\Visualizers\Bonuses\BonusVisualizerUI.cs" />
+    <Compile Include="Assets\Scripts\UI\Visualizers\Bonuses\IBonusVisualizerUI.cs" />
+    <Compile Include="Assets\Scripts\UI\Visualizers\Bonuses\Presenter\BonusVisualizer.cs" />
+    <Compile Include="Assets\Scripts\UI\Visualizers\Bonuses\Presenter\IBonusVisualizer.cs" />
     <Compile Include="Assets\Scripts\UI\Visualizers\Stars\IStarsVisualizer.cs" />
     <Compile Include="Assets\Scripts\UI\Visualizers\Stars\Presenter\StarsVisualizerPresenter.cs" />
     <Compile Include="Assets\Scripts\UI\Visualizers\Stars\StarFactory.cs" />
@@ -267,9 +307,13 @@
     <Compile Include="Assets\Scripts\ZenjectConfig\GuiInstaller.cs" />
     <Compile Include="Assets\Scripts\ZenjectConfig\InputInstaller.cs" />
     <Compile Include="Assets\Scripts\ZenjectConfig\LevelChooseInstaller.cs" />
+    <Compile Include="Assets\Scripts\ZenjectConfig\ShopInstaller.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Extensions\Zenject\LICENSE.txt" />
+    <None Include="Assets\Plugins\Demigiant\DOTween\DOTween.XML" />
+    <None Include="Assets\Plugins\Demigiant\DOTween\Editor\DOTweenEditor.XML" />
+    <None Include="Assets\Plugins\Demigiant\DOTween\readme.txt" />
     <None Include="Assets\StaticAssets\Common\Levels\levels.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />

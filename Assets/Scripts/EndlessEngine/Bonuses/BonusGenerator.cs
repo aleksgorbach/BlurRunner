@@ -1,5 +1,5 @@
 ﻿// Created 28.10.2015 
-// Modified by Gorbach Alex 30.10.2015 at 13:46
+// Modified by Gorbach Alex 02.11.2015 at 10:09
 
 namespace Assets.Scripts.EndlessEngine.Bonuses {
     #region References
@@ -21,11 +21,16 @@ namespace Assets.Scripts.EndlessEngine.Bonuses {
             _view = view;
             _pool = pool;
             strategy.BonusNeed += GenerateBonus;
-            view.Collected += Collect;
+            view.Collected += OnBonusCollected;
+            view.Collect += OnBonusCollect;
             view.RemoveNeeded += Remove;
         }
 
         public event Action<IBonus> BonusCollected;
+
+        private void OnBonusCollect(BonusUI bonus) {
+            OnCollected(bonus.Bonus);
+        }
 
         private void Remove(BonusUI bonus) {
             _view.RemoveBonus(bonus);
@@ -36,9 +41,8 @@ namespace Assets.Scripts.EndlessEngine.Bonuses {
             _pool.Release(bonus);
         }
 
-        private void Collect(BonusUI bonus) {
+        private void OnBonusCollected(BonusUI bonus) {
             Release(bonus);
-            OnCollected(bonus.Bonus);
         }
 
         private void GenerateBonus() {

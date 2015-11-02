@@ -1,5 +1,5 @@
-﻿// Created 29.10.2015
-// Modified by Александр 29.10.2015 at 21:49
+﻿// Created 30.10.2015 
+// Modified by Gorbach Alex 02.11.2015 at 10:14
 
 namespace Assets.Scripts.UI.Visualizers.Bonuses {
     #region References
@@ -13,27 +13,32 @@ namespace Assets.Scripts.UI.Visualizers.Bonuses {
 
     #endregion
 
-    [RequireComponent(typeof (Animator))]
+    [RequireComponent(typeof(Animator))]
     internal class BonusVisualizerUI : MonoBehaviourBase, IBonusVisualizerUI {
         private Animator _animator;
 
-        private int _collectedCount = 0;
+        private float _balanseCount = 0.5f;
 
         [SerializeField]
-        private Text _count;
+        private Image _balanse;
 
         [Inject]
         private IBonusVisualizer _presenter;
 
-        private int Count {
+        private float Balanse {
+            get {
+                return _balanseCount;
+            }
             set {
-                _count.text = value + "";
-                _animator.SetTrigger("added");
+                var old = _balanseCount;
+                _balanseCount = Mathf.Clamp01(value);
+                _balanse.fillAmount = _balanseCount;
+                _animator.SetTrigger(old < _balanseCount ? "positive" : "negative");
             }
         }
 
         public void AddBonus(IBonus bonus) {
-            Count = ++_collectedCount;
+            Balanse += bonus.Strength;
         }
 
         protected override void Awake() {
