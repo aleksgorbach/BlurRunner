@@ -1,54 +1,58 @@
-﻿// Created 30.10.2015 
-// Modified by Gorbach Alex 30.10.2015 at 15:00
+﻿// Created 30.10.2015
+// Modified by Александр 02.11.2015 at 21:06
 
 namespace Assets.Scripts.EndlessEngine {
     #region References
 
     using System.Collections.Generic;
     using System.Linq;
-    using Interfaces;
     using Engine;
+    using Engine.Factory.Strategy;
+    using Engine.Pool;
+    using Interfaces;
+    using Zenject;
 
     #endregion
 
     internal abstract class HidingItemGenerator<TItem> : MonoBehaviourBase
-        where TItem : IHiding {
+        where TItem : class, IHiding {
         protected List<TItem> _items;
+
+        [Inject]
+        private IObjectPool<TItem> _pool;
+
+        [Inject]
+        private IPoolStrategy<TItem> _strategy;
 
         protected override void Awake() {
             base.Awake();
             _items = new List<TItem>();
         }
 
-        public virtual void Add(TItem item) {
-            RemoveInvisibleItems();
+        protected virtual void OnCreate(TItem item) {
         }
 
-        //protected virtual void FixedUpdate() {
-        //    if (_items.Count == 0) {
-        //        return;
-        //    }
-        //    var item = _items[0];
-        //    while (!item.IsVisible) {
-        //        Remove(item);
-        //        if (_items.Count == 0) {
-        //            break;
-        //        }
-        //        item = _items[0];
-        //    }
-        //    CheckForMissingItems();
-        //}
+        protected TItem Create() {
+            RemoveInvisibleItems();
+            var block = _pool.Get(_strategy);
+            OnCreate(block);
+            return block;
+        }
 
         private void RemoveInvisibleItems() {
             var itemsToRemove = _items.Where(x => !x.IsVisible).ToList();
             foreach (var item in itemsToRemove) {
-                OnItemHide(item);
+                Remove(item);
+                OnRemove(item);
             }
         }
 
-        protected abstract void OnItemHide(TItem item);
+        protected void Remove(TItem item) {
+            _items.Remove(item);
+            _pool.Release(item);
+        }
 
-        protected virtual void CheckForMissingItems() {
+        protected virtual void OnRemove(TItem item) {
         }
     }
 }

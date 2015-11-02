@@ -11,6 +11,5 @@ namespace Assets.Scripts.EndlessEngine.Ground {
     internal interface IGroundBlock {
         BorderLevel LeftBorderLevel { get; }
         BorderLevel RightBorderLevel { get; }
-        bool CanBeAttachedTo(IGroundBlock other);
     }
 }

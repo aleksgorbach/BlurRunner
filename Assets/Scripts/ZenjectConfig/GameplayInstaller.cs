@@ -1,5 +1,5 @@
-﻿// Created 20.10.2015 
-// Modified by Gorbach Alex 02.11.2015 at 8:54
+﻿// Created 02.11.2015
+// Modified by Александр 02.11.2015 at 21:08
 
 #region References
 
@@ -12,17 +12,15 @@ namespace Assets.Scripts.ZenjectConfig {
     using System.Collections.Generic;
     using EndlessEngine.Bonuses;
     using EndlessEngine.Bonuses.Strategy;
-    using EndlessEngine.Bonuses.UI;
+    using EndlessEngine.Decorations;
+    using EndlessEngine.Decorations.Strategy;
     using EndlessEngine.Ground;
-    using EndlessEngine.Ground.Decorations;
-    using EndlessEngine.Ground.Decorations.Strategy;
-    using EndlessEngine.Ground.Decorations.UI;
     using EndlessEngine.Ground.UI;
     using Engine.Factory;
     using Engine.Factory.Strategy;
     using Engine.Pool;
     using Gameplay;
-    using Gameplay.Bonuses.UI;
+    using Gameplay.Bonuses;
     using Gameplay.GameState.Manager;
     using Gameplay.GameState.Pause;
     using UnityEngine;
@@ -48,7 +46,6 @@ namespace Assets.Scripts.ZenjectConfig {
         public override void InstallBindings() {
             Container.Bind<IGame>().ToInstance(_game);
             Container.Bind<IGameStateManager>().ToSingle<GameStateManager>();
-            Container.Bind<IGettingStrategy>().ToTransient<Engine.Factory.Strategy.RandomStrategy>();
             Container.Bind<Camera>().ToSingleInstance(Camera.main);
             Container.Bind<IPauseHandler>().ToSingle<GameStateManager>();
             BindGround();
@@ -57,127 +54,111 @@ namespace Assets.Scripts.ZenjectConfig {
         }
 
         private void BindBonuses() {
-            Container.Bind<Engine.Factory.IFactory<BonusUI>>().ToTransient<RandomGameObjectFactory<BonusUI>>();
+            Container.Bind<Engine.Factory.IFactory<Bonus>>().ToTransient<RandomGameObjectFactory<Bonus>>();
             Container.Bind<IBonusStrategy>().ToInstance(_bonusesSettings.Strategy);
-            Container.Bind<IBonusGenerator>().ToSingle<BonusGenerator>();
-            Container.Bind<IBonusGeneratorUI>().ToInstance(_bonusesSettings.Generator);
-            Container.Bind<RandomGameObjectFactory<BonusUI>.ISettings>().ToInstance(_bonusesSettings);
-            Container.Bind<IObjectPool<BonusUI>>().ToSingleGameObject<BonusesPool>("BonusesPool");
-            Container.Bind<bool>(GameObjectPool<BonusUI>.CAN_GROW_KEY).ToInstance(true).WhenInjectedInto<BonusesPool>();
-            Container.Bind<int>(GameObjectPool<BonusUI>.INITIAL_SIZE_KEY)
+            Container.Bind<IBonusGenerator>().ToInstance(_bonusesSettings.Generator);
+            Container.Bind<IPoolStrategy<Bonus>>().ToTransient<RandomStrategy<Bonus>>();
+            Container.Bind<RandomGameObjectFactory<Bonus>.ISettings>().ToInstance(_bonusesSettings);
+            Container.Bind<IObjectPool<Bonus>>().ToSingleGameObject<BonusesPool>("BonusesPool");
+            Container.Bind<bool>(GameObjectPool<Bonus>.CAN_GROW_KEY).ToInstance(true).WhenInjectedInto<BonusesPool>();
+            Container.Bind<int>(GameObjectPool<Bonus>.INITIAL_SIZE_KEY)
                 .ToInstance(_initialPoolSize)
                 .WhenInjectedInto<BonusesPool>();
         }
 
         private void BindDecorations() {
-            Container.Bind<Engine.Factory.IFactory<DecorationItemUI>>()
-                .ToTransient<RandomGameObjectFactory<DecorationItemUI>>();
-            Container.Bind<RandomGameObjectFactory<DecorationItemUI>.ISettings>().ToInstance(_decorationsSettings);
-            Container.Bind<IDecorationGenerator>().ToSingle<DecorationGenerator>();
-            Container.Bind<IDecorationGeneratorUI>().ToInstance(_decorationsSettings.Generator);
+            Container.Bind<Engine.Factory.IFactory<DecorationItem>>()
+                .ToTransient<RandomGameObjectFactory<DecorationItem>>();
+            Container.Bind<RandomGameObjectFactory<DecorationItem>.ISettings>().ToInstance(_decorationsSettings);
+            Container.Bind<IPoolStrategy<DecorationItem>>().ToTransient<RandomStrategy<DecorationItem>>();
+            Container.Bind<IDecorationGenerator>().ToInstance(_decorationsSettings.Generator);
             Container.Bind<IGeneratingStrategy>().ToInstance(_decorationsSettings.Strategy);
-            Container.Bind<IObjectPool<DecorationItemUI>>().ToSingleGameObject<DecorationPool>("DecorationsPool");
-            Container.Bind<bool>(GameObjectPool<DecorationItemUI>.CAN_GROW_KEY)
+            Container.Bind<IObjectPool<DecorationItem>>().ToSingleGameObject<DecorationPool>("DecorationsPool");
+            Container.Bind<bool>(GameObjectPool<DecorationItem>.CAN_GROW_KEY)
                 .ToInstance(true)
                 .WhenInjectedInto<DecorationPool>();
-            Container.Bind<int>(GameObjectPool<DecorationItemUI>.INITIAL_SIZE_KEY)
-                .ToInstance(_initialPoolSize * 2)
+            Container.Bind<int>(GameObjectPool<DecorationItem>.INITIAL_SIZE_KEY)
+                .ToInstance(_initialPoolSize*2)
                 .WhenInjectedInto<DecorationPool>();
         }
 
         private void BindGround() {
-            Container.Bind<Engine.Factory.IFactory<GroundBlockUI>>()
-                .ToTransient<RandomGameObjectFactory<GroundBlockUI>>();
-            Container.Bind<RandomGameObjectFactory<GroundBlockUI>.ISettings>().ToInstance(_blockSettings);
-            Container.Bind<IGroundGenerator>().ToSingle<GroundGenerator>();
-            Container.Bind<IGroundGeneratorUI>().ToInstance(_blockSettings.Generator);
-            Container.Bind<IObjectPool<GroundBlockUI>>().ToSingleGameObject<GroundPool>("GroundBlocksPool");
-            Container.Bind<bool>(GameObjectPool<GroundBlockUI>.CAN_GROW_KEY)
+            Container.Bind<Engine.Factory.IFactory<GroundBlock>>()
+                .ToTransient<RandomGameObjectFactory<GroundBlock>>();
+            Container.Bind<RandomGameObjectFactory<GroundBlock>.ISettings>().ToInstance(_blockSettings);
+            Container.Bind<IPoolStrategy<GroundBlock>>().ToTransient<CompatibleStrategy<GroundBlock>>();
+            Container.Bind<IGroundGenerator>().ToInstance(_blockSettings.Generator);
+            Container.Bind<IObjectPool<GroundBlock>>().ToSingleGameObject<GroundPool>("GroundBlocksPool");
+            Container.Bind<bool>(GameObjectPool<GroundBlock>.CAN_GROW_KEY)
                 .ToInstance(true)
                 .WhenInjectedInto<GroundPool>();
-            Container.Bind<int>(GameObjectPool<GroundBlockUI>.INITIAL_SIZE_KEY)
+            Container.Bind<int>(GameObjectPool<GroundBlock>.INITIAL_SIZE_KEY)
                 .ToInstance(_initialPoolSize)
                 .WhenInjectedInto<GroundPool>();
         }
 
         [Serializable]
-        public class BlockSettings : RandomGameObjectFactory<GroundBlockUI>.ISettings {
+        public class BlockSettings : RandomGameObjectFactory<GroundBlock>.ISettings {
             [SerializeField]
-            private GroundGeneratorUI _generator;
+            private GroundGenerator _generator;
 
             [SerializeField]
-            private GroundBlockUI[] _prefabs;
+            private GroundBlock[] _prefabs;
 
-            public IGroundGeneratorUI Generator {
-                get {
-                    return _generator;
-                }
+            public IGroundGenerator Generator {
+                get { return _generator; }
             }
 
-            public IEnumerable<GroundBlockUI> Prefabs {
-                get {
-                    return _prefabs;
-                }
+            public IEnumerable<GroundBlock> Prefabs {
+                get { return _prefabs; }
             }
         }
 
         [Serializable]
-        public class DecorationsSettings : RandomGameObjectFactory<DecorationItemUI>.ISettings {
+        public class DecorationsSettings : RandomGameObjectFactory<DecorationItem>.ISettings {
             [SerializeField]
-            private DecorationGeneratorUI _generator;
+            private DecorationGenerator _generator;
 
             [SerializeField]
-            private DecorationItemUI[] _prefabs;
+            private DecorationItem[] _prefabs;
 
             [SerializeField]
             private AbstractStrategy _strategy;
 
             public AbstractStrategy Strategy {
-                get {
-                    return _strategy;
-                }
+                get { return _strategy; }
             }
 
-            public IDecorationGeneratorUI Generator {
-                get {
-                    return _generator;
-                }
+            public IDecorationGenerator Generator {
+                get { return _generator; }
             }
 
-            public IEnumerable<DecorationItemUI> Prefabs {
-                get {
-                    return _prefabs;
-                }
+            public IEnumerable<DecorationItem> Prefabs {
+                get { return _prefabs; }
             }
         }
 
         [Serializable]
-        public class BonusSettings : RandomGameObjectFactory<BonusUI>.ISettings {
+        public class BonusSettings : RandomGameObjectFactory<Bonus>.ISettings {
             [SerializeField]
-            private BonusGeneratorUI _generator;
+            private BonusGenerator _generator;
 
             [SerializeField]
-            private BonusUI[] _prefabs;
+            private Bonus[] _prefabs;
 
             [SerializeField]
             private AbstractBonusStrategy _strategy;
 
             public AbstractBonusStrategy Strategy {
-                get {
-                    return _strategy;
-                }
+                get { return _strategy; }
             }
 
-            public IBonusGeneratorUI Generator {
-                get {
-                    return _generator;
-                }
+            public IBonusGenerator Generator {
+                get { return _generator; }
             }
 
-            public IEnumerable<BonusUI> Prefabs {
-                get {
-                    return _prefabs;
-                }
+            public IEnumerable<Bonus> Prefabs {
+                get { return _prefabs; }
             }
         }
     }

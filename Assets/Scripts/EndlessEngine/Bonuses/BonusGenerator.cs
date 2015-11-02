@@ -1,61 +1,68 @@
-﻿// Created 28.10.2015 
-// Modified by Gorbach Alex 02.11.2015 at 10:09
+﻿// Created 02.11.2015
+// Modified by Александр 02.11.2015 at 20:37
 
 namespace Assets.Scripts.EndlessEngine.Bonuses {
     #region References
 
     using System;
-    using Engine.Pool;
+    using Engine.Extensions;
     using Gameplay.Bonuses;
-    using Gameplay.Bonuses.UI;
     using Strategy;
-    using UI;
+    using UnityEngine;
+    using Zenject;
 
     #endregion
 
-    internal class BonusGenerator : IBonusGenerator {
-        private readonly IObjectPool<BonusUI> _pool;
-        private readonly IBonusGeneratorUI _view;
+    internal class BonusGenerator : HidingItemGenerator<Bonus>, IBonusGenerator {
+        [SerializeField]
+        private Transform _bonusesContainer;
 
-        public BonusGenerator(IBonusGeneratorUI view, IObjectPool<BonusUI> pool, IBonusStrategy strategy) {
-            _view = view;
-            _pool = pool;
-            strategy.BonusNeed += GenerateBonus;
-            view.Collected += OnBonusCollected;
-            view.Collect += OnBonusCollect;
-            view.RemoveNeeded += Remove;
-        }
+        [Inject]
+        private IBonusStrategy _strategy;
 
-        public event Action<IBonus> BonusCollected;
+        public event Action<Bonus> BeginCollect;
+        public event Action<Bonus> EndCollect;
+        public event Action<Bonus> Removed;
 
-        private void OnBonusCollect(BonusUI bonus) {
-            OnCollected(bonus.Bonus);
-        }
-
-        private void Remove(BonusUI bonus) {
-            _view.RemoveBonus(bonus);
-            Release(bonus);
-        }
-
-        private void Release(BonusUI bonus) {
-            _pool.Release(bonus);
-        }
-
-        private void OnBonusCollected(BonusUI bonus) {
-            Release(bonus);
-        }
-
-        private void GenerateBonus() {
-            var bonus = _pool.Get();
+        private void Add() {
+            var bonus = Create();
             bonus.gameObject.SetActive(true);
-            _view.Add(bonus);
+            bonus.transform.SetParent(_bonusesContainer);
+            bonus.transform.position = transform.position;
+            bonus.transform.SetLocalY(UnityEngine.Random.Range(-150, 250));
+            bonus.transform.SetLocalZ(0);
+            bonus.BeginCollect += OnBeginCollect;
+            bonus.EndCollect += OnEndCollect;
+            _items.Add(bonus);
         }
 
-        private void OnCollected(IBonus bonus) {
-            var handler = BonusCollected;
+        private void OnEndCollect(Bonus bonus) {
+            var handler = EndCollect;
             if (handler != null) {
                 handler.Invoke(bonus);
             }
+            Remove(bonus);
+        }
+
+        protected override void OnRemove(Bonus bonus) {
+            bonus.BeginCollect -= OnBeginCollect;
+            bonus.EndCollect -= OnEndCollect;
+            var handler = Removed;
+            if (handler != null) {
+                handler.Invoke(bonus);
+            }
+        }
+
+        private void OnBeginCollect(Bonus bonus) {
+            var handler = BeginCollect;
+            if (handler != null) {
+                handler.Invoke(bonus);
+            }
+        }
+
+        [PostInject]
+        private void PostInject() {
+            _strategy.BonusNeed += Add;
         }
     }
 }

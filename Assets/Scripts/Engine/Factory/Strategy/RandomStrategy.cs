@@ -9,8 +9,8 @@ namespace Assets.Scripts.Engine.Factory.Strategy {
 
     #endregion
 
-    internal class RandomStrategy : IGettingStrategy {
-        public T Get<T>(IEnumerable<T> items) where T : class {
+    internal class RandomStrategy<T> : IPoolStrategy<T> where T : class {
+        public T Get(IEnumerable<T> items) {
             return items.Random();
         }
     }

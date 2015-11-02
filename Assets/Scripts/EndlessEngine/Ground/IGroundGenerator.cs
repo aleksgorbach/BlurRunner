@@ -1,5 +1,5 @@
-﻿// Created 26.10.2015 
-// Modified by Gorbach Alex 26.10.2015 at 13:42
+﻿// Created 02.11.2015
+// Modified by Александр 02.11.2015 at 19:23
 
 namespace Assets.Scripts.EndlessEngine.Ground {
     #region References
@@ -8,14 +8,16 @@ namespace Assets.Scripts.EndlessEngine.Ground {
 
     #endregion
 
+    internal delegate void BlockEventDelegate(GroundBlock block);
+
     internal interface IGroundGenerator {
         /// <summary>
-        /// Raised when new block was created
+        /// Raised when new block has to be created
         /// </summary>
         event BlockEventDelegate BlockCreated;
 
         /// <summary>
-        /// Raised when block was removed from the ground
+        /// Raised when block makes invisible and has to be removed
         /// </summary>
         event BlockEventDelegate BlockRemoved;
     }
