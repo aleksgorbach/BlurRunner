@@ -1,7 +1,7 @@
 ﻿// Created 22.10.2015 
 // Modified by Gorbach Alex 03.11.2015 at 15:00
 
-namespace Assets.Scripts.ZenjectConfig {
+namespace Assets.Scripts.ZenjectConfig.Global {
     #region References
 
     using Localization.Locales;
@@ -27,7 +27,7 @@ namespace Assets.Scripts.ZenjectConfig {
             Container.Bind<IProgressStorage>().ToSingle<ProgressStorage>();
             Container.Bind<ISceneLoader>().ToSingle<SceneLoader>();
             Container.Bind<ILocalizator>().ToSingle<DefaultLocalizator>();
-            Container.Bind<ILocale>(DefaultLocalizator.DEFAULT_LOCALE_KEY).ToSingle<RussianLocale>();
+            Container.Bind<Locale>(DefaultLocalizator.DEFAULT_LOCALE_KEY).ToSingle<RussianLocale>();
         }
     }
 }

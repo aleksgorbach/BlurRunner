@@ -9,6 +9,7 @@ namespace Assets.Scripts.Purchases {
     #endregion
 
     internal interface IInAppItem {
+        string Id { get; }
         ILocalizable Name { get; }
         ILocalizable Description { get; }
         ILocalizable Effect { get; }

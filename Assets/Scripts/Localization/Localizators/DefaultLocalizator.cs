@@ -11,9 +11,9 @@ namespace Assets.Scripts.Localization.Localizators {
 
     internal class DefaultLocalizator : ILocalizator {
         public const string DEFAULT_LOCALE_KEY = "default_locale";
-        private readonly ILocale _locale;
+        private readonly Locale _locale;
 
-        public DefaultLocalizator([Inject(DEFAULT_LOCALE_KEY)] ILocale defaultLocale) {
+        public DefaultLocalizator([Inject(DEFAULT_LOCALE_KEY)] Locale defaultLocale) {
             _locale = defaultLocale;
         }
 

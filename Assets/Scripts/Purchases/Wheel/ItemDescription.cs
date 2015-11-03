@@ -28,8 +28,8 @@ namespace Assets.Scripts.Purchases.Wheel {
         public IInAppItem Item {
             set {
                 _name.text = _localizator.Localize(value.Name);
-                _name.text = _localizator.Localize(value.Description);
-                _name.text = _localizator.Localize(value.Effect);
+                _description.text = _localizator.Localize(value.Description);
+                _effect.text = _localizator.Localize(value.Effect);
             }
         }
     }

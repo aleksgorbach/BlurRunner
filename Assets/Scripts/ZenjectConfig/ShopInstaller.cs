@@ -1,15 +1,14 @@
-﻿// Created 02.11.2015 
-// Modified by Gorbach Alex 03.11.2015 at 15:18
+﻿// Created 03.11.2015
+// Modified by Александр 03.11.2015 at 19:11
 
 namespace Assets.Scripts.ZenjectConfig {
     #region References
 
-    using Assets.Scripts.Purchases;
-    using Assets.Scripts.UI.Visualizers.InApps;
+    using Engine.Input;
+    using Engine.Scrollers;
     using Purchases.Handlers;
     using Purchases.Wheel;
-    using Engine.Scrollers;
-    using Engine.Input;
+    using UI.Visualizers.InApps;
     using UnityEngine;
     using UnityEngine.UI;
     using Zenject;
@@ -18,16 +17,16 @@ namespace Assets.Scripts.ZenjectConfig {
 
     internal class ShopInstaller : MonoInstaller {
         [SerializeField]
-        private VisualPurchase _purchasePrefab;
-
-        [SerializeField]
         private InputController _inputController;
 
         [SerializeField]
-        private RoundScroller _scroller;
+        private Button _purchaseButton;
 
         [SerializeField]
-        private Button _purchaseButton;
+        private VisualPurchase _purchasePrefab;
+
+        [SerializeField]
+        private RoundScroller _scroller;
 
         public override void InstallBindings() {
             Container.Bind<IInputController>().ToInstance(_inputController);
@@ -35,8 +34,8 @@ namespace Assets.Scripts.ZenjectConfig {
             Container.Bind<Button>(PurchaseWheelController.PURCHASE_BUTTON)
                 .ToInstance(_purchaseButton)
                 .WhenInjectedInto<PurchaseWheelController>();
-            Container.Bind<IInAppHandler>().ToSingle<EditorInAppHandler>();
-            Container.BindGameObjectFactory<VisualPurchaseFactory>(_purchasePrefab.gameObject);
+            
+            Container.BindGameObjectFactory<VisualPurchase.Factory>(_purchasePrefab.gameObject);
         }
     }
 }
