@@ -1,9 +1,11 @@
-﻿// Created 22.10.2015
-// Modified by Александр 01.11.2015 at 12:02
+﻿// Created 22.10.2015 
+// Modified by Gorbach Alex 03.11.2015 at 15:00
 
 namespace Assets.Scripts.ZenjectConfig {
     #region References
 
+    using Localization.Locales;
+    using Localization.Localizators;
     using State.Levels.Loaders;
     using State.Levels.Storage;
     using State.Progress.Storage;
@@ -24,6 +26,8 @@ namespace Assets.Scripts.ZenjectConfig {
             Container.Bind<string>().ToInstance(_levelsPath).WhenInjectedInto<ResourcesLevelLoader>();
             Container.Bind<IProgressStorage>().ToSingle<ProgressStorage>();
             Container.Bind<ISceneLoader>().ToSingle<SceneLoader>();
+            Container.Bind<ILocalizator>().ToSingle<DefaultLocalizator>();
+            Container.Bind<ILocale>(DefaultLocalizator.DEFAULT_LOCALE_KEY).ToSingle<RussianLocale>();
         }
     }
 }

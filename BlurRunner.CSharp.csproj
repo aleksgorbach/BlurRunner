@@ -71,6 +71,15 @@
     <Reference Include="DOTween">
       <HintPath>Assets\Plugins\Demigiant\DOTween\DOTween.dll</HintPath>
     </Reference>
+    <Reference Include="DOTween43">
+      <HintPath>Assets\Plugins\Demigiant\DOTween\DOTween43.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween50">
+      <HintPath>Assets\Plugins\Demigiant\DOTween\DOTween50.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween46">
+      <HintPath>Assets\Plugins\Demigiant\DOTween\DOTween46.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="BlurRunner.CSharp.Plugins.csproj">
@@ -176,25 +185,18 @@
     <Compile Include="Assets\Scripts\EndlessEngine\Bonuses\Strategy\AbstractBonusStrategy.cs" />
     <Compile Include="Assets\Scripts\EndlessEngine\Bonuses\Strategy\IBonusStrategy.cs" />
     <Compile Include="Assets\Scripts\EndlessEngine\Bonuses\Strategy\TimeBonusStrategy.cs" />
-    <Compile Include="Assets\Scripts\EndlessEngine\Bonuses\UI\BonusGeneratorUI.cs" />
-    <Compile Include="Assets\Scripts\EndlessEngine\Bonuses\UI\IBonusGeneratorUI.cs" />
-    <Compile Include="Assets\Scripts\EndlessEngine\Ground\Decorations\DecorationGenerator.cs" />
-    <Compile Include="Assets\Scripts\EndlessEngine\Ground\Decorations\DecorationPool.cs" />
-    <Compile Include="Assets\Scripts\EndlessEngine\Ground\Decorations\IDecorationGenerator.cs" />
-    <Compile Include="Assets\Scripts\EndlessEngine\Ground\Decorations\Strategy\AbstractStrategy.cs" />
-    <Compile Include="Assets\Scripts\EndlessEngine\Ground\Decorations\Strategy\IGeneratingStrategy.cs" />
-    <Compile Include="Assets\Scripts\EndlessEngine\Ground\Decorations\Strategy\RandomStrategy.cs" />
-    <Compile Include="Assets\Scripts\EndlessEngine\Ground\Decorations\UI\DecorationGeneratorUI.cs" />
-    <Compile Include="Assets\Scripts\EndlessEngine\Ground\Decorations\UI\DecorationItemUI.cs" />
-    <Compile Include="Assets\Scripts\EndlessEngine\Ground\Decorations\UI\IDecorationGeneratorUI.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\Decorations\DecorationGenerator.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\Decorations\DecorationItem.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\Decorations\DecorationPool.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\Decorations\IDecorationGenerator.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\Decorations\Strategy\AbstractStrategy.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\Decorations\Strategy\IGeneratingStrategy.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\Decorations\Strategy\RandomStrategy.cs" />
     <Compile Include="Assets\Scripts\EndlessEngine\Ground\GroundBlock.cs" />
     <Compile Include="Assets\Scripts\EndlessEngine\Ground\GroundGenerator.cs" />
     <Compile Include="Assets\Scripts\EndlessEngine\Ground\GroundPool.cs" />
     <Compile Include="Assets\Scripts\EndlessEngine\Ground\IGroundBlock.cs" />
     <Compile Include="Assets\Scripts\EndlessEngine\Ground\IGroundGenerator.cs" />
-    <Compile Include="Assets\Scripts\EndlessEngine\Ground\UI\GroundBlockUI.cs" />
-    <Compile Include="Assets\Scripts\EndlessEngine\Ground\UI\GroundGeneratorUI.cs" />
-    <Compile Include="Assets\Scripts\EndlessEngine\Ground\UI\IGroundGeneratorUI.cs" />
     <Compile Include="Assets\Scripts\EndlessEngine\HidingItem.cs" />
     <Compile Include="Assets\Scripts\EndlessEngine\HidingItemGenerator.cs" />
     <Compile Include="Assets\Scripts\EndlessEngine\Interfaces\IHiding.cs" />
@@ -208,7 +210,7 @@
     <Compile Include="Assets\Scripts\Engine\Factory\RandomGameObjectFactory.cs" />
     <Compile Include="Assets\Scripts\Engine\Factory\Strategy\CompatibleStrategy.cs" />
     <Compile Include="Assets\Scripts\Engine\Factory\Strategy\FirstAvailableStrategy.cs" />
-    <Compile Include="Assets\Scripts\Engine\Factory\Strategy\IGettingStrategy.cs" />
+    <Compile Include="Assets\Scripts\Engine\Factory\Strategy\IPoolStrategy.cs" />
     <Compile Include="Assets\Scripts\Engine\Factory\Strategy\RandomStrategy.cs" />
     <Compile Include="Assets\Scripts\Engine\Input\IInputController.cs" />
     <Compile Include="Assets\Scripts\Engine\Input\InputController.cs" />
@@ -219,7 +221,6 @@
     <Compile Include="Assets\Scripts\Engine\ObjectAnchor.cs" />
     <Compile Include="Assets\Scripts\Engine\Physics\CenterOfMass.cs" />
     <Compile Include="Assets\Scripts\Engine\Physics\RotationLimiter.cs" />
-    <Compile Include="Assets\Scripts\Engine\Pool\CompatiblePool.cs" />
     <Compile Include="Assets\Scripts\Engine\Pool\GameObjectPool.cs" />
     <Compile Include="Assets\Scripts\Engine\Pool\ICompatible.cs" />
     <Compile Include="Assets\Scripts\Engine\Pool\IObjectPool.cs" />
@@ -227,6 +228,7 @@
     <Compile Include="Assets\Scripts\Engine\Presenter\IPresenter.cs" />
     <Compile Include="Assets\Scripts\Engine\Presenter\Presenter.cs" />
     <Compile Include="Assets\Scripts\Engine\Presenter\PresenterFactory.cs" />
+    <Compile Include="Assets\Scripts\Engine\Scrollers\IRoundScroller.cs" />
     <Compile Include="Assets\Scripts\Engine\Scrollers\IScrollerItem.cs" />
     <Compile Include="Assets\Scripts\Engine\Scrollers\RoundScroller.cs" />
     <Compile Include="Assets\Scripts\Engine\Utils\StatedObjects\ImageStatesObject.cs" />
@@ -238,20 +240,10 @@
     <Compile Include="Assets\Scripts\Gameplay\Bonuses\Implementations\Negative\FastfoodBonus.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Bonuses\Implementations\Negative\NegativeBonus.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Bonuses\Implementations\Positive\BarbellBonus.cs" />
-    <Compile Include="Assets\Scripts\Gameplay\Bonuses\Implementations\Positive\KettlebellBonus.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\Bonuses\Implementations\Positive\KettlebelBonus.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Bonuses\Implementations\Positive\LifeBonus.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Bonuses\Implementations\Positive\PositiveBonus.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Bonuses\Implementations\Positive\VitamineBonus.cs" />
-    <Compile Include="Assets\Scripts\Gameplay\Bonuses\UI\BonusUI.cs" />
-    <Compile Include="Assets\Scripts\Gameplay\Bonuses\UI\IBonusUI.cs" />
-    <Compile Include="Assets\Scripts\Gameplay\Bonuses\UI\Implementations\Negative\BrokenLifeBonusUI.cs" />
-    <Compile Include="Assets\Scripts\Gameplay\Bonuses\UI\Implementations\Negative\FastfoodBonusUI.cs" />
-    <Compile Include="Assets\Scripts\Gameplay\Bonuses\UI\Implementations\Negative\NegativeBonusUI.cs" />
-    <Compile Include="Assets\Scripts\Gameplay\Bonuses\UI\Implementations\Positive\BarbellBonusUI.cs" />
-    <Compile Include="Assets\Scripts\Gameplay\Bonuses\UI\Implementations\Positive\KettlebelBonusUI.cs" />
-    <Compile Include="Assets\Scripts\Gameplay\Bonuses\UI\Implementations\Positive\LifeBonusUI.cs" />
-    <Compile Include="Assets\Scripts\Gameplay\Bonuses\UI\Implementations\Positive\PositiveBonusUI.cs" />
-    <Compile Include="Assets\Scripts\Gameplay\Bonuses\UI\Implementations\Positive\VitamineBonusUI.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Consts\GameState.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Game.cs" />
     <Compile Include="Assets\Scripts\Gameplay\GameState\Manager\GameStateManager.cs" />
@@ -260,10 +252,21 @@
     <Compile Include="Assets\Scripts\Gameplay\Heroes\Hero.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Heroes\Stand.cs" />
     <Compile Include="Assets\Scripts\Gameplay\IGame.cs" />
-    <Compile Include="Assets\Scripts\Purchases\IPurchase.cs" />
-    <Compile Include="Assets\Scripts\Purchases\Purchase.cs" />
-    <Compile Include="Assets\Scripts\Purchases\UI\PurchaseUI.cs" />
-    <Compile Include="Assets\Scripts\Purchases\UI\Wheel\PurchaseWheelController.cs" />
+    <Compile Include="Assets\Scripts\Localization\ILocalizable.cs" />
+    <Compile Include="Assets\Scripts\Localization\Locales\ILocale.cs" />
+    <Compile Include="Assets\Scripts\Localization\Locales\RussianLocale.cs" />
+    <Compile Include="Assets\Scripts\Localization\Localizators\DefaultLocalizator.cs" />
+    <Compile Include="Assets\Scripts\Localization\Localizators\ILocalizator.cs" />
+    <Compile Include="Assets\Scripts\Localization\Keys\InAppKeys.cs" />
+    <Compile Include="Assets\Scripts\Localization\LocalizableText.cs" />
+    <Compile Include="Assets\Scripts\Purchases\Handlers\EditorInAppHandler.cs" />
+    <Compile Include="Assets\Scripts\Purchases\Handlers\IInAppHandler.cs" />
+    <Compile Include="Assets\Scripts\Purchases\IInAppItem.cs" />
+    <Compile Include="Assets\Scripts\Purchases\InAppItem.cs" />
+    <Compile Include="Assets\Scripts\Purchases\Storage\IInAppStorage.cs" />
+    <Compile Include="Assets\Scripts\Purchases\Storage\InAppStorage.cs" />
+    <Compile Include="Assets\Scripts\Purchases\Wheel\ItemDescription.cs" />
+    <Compile Include="Assets\Scripts\Purchases\Wheel\PurchaseWheelController.cs" />
     <Compile Include="Assets\Scripts\State\Levels\Data\LevelData.cs" />
     <Compile Include="Assets\Scripts\State\Levels\ILevel.cs" />
     <Compile Include="Assets\Scripts\State\Levels\Level.cs" />
@@ -292,10 +295,10 @@
     <Compile Include="Assets\Scripts\UI\Popups\IPopup.cs" />
     <Compile Include="Assets\Scripts\UI\Popups\Implementations\PausePopup\PausePopup.cs" />
     <Compile Include="Assets\Scripts\UI\Popups\Popup.cs" />
-    <Compile Include="Assets\Scripts\UI\Visualizers\Bonuses\BonusVisualizerUI.cs" />
-    <Compile Include="Assets\Scripts\UI\Visualizers\Bonuses\IBonusVisualizerUI.cs" />
-    <Compile Include="Assets\Scripts\UI\Visualizers\Bonuses\Presenter\BonusVisualizer.cs" />
-    <Compile Include="Assets\Scripts\UI\Visualizers\Bonuses\Presenter\IBonusVisualizer.cs" />
+    <Compile Include="Assets\Scripts\UI\Visualizers\Bonuses\BonusVisualizer.cs" />
+    <Compile Include="Assets\Scripts\UI\Visualizers\Bonuses\IBonusVisualizer.cs" />
+    <Compile Include="Assets\Scripts\UI\Visualizers\InApps\VisualPurchaseFactory.cs" />
+    <Compile Include="Assets\Scripts\UI\Visualizers\InApps\VisualPurchase.cs" />
     <Compile Include="Assets\Scripts\UI\Visualizers\Stars\IStarsVisualizer.cs" />
     <Compile Include="Assets\Scripts\UI\Visualizers\Stars\Presenter\StarsVisualizerPresenter.cs" />
     <Compile Include="Assets\Scripts\UI\Visualizers\Stars\StarFactory.cs" />
@@ -312,9 +315,13 @@
   <ItemGroup>
     <None Include="Assets\Extensions\Zenject\LICENSE.txt" />
     <None Include="Assets\Plugins\Demigiant\DOTween\DOTween.XML" />
+    <None Include="Assets\Plugins\Demigiant\DOTween\DOTween43.xml" />
+    <None Include="Assets\Plugins\Demigiant\DOTween\DOTween46.xml" />
+    <None Include="Assets\Plugins\Demigiant\DOTween\DOTween50.xml" />
     <None Include="Assets\Plugins\Demigiant\DOTween\Editor\DOTweenEditor.XML" />
     <None Include="Assets\Plugins\Demigiant\DOTween\readme.txt" />
     <None Include="Assets\StaticAssets\Common\Levels\levels.xml" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>

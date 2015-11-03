@@ -1,53 +1,82 @@
 ﻿// Created 02.11.2015 
-// Modified by Gorbach Alex 02.11.2015 at 15:32
+// Modified by Gorbach Alex 03.11.2015 at 14:53
 
 namespace Assets.Scripts.Engine.Scrollers {
     #region References
 
-    using System.Collections;
+    using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using Assets.Scripts.Engine.Extensions;
     using DG.Tweening;
     using UnityEngine;
 
     #endregion
 
-    internal class RoundScroller : MonoBehaviourBase {
-        private float ANGLE = 45;
+    internal class RoundScroller : MonoBehaviourBase, IRoundScroller {
+        private readonly List<IScrollerItem> _items = new List<IScrollerItem>();
+        private float _angle;
 
         [SerializeField]
         private float _rotationTime;
 
-        private LinkedListNode<IScrollerItem> _current;
-        private LinkedList<IScrollerItem> _items;
+        private int _current = 0;
 
         [SerializeField]
         private float _radius;
 
-        [SerializeField]
-        private int _visibleCount = 3;
-
-        protected override void Awake() {
-            base.Awake();
-            _items = new LinkedList<IScrollerItem>();
+        public IScrollerItem Current {
+            get {
+                return _items[_current];
+            }
         }
 
         public void AddItem(IScrollerItem item) {
             item.Transform.SetParent(transform, false);
-            _items.AddFirst(item);
-            _current = _items.First;
+            _items.Add(item);
             SituateItems();
+            OnCurrentChanged(_items[_current]);
+        }
+
+        public void ScrollNext() {
+            int nextIndex;
+            if (_current < _items.Count - 1) {
+                nextIndex = _current + 1;
+            }
+            else {
+                nextIndex = 0;
+            }
+            Animate(_current, nextIndex, _angle);
+            _current = nextIndex;
+            OnCurrentChanged(_items[_current]);
+        }
+
+        public void ScrollPrevious() {
+            int nextIndex;
+            if (_current > 0) {
+                nextIndex = _current - 1;
+            }
+            else {
+                nextIndex = _items.Count - 1;
+            }
+            Animate(_current, nextIndex, -_angle);
+            _current = nextIndex;
+            OnCurrentChanged(_items[_current]);
+        }
+
+        public event Action<IScrollerItem> CurrentChanged;
+
+        private void OnCurrentChanged(IScrollerItem current) {
+            var handler = CurrentChanged;
+            if (handler != null) {
+                handler.Invoke(current);
+            }
         }
 
         private void SituateItems() {
-            ANGLE = 360f / _items.Count;
-            var current = _items.First;
+            _angle = 360f / _items.Count;
             var angle = 0f;
-            while (current != null) {
-                current.Value.Transform.anchoredPosition = GetPositionAtAngle(angle);
-                current = current.Next;
-                angle += ANGLE;
+            for (var i = 0; i < _items.Count; i++) {
+                _items[i].Transform.anchoredPosition = GetPositionAtAngle(angle);
+                angle += _angle;
             }
         }
 
@@ -57,47 +86,16 @@ namespace Assets.Scripts.Engine.Scrollers {
                 _radius * Mathf.Cos(angleDegrees * Mathf.Deg2Rad));
         }
 
-        public void ScrollNext() {
-            //var items = new List<RotatingItem> {
-            //                                       new RotatingItem(-ANGLE, _current.Value),
-            //                                       new RotatingItem(0, _current.PreviousOrLast().Value),
-            //                                       new RotatingItem(
-            //                                           ANGLE,
-            //                                           _current.PreviousOrLast().PreviousOrLast().Value)
-            //                                   };
-            Animate();
-            _current = _current.NextOrFirst();
+        private void Animate(int currentIndex, int nextIndex, float angle) {
+            _items[currentIndex].Transform.DOScale(Vector3.one, _rotationTime);
+            _items[nextIndex].Transform.DOScale(new Vector3(1.3f, 1.3f, 1), _rotationTime);
+            transform.DORotate(new Vector3(0, 0, angle), _rotationTime, RotateMode.LocalAxisAdd)
+                .OnUpdate(LookItemsUpward);
         }
 
-        private void ScrollPrevious() {
-            var prev = _current.Previous ?? _items.Last;
-        }
-
-        private void Animate() {
-            //var time = 0f;
-            //while (time < _rotationTime) {
-            //    var curTime = time / _rotationTime;
-            //    foreach (var item in items) {
-            //        var curAngle = Mathf.Lerp(item.StartAngle, item.EndAngle, curTime);
-            //        item.Item.Transform.anchoredPosition = GetPositionAtAngle(curAngle);
-            //    }
-            //    time += Time.deltaTime;
-            //    yield return null;
-            //}
-            transform.DORotate(new Vector3(0, 0, transform.rotation.z + ANGLE), _rotationTime);
-        }
-
-        private class RotatingItem {
-            public readonly IScrollerItem Item;
-            public readonly float StartAngle;
-            public readonly float EndAngle;
-
-            public RotatingItem(float to, IScrollerItem item) {
-                Item = item;
-                var itemPos = item.Transform.anchoredPosition;
-                StartAngle = Mathf.Atan2(itemPos.x, itemPos.y) * Mathf.Rad2Deg;
-                Debug.Log(StartAngle + ": " + to);
-                EndAngle = to;
+        private void LookItemsUpward() {
+            foreach (var item in _items) {
+                item.Transform.rotation = Quaternion.Euler(0, 0, 0);
             }
         }
     }
