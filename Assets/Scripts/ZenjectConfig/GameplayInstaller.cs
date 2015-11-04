@@ -1,5 +1,5 @@
-﻿// Created 02.11.2015
-// Modified by Александр 02.11.2015 at 21:08
+﻿// Created 20.10.2015 
+// Modified by Gorbach Alex 04.11.2015 at 13:25
 
 #region References
 
@@ -54,11 +54,11 @@ namespace Assets.Scripts.ZenjectConfig {
         }
 
         private void BindBonuses() {
-            Container.Bind<Engine.Factory.IFactory<Bonus>>().ToTransient<RandomGameObjectFactory<Bonus>>();
+            Container.Bind<Engine.Factory.IFactory<Bonus>>().ToTransient<MultipleGameObjectFactory<Bonus>>();
             Container.Bind<IBonusStrategy>().ToInstance(_bonusesSettings.Strategy);
             Container.Bind<IBonusGenerator>().ToInstance(_bonusesSettings.Generator);
-            Container.Bind<IPoolStrategy<Bonus>>().ToTransient<RandomStrategy<Bonus>>();
-            Container.Bind<RandomGameObjectFactory<Bonus>.ISettings>().ToInstance(_bonusesSettings);
+            Container.Bind<IChooseStrategy<Bonus>>().ToTransient<RandomStrategy<Bonus>>();
+            Container.Bind<MultipleGameObjectFactory<Bonus>.ISettings>().ToInstance(_bonusesSettings);
             Container.Bind<IObjectPool<Bonus>>().ToSingleGameObject<BonusesPool>("BonusesPool");
             Container.Bind<bool>(GameObjectPool<Bonus>.CAN_GROW_KEY).ToInstance(true).WhenInjectedInto<BonusesPool>();
             Container.Bind<int>(GameObjectPool<Bonus>.INITIAL_SIZE_KEY)
@@ -68,9 +68,9 @@ namespace Assets.Scripts.ZenjectConfig {
 
         private void BindDecorations() {
             Container.Bind<Engine.Factory.IFactory<DecorationItem>>()
-                .ToTransient<RandomGameObjectFactory<DecorationItem>>();
-            Container.Bind<RandomGameObjectFactory<DecorationItem>.ISettings>().ToInstance(_decorationsSettings);
-            Container.Bind<IPoolStrategy<DecorationItem>>().ToTransient<RandomStrategy<DecorationItem>>();
+                .ToTransient<MultipleGameObjectFactory<DecorationItem>>();
+            Container.Bind<MultipleGameObjectFactory<DecorationItem>.ISettings>().ToInstance(_decorationsSettings);
+            Container.Bind<IChooseStrategy<DecorationItem>>().ToTransient<RandomStrategy<DecorationItem>>();
             Container.Bind<IDecorationGenerator>().ToInstance(_decorationsSettings.Generator);
             Container.Bind<IGeneratingStrategy>().ToInstance(_decorationsSettings.Strategy);
             Container.Bind<IObjectPool<DecorationItem>>().ToSingleGameObject<DecorationPool>("DecorationsPool");
@@ -78,15 +78,14 @@ namespace Assets.Scripts.ZenjectConfig {
                 .ToInstance(true)
                 .WhenInjectedInto<DecorationPool>();
             Container.Bind<int>(GameObjectPool<DecorationItem>.INITIAL_SIZE_KEY)
-                .ToInstance(_initialPoolSize*2)
+                .ToInstance(_initialPoolSize * 2)
                 .WhenInjectedInto<DecorationPool>();
         }
 
         private void BindGround() {
-            Container.Bind<Engine.Factory.IFactory<GroundBlock>>()
-                .ToTransient<RandomGameObjectFactory<GroundBlock>>();
-            Container.Bind<RandomGameObjectFactory<GroundBlock>.ISettings>().ToInstance(_blockSettings);
-            Container.Bind<IPoolStrategy<GroundBlock>>().ToTransient<CompatibleStrategy<GroundBlock>>();
+            Container.Bind<Engine.Factory.IFactory<GroundBlock>>().ToSingle<MultipleGameObjectFactory<GroundBlock>>();
+            Container.Bind<MultipleGameObjectFactory<GroundBlock>.ISettings>().ToInstance(_blockSettings);
+            Container.Bind<IChooseStrategy<GroundBlock>>().ToTransient<CompatibleStrategy<GroundBlock>>();
             Container.Bind<IGroundGenerator>().ToInstance(_blockSettings.Generator);
             Container.Bind<IObjectPool<GroundBlock>>().ToSingleGameObject<GroundPool>("GroundBlocksPool");
             Container.Bind<bool>(GameObjectPool<GroundBlock>.CAN_GROW_KEY)
@@ -98,7 +97,7 @@ namespace Assets.Scripts.ZenjectConfig {
         }
 
         [Serializable]
-        public class BlockSettings : RandomGameObjectFactory<GroundBlock>.ISettings {
+        public class BlockSettings : MultipleGameObjectFactory<GroundBlock>.ISettings {
             [SerializeField]
             private GroundGenerator _generator;
 
@@ -106,16 +105,20 @@ namespace Assets.Scripts.ZenjectConfig {
             private GroundBlock[] _prefabs;
 
             public IGroundGenerator Generator {
-                get { return _generator; }
+                get {
+                    return _generator;
+                }
             }
 
             public IEnumerable<GroundBlock> Prefabs {
-                get { return _prefabs; }
+                get {
+                    return _prefabs;
+                }
             }
         }
 
         [Serializable]
-        public class DecorationsSettings : RandomGameObjectFactory<DecorationItem>.ISettings {
+        public class DecorationsSettings : MultipleGameObjectFactory<DecorationItem>.ISettings {
             [SerializeField]
             private DecorationGenerator _generator;
 
@@ -126,20 +129,26 @@ namespace Assets.Scripts.ZenjectConfig {
             private AbstractStrategy _strategy;
 
             public AbstractStrategy Strategy {
-                get { return _strategy; }
+                get {
+                    return _strategy;
+                }
             }
 
             public IDecorationGenerator Generator {
-                get { return _generator; }
+                get {
+                    return _generator;
+                }
             }
 
             public IEnumerable<DecorationItem> Prefabs {
-                get { return _prefabs; }
+                get {
+                    return _prefabs;
+                }
             }
         }
 
         [Serializable]
-        public class BonusSettings : RandomGameObjectFactory<Bonus>.ISettings {
+        public class BonusSettings : MultipleGameObjectFactory<Bonus>.ISettings {
             [SerializeField]
             private BonusGenerator _generator;
 
@@ -150,15 +159,21 @@ namespace Assets.Scripts.ZenjectConfig {
             private AbstractBonusStrategy _strategy;
 
             public AbstractBonusStrategy Strategy {
-                get { return _strategy; }
+                get {
+                    return _strategy;
+                }
             }
 
             public IBonusGenerator Generator {
-                get { return _generator; }
+                get {
+                    return _generator;
+                }
             }
 
             public IEnumerable<Bonus> Prefabs {
-                get { return _prefabs; }
+                get {
+                    return _prefabs;
+                }
             }
         }
     }

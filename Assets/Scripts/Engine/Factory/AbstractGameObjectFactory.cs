@@ -1,5 +1,5 @@
 ﻿// Created 20.10.2015 
-// Modified by Gorbach Alex 28.10.2015 at 13:01
+// Modified by Gorbach Alex 04.11.2015 at 13:29
 
 #region References
 
@@ -9,6 +9,13 @@ using Zenject;
 #endregion
 
 namespace Assets.Scripts.Engine.Factory {
+    #region References
+
+    using System.Collections.Generic;
+    using Strategy;
+
+    #endregion
+
     internal abstract class AbstractGameObjectFactory<T> : IFactory<T>
         where T : MonoBehaviour {
         private static int index = 0;
@@ -18,10 +25,13 @@ namespace Assets.Scripts.Engine.Factory {
             _instantiator = instantiator;
         }
 
-        protected abstract T PrefabToInstantiate { get; }
+        public IChooseStrategy<T> Strategy { set; private get; }
 
-        public T Create() {
-            var prefab = PrefabToInstantiate;
+        //private T PrefabToInstantiate { get; }
+        protected abstract IEnumerable<T> Items { get; }
+
+        public virtual T Create() {
+            var prefab = Strategy.Get(Items); //PrefabToInstantiate;
             if (prefab == null) {
                 return null;
             }

@@ -1,5 +1,5 @@
-﻿// Created 28.10.2015
-// Modified by Александр 02.11.2015 at 21:06
+﻿// Created 20.10.2015 
+// Modified by Gorbach Alex 04.11.2015 at 13:33
 
 namespace Assets.Scripts.Engine.Pool {
     #region References
@@ -17,14 +17,11 @@ namespace Assets.Scripts.Engine.Pool {
         where T : MonoBehaviour {
         public const string INITIAL_SIZE_KEY = "initialSize";
         public const string CAN_GROW_KEY = "canGrow";
-        public const string DEFAULT_STRATEGY_KEY = "defaultStrategy";
 
+        protected List<Item> _pool;
 
         [Inject(CAN_GROW_KEY)]
         private bool _canGrow;
-
-        [Inject(DEFAULT_STRATEGY_KEY)]
-        private IPoolStrategy<T> _defaultStrategy;
 
         [Inject]
         private Factory.IFactory<T> _factory;
@@ -32,15 +29,15 @@ namespace Assets.Scripts.Engine.Pool {
         [Inject(INITIAL_SIZE_KEY)]
         private int _initialSize;
 
-        protected List<Item> _pool;
+        public abstract IChooseStrategy<T> Strategy { get; }
 
-        public T Get(IPoolStrategy<T> strategy) {
+        public T Get() {
             T obj;
             try {
-                obj = strategy.Get(_pool.Where(item => item.Free).Select(item => item.Object));
+                obj = Strategy.Get(_pool.Where(item => item.Free).Select(item => item.Object));
             }
-            catch (ArgumentOutOfRangeException) {
-                if (!_canGrow || (obj = AddNew(strategy)) == null) {
+            catch (Exception) {
+                if (!_canGrow || (obj = AddNew()) == null) {
                     throw new PoolBusyException<T>();
                 }
             }
@@ -63,28 +60,30 @@ namespace Assets.Scripts.Engine.Pool {
 
         [PostInject]
         private void PostInject() {
+            _factory.Strategy = Strategy;
             AddInitialItems(_initialSize);
         }
 
         private void AddInitialItems(int count) {
             for (var i = 0; i < count; i++) {
-                AddNew(_defaultStrategy);
+                AddNew();
             }
         }
 
-        private T AddNew(IPoolStrategy<T> strategy) {
-            var obj = GetNew(strategy);
+        private T AddNew() {
+            var obj = GetNew();
             if (obj == null) {
                 return null;
             }
             obj.transform.SetParent(transform);
             obj.gameObject.SetActive(false);
-            var item = new Item {Object = obj, Free = true};
+            var item = new Item { Object = obj, Free = true };
             _pool.Add(item);
             return item.Object;
         }
 
-        private T GetNew(IPoolStrategy<T> strategy) {
+        private T GetNew() {
+            // todo фабрика должна создавать блок, исходя из стратегии
             return _factory.Create();
         }
 

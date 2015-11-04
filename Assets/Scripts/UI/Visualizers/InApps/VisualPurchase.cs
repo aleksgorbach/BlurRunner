@@ -1,5 +1,5 @@
-﻿// Created 03.11.2015
-// Modified by Александр 03.11.2015 at 21:27
+﻿// Created 03.11.2015 
+// Modified by Gorbach Alex 04.11.2015 at 8:53
 
 namespace Assets.Scripts.UI.Visualizers.InApps {
     #region References
@@ -24,12 +24,14 @@ namespace Assets.Scripts.UI.Visualizers.InApps {
         public IInAppItem Item { get; private set; }
 
         public RectTransform Transform {
-            get { return rectTransform; }
+            get {
+                return rectTransform;
+            }
         }
 
         public void Init(IInAppItem item) {
             Item = item;
-            _image.sprite = _graphics[item.Id];
+            _image.sprite = _graphics[item.Key];
         }
 
         public class Factory : GameObjectFactory<VisualPurchase> {

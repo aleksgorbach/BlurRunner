@@ -1,5 +1,5 @@
-﻿// Created 02.11.2015
-// Modified by Александр 02.11.2015 at 21:05
+﻿// Created 26.10.2015 
+// Modified by Gorbach Alex 04.11.2015 at 13:34
 
 #region References
 
@@ -9,9 +9,9 @@ namespace Assets.Scripts.EndlessEngine.Ground {
     #region References
 
     using System.Collections.Generic;
+    using Assets.Scripts.Engine.Factory.Strategy;
     using Engine;
     using Engine.Extensions;
-    using Engine.Factory.Strategy;
     using Engine.Pool;
     using UI;
     using UnityEngine;
@@ -30,14 +30,11 @@ namespace Assets.Scripts.EndlessEngine.Ground {
         [Inject]
         private IObjectPool<GroundBlock> _pool;
 
-        [Inject]
-        private IPoolStrategy<GroundBlock> _strategy;
-
         public event BlockEventDelegate BlockCreated;
         public event BlockEventDelegate BlockRemoved;
 
         private void AddBlock() {
-            var block = _pool.Get(_strategy);
+            var block = _pool.Get();
             block.gameObject.SetActive(true);
             block.rectTransform.SetParent(transform, false);
             block.rectTransform.anchoredPosition3D = new Vector2(_lastAddedBlock != null ? _lastAddedBlock.Edge : 0, 0);
@@ -60,7 +57,7 @@ namespace Assets.Scripts.EndlessEngine.Ground {
         }
 
         private void AddMissingBlock() {
-            if (_length < _cameraWidth*1.2f) {
+            if (_length < _cameraWidth * 1.2f) {
                 AddBlock();
             }
         }

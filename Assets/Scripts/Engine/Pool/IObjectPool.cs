@@ -1,5 +1,5 @@
-﻿// Created 15.10.2015
-// Modified by Александр 02.11.2015 at 20:49
+﻿// Created 20.10.2015 
+// Modified by Gorbach Alex 04.11.2015 at 13:01
 
 namespace Assets.Scripts.Engine.Pool {
     #region References
@@ -8,8 +8,12 @@ namespace Assets.Scripts.Engine.Pool {
 
     #endregion
 
-    internal interface IObjectPool<T> where T : class {
-        T Get(IPoolStrategy<T> strategy);
+    internal interface IObjectPool<T>
+        where T : class {
+        IChooseStrategy<T> Strategy { get; }
+
+        T Get();
+
         void Release(T obj);
     }
 }

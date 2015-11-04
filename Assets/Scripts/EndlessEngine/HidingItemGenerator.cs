@@ -1,5 +1,5 @@
-﻿// Created 30.10.2015
-// Modified by Александр 02.11.2015 at 21:06
+﻿// Created 30.10.2015 
+// Modified by Gorbach Alex 04.11.2015 at 9:33
 
 namespace Assets.Scripts.EndlessEngine {
     #region References
@@ -7,7 +7,6 @@ namespace Assets.Scripts.EndlessEngine {
     using System.Collections.Generic;
     using System.Linq;
     using Engine;
-    using Engine.Factory.Strategy;
     using Engine.Pool;
     using Interfaces;
     using Zenject;
@@ -21,9 +20,6 @@ namespace Assets.Scripts.EndlessEngine {
         [Inject]
         private IObjectPool<TItem> _pool;
 
-        [Inject]
-        private IPoolStrategy<TItem> _strategy;
-
         protected override void Awake() {
             base.Awake();
             _items = new List<TItem>();
@@ -34,7 +30,7 @@ namespace Assets.Scripts.EndlessEngine {
 
         protected TItem Create() {
             RemoveInvisibleItems();
-            var block = _pool.Get(_strategy);
+            var block = _pool.Get();
             OnCreate(block);
             return block;
         }

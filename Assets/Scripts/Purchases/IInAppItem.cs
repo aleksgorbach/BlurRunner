@@ -1,5 +1,5 @@
 ﻿// Created 02.11.2015 
-// Modified by Gorbach Alex 03.11.2015 at 14:37
+// Modified by Gorbach Alex 04.11.2015 at 8:52
 
 namespace Assets.Scripts.Purchases {
     #region References
@@ -9,7 +9,7 @@ namespace Assets.Scripts.Purchases {
     #endregion
 
     internal interface IInAppItem {
-        string Id { get; }
+        string Key { get; }
         ILocalizable Name { get; }
         ILocalizable Description { get; }
         ILocalizable Effect { get; }

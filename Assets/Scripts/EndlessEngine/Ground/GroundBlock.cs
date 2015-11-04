@@ -1,5 +1,5 @@
 ﻿// Created 20.10.2015 
-// Modified by Gorbach Alex 03.11.2015 at 9:49
+// Modified by Gorbach Alex 04.11.2015 at 10:57
 
 namespace Assets.Scripts.EndlessEngine.Ground.UI {
     #region References
@@ -19,6 +19,12 @@ namespace Assets.Scripts.EndlessEngine.Ground.UI {
         [SerializeField]
         private Transform _treeContainer;
 
+        [SerializeField]
+        private BorderLevel _leftLevel;
+
+        [SerializeField]
+        private BorderLevel _rightLevel;
+
         public float Edge {
             get {
                 return rectTransform.anchoredPosition.x + rectTransform.sizeDelta.x;
@@ -34,11 +40,11 @@ namespace Assets.Scripts.EndlessEngine.Ground.UI {
         }
 
         public bool IsCompatibleWith(GroundBlock other) {
-            return LeftBorderLevel == other.RightBorderLevel;
+            if (other == null) {
+                return true;
+            }
+            return _rightLevel == other._leftLevel;
         }
-
-        public BorderLevel LeftBorderLevel { get; private set; }
-        public BorderLevel RightBorderLevel { get; private set; }
 
         public bool IsVisible {
             get {

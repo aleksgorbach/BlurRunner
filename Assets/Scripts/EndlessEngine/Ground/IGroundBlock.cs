@@ -1,5 +1,5 @@
-﻿// Created 15.10.2015
-// Modified by Александр 25.10.2015 at 18:15
+﻿// Created 20.10.2015 
+// Modified by Gorbach Alex 04.11.2015 at 10:48
 
 namespace Assets.Scripts.EndlessEngine.Ground {
     internal enum BorderLevel {
@@ -9,7 +9,5 @@ namespace Assets.Scripts.EndlessEngine.Ground {
     }
 
     internal interface IGroundBlock {
-        BorderLevel LeftBorderLevel { get; }
-        BorderLevel RightBorderLevel { get; }
     }
 }

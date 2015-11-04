@@ -1,11 +1,11 @@
 ﻿// Created 03.11.2015 
-// Modified by Gorbach Alex 03.11.2015 at 15:02
+// Modified by Gorbach Alex 04.11.2015 at 8:40
 
 namespace Assets.Scripts.Purchases.Wheel {
     #region References
 
-    using Localization.Localizators;
     using Engine;
+    using SmartLocalization;
     using UnityEngine;
     using UnityEngine.UI;
     using Zenject;
@@ -23,13 +23,13 @@ namespace Assets.Scripts.Purchases.Wheel {
         private Text _effect;
 
         [Inject]
-        private ILocalizator _localizator;
+        private LanguageManager _language;
 
         public IInAppItem Item {
             set {
-                _name.text = _localizator.Localize(value.Name);
-                _description.text = _localizator.Localize(value.Description);
-                _effect.text = _localizator.Localize(value.Effect);
+                _name.text = _language.GetTextValue(value.Name.Key);
+                _description.text = _language.GetTextValue(value.Description.Key);
+                _effect.text = _language.GetTextValue(value.Effect.Key);
             }
         }
     }

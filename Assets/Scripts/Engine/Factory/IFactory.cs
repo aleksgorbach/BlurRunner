@@ -1,8 +1,17 @@
-﻿// Created 15.10.2015
-// Modified by Александр 22.10.2015 at 20:14
+﻿// Created 20.10.2015 
+// Modified by Gorbach Alex 04.11.2015 at 13:31
 
 namespace Assets.Scripts.Engine.Factory {
-    internal interface IFactory<out T> {
+    #region References
+
+    using Strategy;
+
+    #endregion
+
+    internal interface IFactory<T>
+        where T : class {
+        IChooseStrategy<T> Strategy { set; }
+
         T Create();
     }
 }
