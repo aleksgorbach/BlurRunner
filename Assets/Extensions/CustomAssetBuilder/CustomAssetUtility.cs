@@ -1,5 +1,7 @@
-// Created 03.11.2015
-// Modified by Александр 03.11.2015 at 21:11
+// Created 04.11.2015 
+// Modified by Gorbach Alex 05.11.2015 at 9:57
+
+#if UNITY_EDITOR
 
 #region References
 
@@ -21,7 +23,7 @@ public static class CustomAssetUtility {
             path = path.Replace(Path.GetFileName(AssetDatabase.GetAssetPath(Selection.activeObject)), "");
         }
 
-        var assetPathAndName = AssetDatabase.GenerateUniqueAssetPath(path + "/" + typeof (T).Name + ".asset");
+        var assetPathAndName = AssetDatabase.GenerateUniqueAssetPath(path + "/" + typeof(T).Name + ".asset");
 
         AssetDatabase.CreateAsset(asset, assetPathAndName);
 
@@ -30,3 +32,4 @@ public static class CustomAssetUtility {
         Selection.activeObject = asset;
     }
 }
+#endif

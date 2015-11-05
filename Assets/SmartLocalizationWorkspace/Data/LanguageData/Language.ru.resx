@@ -125,6 +125,21 @@
 	<data name="purchases.book.name" xml:space="preserve">
 		<value>Книга</value>
 	</data>
+	<data name="purchases.health.effect" xml:space="preserve">
+		<value />
+	</data>
+	<data name="purchases.health.name" xml:space="preserve">
+		<value />
+	</data>
+	<data name="purchases.power.name" xml:space="preserve">
+		<value />
+	</data>
+	<data name="purchases.strength.effect" xml:space="preserve">
+		<value />
+	</data>
+	<data name="purchases.strength.name" xml:space="preserve">
+		<value />
+	</data>
 	<data name="purchases.vitamine.description" xml:space="preserve">
 		<value>Хороши, что сказать</value>
 	</data>
@@ -134,7 +149,19 @@
 	<data name="purchases.vitamine.name" xml:space="preserve">
 		<value>Витамины</value>
 	</data>
+	<data name="ui.popups.completed" xml:space="preserve">
+		<value>Победа!</value>
+	</data>
+	<data name="ui.popups.failed" xml:space="preserve">
+		<value>Неудача!</value>
+	</data>
+	<data name="ui.popups.pause" xml:space="preserve">
+		<value>Пауза</value>
+	</data>
 	<data name="ui.shop.buy" xml:space="preserve">
 		<value>Приобрести</value>
+	</data>
+	<data name="ui.shop.name" xml:space="preserve">
+		<value>Магазин</value>
 	</data>
 </root>

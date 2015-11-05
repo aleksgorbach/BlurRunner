@@ -1,13 +1,13 @@
-﻿// Created 22.10.2015
-// Modified by Александр 01.11.2015 at 17:34
+﻿// Created 23.10.2015 
+// Modified by Gorbach Alex 05.11.2015 at 10:29
 
 namespace Assets.Scripts.UI.Menus.Game {
     #region References
 
+    using Assets.Scripts.UI.Popups.Implementations;
     using Engine;
     using Popups;
     using Popups.Controller;
-    using Popups.Implementations.PausePopup;
     using State.ScenesInteraction.Loaders;
     using UnityEngine;
     using UnityEngine.UI;

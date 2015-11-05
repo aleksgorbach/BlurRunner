@@ -1,5 +1,5 @@
-﻿// Created 22.10.2015
-// Modified by Александр 22.10.2015 at 20:21
+﻿// Created 23.10.2015 
+// Modified by Gorbach Alex 05.11.2015 at 10:30
 
 namespace Assets.Scripts.UI.Popups.Factory {
     #region References
@@ -19,7 +19,7 @@ namespace Assets.Scripts.UI.Popups.Factory {
 
         public Popup Get<T>() where T : Popup {
             var prefab = _settings.Prefabs.OfType<T>().FirstOrDefault();
-            var obj = Object.Instantiate(prefab.gameObject) as GameObject;
+            var obj = Object.Instantiate(prefab.gameObject);
             var popup = obj.GetComponent<T>();
             return popup;
         }

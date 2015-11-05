@@ -20,7 +20,6 @@ bld/
 [Oo]bj/
 Library/
 Temp/
-Editor/
 
 # Roslyn cache directories
 *.ide/
