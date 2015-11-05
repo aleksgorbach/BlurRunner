@@ -1,12 +1,11 @@
 ﻿// Created 02.11.2015
-// Modified by Александр 02.11.2015 at 20:37
+// Modified by Александр 05.11.2015 at 20:11
 
 namespace Assets.Scripts.UI.Visualizers.Bonuses {
     #region References
 
-    using EndlessEngine.Bonuses;
     using Engine;
-    using Gameplay.Bonuses;
+    using State.Progress.Storage;
     using UnityEngine;
     using UnityEngine.UI;
     using Zenject;
@@ -23,7 +22,7 @@ namespace Assets.Scripts.UI.Visualizers.Bonuses {
         private float _balanseCount = 0.5f;
 
         [Inject]
-        private IBonusGenerator _generator;
+        private IProgressStorage _progressStorage;
 
         private float Balanse {
             get { return _balanseCount; }
@@ -37,11 +36,11 @@ namespace Assets.Scripts.UI.Visualizers.Bonuses {
 
         [PostInject]
         private void PostInject() {
-            _generator.BeginCollect += AddBonus;
+            _progressStorage.CurrentLevelProgress.Changed += OnProgressChanged;
         }
 
-        private void AddBonus(IBonus bonus) {
-            Balanse += bonus.Strength;
+        private void OnProgressChanged(int currentProgress) {
+            Balanse = currentProgress;
         }
 
         protected override void Awake() {

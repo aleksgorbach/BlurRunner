@@ -1,5 +1,5 @@
 ﻿// Created 22.10.2015
-// Modified by Александр 01.11.2015 at 17:55
+// Modified by Александр 05.11.2015 at 20:19
 
 namespace Assets.Scripts.ZenjectConfig {
     #region References
@@ -7,7 +7,6 @@ namespace Assets.Scripts.ZenjectConfig {
     using Engine.Presenter;
     using UI.Menus.Levels.LevelItem;
     using UI.Menus.Levels.Presenter;
-    using UI.Visualizers.Stars;
     using UnityEngine;
     using Zenject;
 
@@ -16,9 +15,6 @@ namespace Assets.Scripts.ZenjectConfig {
     internal class LevelChooseInstaller : MonoInstaller {
         [SerializeField]
         private LevelItem _levelPrefab;
-
-        [SerializeField]
-        private StatedStar _starPrefab;
 
         public override void InstallBindings() {
             //todo перенести эту фабрику в глобальный инсталлер

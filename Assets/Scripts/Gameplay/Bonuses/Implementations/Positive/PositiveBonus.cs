@@ -1,5 +1,5 @@
 ﻿// Created 02.11.2015
-// Modified by Александр 02.11.2015 at 19:57
+// Modified by Александр 05.11.2015 at 20:36
 
 namespace Assets.Scripts.Gameplay.Bonuses.Implementations.Positive {
     internal abstract class PositiveBonus : Bonus {
@@ -7,8 +7,8 @@ namespace Assets.Scripts.Gameplay.Bonuses.Implementations.Positive {
             get { return 1; }
         }
 
-        protected override float Force {
-            get { return .1f; }
+        protected override int Force {
+            get { return 1; }
         }
     }
 }

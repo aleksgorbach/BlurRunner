@@ -20,11 +20,16 @@ namespace Assets.Scripts.State.Levels.Data {
         [SerializeField]
         private int _levelNumber;
 
+        [SerializeField]
+        private float _length;
+
         public int Number {
             get { return _levelNumber; }
         }
 
         public Sprite Background { get { return _background; } }
         public Hero Hero { get { return _hero; } }
+
+        public float Length { get { return _length; } }
     }
 }

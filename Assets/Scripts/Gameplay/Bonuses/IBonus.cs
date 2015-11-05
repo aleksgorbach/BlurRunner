@@ -1,5 +1,5 @@
 ﻿// Created 02.11.2015
-// Modified by Александр 02.11.2015 at 20:27
+// Modified by Александр 05.11.2015 at 20:34
 
 namespace Assets.Scripts.Gameplay.Bonuses {
     #region References
@@ -9,10 +9,10 @@ namespace Assets.Scripts.Gameplay.Bonuses {
     #endregion
 
     internal interface IBonus {
-        float Strength { get; }
-        
+        int Points { get; }
+
         void Apply();
-        event Action<Bonus> BeginCollect;
-        event Action<Bonus> EndCollect;
+        event Action<Bonus> Collected;
+        event Action<Bonus> EndCollected;
     }
 }

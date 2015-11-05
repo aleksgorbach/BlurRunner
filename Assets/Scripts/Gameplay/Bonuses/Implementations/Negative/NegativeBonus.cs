@@ -7,8 +7,8 @@ namespace Assets.Scripts.Gameplay.Bonuses.Implementations.Negative {
             get { return -1; }
         }
 
-        protected override float Force {
-            get { return .1f; }
+        protected override int Force {
+            get { return 1; }
         }
     }
 }

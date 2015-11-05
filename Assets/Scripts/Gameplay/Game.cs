@@ -1,17 +1,18 @@
-﻿// Created 20.10.2015 
-// Modified by Gorbach Alex 05.11.2015 at 15:22
+﻿// Created 05.11.2015
+// Modified by Александр 05.11.2015 at 19:53
 
 namespace Assets.Scripts.Gameplay {
     #region References
 
     using System;
     using System.Collections.Generic;
-    using Assets.Scripts.Gameplay.GameState.StateChangedSources;
-    using Assets.Scripts.Gameplay.Heroes;
     using Engine;
     using GameState.Manager;
     using GameState.Pause;
+    using GameState.StateChangedSources;
+    using Heroes;
     using State.Levels;
+    using State.Progress;
     using UnityEngine;
     using UnityEngine.UI;
     using Zenject;
@@ -39,6 +40,8 @@ namespace Assets.Scripts.Gameplay {
 
         [Inject]
         private IGameStateManager _stateManager;
+
+        public ILevelProgress Progress { get; private set; }
 
         public void StartLevel(ILevel level) {
             _level = level;
@@ -74,10 +77,10 @@ namespace Assets.Scripts.Gameplay {
 
         public event Action<IWinSource> Win;
 
-        private void OnWin() {
+        private void OnWin(IWinSource winSource) {
             var handler = Win;
             if (handler != null) {
-                handler.Invoke(this);
+                handler.Invoke(winSource);
             }
         }
 
@@ -88,6 +91,8 @@ namespace Assets.Scripts.Gameplay {
             hero.transform.SetParent(_heroSpawner);
             hero.transform.localPosition = Vector3.zero;
             _cameraAnchor.SetTarget(hero.transform);
+            hero.Destination = _level.Length;
+            hero.Win += OnWin;
         }
     }
 }

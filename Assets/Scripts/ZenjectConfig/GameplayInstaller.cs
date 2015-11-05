@@ -1,5 +1,5 @@
-﻿// Created 20.10.2015 
-// Modified by Gorbach Alex 04.11.2015 at 13:25
+﻿// Created 04.11.2015
+// Modified by Александр 05.11.2015 at 20:41
 
 #region References
 
@@ -23,6 +23,8 @@ namespace Assets.Scripts.ZenjectConfig {
     using Gameplay.Bonuses;
     using Gameplay.GameState.Manager;
     using Gameplay.GameState.Pause;
+    using Gameplay.GameState.StateChangedSources;
+    using State.Progress.Score;
     using UnityEngine;
     using Zenject;
 
@@ -48,6 +50,8 @@ namespace Assets.Scripts.ZenjectConfig {
             Container.Bind<IGameStateManager>().ToSingle<GameStateManager>();
             Container.Bind<Camera>().ToSingleInstance(Camera.main);
             Container.Bind<IPauseHandler>().ToSingle<GameStateManager>();
+            Container.Bind<IWinSource>().ToInstance(_game);
+            Container.Bind<IScoreSource>().ToInstance(_bonusesSettings.Generator);
             BindGround();
             BindDecorations();
             BindBonuses();
@@ -78,7 +82,7 @@ namespace Assets.Scripts.ZenjectConfig {
                 .ToInstance(true)
                 .WhenInjectedInto<DecorationPool>();
             Container.Bind<int>(GameObjectPool<DecorationItem>.INITIAL_SIZE_KEY)
-                .ToInstance(_initialPoolSize * 2)
+                .ToInstance(_initialPoolSize*2)
                 .WhenInjectedInto<DecorationPool>();
         }
 
@@ -105,15 +109,11 @@ namespace Assets.Scripts.ZenjectConfig {
             private GroundBlock[] _prefabs;
 
             public IGroundGenerator Generator {
-                get {
-                    return _generator;
-                }
+                get { return _generator; }
             }
 
             public IEnumerable<GroundBlock> Prefabs {
-                get {
-                    return _prefabs;
-                }
+                get { return _prefabs; }
             }
         }
 
@@ -129,21 +129,15 @@ namespace Assets.Scripts.ZenjectConfig {
             private AbstractStrategy _strategy;
 
             public AbstractStrategy Strategy {
-                get {
-                    return _strategy;
-                }
+                get { return _strategy; }
             }
 
             public IDecorationGenerator Generator {
-                get {
-                    return _generator;
-                }
+                get { return _generator; }
             }
 
             public IEnumerable<DecorationItem> Prefabs {
-                get {
-                    return _prefabs;
-                }
+                get { return _prefabs; }
             }
         }
 
@@ -159,21 +153,15 @@ namespace Assets.Scripts.ZenjectConfig {
             private AbstractBonusStrategy _strategy;
 
             public AbstractBonusStrategy Strategy {
-                get {
-                    return _strategy;
-                }
+                get { return _strategy; }
             }
 
             public IBonusGenerator Generator {
-                get {
-                    return _generator;
-                }
+                get { return _generator; }
             }
 
             public IEnumerable<Bonus> Prefabs {
-                get {
-                    return _prefabs;
-                }
+                get { return _prefabs; }
             }
         }
     }

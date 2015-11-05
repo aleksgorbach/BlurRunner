@@ -1,5 +1,5 @@
 ﻿// Created 02.11.2015
-// Modified by Александр 02.11.2015 at 20:37
+// Modified by Александр 05.11.2015 at 20:51
 
 namespace Assets.Scripts.EndlessEngine.Bonuses {
     #region References
@@ -20,9 +20,7 @@ namespace Assets.Scripts.EndlessEngine.Bonuses {
         [Inject]
         private IBonusStrategy _strategy;
 
-        public event Action<Bonus> BeginCollect;
-        public event Action<Bonus> EndCollect;
-        public event Action<Bonus> Removed;
+        public event Action<int> ScoreChanged;
 
         private void Add() {
             var bonus = Create();
@@ -31,32 +29,24 @@ namespace Assets.Scripts.EndlessEngine.Bonuses {
             bonus.transform.position = transform.position;
             bonus.transform.SetLocalY(UnityEngine.Random.Range(-150, 250));
             bonus.transform.SetLocalZ(0);
-            bonus.BeginCollect += OnBeginCollect;
-            bonus.EndCollect += OnEndCollect;
+            bonus.Collected += OnCollected;
+            bonus.EndCollected += OnEndCollected;
             _items.Add(bonus);
         }
 
-        private void OnEndCollect(Bonus bonus) {
-            var handler = EndCollect;
-            if (handler != null) {
-                handler.Invoke(bonus);
-            }
+        private void OnEndCollected(Bonus bonus) {
             Remove(bonus);
         }
 
         protected override void OnRemove(Bonus bonus) {
-            bonus.BeginCollect -= OnBeginCollect;
-            bonus.EndCollect -= OnEndCollect;
-            var handler = Removed;
-            if (handler != null) {
-                handler.Invoke(bonus);
-            }
+            bonus.Collected -= OnCollected;
+            bonus.EndCollected -= OnEndCollected;
         }
 
-        private void OnBeginCollect(Bonus bonus) {
-            var handler = BeginCollect;
+        private void OnCollected(Bonus bonus) {
+            var handler = ScoreChanged;
             if (handler != null) {
-                handler.Invoke(bonus);
+                handler.Invoke(bonus.Points);
             }
         }
 

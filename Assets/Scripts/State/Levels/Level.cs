@@ -1,5 +1,5 @@
 ﻿// Created 20.10.2015
-// Modified by Александр 01.11.2015 at 12:21
+// Modified by Александр 05.11.2015 at 19:30
 
 namespace Assets.Scripts.State.Levels {
     #region References
@@ -14,7 +14,6 @@ namespace Assets.Scripts.State.Levels {
 
     #endregion
 
-    
     internal class Level : ILevel {
         private readonly LevelData _data;
 
@@ -30,6 +29,12 @@ namespace Assets.Scripts.State.Levels {
             get { return _data.Background; }
         }
 
-        public Hero Hero { get { return _data.Hero; } }
+        public Hero Hero {
+            get { return _data.Hero; }
+        }
+
+        public float Length {
+            get { return _data.Length; }
+        }
     }
 }

@@ -1,5 +1,5 @@
 ﻿// Created 02.11.2015
-// Modified by Александр 02.11.2015 at 20:27
+// Modified by Александр 05.11.2015 at 20:49
 
 namespace Assets.Scripts.Gameplay.Bonuses {
     #region References
@@ -15,11 +15,11 @@ namespace Assets.Scripts.Gameplay.Bonuses {
         private bool _isCollectedNow = false;
 
         protected abstract int Direction { get; }
-        protected abstract float Force { get; }
-        public event Action<Bonus> BeginCollect;
-        public event Action<Bonus> EndCollect;
+        protected abstract int Force { get; }
+        public event Action<Bonus> Collected;
+        public event Action<Bonus> EndCollected;
 
-        public float Strength {
+        public int Points {
             get { return Force*Direction; }
         }
 
@@ -32,13 +32,13 @@ namespace Assets.Scripts.Gameplay.Bonuses {
             var collector = collision.GetComponent<BonusCollector>();
             if (collector != null) {
                 CollectAnimation();
-                OnCollectEnter();
+                OnCollected();
                 _isCollectedNow = true;
             }
         }
 
-        private void OnCollectEnter() {
-            var handler = BeginCollect;
+        private void OnCollected() {
+            var handler = Collected;
             if (handler != null) {
                 handler.Invoke(this);
             }
@@ -46,7 +46,7 @@ namespace Assets.Scripts.Gameplay.Bonuses {
 
         private void OnCollectEnd() {
             _isCollectedNow = false;
-            var handler = EndCollect;
+            var handler = EndCollected;
             if (handler != null) {
                 handler.Invoke(this);
             }

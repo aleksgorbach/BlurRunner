@@ -16,8 +16,8 @@ namespace Assets.Scripts.Gameplay.GameState.Manager {
         [Inject]
         private List<IWinSource> _winSources;
 
-        [Inject]
-        private List<IFailSource> _failSources;
+        //[Inject]
+        //private List<IFailSource> _failSources;
 
         private GameState _state;
 
@@ -49,9 +49,9 @@ namespace Assets.Scripts.Gameplay.GameState.Manager {
                 source.Win += (s) => ChangeState(GameState.Win);
             }
 
-            foreach (var source in _failSources) {
-                source.Failed += (s) => ChangeState(GameState.Lose);
-            }
+            //foreach (var source in _failSources) {
+            //    source.Failed += (s) => ChangeState(GameState.Lose);
+            //}
         }
 
         private void ChangeState(GameState to) {
