@@ -1,5 +1,5 @@
-﻿// Created 04.11.2015
-// Modified by Александр 05.11.2015 at 20:21
+﻿// Created 20.10.2015 
+// Modified by Gorbach Alex 06.11.2015 at 11:30
 
 namespace Assets.Scripts.Engine.Pool {
     #region References
@@ -18,6 +18,8 @@ namespace Assets.Scripts.Engine.Pool {
         public const string INITIAL_SIZE_KEY = "initialSize";
         public const string CAN_GROW_KEY = "canGrow";
 
+        protected List<Item> _pool;
+
         [Inject(CAN_GROW_KEY)]
         private bool _canGrow;
 
@@ -27,17 +29,24 @@ namespace Assets.Scripts.Engine.Pool {
         [Inject(INITIAL_SIZE_KEY)]
         private int _initialSize;
 
-        protected List<Item> _pool;
-
         public abstract IChooseStrategy<T> Strategy { get; }
 
         public T Get() {
             T obj;
             try {
                 obj = Strategy.Get(_pool.Where(item => item.Free).Select(item => item.Object));
+                if (obj == null) {
+                    throw new PoolBusyException<T>();
+                }
             }
             catch (Exception) {
-                if (!_canGrow || (obj = AddNew()) == null) {
+                if (_canGrow) {
+                    obj = AddNew();
+                    if (obj == null) {
+                        throw new PoolBusyException<T>();
+                    }
+                }
+                else {
                     throw new PoolBusyException<T>();
                 }
             }
@@ -77,7 +86,7 @@ namespace Assets.Scripts.Engine.Pool {
             }
             obj.transform.SetParent(transform);
             obj.gameObject.SetActive(false);
-            var item = new Item {Object = obj, Free = true};
+            var item = new Item { Object = obj, Free = true };
             _pool.Add(item);
             return item.Object;
         }

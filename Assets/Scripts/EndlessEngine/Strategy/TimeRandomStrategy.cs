@@ -1,7 +1,7 @@
-﻿// Created 28.10.2015 
-// Modified by Gorbach Alex 28.10.2015 at 11:42
+﻿// Created 06.11.2015 
+// Modified by Gorbach Alex 06.11.2015 at 14:31
 
-namespace Assets.Scripts.EndlessEngine.Bonuses.Strategy {
+namespace Assets.Scripts.EndlessEngine.Strategy {
     #region References
 
     using System;
@@ -11,7 +11,7 @@ namespace Assets.Scripts.EndlessEngine.Bonuses.Strategy {
 
     #endregion
 
-    internal class TimeBonusStrategy : AbstractBonusStrategy {
+    internal class TimeRandomStrategy : AbstractStrategy {
         [SerializeField]
         private float _minTime;
 
@@ -31,7 +31,7 @@ namespace Assets.Scripts.EndlessEngine.Bonuses.Strategy {
         }
 
         private void OnTimer() {
-            OnBonusNeed();
+            OnNeedGenerate();
             StartTimer();
         }
 

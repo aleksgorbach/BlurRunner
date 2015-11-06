@@ -1,5 +1,5 @@
 ﻿// Created 26.10.2015 
-// Modified by Gorbach Alex 05.11.2015 at 12:59
+// Modified by Gorbach Alex 06.11.2015 at 8:36
 
 namespace Assets.Scripts.Gameplay.GameState.Manager {
     #region References
@@ -7,17 +7,22 @@ namespace Assets.Scripts.Gameplay.GameState.Manager {
     using System.Collections.Generic;
     using StateChangedSources;
     using Consts;
-    using Pause;
     using Zenject;
 
     #endregion
 
-    internal class GameStateManager : IGameStateManager, IPauseHandler {
+    internal class GameStateManager : IGameStateManager {
         [Inject]
         private List<IWinSource> _winSources;
 
         //[Inject]
         //private List<IFailSource> _failSources;
+
+        [Inject]
+        private List<IPauseSource> _pauseSources;
+
+        [Inject]
+        private List<IRunSource> _runSources;
 
         private GameState _state;
 
@@ -35,14 +40,6 @@ namespace Assets.Scripts.Gameplay.GameState.Manager {
 
         public event StateChangedDelegate StateChanged;
 
-        public void Pause() {
-            State = GameState.Paused;
-        }
-
-        public void Resume() {
-            State = GameState.Running;
-        }
-
         [PostInject]
         private void PostInject() {
             foreach (var source in _winSources) {
@@ -52,6 +49,13 @@ namespace Assets.Scripts.Gameplay.GameState.Manager {
             //foreach (var source in _failSources) {
             //    source.Failed += (s) => ChangeState(GameState.Lose);
             //}
+
+            foreach (var source in _pauseSources) {
+                source.Pause += () => ChangeState(GameState.Paused);
+            }
+            foreach (var source in _runSources) {
+                source.Run += () => ChangeState(GameState.Running);
+            }
         }
 
         private void ChangeState(GameState to) {

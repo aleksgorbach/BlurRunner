@@ -1,14 +1,14 @@
-﻿// Created 05.11.2015
-// Modified by Александр 05.11.2015 at 19:53
+﻿// Created 20.10.2015 
+// Modified by Gorbach Alex 06.11.2015 at 14:58
 
 namespace Assets.Scripts.Gameplay {
     #region References
 
     using System;
     using System.Collections.Generic;
+    using Assets.Scripts.EndlessEngine;
     using Engine;
     using GameState.Manager;
-    using GameState.Pause;
     using GameState.StateChangedSources;
     using Heroes;
     using State.Levels;
@@ -36,46 +36,59 @@ namespace Assets.Scripts.Gameplay {
         private ILevel _level;
 
         [Inject]
-        private List<IPauseHandler> _pauseHandlers;
-
-        [Inject]
         private IGameStateManager _stateManager;
 
-        public ILevelProgress Progress { get; private set; }
+        [Inject]
+        private List<AbstractGenerator> _generators;
+
+        private Hero _hero;
+
+        [Inject]
+        private ILevelProgress _progress;
+
+        public ILevelProgress Progress {
+            get {
+                return _progress;
+            }
+        }
 
         public void StartLevel(ILevel level) {
             _level = level;
             _background.sprite = level.Background;
         }
 
-        //private void OnStateChanged(Consts.GameState state) {
-        //    switch (state) {
-        //        case Consts.GameState.NotStarted:
-        //            break;
-        //        case Consts.GameState.Running:
-        //            if (_isPaused) {
-        //                foreach (var handler in _pauseHandlers) {
-        //                    handler.Resume();
-        //                }
-        //                _isPaused = false;
-        //            }
-        //            break;
-        //        case Consts.GameState.Win:
-        //            break;
-        //        case Consts.GameState.Lose:
-        //            break;
-        //        case Consts.GameState.Paused:
-        //            foreach (var handler in _pauseHandlers) {
-        //                handler.Pause();
-        //            }
-        //            _isPaused = true;
-        //            break;
-        //        default:
-        //            throw new ArgumentOutOfRangeException(state.ToString(), state, null);
-        //    }
-        //}
-
         public event Action<IWinSource> Win;
+
+        private void OnStateChanged(Consts.GameState state) {
+            switch (state) {
+                case Consts.GameState.Running:
+                    Run();
+                    break;
+                case Consts.GameState.Paused:
+                    Pause();
+                    break;
+                case Consts.GameState.Lose:
+                    Pause();
+                    break;
+                case Consts.GameState.Win:
+                    StopGenerating();
+                    break;
+            }
+        }
+
+        private void Pause() {
+            Time.timeScale = 0;
+        }
+
+        private void Run() {
+            Time.timeScale = 1;
+        }
+
+        private void StopGenerating() {
+            foreach (var generator in _generators) {
+                generator.Stop();
+            }
+        }
 
         private void OnWin(IWinSource winSource) {
             var handler = Win;
@@ -86,13 +99,13 @@ namespace Assets.Scripts.Gameplay {
 
         [PostInject]
         private void PostInject() {
-            //_stateManager.StateChanged += OnStateChanged;
-            var hero = _container.InstantiatePrefabForComponent<Hero>(_level.Hero.gameObject);
-            hero.transform.SetParent(_heroSpawner);
-            hero.transform.localPosition = Vector3.zero;
-            _cameraAnchor.SetTarget(hero.transform);
-            hero.Destination = _level.Length;
-            hero.Win += OnWin;
+            _stateManager.StateChanged += OnStateChanged;
+            _hero = _container.InstantiatePrefabForComponent<Hero>(_level.Hero.gameObject);
+            _hero.transform.SetParent(_heroSpawner);
+            _hero.transform.localPosition = Vector3.zero;
+            _cameraAnchor.SetTarget(_hero.transform);
+            _hero.Destination = _level.Length;
+            _hero.Win += OnWin;
         }
     }
 }

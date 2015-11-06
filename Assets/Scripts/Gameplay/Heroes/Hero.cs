@@ -1,5 +1,5 @@
-﻿// Created 02.11.2015
-// Modified by Александр 05.11.2015 at 19:29
+﻿// Created 20.10.2015 
+// Modified by Gorbach Alex 06.11.2015 at 10:19
 
 namespace Assets.Scripts.Gameplay.Heroes {
     #region References
@@ -11,7 +11,7 @@ namespace Assets.Scripts.Gameplay.Heroes {
 
     #endregion
 
-    [RequireComponent(typeof (Animator))]
+    [RequireComponent(typeof(Animator))]
     internal class Hero : Movable, IWinSource {
         private Animator _animator;
 
@@ -28,7 +28,6 @@ namespace Assets.Scripts.Gameplay.Heroes {
 
         private float _speed;
 
-        private Stand[] _stands;
         public float Destination { private get; set; }
 
         public event Action<IWinSource> Win;
@@ -47,11 +46,16 @@ namespace Assets.Scripts.Gameplay.Heroes {
         private void FixedUpdate() {
             bool grounded = Physics2D.OverlapCircle(_groundCheck.position, 35f, _groundLayer);
             _animator.SetBool("grounded", grounded);
+            _animator.SetFloat("speed", _speed);
             _isJumping = !grounded;
             _rigidbody.velocity = new Vector2(_speed, _rigidbody.velocity.y);
             if (_rigidbody.position.x >= Destination) {
                 OnWin();
             }
+        }
+
+        private void Stop() {
+            _speed = 0;
         }
 
         protected override void Awake() {
@@ -60,6 +64,7 @@ namespace Assets.Scripts.Gameplay.Heroes {
         }
 
         private void OnWin() {
+            Stop();
             var handler = Win;
             if (handler != null) {
                 handler(this);

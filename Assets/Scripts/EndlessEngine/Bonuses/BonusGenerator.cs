@@ -1,5 +1,5 @@
-﻿// Created 02.11.2015
-// Modified by Александр 05.11.2015 at 20:51
+﻿// Created 28.10.2015 
+// Modified by Gorbach Alex 06.11.2015 at 14:31
 
 namespace Assets.Scripts.EndlessEngine.Bonuses {
     #region References
@@ -18,11 +18,14 @@ namespace Assets.Scripts.EndlessEngine.Bonuses {
         private Transform _bonusesContainer;
 
         [Inject]
-        private IBonusStrategy _strategy;
+        private IGeneratingStrategy _strategy;
 
         public event Action<int> ScoreChanged;
 
         private void Add() {
+            if (!CanGenerate) {
+                return;
+            }
             var bonus = Create();
             bonus.gameObject.SetActive(true);
             bonus.transform.SetParent(_bonusesContainer);
@@ -31,7 +34,7 @@ namespace Assets.Scripts.EndlessEngine.Bonuses {
             bonus.transform.SetLocalZ(0);
             bonus.Collected += OnCollected;
             bonus.EndCollected += OnEndCollected;
-            _items.Add(bonus);
+            Add(bonus);
         }
 
         private void OnEndCollected(Bonus bonus) {
@@ -52,7 +55,7 @@ namespace Assets.Scripts.EndlessEngine.Bonuses {
 
         [PostInject]
         private void PostInject() {
-            _strategy.BonusNeed += Add;
+            _strategy.NeedGenerate += Add;
         }
     }
 }
