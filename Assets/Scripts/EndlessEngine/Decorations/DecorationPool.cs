@@ -1,23 +1,28 @@
-﻿// Created 03.11.2015 
-// Modified by Gorbach Alex 04.11.2015 at 13:03
+﻿// Created 04.11.2015
+// Modified by Александр 08.11.2015 at 21:02
 
 namespace Assets.Scripts.EndlessEngine.Decorations {
     #region References
 
     using Engine.Factory.Strategy;
     using Engine.Pool;
-    using Zenject;
+    using UnityEngine;
 
     #endregion
 
     internal class DecorationPool : GameObjectPool<DecorationItem> {
-        [Inject]
-        private IChooseStrategy<DecorationItem> _strategy;
+        [SerializeField]
+        private DecorationsFactory _factory;
+
+        [SerializeField]
+        private DecorationStrategy _strategy;
+
+        protected override Engine.Factory.IFactory<DecorationItem> Factory {
+            get { return _factory; }
+        }
 
         public override IChooseStrategy<DecorationItem> Strategy {
-            get {
-                return _strategy;
-            }
+            get { return _strategy; }
         }
     }
 }

@@ -1,5 +1,5 @@
-﻿// Created 28.10.2015 
-// Modified by Gorbach Alex 04.11.2015 at 13:03
+﻿// Created 04.11.2015
+// Modified by Александр 08.11.2015 at 21:02
 
 namespace Assets.Scripts.EndlessEngine.Bonuses {
     #region References
@@ -7,18 +7,23 @@ namespace Assets.Scripts.EndlessEngine.Bonuses {
     using Engine.Factory.Strategy;
     using Engine.Pool;
     using Gameplay.Bonuses;
-    using Zenject;
+    using UnityEngine;
 
     #endregion
 
     internal class BonusesPool : GameObjectPool<Bonus> {
-        [Inject]
-        private IChooseStrategy<Bonus> _strategy;
+        [SerializeField]
+        private BonusFactory _factory;
+
+        [SerializeField]
+        private BonusStrategy _strategy;
+
+        protected override Engine.Factory.IFactory<Bonus> Factory {
+            get { return _factory; }
+        }
 
         public override IChooseStrategy<Bonus> Strategy {
-            get {
-                return _strategy;
-            }
+            get { return _strategy; }
         }
     }
 }

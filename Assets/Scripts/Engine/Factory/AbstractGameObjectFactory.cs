@@ -1,10 +1,7 @@
-﻿// Created 20.10.2015 
-// Modified by Gorbach Alex 04.11.2015 at 13:29
+﻿// Created 04.11.2015
+// Modified by Александр 08.11.2015 at 20:53
 
 #region References
-
-using UnityEngine;
-using Zenject;
 
 #endregion
 
@@ -13,21 +10,20 @@ namespace Assets.Scripts.Engine.Factory {
 
     using System.Collections.Generic;
     using Strategy;
+    using UnityEngine;
+    using Zenject;
 
     #endregion
 
-    internal abstract class AbstractGameObjectFactory<T> : IFactory<T>
+    internal abstract class AbstractGameObjectFactory<T> : MonoBehaviourBase, IFactory<T>
         where T : MonoBehaviour {
         private static int index = 0;
-        private readonly IInstantiator _instantiator;
 
-        protected AbstractGameObjectFactory(IInstantiator instantiator) {
-            _instantiator = instantiator;
-        }
+        [Inject]
+        private IInstantiator _instantiator;
 
-        public IChooseStrategy<T> Strategy { set; private get; }
+        protected abstract ChooseStrategy<T> Strategy { get; }
 
-        //private T PrefabToInstantiate { get; }
         protected abstract IEnumerable<T> Items { get; }
 
         public virtual T Create() {
@@ -35,7 +31,7 @@ namespace Assets.Scripts.Engine.Factory {
             if (prefab == null) {
                 return null;
             }
-            var created = _instantiator.InstantiatePrefab(prefab.gameObject).GetComponent<T>();
+            var created = Instantiate(prefab.gameObject).GetComponent<T>();
             created.name = string.Format("{0} [{1}]", created.name, index++);
             return created;
         }

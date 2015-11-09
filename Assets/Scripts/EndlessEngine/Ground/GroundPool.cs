@@ -1,19 +1,27 @@
-﻿// Created 20.10.2015 
-// Modified by Gorbach Alex 04.11.2015 at 13:03
+﻿// Created 09.11.2015 
+// Modified by Gorbach Alex 09.11.2015 at 8:44
 
 namespace Assets.Scripts.EndlessEngine.Ground {
     #region References
 
     using Engine.Factory.Strategy;
     using Engine.Pool;
-    using UI;
-    using Zenject;
+    using UnityEngine;
 
     #endregion
 
     internal class GroundPool : GameObjectPool<GroundBlock> {
-        [Inject]
-        private IChooseStrategy<GroundBlock> _strategy;
+        [SerializeField]
+        private GroundFactory _factory;
+
+        [SerializeField]
+        private GroundStrategy _strategy;
+
+        protected override Engine.Factory.IFactory<GroundBlock> Factory {
+            get {
+                return _factory;
+            }
+        }
 
         public override IChooseStrategy<GroundBlock> Strategy {
             get {

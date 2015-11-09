@@ -1,5 +1,5 @@
-﻿// Created 21.10.2015
-// Modified by Александр 05.11.2015 at 20:07
+﻿// Created 09.11.2015 
+// Modified by Gorbach Alex 09.11.2015 at 17:15
 
 namespace Assets.Scripts.State.Progress.Storage {
     internal interface IProgressStorage {

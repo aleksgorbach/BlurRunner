@@ -1,15 +1,15 @@
-﻿// Created 28.10.2015 
-// Modified by Gorbach Alex 06.11.2015 at 14:31
+﻿// Created 07.11.2015
+// Modified by Александр 08.11.2015 at 18:14
 
 namespace Assets.Scripts.EndlessEngine.Bonuses {
     #region References
 
     using System;
     using Engine.Extensions;
+    using Engine.Pool;
     using Gameplay.Bonuses;
     using Strategy;
     using UnityEngine;
-    using Zenject;
 
     #endregion
 
@@ -17,8 +17,15 @@ namespace Assets.Scripts.EndlessEngine.Bonuses {
         [SerializeField]
         private Transform _bonusesContainer;
 
-        [Inject]
-        private IGeneratingStrategy _strategy;
+        [SerializeField]
+        private BonusesPool _pool;
+
+        [SerializeField]
+        private AbstractStrategy _strategy;
+
+        protected override GameObjectPool<Bonus> Pool {
+            get { return _pool; }
+        }
 
         public event Action<int> ScoreChanged;
 
@@ -53,8 +60,8 @@ namespace Assets.Scripts.EndlessEngine.Bonuses {
             }
         }
 
-        [PostInject]
-        private void PostInject() {
+        protected override void Awake() {
+            base.Awake();
             _strategy.NeedGenerate += Add;
         }
     }

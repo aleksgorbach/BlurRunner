@@ -1,5 +1,5 @@
-﻿// Created 02.11.2015 
-// Modified by Gorbach Alex 04.11.2015 at 13:52
+﻿// Created 04.11.2015
+// Modified by Александр 08.11.2015 at 21:56
 
 namespace Assets.Scripts.Engine.Factory.Strategy {
     #region References

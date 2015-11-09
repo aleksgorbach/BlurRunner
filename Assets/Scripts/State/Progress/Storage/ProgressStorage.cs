@@ -1,5 +1,5 @@
-﻿// Created 22.10.2015 
-// Modified by Gorbach Alex 06.11.2015 at 15:12
+﻿// Created 09.11.2015 
+// Modified by Gorbach Alex 09.11.2015 at 17:31
 
 namespace Assets.Scripts.State.Progress.Storage {
     #region References
@@ -14,11 +14,9 @@ namespace Assets.Scripts.State.Progress.Storage {
         private readonly LevelProgress.Factory _factory;
         private readonly IList<ILevelProgress> _levelsProgress;
 
-        //todo избавиться здесь от зависимости от IScoreSource, потому что this - глобальный, а сурс - локальный в игре
-        public ProgressStorage(LevelProgress.Factory factory /*, IScoreSource scoreSource*/) {
+        public ProgressStorage(LevelProgress.Factory factory) {
             _factory = factory;
             _levelsProgress = new List<ILevelProgress>();
-            //scoreSource.ScoreChanged += OnScoreChanged;
             SetCurrentLevel(0);
         }
 
@@ -31,12 +29,11 @@ namespace Assets.Scripts.State.Progress.Storage {
         public ILevelProgress CurrentLevelProgress { get; private set; }
 
         public void SetCurrentLevel(int number) {
-            CurrentLevelProgress = _factory.Create(number);
-        }
-
-        private void OnScoreChanged(int currentScore) {
-            // обойтись без открытого сеттера
-            CurrentLevelProgress.Score = currentScore;
+            CurrentLevelProgress = _levelsProgress.FirstOrDefault(x => x.Number == number);
+            if (CurrentLevelProgress == null) {
+                CurrentLevelProgress = _factory.Create(number);
+                _levelsProgress.Add(CurrentLevelProgress);
+            }
         }
     }
 }

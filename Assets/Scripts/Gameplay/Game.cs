@@ -1,12 +1,12 @@
-﻿// Created 20.10.2015 
-// Modified by Gorbach Alex 06.11.2015 at 14:58
+﻿// Created 09.11.2015 
+// Modified by Gorbach Alex 09.11.2015 at 17:31
 
 namespace Assets.Scripts.Gameplay {
     #region References
 
     using System;
-    using System.Collections.Generic;
-    using Assets.Scripts.EndlessEngine;
+    using Assets.Scripts.State.Progress.Score;
+    using EndlessEngine;
     using Engine;
     using GameState.Manager;
     using GameState.StateChangedSources;
@@ -30,21 +30,24 @@ namespace Assets.Scripts.Gameplay {
         private IInstantiator _container;
 
         [SerializeField]
+        private AbstractGenerator[] _generators;
+
+        private Hero _hero;
+
+        [SerializeField]
         private Transform _heroSpawner;
 
         private bool _isPaused;
         private ILevel _level;
 
         [Inject]
+        private ILevelProgress _progress;
+
+        [Inject]
         private IGameStateManager _stateManager;
 
         [Inject]
-        private List<AbstractGenerator> _generators;
-
-        private Hero _hero;
-
-        [Inject]
-        private ILevelProgress _progress;
+        private IScoreSource _scoreSource;
 
         public ILevelProgress Progress {
             get {
@@ -106,6 +109,11 @@ namespace Assets.Scripts.Gameplay {
             _cameraAnchor.SetTarget(_hero.transform);
             _hero.Destination = _level.Length;
             _hero.Win += OnWin;
+            _scoreSource.ScoreChanged += OnScoreChanged;
+        }
+
+        private void OnScoreChanged(int currentScore) {
+            _progress.Score = currentScore;
         }
     }
 }

@@ -1,5 +1,5 @@
-﻿// Created 03.11.2015 
-// Modified by Gorbach Alex 04.11.2015 at 13:01
+﻿// Created 04.11.2015
+// Modified by Александр 08.11.2015 at 20:37
 
 namespace Assets.Scripts.Engine.Factory.Strategy {
     #region References
@@ -8,8 +8,7 @@ namespace Assets.Scripts.Engine.Factory.Strategy {
 
     #endregion
 
-    internal interface IChooseStrategy<T>
-        where T : class {
+    internal interface IChooseStrategy<T> {
         T Get(IEnumerable<T> items);
     }
 }

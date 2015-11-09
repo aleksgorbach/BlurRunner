@@ -1,13 +1,13 @@
-﻿// Created 03.11.2015 
-// Modified by Gorbach Alex 06.11.2015 at 14:33
+﻿// Created 07.11.2015
+// Modified by Александр 08.11.2015 at 20:22
 
 namespace Assets.Scripts.EndlessEngine.Decorations {
     #region References
 
-    using Strategy;
     using Engine.Extensions;
+    using Engine.Pool;
+    using Strategy;
     using UnityEngine;
-    using Zenject;
 
     #endregion
 
@@ -15,8 +15,21 @@ namespace Assets.Scripts.EndlessEngine.Decorations {
         [SerializeField]
         private Transform _container;
 
-        [Inject]
-        private IGeneratingStrategy _strategy;
+        [SerializeField]
+        private float _maxDistance;
+
+        [SerializeField]
+        private float _minDistance;
+
+        [SerializeField]
+        private DecorationPool _pool;
+
+        [SerializeField]
+        private AbstractStrategy _strategy;
+
+        protected override GameObjectPool<DecorationItem> Pool {
+            get { return _pool; }
+        }
 
         private void Add() {
             if (!CanGenerate) {
@@ -27,14 +40,15 @@ namespace Assets.Scripts.EndlessEngine.Decorations {
             created.transform.SetParent(_container, false);
             //var dir = (block.TreeContainer.position - _camera.transform.position);
             //created.transform.position = _camera.transform.position + dir/dir.z*Random.Range(600, 850);
-            var distanceToCreated = Random.Range(5, 100);
+            var distanceToCreated = Random.Range(_minDistance, _maxDistance);
             created.transform.position = transform.position;
             created.transform.SetLocalZ(distanceToCreated);
             Add(created);
         }
 
-        [PostInject]
-        private void PostInject() {
+
+        protected override void Awake() {
+            base.Awake();
             _strategy.NeedGenerate += Add;
         }
     }

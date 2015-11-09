@@ -1,5 +1,5 @@
-﻿// Created 02.11.2015
-// Modified by Александр 05.11.2015 at 20:49
+﻿// Created 09.11.2015 
+// Modified by Gorbach Alex 09.11.2015 at 8:43
 
 namespace Assets.Scripts.Gameplay.Bonuses {
     #region References
@@ -11,16 +11,25 @@ namespace Assets.Scripts.Gameplay.Bonuses {
 
     #endregion
 
-    internal abstract class Bonus : HidingItem, IBonus {
+    internal abstract class Bonus : HidingItem<Bonus>, IBonus {
         private bool _isCollectedNow = false;
 
         protected abstract int Direction { get; }
         protected abstract int Force { get; }
+
+        protected override Bonus Instance {
+            get {
+                return this;
+            }
+        }
+
         public event Action<Bonus> Collected;
         public event Action<Bonus> EndCollected;
 
         public int Points {
-            get { return Force*Direction; }
+            get {
+                return Force * Direction;
+            }
         }
 
         public abstract void Apply();

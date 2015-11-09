@@ -1,5 +1,5 @@
-﻿// Created 26.10.2015 
-// Modified by Gorbach Alex 04.11.2015 at 13:02
+﻿// Created 04.11.2015
+// Modified by Александр 08.11.2015 at 20:52
 
 namespace Assets.Scripts.Engine.Factory.Strategy {
     #region References
@@ -9,9 +9,8 @@ namespace Assets.Scripts.Engine.Factory.Strategy {
 
     #endregion
 
-    internal class FirstAvailableStrategy<T> : IChooseStrategy<T>
-        where T : class {
-        public T Get(IEnumerable<T> items) {
+    internal class FirstAvailableStrategy<T> : ChooseStrategy<T> {
+        public override T Get(IEnumerable<T> items) {
             return items.First();
         }
     }
