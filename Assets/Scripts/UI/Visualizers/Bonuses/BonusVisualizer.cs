@@ -1,5 +1,5 @@
 ﻿// Created 09.11.2015 
-// Modified by Gorbach Alex 09.11.2015 at 17:37
+// Modified by Gorbach Alex 10.11.2015 at 11:39
 
 namespace Assets.Scripts.UI.Visualizers.Bonuses {
     #region References
@@ -33,7 +33,7 @@ namespace Assets.Scripts.UI.Visualizers.Bonuses {
             }
             set {
                 var old = _balanseCount;
-                _balanseCount = Mathf.Clamp01(value / _maxProgress);
+                _balanseCount = value;
                 _balanse.fillAmount = _balanseCount;
                 _animator.SetTrigger(old < _balanseCount ? "positive" : "negative");
             }
@@ -44,9 +44,8 @@ namespace Assets.Scripts.UI.Visualizers.Bonuses {
             _progress.Changed += OnProgressChanged;
         }
 
-        private void OnProgressChanged(int deltaScore) {
-            Debug.Log("Current progress: " + deltaScore);
-            Balanse += deltaScore;
+        private void OnProgressChanged(int currentScore) {
+            Balanse = Mathf.Clamp01(currentScore / _maxProgress);
         }
 
         protected override void Awake() {
