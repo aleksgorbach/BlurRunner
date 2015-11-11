@@ -111,20 +111,29 @@
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
     </Reference>
+    <Reference Include="SmartLocalization_Runtime">
+      <HintPath>Assets\Extensions\SmartLocalization\SmartLocalization_Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="SmartLocalization_Editor">
+      <HintPath>Assets\Extensions\SmartLocalization\Editor\SmartLocalization_Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="CsvHelper">
+      <HintPath>Assets\Extensions\SmartLocalization\Scripts\Editor\ThirdParty\CSVHelper\CsvHelper.dll</HintPath>
+    </Reference>
     <Reference Include="DOTween">
       <HintPath>Assets\Plugins\Demigiant\DOTween\DOTween.dll</HintPath>
-    </Reference>
-    <Reference Include="DOTweenEditor">
-      <HintPath>Assets\Plugins\Demigiant\DOTween\Editor\DOTweenEditor.dll</HintPath>
     </Reference>
     <Reference Include="DOTween43">
       <HintPath>Assets\Plugins\Demigiant\DOTween\DOTween43.dll</HintPath>
     </Reference>
+    <Reference Include="DOTween46">
+      <HintPath>Assets\Plugins\Demigiant\DOTween\DOTween46.dll</HintPath>
+    </Reference>
     <Reference Include="DOTween50">
       <HintPath>Assets\Plugins\Demigiant\DOTween\DOTween50.dll</HintPath>
     </Reference>
-    <Reference Include="DOTween46">
-      <HintPath>Assets\Plugins\Demigiant\DOTween\DOTween46.dll</HintPath>
+    <Reference Include="DOTweenEditor">
+      <HintPath>Assets\Plugins\Demigiant\DOTween\Editor\DOTweenEditor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -138,12 +147,42 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Extensions\SmartLocalization\Scripts\uGUI\Editor\LocalizedTextInspector.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Editor\AlphaNumericSort.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Editor\AnimationCurvesCopier.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Editor\AnimationEventCopier.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Editor\AnimationHierarchyEditor.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Editor\AnimationToPNGMenu.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Editor\BakePoseEditor.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Editor\BoneEditor.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Editor\ControlPointEditor.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Editor\InverseKinematicsEditor.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Editor\MeshCreator.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Editor\PoseEditor.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Editor\SkeletonEditor.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Editor\Skin2DEditor.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Editor\SkinMakerEditor.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Editor\SkinMesh.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Editor\SortLayerExposedEditor.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Editor\SortLayerMaterialEditor.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Editor\SortingLayerDrawer.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Editor\SortingLayerHelper.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Editor\Weightpainter.cs" />
     <Compile Include="Assets\Extensions\Zenject\Main\Editor\ObjectGraphVisualizer.cs" />
     <Compile Include="Assets\Extensions\Zenject\Main\Editor\UnityInspectorListEditor.cs" />
     <Compile Include="Assets\Extensions\Zenject\Main\Editor\ZenEditorUtil.cs" />
     <Compile Include="Assets\Extensions\Zenject\Main\Editor\ZenjectMenu.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Extensions\SmartLocalization\Editor\SmartLocalization_Editor.XML" />
+    <None Include="Assets\Extensions\SmartLocalization\README.txt" />
+    <None Include="Assets\Extensions\SmartLocalization\Resources\EmptyResourceHeader.txt" />
+    <None Include="Assets\Extensions\SmartLocalization\SmartLocalization_Runtime.XML" />
+    <None Include="Assets\Extensions\SmartLocalization\smartloc_licenses.txt" />
+    <None Include="Assets\Extensions\SpritesAndBones\Shader\LinesColoredBlended.shader" />
+    <None Include="Assets\Extensions\SpritesAndBones\Shader\Sprites-Skeleton-Cutout.shader" />
+    <None Include="Assets\Extensions\SpritesAndBones\Shader\Sprites-Skeleton-Diffuse.shader" />
+    <None Include="Assets\Extensions\SpritesAndBones\license-attributions.txt" />
     <None Include="Assets\Extensions\Zenject\LICENSE.txt" />
     <None Include="Assets\Plugins\Demigiant\DOTween\DOTween.XML" />
     <None Include="Assets\Plugins\Demigiant\DOTween\DOTween43.xml" />
@@ -151,6 +190,11 @@
     <None Include="Assets\Plugins\Demigiant\DOTween\DOTween50.xml" />
     <None Include="Assets\Plugins\Demigiant\DOTween\Editor\DOTweenEditor.XML" />
     <None Include="Assets\Plugins\Demigiant\DOTween\readme.txt" />
+    <None Include="Assets\SmartLocalizationWorkspace\AutoGenerated\Resources\AvailableCultures.xml" />
+    <None Include="Assets\SmartLocalizationWorkspace\AutoGenerated\Resources\Language.en.txt" />
+    <None Include="Assets\SmartLocalizationWorkspace\AutoGenerated\Resources\Language.ru.txt" />
+    <None Include="Assets\SmartLocalizationWorkspace\AutoGenerated\Resources\Language.txt" />
+    <None Include="Assets\SmartLocalizationWorkspace\Data\SmartCultureInfoData\SmartCultureInfo.xml" />
     <None Include="Assets\StaticAssets\Common\Levels\levels.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />

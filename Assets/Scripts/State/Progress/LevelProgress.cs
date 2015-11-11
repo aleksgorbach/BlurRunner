@@ -29,26 +29,15 @@ namespace Assets.Scripts.State.Progress {
                 if (old != _score) {
                     OnChanged();
                 }
-                if (_score < 0) {
-                    OnBecameNegative();
-                }
             }
         }
 
         public event Action<int> Changed;
-        public event Action BecomeNegative;
 
         private void OnChanged() {
             var handler = Changed;
             if (handler != null) {
                 handler.Invoke(Score);
-            }
-        }
-
-        private void OnBecameNegative() {
-            var handler = BecomeNegative;
-            if (handler != null) {
-                handler.Invoke();
             }
         }
 

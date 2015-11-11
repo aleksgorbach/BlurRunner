@@ -1,5 +1,5 @@
-﻿// Created 24.10.2015
-// Modified by Александр 25.10.2015 at 10:47
+﻿// Created 26.10.2015 
+// Modified by Gorbach Alex 11.11.2015 at 13:06
 
 namespace Assets.Scripts.Gameplay.GameState.Manager {
     #region References
@@ -13,5 +13,9 @@ namespace Assets.Scripts.Gameplay.GameState.Manager {
     internal interface IGameStateManager {
         GameState State { get; }
         event StateChangedDelegate StateChanged;
+
+        void Pause();
+
+        void Resume();
     }
 }

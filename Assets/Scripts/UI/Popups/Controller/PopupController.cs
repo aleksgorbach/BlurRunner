@@ -1,5 +1,5 @@
 ﻿// Created 23.10.2015 
-// Modified by Gorbach Alex 06.11.2015 at 9:48
+// Modified by Gorbach Alex 11.11.2015 at 13:59
 
 namespace Assets.Scripts.UI.Popups.Controller {
     #region References
@@ -9,7 +9,6 @@ namespace Assets.Scripts.UI.Popups.Controller {
     using Gameplay.Consts;
     using Implementations;
     using Gameplay.GameState.Manager;
-    using Gameplay.GameState.StateChangedSources;
     using Engine;
     using Factory;
     using UnityEngine;
@@ -17,7 +16,7 @@ namespace Assets.Scripts.UI.Popups.Controller {
 
     #endregion
 
-    internal class PopupController : MonoBehaviourBase, IPopupController, IRunSource {
+    internal class PopupController : MonoBehaviourBase, IPopupController {
         [Inject]
         private PopupPool _pool;
 
@@ -26,7 +25,8 @@ namespace Assets.Scripts.UI.Popups.Controller {
 
         private Stack<Popup> _popups;
 
-        public event Action Run;
+        public event Action<IPopup, int> PopupOpened;
+        public event Action<IPopup, int> PopupClosed;
 
         private IPopup Show<TPopup>() where TPopup : Popup {
             var popup = _pool.Get<TPopup>();
@@ -36,6 +36,7 @@ namespace Assets.Scripts.UI.Popups.Controller {
             popup.rectTransform.offsetMin = Vector2.zero;
             _popups.Push(popup);
             Subscribe(popup);
+            OnPopupOpened(popup);
             return popup;
         }
 
@@ -70,14 +71,7 @@ namespace Assets.Scripts.UI.Popups.Controller {
                 var top = _popups.Pop();
                 Unsubscribe(top);
                 _pool.Release(top);
-                OnResume();
-            }
-        }
-
-        private void OnResume() {
-            var handler = Run;
-            if (handler != null) {
-                handler.Invoke();
+                OnPopupClosed(popup);
             }
         }
 
@@ -89,6 +83,20 @@ namespace Assets.Scripts.UI.Popups.Controller {
         [PostInject]
         private void PostInject() {
             Subscribe();
+        }
+
+        private void OnPopupOpened(IPopup popup) {
+            var handler = PopupOpened;
+            if (handler != null) {
+                handler.Invoke(popup, _popups.Count);
+            }
+        }
+
+        private void OnPopupClosed(IPopup popup) {
+            var handler = PopupClosed;
+            if (handler != null) {
+                handler.Invoke(popup, _popups.Count);
+            }
         }
     }
 }

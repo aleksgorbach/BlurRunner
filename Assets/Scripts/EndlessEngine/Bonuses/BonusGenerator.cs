@@ -1,5 +1,5 @@
-﻿// Created 07.11.2015
-// Modified by Александр 08.11.2015 at 18:14
+﻿// Created 28.10.2015 
+// Modified by Gorbach Alex 11.11.2015 at 14:32
 
 namespace Assets.Scripts.EndlessEngine.Bonuses {
     #region References
@@ -21,10 +21,15 @@ namespace Assets.Scripts.EndlessEngine.Bonuses {
         private BonusesPool _pool;
 
         [SerializeField]
+        private Position _position;
+
+        [SerializeField]
         private AbstractStrategy _strategy;
 
         protected override GameObjectPool<Bonus> Pool {
-            get { return _pool; }
+            get {
+                return _pool;
+            }
         }
 
         public event Action<int> ScoreChanged;
@@ -37,7 +42,7 @@ namespace Assets.Scripts.EndlessEngine.Bonuses {
             bonus.gameObject.SetActive(true);
             bonus.transform.SetParent(_bonusesContainer);
             bonus.transform.position = transform.position;
-            bonus.transform.SetLocalY(UnityEngine.Random.Range(-150, 250));
+            bonus.transform.SetLocalY(UnityEngine.Random.Range(_position.Min, _position.Max));
             bonus.transform.SetLocalZ(0);
             bonus.Collected += OnCollected;
             bonus.EndCollected += OnEndCollected;
@@ -63,6 +68,12 @@ namespace Assets.Scripts.EndlessEngine.Bonuses {
         protected override void Awake() {
             base.Awake();
             _strategy.NeedGenerate += Add;
+        }
+
+        [Serializable]
+        public class Position {
+            public float Min;
+            public float Max;
         }
     }
 }

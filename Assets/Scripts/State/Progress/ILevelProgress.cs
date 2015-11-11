@@ -1,5 +1,5 @@
-﻿// Created 09.11.2015 
-// Modified by Gorbach Alex 10.11.2015 at 11:42
+﻿// Created 22.10.2015 
+// Modified by Gorbach Alex 11.11.2015 at 12:28
 
 namespace Assets.Scripts.State.Progress {
     #region References
@@ -13,6 +13,5 @@ namespace Assets.Scripts.State.Progress {
         int Score { get; set; }
 
         event Action<int> Changed;
-        event Action BecomeNegative;
     }
 }

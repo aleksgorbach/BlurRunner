@@ -1,12 +1,11 @@
 ﻿// Created 23.10.2015 
-// Modified by Gorbach Alex 06.11.2015 at 9:59
+// Modified by Gorbach Alex 11.11.2015 at 13:09
 
 namespace Assets.Scripts.ZenjectConfig {
     #region References
 
     using System;
     using System.Collections.Generic;
-    using Assets.Scripts.Gameplay.GameState.StateChangedSources;
     using UI.Menus.Game;
     using UI.Popups;
     using UI.Popups.Controller;
@@ -35,8 +34,6 @@ namespace Assets.Scripts.ZenjectConfig {
             Container.Bind<PopupPool.ISettings>().ToSingleInstance(_settings);
             Container.Bind<PopupPool>().ToSingle();
             Container.Bind<IBonusVisualizer>().ToInstance(_bonusVisualizer);
-            Container.Bind<IPauseSource>().ToInstance(_guiController);
-            Container.Bind<IRunSource>().ToInstance(_popupController);
         }
 
         [Serializable]

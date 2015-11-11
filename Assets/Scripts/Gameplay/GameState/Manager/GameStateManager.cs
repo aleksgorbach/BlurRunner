@@ -1,10 +1,11 @@
 ﻿// Created 26.10.2015 
-// Modified by Gorbach Alex 06.11.2015 at 8:36
+// Modified by Gorbach Alex 11.11.2015 at 14:12
 
 namespace Assets.Scripts.Gameplay.GameState.Manager {
     #region References
 
     using System.Collections.Generic;
+    using State.Progress;
     using StateChangedSources;
     using Consts;
     using Zenject;
@@ -15,14 +16,11 @@ namespace Assets.Scripts.Gameplay.GameState.Manager {
         [Inject]
         private List<IWinSource> _winSources;
 
-        //[Inject]
-        //private List<IFailSource> _failSources;
-
         [Inject]
-        private List<IPauseSource> _pauseSources;
+        private ILevelProgress _progress;
 
-        [Inject]
-        private List<IRunSource> _runSources;
+        [Inject(Identifiers.Scores.MinValue)]
+        private int _scoreToLose;
 
         private GameState _state;
 
@@ -40,21 +38,30 @@ namespace Assets.Scripts.Gameplay.GameState.Manager {
 
         public event StateChangedDelegate StateChanged;
 
+        public void Pause() {
+            if (State == GameState.Running) {
+                ChangeState(GameState.Paused);
+            }
+        }
+
+        public void Resume() {
+            if (State == GameState.Paused) {
+                ChangeState(GameState.Running);
+            }
+        }
+
         [PostInject]
         private void PostInject() {
             foreach (var source in _winSources) {
                 source.Win += (s) => ChangeState(GameState.Win);
             }
 
-            //foreach (var source in _failSources) {
-            //    source.Failed += (s) => ChangeState(GameState.Lose);
-            //}
+            _progress.Changed += OnProgressChanged;
+        }
 
-            foreach (var source in _pauseSources) {
-                source.Pause += () => ChangeState(GameState.Paused);
-            }
-            foreach (var source in _runSources) {
-                source.Run += () => ChangeState(GameState.Running);
+        private void OnProgressChanged(int currentScore) {
+            if (currentScore <= _scoreToLose) {
+                ChangeState(GameState.Lose);
             }
         }
 

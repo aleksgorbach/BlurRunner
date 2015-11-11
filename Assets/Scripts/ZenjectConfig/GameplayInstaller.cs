@@ -1,5 +1,5 @@
-﻿// Created 09.11.2015 
-// Modified by Gorbach Alex 09.11.2015 at 17:33
+﻿// Created 20.10.2015 
+// Modified by Gorbach Alex 11.11.2015 at 14:06
 
 #region References
 
@@ -8,6 +8,8 @@
 namespace Assets.Scripts.ZenjectConfig {
     #region References
 
+    using System;
+    using Assets.Scripts.Gameplay.Consts;
     using EndlessEngine.Bonuses;
     using State.Progress.Score;
     using Gameplay;
@@ -27,6 +29,9 @@ namespace Assets.Scripts.ZenjectConfig {
         [SerializeField]
         private BonusGenerator _bonusGenerator;
 
+        [SerializeField]
+        private ScoreSettings _scoreSettings;
+
         public override void InstallBindings() {
             Container.Bind<IGame>().ToInstance(_game);
             Container.Bind<IGameStateManager>().ToSingle<GameStateManager>();
@@ -34,6 +39,12 @@ namespace Assets.Scripts.ZenjectConfig {
             Container.Bind<IWinSource>().ToInstance(_game);
             Container.Bind<ILevelProgress>().ToGetter<IProgressStorage>(x => x.CurrentLevelProgress);
             Container.Bind<IScoreSource>().ToInstance(_bonusGenerator);
+            Container.Bind<int>(Identifiers.Scores.MinValue).ToInstance(_scoreSettings.ScoreToLose);
+        }
+
+        [Serializable]
+        public class ScoreSettings {
+            public int ScoreToLose;
         }
     }
 }

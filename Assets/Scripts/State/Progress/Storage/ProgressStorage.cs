@@ -1,12 +1,11 @@
-﻿// Created 09.11.2015 
-// Modified by Gorbach Alex 09.11.2015 at 17:31
+﻿// Created 22.10.2015 
+// Modified by Gorbach Alex 11.11.2015 at 12:22
 
 namespace Assets.Scripts.State.Progress.Storage {
     #region References
 
     using System.Collections.Generic;
     using System.Linq;
-    using Score;
 
     #endregion
 

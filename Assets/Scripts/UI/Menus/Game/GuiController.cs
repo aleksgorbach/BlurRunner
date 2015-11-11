@@ -1,14 +1,12 @@
 ﻿// Created 23.10.2015 
-// Modified by Gorbach Alex 06.11.2015 at 8:35
+// Modified by Gorbach Alex 11.11.2015 at 14:04
 
 namespace Assets.Scripts.UI.Menus.Game {
     #region References
 
-    using System;
-    using Assets.Scripts.Gameplay.GameState.StateChangedSources;
-    using Assets.Scripts.UI.Popups.Implementations;
-    using Engine;
     using Popups;
+    using Gameplay.GameState.Manager;
+    using Engine;
     using Popups.Controller;
     using State.ScenesInteraction.Loaders;
     using UnityEngine;
@@ -17,21 +15,21 @@ namespace Assets.Scripts.UI.Menus.Game {
 
     #endregion
 
-    internal class GuiController : MonoBehaviourBase, IPauseSource {
+    internal class GuiController : MonoBehaviourBase {
         [SerializeField]
         private Button _backButton;
 
         [SerializeField]
         private Button _pauseButton;
 
+        [Inject]
+        private IGameStateManager _stateManager;
+
+        [Inject]
         private ISceneLoader _sceneLoader;
 
-        public event Action Pause;
-
-        [PostInject]
-        private void Inject(ISceneLoader sceneLoader) {
-            _sceneLoader = sceneLoader;
-        }
+        [Inject]
+        private IPopupController _popupController;
 
         protected override void Awake() {
             base.Awake();
@@ -39,18 +37,27 @@ namespace Assets.Scripts.UI.Menus.Game {
             _backButton.onClick.AddListener(Exit);
         }
 
+        [PostInject]
+        private void PostInject() {
+            _popupController.PopupOpened += OnPopupCountChanged;
+            _popupController.PopupClosed += OnPopupCountChanged;
+        }
+
+        private void OnPopupCountChanged(IPopup popup, int activePopupsCount) {
+            if (activePopupsCount > 0) {
+                _stateManager.Pause();
+            }
+            else {
+                _stateManager.Resume();
+            }
+        }
+
         private void Exit() {
             _sceneLoader.GoToScene(Scene.LevelChoose);
         }
 
         private void OnPause() {
-            //_popupController.Show<PausePopup>().Click += ClosePopup;
-            //todo вместо этого вызывать Game.Pause();
-            //Time.timeScale = 0;
-            var handler = Pause;
-            if (handler != null) {
-                handler.Invoke();
-            }
+            _stateManager.Pause();
         }
     }
 }

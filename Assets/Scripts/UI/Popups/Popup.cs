@@ -1,5 +1,5 @@
 ﻿// Created 23.10.2015 
-// Modified by Gorbach Alex 06.11.2015 at 9:15
+// Modified by Gorbach Alex 11.11.2015 at 14:54
 
 namespace Assets.Scripts.UI.Popups {
     #region References
@@ -24,11 +24,15 @@ namespace Assets.Scripts.UI.Popups {
                 new EventTrigger.Entry { eventID = EventTriggerType.PointerClick, callback = trigger });
         }
 
-        protected virtual void OnClick(BaseEventData args) {
+        private void OnClick(BaseEventData args) {
             Close();
         }
 
+        protected virtual void OnClose() {
+        }
+
         private void Close() {
+            OnClose();
             var handler = Closed;
             if (handler != null) {
                 handler.Invoke(this);

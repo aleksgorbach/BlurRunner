@@ -12,14 +12,12 @@
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <TargetFrameworkProfile>Unity Full v3.5</TargetFrameworkProfile>
+    <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>Android:13</UnityBuildTarget>
     <UnityVersion>5.2.1f1</UnityVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -68,17 +66,20 @@
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
     </Reference>
+    <Reference Include="SmartLocalization_Runtime">
+      <HintPath>Assets\Extensions\SmartLocalization\SmartLocalization_Runtime.dll</HintPath>
+    </Reference>
     <Reference Include="DOTween">
       <HintPath>Assets\Plugins\Demigiant\DOTween\DOTween.dll</HintPath>
     </Reference>
     <Reference Include="DOTween43">
       <HintPath>Assets\Plugins\Demigiant\DOTween\DOTween43.dll</HintPath>
     </Reference>
-    <Reference Include="DOTween50">
-      <HintPath>Assets\Plugins\Demigiant\DOTween\DOTween50.dll</HintPath>
-    </Reference>
     <Reference Include="DOTween46">
       <HintPath>Assets\Plugins\Demigiant\DOTween\DOTween46.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween50">
+      <HintPath>Assets\Plugins\Demigiant\DOTween\DOTween50.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -88,7 +89,128 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Extensions\CustomAssetBuilder\CustomAsset.cs" />
+    <Compile Include="Assets\Extensions\CustomAssetBuilder\CustomAssetUtility.cs" />
     <Compile Include="Assets\Extensions\LoggingHelper\Scripts\LoggingHelper.cs" />
+    <Compile Include="Assets\Extensions\SmartLocalization\Scripts\uGUI\LocalizedText.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\AnimationWindowUtils.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Bone.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\ControlPoint.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Helper.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\InverseKinematics.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Perspective2DSortMode.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Pose.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\ScriptableObjectUtility.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Skeleton.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Skin2D.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\SkinMaker.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\SortingLayerAttribute.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\SortingLayerExposed.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Polygon\Polygon.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Polygon\PolygonPoint.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Polygon\PolygonSet.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangle.NET\MeshRenderer.Core\BoundingBox.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangle.NET\MeshRenderer.Core\ColorManager.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangle.NET\MeshRenderer.Core\ExtensionMethods.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangle.NET\MeshRenderer.Core\GDI\RenderControl.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangle.NET\MeshRenderer.Core\GDI\TMeshRenderer.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangle.NET\MeshRenderer.Core\GDI\VoronoiRenderer.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangle.NET\MeshRenderer.Core\IMeshRenderer.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangle.NET\MeshRenderer.Core\RenderData.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangle.NET\MeshRenderer.Core\RenderManager.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangle.NET\MeshRenderer.Core\Zoom.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangle.NET\Triangle\Algorithm\Dwyer.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangle.NET\Triangle\Algorithm\ITriangulator.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangle.NET\Triangle\Algorithm\Incremental.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangle.NET\Triangle\Algorithm\SweepLine.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangle.NET\Triangle\BadTriQueue.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangle.NET\Triangle\Behavior.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangle.NET\Triangle\Carver.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangle.NET\Triangle\Data\BadSubseg.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangle.NET\Triangle\Data\BadTriangle.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangle.NET\Triangle\Data\Osub.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangle.NET\Triangle\Data\Otri.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangle.NET\Triangle\Data\Segment.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangle.NET\Triangle\Data\Triangle.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangle.NET\Triangle\Data\Vertex.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangle.NET\Triangle\Enums.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangle.NET\Triangle\Geometry\BoundingBox.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangle.NET\Triangle\Geometry\Edge.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangle.NET\Triangle\Geometry\EdgeEnumerator.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangle.NET\Triangle\Geometry\ISegment.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangle.NET\Triangle\Geometry\ITriangle.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangle.NET\Triangle\Geometry\InputGeometry.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangle.NET\Triangle\Geometry\Point.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangle.NET\Triangle\Geometry\RegionPointer.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangle.NET\Triangle\IO\DataReader.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangle.NET\Triangle\IO\DebugWriter.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangle.NET\Triangle\IO\FileReader.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangle.NET\Triangle\IO\FileWriter.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangle.NET\Triangle\IO\IGeometryFormat.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangle.NET\Triangle\IO\IMeshFormat.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangle.NET\Triangle\IO\InputTriangle.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangle.NET\Triangle\IO\TriangleFormat.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangle.NET\Triangle\Log\ILog.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangle.NET\Triangle\Log\ILogItem.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangle.NET\Triangle\Log\SimpleLog.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangle.NET\Triangle\Log\SimpleLogItem.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangle.NET\Triangle\Mesh.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangle.NET\Triangle\NewLocation.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangle.NET\Triangle\Primitives.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangle.NET\Triangle\Properties\AssemblyInfo.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangle.NET\Triangle\Quality.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangle.NET\Triangle\Sampler.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangle.NET\Triangle\Smoothing\ISmoother.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangle.NET\Triangle\Smoothing\SimpleSmoother.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangle.NET\Triangle\Tools\AdjacencyMatrix.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangle.NET\Triangle\Tools\BoundedVoronoi.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangle.NET\Triangle\Tools\CuthillMcKee.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangle.NET\Triangle\Tools\IVoronoi.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangle.NET\Triangle\Tools\QuadTree.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangle.NET\Triangle\Tools\QualityMeasure.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangle.NET\Triangle\Tools\RegionIterator.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangle.NET\Triangle\Tools\Statistic.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangle.NET\Triangle\Tools\Voronoi.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangle.NET\Triangle\Tools\VoronoiRegion.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangle.NET\Triangle\TriangleLocator.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangle.NET\TriangleNetExtensions.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangulation\Delaunay\DelaunayTriangle.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangulation\Delaunay\Sweep\AdvancingFront.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangulation\Delaunay\Sweep\AdvancingFrontNode.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangulation\Delaunay\Sweep\DTSweep.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangulation\Delaunay\Sweep\DTSweepBasin.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangulation\Delaunay\Sweep\DTSweepConstraint.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangulation\Delaunay\Sweep\DTSweepContext.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangulation\Delaunay\Sweep\DTSweepDebugContext.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangulation\Delaunay\Sweep\DTSweepEdgeEvent.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangulation\Delaunay\Sweep\DTSweepPointComparator.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangulation\Delaunay\Sweep\PointOnEdgeException.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangulation\ITriangulatable.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangulation\Orientation.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangulation\Sets\ConstrainedPointSet.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangulation\Sets\PointSet.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangulation\TriangulationAlgorithm.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangulation\TriangulationConstraint.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangulation\TriangulationContext.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangulation\TriangulationDebugContext.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangulation\TriangulationMode.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangulation\TriangulationPoint.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangulation\TriangulationUtil.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangulation\Util\PointGenerator.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Triangulation\Util\PolygonGenerator.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Utility\FixedArray3.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Triangulation\Utility\FixedBitArray3.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Utils\AnimationToPNG.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Utils\BitmapHelper.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Utils\Bone2DWeight.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Utils\HSBColor.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Utils\MeshHelper.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Utils\PolygonMesh.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Utils\SimplifyTools.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Utils\SpriteMesh.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Utils\Triangulator.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Utils\Utils.cs" />
+    <Compile Include="Assets\Extensions\SpritesAndBones\Scripts\Utils\Vertices.cs" />
     <Compile Include="Assets\Extensions\Zenject\Internal\Assert.cs" />
     <Compile Include="Assets\Extensions\Zenject\Internal\Func.cs" />
     <Compile Include="Assets\Extensions\Zenject\Internal\LinqExtensions.cs" />
@@ -178,39 +300,53 @@
     <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Util\SceneDecoratorCompositionRoot.cs" />
     <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Util\UnityUtil.cs" />
     <Compile Include="Assets\Scripts\Debug\TimeStop.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\AbstractGenerator.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\Background\BackgroundGenerator.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\Background\BackgroundPool.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\Background\HillFactory.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\Background\HillItem.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\Background\HillStrategy.cs" />
     <Compile Include="Assets\Scripts\EndlessEngine\Bonuses\BonusCollector.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\Bonuses\BonusFactory.cs" />
     <Compile Include="Assets\Scripts\EndlessEngine\Bonuses\BonusGenerator.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\Bonuses\BonusStrategy.cs" />
     <Compile Include="Assets\Scripts\EndlessEngine\Bonuses\BonusesPool.cs" />
     <Compile Include="Assets\Scripts\EndlessEngine\Bonuses\IBonusGenerator.cs" />
-    <Compile Include="Assets\Scripts\EndlessEngine\Bonuses\Strategy\AbstractBonusStrategy.cs" />
-    <Compile Include="Assets\Scripts\EndlessEngine\Bonuses\Strategy\IBonusStrategy.cs" />
-    <Compile Include="Assets\Scripts\EndlessEngine\Bonuses\Strategy\TimeBonusStrategy.cs" />
     <Compile Include="Assets\Scripts\EndlessEngine\Decorations\DecorationGenerator.cs" />
     <Compile Include="Assets\Scripts\EndlessEngine\Decorations\DecorationItem.cs" />
     <Compile Include="Assets\Scripts\EndlessEngine\Decorations\DecorationPool.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\Decorations\DecorationStrategy.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\Decorations\DecorationsFactory.cs" />
     <Compile Include="Assets\Scripts\EndlessEngine\Decorations\IDecorationGenerator.cs" />
-    <Compile Include="Assets\Scripts\EndlessEngine\Decorations\Strategy\AbstractStrategy.cs" />
-    <Compile Include="Assets\Scripts\EndlessEngine\Decorations\Strategy\IGeneratingStrategy.cs" />
-    <Compile Include="Assets\Scripts\EndlessEngine\Decorations\Strategy\RandomStrategy.cs" />
     <Compile Include="Assets\Scripts\EndlessEngine\Ground\GroundBlock.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\Ground\GroundFactory.cs" />
     <Compile Include="Assets\Scripts\EndlessEngine\Ground\GroundGenerator.cs" />
     <Compile Include="Assets\Scripts\EndlessEngine\Ground\GroundPool.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\Ground\GroundStrategy.cs" />
     <Compile Include="Assets\Scripts\EndlessEngine\Ground\IGroundBlock.cs" />
     <Compile Include="Assets\Scripts\EndlessEngine\Ground\IGroundGenerator.cs" />
     <Compile Include="Assets\Scripts\EndlessEngine\HidingItem.cs" />
     <Compile Include="Assets\Scripts\EndlessEngine\HidingItemGenerator.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\IRemovable.cs" />
     <Compile Include="Assets\Scripts\EndlessEngine\Interfaces\IHiding.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\ObjectRemoveTrigger.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\SolidGenerator.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\SolidItem.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\Strategy\AbstractStrategy.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\Strategy\IGeneratingStrategy.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\Strategy\TimeRandomStrategy.cs" />
     <Compile Include="Assets\Scripts\Engine\Extensions\CameraExtensions.cs" />
     <Compile Include="Assets\Scripts\Engine\Extensions\EnumerableExtensions.cs" />
     <Compile Include="Assets\Scripts\Engine\Extensions\ListExtensions.cs" />
     <Compile Include="Assets\Scripts\Engine\Extensions\TransformExtensions.cs" />
     <Compile Include="Assets\Scripts\Engine\Factory\AbstractGameObjectFactory.cs" />
-    <Compile Include="Assets\Scripts\Engine\Factory\GameObjectFactory.cs" />
     <Compile Include="Assets\Scripts\Engine\Factory\IFactory.cs" />
-    <Compile Include="Assets\Scripts\Engine\Factory\RandomGameObjectFactory.cs" />
+    <Compile Include="Assets\Scripts\Engine\Factory\MultipleGameObjectFactory.cs" />
+    <Compile Include="Assets\Scripts\Engine\Factory\SingleGameObjectFactory.cs" />
+    <Compile Include="Assets\Scripts\Engine\Factory\Strategy\ChooseStrategy.cs" />
     <Compile Include="Assets\Scripts\Engine\Factory\Strategy\CompatibleStrategy.cs" />
     <Compile Include="Assets\Scripts\Engine\Factory\Strategy\FirstAvailableStrategy.cs" />
-    <Compile Include="Assets\Scripts\Engine\Factory\Strategy\IPoolStrategy.cs" />
+    <Compile Include="Assets\Scripts\Engine\Factory\Strategy\IChooseStrategy.cs" />
     <Compile Include="Assets\Scripts\Engine\Factory\Strategy\RandomStrategy.cs" />
     <Compile Include="Assets\Scripts\Engine\Input\IInputController.cs" />
     <Compile Include="Assets\Scripts\Engine\Input\InputController.cs" />
@@ -245,19 +381,14 @@
     <Compile Include="Assets\Scripts\Gameplay\Bonuses\Implementations\Positive\PositiveBonus.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Bonuses\Implementations\Positive\VitamineBonus.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Consts\GameState.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\Consts\Identifiers.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Game.cs" />
     <Compile Include="Assets\Scripts\Gameplay\GameState\Manager\GameStateManager.cs" />
     <Compile Include="Assets\Scripts\Gameplay\GameState\Manager\IGameStateManager.cs" />
-    <Compile Include="Assets\Scripts\Gameplay\GameState\Pause\IPauseHandler.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\GameState\StateChangedSources\IWinSource.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Heroes\Hero.cs" />
-    <Compile Include="Assets\Scripts\Gameplay\Heroes\Stand.cs" />
     <Compile Include="Assets\Scripts\Gameplay\IGame.cs" />
     <Compile Include="Assets\Scripts\Localization\ILocalizable.cs" />
-    <Compile Include="Assets\Scripts\Localization\Locales\ILocale.cs" />
-    <Compile Include="Assets\Scripts\Localization\Locales\RussianLocale.cs" />
-    <Compile Include="Assets\Scripts\Localization\Localizators\DefaultLocalizator.cs" />
-    <Compile Include="Assets\Scripts\Localization\Localizators\ILocalizator.cs" />
-    <Compile Include="Assets\Scripts\Localization\Keys\InAppKeys.cs" />
     <Compile Include="Assets\Scripts\Localization\LocalizableText.cs" />
     <Compile Include="Assets\Scripts\Purchases\Handlers\EditorInAppHandler.cs" />
     <Compile Include="Assets\Scripts\Purchases\Handlers\IInAppHandler.cs" />
@@ -276,11 +407,16 @@
     <Compile Include="Assets\Scripts\State\Levels\Storage\LevelStorage.cs" />
     <Compile Include="Assets\Scripts\State\Progress\ILevelProgress.cs" />
     <Compile Include="Assets\Scripts\State\Progress\LevelProgress.cs" />
+    <Compile Include="Assets\Scripts\State\Progress\Score\IScoreSource.cs" />
     <Compile Include="Assets\Scripts\State\Progress\Storage\IProgressStorage.cs" />
     <Compile Include="Assets\Scripts\State\Progress\Storage\ProgressStorage.cs" />
     <Compile Include="Assets\Scripts\State\ScenesInteraction\Controllers\GameController.cs" />
+    <Compile Include="Assets\Scripts\State\ScenesInteraction\Controllers\LevelsController.cs" />
+    <Compile Include="Assets\Scripts\State\ScenesInteraction\Controllers\ShopController.cs" />
     <Compile Include="Assets\Scripts\State\ScenesInteraction\Loaders\ISceneLoader.cs" />
     <Compile Include="Assets\Scripts\State\ScenesInteraction\Loaders\SceneLoader.cs" />
+    <Compile Include="Assets\Scripts\UI\Graphics\GraphicCacheKeys.cs" />
+    <Compile Include="Assets\Scripts\UI\Graphics\GraphicsCache.cs" />
     <Compile Include="Assets\Scripts\UI\Menus\Game\GuiController.cs" />
     <Compile Include="Assets\Scripts\UI\Menus\Levels\ILevelChoosingMenu.cs" />
     <Compile Include="Assets\Scripts\UI\Menus\Levels\LevelItem\ILevelItem.cs" />
@@ -293,26 +429,34 @@
     <Compile Include="Assets\Scripts\UI\Popups\Controller\PopupController.cs" />
     <Compile Include="Assets\Scripts\UI\Popups\Factory\PopupPool.cs" />
     <Compile Include="Assets\Scripts\UI\Popups\IPopup.cs" />
-    <Compile Include="Assets\Scripts\UI\Popups\Implementations\PausePopup\PausePopup.cs" />
+    <Compile Include="Assets\Scripts\UI\Popups\Implementations\CompletedPopup.cs" />
+    <Compile Include="Assets\Scripts\UI\Popups\Implementations\FailedPopup.cs" />
+    <Compile Include="Assets\Scripts\UI\Popups\Implementations\LevelFinishedPopup.cs" />
+    <Compile Include="Assets\Scripts\UI\Popups\Implementations\PausePopup.cs" />
     <Compile Include="Assets\Scripts\UI\Popups\Popup.cs" />
     <Compile Include="Assets\Scripts\UI\Visualizers\Bonuses\BonusVisualizer.cs" />
     <Compile Include="Assets\Scripts\UI\Visualizers\Bonuses\IBonusVisualizer.cs" />
-    <Compile Include="Assets\Scripts\UI\Visualizers\InApps\VisualPurchaseFactory.cs" />
     <Compile Include="Assets\Scripts\UI\Visualizers\InApps\VisualPurchase.cs" />
-    <Compile Include="Assets\Scripts\UI\Visualizers\Stars\IStarsVisualizer.cs" />
-    <Compile Include="Assets\Scripts\UI\Visualizers\Stars\Presenter\StarsVisualizerPresenter.cs" />
-    <Compile Include="Assets\Scripts\UI\Visualizers\Stars\StarFactory.cs" />
-    <Compile Include="Assets\Scripts\UI\Visualizers\Stars\StarsVisualizer.cs" />
-    <Compile Include="Assets\Scripts\UI\Visualizers\Stars\StatedStar.cs" />
     <Compile Include="Assets\Scripts\ZenjectConfig\DebugInstaller.cs" />
     <Compile Include="Assets\Scripts\ZenjectConfig\GameplayInstaller.cs" />
-    <Compile Include="Assets\Scripts\ZenjectConfig\GlobalInstaller.cs" />
+    <Compile Include="Assets\Scripts\ZenjectConfig\Global\GlobalInstaller.cs" />
+    <Compile Include="Assets\Scripts\ZenjectConfig\Global\GraphicsInstaller.cs" />
+    <Compile Include="Assets\Scripts\ZenjectConfig\Global\InAppInstaller.cs" />
     <Compile Include="Assets\Scripts\ZenjectConfig\GuiInstaller.cs" />
     <Compile Include="Assets\Scripts\ZenjectConfig\InputInstaller.cs" />
     <Compile Include="Assets\Scripts\ZenjectConfig\LevelChooseInstaller.cs" />
     <Compile Include="Assets\Scripts\ZenjectConfig\ShopInstaller.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Extensions\SmartLocalization\Editor\SmartLocalization_Editor.XML" />
+    <None Include="Assets\Extensions\SmartLocalization\README.txt" />
+    <None Include="Assets\Extensions\SmartLocalization\Resources\EmptyResourceHeader.txt" />
+    <None Include="Assets\Extensions\SmartLocalization\SmartLocalization_Runtime.XML" />
+    <None Include="Assets\Extensions\SmartLocalization\smartloc_licenses.txt" />
+    <None Include="Assets\Extensions\SpritesAndBones\Shader\LinesColoredBlended.shader" />
+    <None Include="Assets\Extensions\SpritesAndBones\Shader\Sprites-Skeleton-Cutout.shader" />
+    <None Include="Assets\Extensions\SpritesAndBones\Shader\Sprites-Skeleton-Diffuse.shader" />
+    <None Include="Assets\Extensions\SpritesAndBones\license-attributions.txt" />
     <None Include="Assets\Extensions\Zenject\LICENSE.txt" />
     <None Include="Assets\Plugins\Demigiant\DOTween\DOTween.XML" />
     <None Include="Assets\Plugins\Demigiant\DOTween\DOTween43.xml" />
@@ -320,8 +464,12 @@
     <None Include="Assets\Plugins\Demigiant\DOTween\DOTween50.xml" />
     <None Include="Assets\Plugins\Demigiant\DOTween\Editor\DOTweenEditor.XML" />
     <None Include="Assets\Plugins\Demigiant\DOTween\readme.txt" />
+    <None Include="Assets\SmartLocalizationWorkspace\AutoGenerated\Resources\AvailableCultures.xml" />
+    <None Include="Assets\SmartLocalizationWorkspace\AutoGenerated\Resources\Language.en.txt" />
+    <None Include="Assets\SmartLocalizationWorkspace\AutoGenerated\Resources\Language.ru.txt" />
+    <None Include="Assets\SmartLocalizationWorkspace\AutoGenerated\Resources\Language.txt" />
+    <None Include="Assets\SmartLocalizationWorkspace\Data\SmartCultureInfoData\SmartCultureInfo.xml" />
     <None Include="Assets\StaticAssets\Common\Levels\levels.xml" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>

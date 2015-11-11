@@ -1,5 +1,5 @@
-﻿// Created 09.11.2015 
-// Modified by Gorbach Alex 10.11.2015 at 11:39
+﻿// Created 03.11.2015 
+// Modified by Gorbach Alex 11.11.2015 at 12:23
 
 namespace Assets.Scripts.UI.Visualizers.Bonuses {
     #region References
@@ -22,19 +22,16 @@ namespace Assets.Scripts.UI.Visualizers.Bonuses {
         [SerializeField]
         private float _maxProgress;
 
-        private float _balanseCount = 0.5f;
+        private float _balanseCount = 0;
 
         [Inject]
         private ILevelProgress _progress;
 
         private float Balanse {
-            get {
-                return _balanseCount;
-            }
             set {
                 var old = _balanseCount;
                 _balanseCount = value;
-                _balanse.fillAmount = _balanseCount;
+                _balanse.fillAmount = _balanseCount + .5f;
                 _animator.SetTrigger(old < _balanseCount ? "positive" : "negative");
             }
         }
