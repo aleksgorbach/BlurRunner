@@ -1,5 +1,5 @@
-﻿// Created 09.11.2015 
-// Modified by Gorbach Alex 09.11.2015 at 17:31
+﻿// Created 20.10.2015 
+// Modified by Gorbach Alex 12.11.2015 at 12:22
 
 namespace Assets.Scripts.Gameplay {
     #region References
@@ -112,8 +112,8 @@ namespace Assets.Scripts.Gameplay {
             _scoreSource.ScoreChanged += OnScoreChanged;
         }
 
-        private void OnScoreChanged(int currentScore) {
-            _progress.Score = currentScore;
+        private void OnScoreChanged(int deltaScore) {
+            _progress.Score += deltaScore;
         }
     }
 }

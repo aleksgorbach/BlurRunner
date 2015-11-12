@@ -1,5 +1,5 @@
-﻿// Created 07.11.2015
-// Modified by Александр 08.11.2015 at 20:52
+﻿// Created 20.10.2015 
+// Modified by Gorbach Alex 12.11.2015 at 11:35
 
 namespace Assets.Scripts.Engine.Pool {
     #region References
@@ -15,10 +15,13 @@ namespace Assets.Scripts.Engine.Pool {
 
     internal abstract class GameObjectPool<T> : MonoBehaviourBase, IObjectPool<T>
         where T : MonoBehaviour {
+        protected List<Item> _pool;
+
         [SerializeField]
         private int _initialSize;
 
-        protected List<Item> _pool;
+        [Inject]
+        private IInstantiator _instantiator;
 
         protected abstract Factory.IFactory<T> Factory { get; }
 
@@ -73,13 +76,13 @@ namespace Assets.Scripts.Engine.Pool {
             }
             obj.transform.SetParent(transform);
             obj.gameObject.SetActive(false);
-            var item = new Item {Object = obj, Free = true};
+            var item = new Item { Object = obj, Free = true };
             _pool.Add(item);
             return item.Object;
         }
 
         private T GetNew() {
-            return Factory.Create();
+            return Factory.Create(_instantiator);
         }
 
         protected class Item {

@@ -1,35 +1,32 @@
 ﻿// Created 23.10.2015 
-// Modified by Gorbach Alex 05.11.2015 at 10:30
+// Modified by Gorbach Alex 12.11.2015 at 11:25
 
 namespace Assets.Scripts.UI.Popups.Factory {
     #region References
 
-    using System.Collections.Generic;
-    using System.Linq;
+    using Engine.Factory.Strategy;
+    using Engine.Pool;
     using UnityEngine;
 
     #endregion
 
-    internal class PopupPool {
-        private readonly ISettings _settings;
+    internal class PopupPool : GameObjectPool<Popup> {
+        [SerializeField]
+        private PopupFactory _factory;
 
-        public PopupPool(ISettings settings) {
-            _settings = settings;
+        [SerializeField]
+        private PopupStrategy _strategy;
+
+        protected override Engine.Factory.IFactory<Popup> Factory {
+            get {
+                return _factory;
+            }
         }
 
-        public Popup Get<T>() where T : Popup {
-            var prefab = _settings.Prefabs.OfType<T>().FirstOrDefault();
-            var obj = Object.Instantiate(prefab.gameObject);
-            var popup = obj.GetComponent<T>();
-            return popup;
-        }
-
-        public void Release(Popup popup) {
-            Object.Destroy(popup.gameObject);
-        }
-
-        public interface ISettings {
-            IEnumerable<Popup> Prefabs { get; }
+        public override IChooseStrategy<Popup> Strategy {
+            get {
+                return _strategy;
+            }
         }
     }
 }

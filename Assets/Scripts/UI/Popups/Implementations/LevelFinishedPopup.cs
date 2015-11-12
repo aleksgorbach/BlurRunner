@@ -1,5 +1,5 @@
 ﻿// Created 11.11.2015 
-// Modified by Gorbach Alex 11.11.2015 at 14:55
+// Modified by Gorbach Alex 12.11.2015 at 11:36
 
 namespace Assets.Scripts.UI.Popups.Implementations {
     #region References

@@ -1,5 +1,5 @@
 ﻿// Created 23.10.2015 
-// Modified by Gorbach Alex 11.11.2015 at 13:59
+// Modified by Gorbach Alex 12.11.2015 at 10:30
 
 namespace Assets.Scripts.UI.Popups.Controller {
     #region References
@@ -17,8 +17,10 @@ namespace Assets.Scripts.UI.Popups.Controller {
     #endregion
 
     internal class PopupController : MonoBehaviourBase, IPopupController {
-        [Inject]
+        [SerializeField]
         private PopupPool _pool;
+
+        private PopupStrategy _strategy;
 
         [Inject]
         private IGameStateManager _stateManager;
@@ -29,7 +31,9 @@ namespace Assets.Scripts.UI.Popups.Controller {
         public event Action<IPopup, int> PopupClosed;
 
         private IPopup Show<TPopup>() where TPopup : Popup {
-            var popup = _pool.Get<TPopup>();
+            _strategy.SetTarget<TPopup>();
+            var popup = _pool.Get();
+            popup.gameObject.SetActive(true);
             popup.transform.SetParent(transform);
             popup.rectTransform.anchoredPosition = Vector2.zero;
             popup.rectTransform.offsetMax = Vector2.zero;
@@ -78,6 +82,7 @@ namespace Assets.Scripts.UI.Popups.Controller {
         protected override void Awake() {
             base.Awake();
             _popups = new Stack<Popup>();
+            _strategy = _pool.Strategy as PopupStrategy;
         }
 
         [PostInject]

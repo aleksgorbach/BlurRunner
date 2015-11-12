@@ -1,5 +1,5 @@
 ﻿// Created 03.11.2015 
-// Modified by Gorbach Alex 11.11.2015 at 12:23
+// Modified by Gorbach Alex 12.11.2015 at 12:24
 
 namespace Assets.Scripts.UI.Visualizers.Bonuses {
     #region References
@@ -22,6 +22,9 @@ namespace Assets.Scripts.UI.Visualizers.Bonuses {
         [SerializeField]
         private float _maxProgress;
 
+        [SerializeField]
+        private Text _points;
+
         private float _balanseCount = 0;
 
         [Inject]
@@ -30,8 +33,9 @@ namespace Assets.Scripts.UI.Visualizers.Bonuses {
         private float Balanse {
             set {
                 var old = _balanseCount;
-                _balanseCount = value;
+                _balanseCount = Mathf.Clamp01(value / _maxProgress);
                 _balanse.fillAmount = _balanseCount + .5f;
+                _points.text = "" + value;
                 _animator.SetTrigger(old < _balanseCount ? "positive" : "negative");
             }
         }
@@ -42,12 +46,16 @@ namespace Assets.Scripts.UI.Visualizers.Bonuses {
         }
 
         private void OnProgressChanged(int currentScore) {
-            Balanse = Mathf.Clamp01(currentScore / _maxProgress);
+            Balanse = currentScore;
         }
 
         protected override void Awake() {
             base.Awake();
             _animator = GetComponent<Animator>();
+        }
+
+        protected override void OnDestroy() {
+            _progress.Changed -= OnProgressChanged;
         }
     }
 }

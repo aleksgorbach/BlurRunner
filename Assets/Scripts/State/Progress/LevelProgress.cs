@@ -1,10 +1,11 @@
-﻿// Created 09.11.2015 
-// Modified by Gorbach Alex 10.11.2015 at 11:43
+﻿// Created 22.10.2015 
+// Modified by Gorbach Alex 12.11.2015 at 12:21
 
 namespace Assets.Scripts.State.Progress {
     #region References
 
     using System;
+    using UnityEngine;
     using Zenject;
 
     #endregion

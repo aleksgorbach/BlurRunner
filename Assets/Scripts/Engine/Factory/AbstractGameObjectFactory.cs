@@ -1,5 +1,5 @@
-﻿// Created 04.11.2015
-// Modified by Александр 08.11.2015 at 20:53
+﻿// Created 20.10.2015 
+// Modified by Gorbach Alex 12.11.2015 at 11:35
 
 #region References
 
@@ -19,19 +19,16 @@ namespace Assets.Scripts.Engine.Factory {
         where T : MonoBehaviour {
         private static int index = 0;
 
-        [Inject]
-        private IInstantiator _instantiator;
-
         protected abstract ChooseStrategy<T> Strategy { get; }
 
         protected abstract IEnumerable<T> Items { get; }
 
-        public virtual T Create() {
+        public virtual T Create(IInstantiator instantiator) {
             var prefab = Strategy.Get(Items); //PrefabToInstantiate;
             if (prefab == null) {
                 return null;
             }
-            var created = Instantiate(prefab.gameObject).GetComponent<T>();
+            var created = instantiator.InstantiatePrefabForComponent<T>(prefab.gameObject);
             created.name = string.Format("{0} [{1}]", created.name, index++);
             return created;
         }
