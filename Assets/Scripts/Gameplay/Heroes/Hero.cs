@@ -1,5 +1,5 @@
 ﻿// Created 20.10.2015 
-// Modified by Gorbach Alex 06.11.2015 at 10:19
+// Modified by Gorbach Alex 13.11.2015 at 12:09
 
 namespace Assets.Scripts.Gameplay.Heroes {
     #region References
@@ -20,6 +20,9 @@ namespace Assets.Scripts.Gameplay.Heroes {
 
         [SerializeField]
         private LayerMask _groundLayer;
+
+        [SerializeField]
+        private Foot _trippedFoot;
 
         private bool _isJumping;
 
@@ -54,17 +57,23 @@ namespace Assets.Scripts.Gameplay.Heroes {
             }
         }
 
-        private void Stop() {
+        public void Stop() {
             _speed = 0;
         }
 
         protected override void Awake() {
             base.Awake();
             _animator = GetComponent<Animator>();
+            if (_trippedFoot) {
+                _trippedFoot.Tripped += OnTripped;
+            }
+        }
+
+        private void OnTripped() {
+            _animator.SetTrigger("trip");
         }
 
         private void OnWin() {
-            Stop();
             var handler = Win;
             if (handler != null) {
                 handler(this);

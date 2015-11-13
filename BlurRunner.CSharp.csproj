@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Full v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>Android:13</UnityBuildTarget>
     <UnityVersion>5.2.1f1</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -373,7 +375,9 @@
     <Compile Include="Assets\Scripts\Gameplay\Bonuses\Bonus.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Bonuses\IBonus.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Bonuses\Implementations\Negative\BrokenLifeBonus.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\Bonuses\Implementations\Negative\CancerBonus.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Bonuses\Implementations\Negative\FastfoodBonus.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\Bonuses\Implementations\Negative\KnifeBonus.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Bonuses\Implementations\Negative\NegativeBonus.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Bonuses\Implementations\Positive\BarbellBonus.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Bonuses\Implementations\Positive\KettlebelBonus.cs" />
@@ -386,6 +390,7 @@
     <Compile Include="Assets\Scripts\Gameplay\GameState\Manager\GameStateManager.cs" />
     <Compile Include="Assets\Scripts\Gameplay\GameState\Manager\IGameStateManager.cs" />
     <Compile Include="Assets\Scripts\Gameplay\GameState\StateChangedSources\IWinSource.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\Heroes\Foot.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Heroes\Hero.cs" />
     <Compile Include="Assets\Scripts\Gameplay\IGame.cs" />
     <Compile Include="Assets\Scripts\Localization\ILocalizable.cs" />
@@ -427,7 +432,9 @@
     <Compile Include="Assets\Scripts\UI\Menus\Logo\LogoSceneController.cs" />
     <Compile Include="Assets\Scripts\UI\Popups\Controller\IPopupController.cs" />
     <Compile Include="Assets\Scripts\UI\Popups\Controller\PopupController.cs" />
+    <Compile Include="Assets\Scripts\UI\Popups\Factory\PopupFactory.cs" />
     <Compile Include="Assets\Scripts\UI\Popups\Factory\PopupPool.cs" />
+    <Compile Include="Assets\Scripts\UI\Popups\Factory\PopupStrategy.cs" />
     <Compile Include="Assets\Scripts\UI\Popups\IPopup.cs" />
     <Compile Include="Assets\Scripts\UI\Popups\Implementations\CompletedPopup.cs" />
     <Compile Include="Assets\Scripts\UI\Popups\Implementations\FailedPopup.cs" />

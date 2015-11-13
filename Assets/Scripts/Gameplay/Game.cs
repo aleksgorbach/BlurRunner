@@ -1,5 +1,5 @@
 ﻿// Created 20.10.2015 
-// Modified by Gorbach Alex 12.11.2015 at 12:22
+// Modified by Gorbach Alex 13.11.2015 at 9:38
 
 namespace Assets.Scripts.Gameplay {
     #region References
@@ -63,6 +63,7 @@ namespace Assets.Scripts.Gameplay {
         public event Action<IWinSource> Win;
 
         private void OnStateChanged(Consts.GameState state) {
+            Debug.Log(state);
             switch (state) {
                 case Consts.GameState.Running:
                     Run();
@@ -71,10 +72,10 @@ namespace Assets.Scripts.Gameplay {
                     Pause();
                     break;
                 case Consts.GameState.Lose:
-                    Pause();
+                    Stop();
                     break;
                 case Consts.GameState.Win:
-                    StopGenerating();
+                    Stop();
                     break;
             }
         }
@@ -87,10 +88,11 @@ namespace Assets.Scripts.Gameplay {
             Time.timeScale = 1;
         }
 
-        private void StopGenerating() {
+        private void Stop() {
             foreach (var generator in _generators) {
                 generator.Stop();
             }
+            _hero.Stop();
         }
 
         private void OnWin(IWinSource winSource) {
