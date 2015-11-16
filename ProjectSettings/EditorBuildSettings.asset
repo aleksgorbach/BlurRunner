@@ -11,7 +11,5 @@ EditorBuildSettings:
     path: Assets/StaticAssets/2 - LevelChoose/LevelChooseScene.unity
   - enabled: 1
     path: Assets/StaticAssets/3 - Shop/ShopScene.unity
-  - enabled: 0
-    path: Assets/StaticAssets/4 - Game/GameScene_.unity
   - enabled: 1
     path: Assets/StaticAssets/4 - Game/GameScene.unity

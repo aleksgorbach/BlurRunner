@@ -1227,7 +1227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c25220c5002b373449fb47b53f10f516, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dragMaxOffset: 20
+  _dragMaxOffset: 150
   _dragThreshold: 20
 --- !u!114 &2034334139
 MonoBehaviour:

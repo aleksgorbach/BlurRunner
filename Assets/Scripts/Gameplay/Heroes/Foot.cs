@@ -1,5 +1,5 @@
 ﻿// Created 13.11.2015 
-// Modified by Gorbach Alex 13.11.2015 at 12:10
+// Modified by Gorbach Alex 13.11.2015 at 14:53
 
 namespace Assets.Scripts.Gameplay.Heroes {
     #region References
@@ -21,7 +21,6 @@ namespace Assets.Scripts.Gameplay.Heroes {
         }
 
         private void OnTriggerEnter2D() {
-            Debug.Log("fgg");
             OnTripped();
         }
     }
