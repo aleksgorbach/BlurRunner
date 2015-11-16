@@ -1,5 +1,5 @@
-﻿// Created 20.10.2015 
-// Modified by Gorbach Alex 13.11.2015 at 12:09
+﻿// Created 15.11.2015
+// Modified by Александр 16.11.2015 at 22:23
 
 namespace Assets.Scripts.Gameplay.Heroes {
     #region References
@@ -11,7 +11,7 @@ namespace Assets.Scripts.Gameplay.Heroes {
 
     #endregion
 
-    [RequireComponent(typeof(Animator))]
+    [RequireComponent(typeof (Animator))]
     internal class Hero : Movable, IWinSource {
         private Animator _animator;
 
@@ -21,15 +21,15 @@ namespace Assets.Scripts.Gameplay.Heroes {
         [SerializeField]
         private LayerMask _groundLayer;
 
-        [SerializeField]
-        private Foot _trippedFoot;
-
         private bool _isJumping;
 
         [SerializeField]
         private Rigidbody2D _rigidbody;
 
         private float _speed;
+
+        [SerializeField]
+        private Foot _trippedFoot;
 
         public float Destination { private get; set; }
 
@@ -48,6 +48,7 @@ namespace Assets.Scripts.Gameplay.Heroes {
 
         private void FixedUpdate() {
             bool grounded = Physics2D.OverlapCircle(_groundCheck.position, 35f, _groundLayer);
+            Debug.Log(grounded);
             _animator.SetBool("grounded", grounded);
             _animator.SetFloat("speed", _speed);
             _isJumping = !grounded;
