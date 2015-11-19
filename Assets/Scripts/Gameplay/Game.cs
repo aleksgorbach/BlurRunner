@@ -1,11 +1,12 @@
-﻿// Created 20.10.2015
-// Modified by  19.11.2015 at 15:35
+﻿// Created 19.11.2015
+// Modified by Александр 19.11.2015 at 21:31
 
 namespace Assets.Scripts.Gameplay {
     #region References
 
     using System;
     using EndlessEngine;
+    using EndlessEngine.Endpoints;
     using Engine;
     using GameState.Manager;
     using GameState.StateChangedSources;
@@ -29,19 +30,18 @@ namespace Assets.Scripts.Gameplay {
         [Inject]
         private IInstantiator _container;
 
-        [Inject]
-        private IFactory<LevelProgress> _factory;
-
         [SerializeField]
         private AbstractGenerator[] _generators;
 
         private Hero _hero;
 
         [SerializeField]
-        private Transform _heroSpawner;
+        private HeroSpawner _heroSpawner;
 
         private bool _isPaused;
         private ILevel _level;
+
+        [Inject]
         private ILevelProgress _progress;
 
         [Inject]
@@ -57,12 +57,12 @@ namespace Assets.Scripts.Gameplay {
         public void StartLevel(ILevel level) {
             _level = level;
             _background.sprite = level.Background;
+            _heroSpawner.Sprite = level.Startpoint;
         }
 
         public event Action<IWinSource> Win;
 
         private void OnStateChanged(Consts.GameState state) {
-            Debug.Log(state);
             switch (state) {
                 case Consts.GameState.Running:
                     Run();
@@ -105,13 +105,12 @@ namespace Assets.Scripts.Gameplay {
         private void PostInject() {
             _stateManager.StateChanged += OnStateChanged;
             _hero = _container.InstantiatePrefabForComponent<Hero>(_level.Hero.gameObject);
-            _hero.transform.SetParent(_heroSpawner);
+            _hero.transform.SetParent(_heroSpawner.Container);
             _hero.transform.localPosition = Vector3.zero;
             _cameraAnchor.SetTarget(_hero.transform);
             _hero.Destination = _level.Length;
             _hero.Win += OnWin;
             _scoreSource.ScoreChanged += OnScoreChanged;
-            _progress = _factory.Create();
             _stateManager.Run();
         }
 

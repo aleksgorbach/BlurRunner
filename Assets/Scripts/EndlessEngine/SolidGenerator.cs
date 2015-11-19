@@ -1,5 +1,5 @@
-﻿// Created 09.11.2015 
-// Modified by Gorbach Alex 09.11.2015 at 10:34
+﻿// Created 09.11.2015
+// Modified by Александр 19.11.2015 at 19:50
 
 namespace Assets.Scripts.EndlessEngine {
     #region References
@@ -30,8 +30,7 @@ namespace Assets.Scripts.EndlessEngine {
             Add(block);
         }
 
-        protected override void FixedUpdate() {
-            base.FixedUpdate();
+        protected void FixedUpdate() {
             if (transform.position.x > _lastAddedEdge) {
                 AddBlock();
             }

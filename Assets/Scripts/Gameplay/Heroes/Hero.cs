@@ -1,5 +1,5 @@
-﻿// Created 20.10.2015 
-// Modified by Gorbach Alex 19.11.2015 at 9:38
+﻿// Created 19.11.2015
+// Modified by Александр 19.11.2015 at 21:39
 
 namespace Assets.Scripts.Gameplay.Heroes {
     #region References
@@ -11,10 +11,7 @@ namespace Assets.Scripts.Gameplay.Heroes {
 
     #endregion
 
-    [RequireComponent(typeof(Animator))]
     internal class Hero : Movable, IWinSource {
-        private Animator _animator;
-
         [SerializeField]
         private Transform _groundCheck;
 
@@ -26,9 +23,11 @@ namespace Assets.Scripts.Gameplay.Heroes {
         [SerializeField]
         private Rigidbody2D _rigidbody;
 
-        private float _speed;
+        protected float Speed { get; private set; }
 
         public float Destination { private get; set; }
+
+        protected Collider2D Grounded { get; private set; }
 
         public event Action<IWinSource> Win;
 
@@ -41,28 +40,22 @@ namespace Assets.Scripts.Gameplay.Heroes {
         }
 
         public override void Run(float speed) {
-            _speed = speed;
+            Speed = speed;
         }
 
-        private void FixedUpdate() {
-            bool grounded = Physics2D.OverlapCircle(_groundCheck.position, 35f, _groundLayer);
-            _animator.SetBool("grounded", grounded);
-            _animator.SetFloat("speed", _speed);
-            _isJumping = !grounded;
-            _rigidbody.velocity = new Vector2(_speed, _rigidbody.velocity.y);
+        protected virtual void FixedUpdate() {
+            Grounded = Physics2D.OverlapCircle(_groundCheck.position, 35f, _groundLayer);
+            _isJumping = !Grounded;
+            _rigidbody.velocity = new Vector2(Speed, _rigidbody.velocity.y);
             if (_rigidbody.position.x >= Destination) {
                 OnWin();
             }
         }
 
         public void Stop() {
-            _speed = 0;
+            Speed = 0;
         }
 
-        protected override void Awake() {
-            base.Awake();
-            _animator = GetComponent<Animator>();
-        }
 
         private void OnWin() {
             var handler = Win;

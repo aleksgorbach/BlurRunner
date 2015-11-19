@@ -39,10 +39,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f72a824f0928db14baae5f72779e06c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _background: {fileID: 21300000, guid: 4ee7813c48846a846b1fbda71a5b35c1, type: 3}
-  _hero: {fileID: 11407596, guid: 66e3ea1ad0c352b40bd4872de2ac8711, type: 2}
-  _levelNumber: 0
+  _background: {fileID: 21300000, guid: 22a3bdacdfd08da4ba772b99ed902473, type: 3}
+  _hero: {fileID: 11445208, guid: 5364281ff96ed6d4c9b08e73b1a112fe, type: 2}
   _length: 15000
+  _levelNumber: 0
+  _startPoint: {fileID: 21300000, guid: 89ed97b3bd378394f915c24284416c74, type: 3}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -53,17 +54,22 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: _background
       value: 
-      objectReference: {fileID: 21300000, guid: 4ee7813c48846a846b1fbda71a5b35c1,
+      objectReference: {fileID: 21300000, guid: 22a3bdacdfd08da4ba772b99ed902473,
         type: 3}
     - target: {fileID: 0}
       propertyPath: _hero
       value: 
-      objectReference: {fileID: 11407596, guid: 66e3ea1ad0c352b40bd4872de2ac8711,
+      objectReference: {fileID: 11445208, guid: 5364281ff96ed6d4c9b08e73b1a112fe,
         type: 2}
     - target: {fileID: 0}
       propertyPath: _length
       value: 15000
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _startPoint
+      value: 
+      objectReference: {fileID: 21300000, guid: 89ed97b3bd378394f915c24284416c74,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 199096}

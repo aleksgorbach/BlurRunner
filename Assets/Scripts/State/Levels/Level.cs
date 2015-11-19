@@ -33,6 +33,10 @@ namespace Assets.Scripts.State.Levels {
             get { return _data.Hero; }
         }
 
+        public Sprite Startpoint {
+            get { return _data.Startpoint; }
+        }
+
         public float Length {
             get { return _data.Length; }
         }

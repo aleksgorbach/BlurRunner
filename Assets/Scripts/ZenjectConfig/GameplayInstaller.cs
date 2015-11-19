@@ -1,5 +1,5 @@
-﻿// Created 20.10.2015
-// Modified by  19.11.2015 at 15:36
+﻿// Created 19.11.2015
+// Modified by Александр 19.11.2015 at 19:15
 
 #region References
 
@@ -37,8 +37,7 @@ namespace Assets.Scripts.ZenjectConfig {
             Container.Bind<Camera>().ToSingleInstance(Camera.main);
             Container.Bind<IWinSource>().ToInstance(_game);
             //Container.Bind<ILevelProgress>().ToGetter<IProgressStorage>(x => x.CurrentLevelProgress);
-            Container.BindIFactory<ILevelProgress>().ToFactory<LevelProgress>();
-            Container.Bind<ILevelProgress>().ToGetter<IGame>(x => x.Progress);
+            Container.Bind<ILevelProgress>().ToSingleInstance(new LevelProgress());
             Container.Bind<IScoreSource>().ToInstance(_bonusGenerator);
             Container.Bind<int>(Identifiers.Scores.MinValue).ToInstance(_scoreSettings.ScoreToLose);
         }

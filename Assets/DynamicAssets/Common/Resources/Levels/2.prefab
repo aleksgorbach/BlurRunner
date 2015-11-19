@@ -40,7 +40,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _background: {fileID: 21300000, guid: e9a1b2046d166234ca5e33b2b4ffb9b3, type: 3}
-  _hero: {fileID: 11476860, guid: 04456ad4f8923f44b82e59b13b856099, type: 2}
+  _hero: {fileID: 11493252, guid: 5ec4f305a40dcbe4f9f580306274ff00, type: 2}
   _levelNumber: 2
   _length: 20000
 --- !u!1001 &100100000
@@ -58,7 +58,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: _hero
       value: 
-      objectReference: {fileID: 11476860, guid: 04456ad4f8923f44b82e59b13b856099,
+      objectReference: {fileID: 11493252, guid: 5ec4f305a40dcbe4f9f580306274ff00,
         type: 2}
     - target: {fileID: 0}
       propertyPath: _levelNumber
