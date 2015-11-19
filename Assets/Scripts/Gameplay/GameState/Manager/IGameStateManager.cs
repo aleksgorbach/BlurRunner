@@ -1,5 +1,5 @@
-﻿// Created 26.10.2015 
-// Modified by Gorbach Alex 11.11.2015 at 13:06
+﻿// Created 26.10.2015
+// Modified by  19.11.2015 at 14:29
 
 namespace Assets.Scripts.Gameplay.GameState.Manager {
     #region References
@@ -17,5 +17,7 @@ namespace Assets.Scripts.Gameplay.GameState.Manager {
         void Pause();
 
         void Resume();
+
+        void Run();
     }
 }

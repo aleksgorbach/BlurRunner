@@ -1,5 +1,5 @@
-﻿// Created 20.10.2015 
-// Modified by Gorbach Alex 11.11.2015 at 14:06
+﻿// Created 20.10.2015
+// Modified by  19.11.2015 at 15:36
 
 #region References
 
@@ -9,14 +9,13 @@ namespace Assets.Scripts.ZenjectConfig {
     #region References
 
     using System;
-    using Assets.Scripts.Gameplay.Consts;
     using EndlessEngine.Bonuses;
-    using State.Progress.Score;
     using Gameplay;
+    using Gameplay.Consts;
     using Gameplay.GameState.Manager;
     using Gameplay.GameState.StateChangedSources;
     using State.Progress;
-    using State.Progress.Storage;
+    using State.Progress.Score;
     using UnityEngine;
     using Zenject;
 
@@ -24,10 +23,10 @@ namespace Assets.Scripts.ZenjectConfig {
 
     internal class GameplayInstaller : MonoInstaller {
         [SerializeField]
-        private Game _game;
+        private BonusGenerator _bonusGenerator;
 
         [SerializeField]
-        private BonusGenerator _bonusGenerator;
+        private Game _game;
 
         [SerializeField]
         private ScoreSettings _scoreSettings;
@@ -37,7 +36,9 @@ namespace Assets.Scripts.ZenjectConfig {
             Container.Bind<IGameStateManager>().ToSingle<GameStateManager>();
             Container.Bind<Camera>().ToSingleInstance(Camera.main);
             Container.Bind<IWinSource>().ToInstance(_game);
-            Container.Bind<ILevelProgress>().ToGetter<IProgressStorage>(x => x.CurrentLevelProgress);
+            //Container.Bind<ILevelProgress>().ToGetter<IProgressStorage>(x => x.CurrentLevelProgress);
+            Container.BindIFactory<ILevelProgress>().ToFactory<LevelProgress>();
+            Container.Bind<ILevelProgress>().ToGetter<IGame>(x => x.Progress);
             Container.Bind<IScoreSource>().ToInstance(_bonusGenerator);
             Container.Bind<int>(Identifiers.Scores.MinValue).ToInstance(_scoreSettings.ScoreToLose);
         }

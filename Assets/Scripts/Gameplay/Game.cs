@@ -1,11 +1,10 @@
-﻿// Created 20.10.2015 
-// Modified by Gorbach Alex 13.11.2015 at 9:38
+﻿// Created 20.10.2015
+// Modified by  19.11.2015 at 15:35
 
 namespace Assets.Scripts.Gameplay {
     #region References
 
     using System;
-    using Assets.Scripts.State.Progress.Score;
     using EndlessEngine;
     using Engine;
     using GameState.Manager;
@@ -13,6 +12,7 @@ namespace Assets.Scripts.Gameplay {
     using Heroes;
     using State.Levels;
     using State.Progress;
+    using State.Progress.Score;
     using UnityEngine;
     using UnityEngine.UI;
     using Zenject;
@@ -29,6 +29,9 @@ namespace Assets.Scripts.Gameplay {
         [Inject]
         private IInstantiator _container;
 
+        [Inject]
+        private IFactory<LevelProgress> _factory;
+
         [SerializeField]
         private AbstractGenerator[] _generators;
 
@@ -39,20 +42,16 @@ namespace Assets.Scripts.Gameplay {
 
         private bool _isPaused;
         private ILevel _level;
-
-        [Inject]
         private ILevelProgress _progress;
-
-        [Inject]
-        private IGameStateManager _stateManager;
 
         [Inject]
         private IScoreSource _scoreSource;
 
+        [Inject]
+        private IGameStateManager _stateManager;
+
         public ILevelProgress Progress {
-            get {
-                return _progress;
-            }
+            get { return _progress; }
         }
 
         public void StartLevel(ILevel level) {
@@ -112,6 +111,8 @@ namespace Assets.Scripts.Gameplay {
             _hero.Destination = _level.Length;
             _hero.Win += OnWin;
             _scoreSource.ScoreChanged += OnScoreChanged;
+            _progress = _factory.Create();
+            _stateManager.Run();
         }
 
         private void OnScoreChanged(int deltaScore) {

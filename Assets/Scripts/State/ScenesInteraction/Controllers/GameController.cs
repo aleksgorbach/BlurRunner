@@ -1,5 +1,5 @@
-﻿// Created 09.11.2015 
-// Modified by Gorbach Alex 09.11.2015 at 17:15
+﻿// Created 28.10.2015
+// Modified by  19.11.2015 at 14:59
 
 namespace Assets.Scripts.State.ScenesInteraction.Controllers {
     #region References
@@ -15,7 +15,7 @@ namespace Assets.Scripts.State.ScenesInteraction.Controllers {
     internal class GameController : MonoBehaviourBase {
         [PostInject]
         private void Inject(IGame game, ILevelStorage levelStorage, IProgressStorage progressStorage) {
-            game.StartLevel(levelStorage[progressStorage.CurrentLevelProgress.Number]);
+            game.StartLevel(levelStorage[progressStorage.CurrentLevel]);
         }
     }
 }

@@ -1,21 +1,18 @@
-﻿// Created 26.10.2015 
-// Modified by Gorbach Alex 11.11.2015 at 14:12
+﻿// Created 26.10.2015
+// Modified by  19.11.2015 at 14:30
 
 namespace Assets.Scripts.Gameplay.GameState.Manager {
     #region References
 
     using System.Collections.Generic;
+    using Consts;
     using State.Progress;
     using StateChangedSources;
-    using Consts;
     using Zenject;
 
     #endregion
 
     internal class GameStateManager : IGameStateManager {
-        [Inject]
-        private List<IWinSource> _winSources;
-
         [Inject]
         private ILevelProgress _progress;
 
@@ -24,10 +21,11 @@ namespace Assets.Scripts.Gameplay.GameState.Manager {
 
         private GameState _state;
 
+        [Inject]
+        private List<IWinSource> _winSources;
+
         public GameState State {
-            get {
-                return _state;
-            }
+            get { return _state; }
             private set {
                 if (_state != value) {
                     _state = value;
@@ -48,6 +46,10 @@ namespace Assets.Scripts.Gameplay.GameState.Manager {
             if (State == GameState.Paused) {
                 ChangeState(GameState.Running);
             }
+        }
+
+        public void Run() {
+            ChangeState(GameState.Running);
         }
 
         [PostInject]

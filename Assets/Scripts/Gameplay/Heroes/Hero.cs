@@ -1,5 +1,5 @@
 ﻿// Created 20.10.2015 
-// Modified by Gorbach Alex 17.11.2015 at 15:01
+// Modified by Gorbach Alex 19.11.2015 at 9:38
 
 namespace Assets.Scripts.Gameplay.Heroes {
     #region References
@@ -27,9 +27,6 @@ namespace Assets.Scripts.Gameplay.Heroes {
         private Rigidbody2D _rigidbody;
 
         private float _speed;
-
-        [SerializeField]
-        private Foot _trippedFoot;
 
         public float Destination { private get; set; }
 
@@ -65,13 +62,6 @@ namespace Assets.Scripts.Gameplay.Heroes {
         protected override void Awake() {
             base.Awake();
             _animator = GetComponent<Animator>();
-            if (_trippedFoot) {
-                _trippedFoot.Tripped += OnTripped;
-            }
-        }
-
-        private void OnTripped() {
-            _animator.SetTrigger("trip");
         }
 
         private void OnWin() {

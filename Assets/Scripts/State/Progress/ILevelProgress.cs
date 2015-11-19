@@ -1,5 +1,5 @@
-﻿// Created 22.10.2015 
-// Modified by Gorbach Alex 11.11.2015 at 12:28
+﻿// Created 22.10.2015
+// Modified by  19.11.2015 at 15:07
 
 namespace Assets.Scripts.State.Progress {
     #region References
@@ -9,7 +9,6 @@ namespace Assets.Scripts.State.Progress {
     #endregion
 
     internal interface ILevelProgress {
-        int Number { get; }
         int Score { get; set; }
 
         event Action<int> Changed;

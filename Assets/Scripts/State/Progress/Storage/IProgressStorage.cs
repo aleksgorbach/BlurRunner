@@ -1,5 +1,5 @@
-﻿// Created 09.11.2015 
-// Modified by Gorbach Alex 09.11.2015 at 17:15
+﻿// Created 22.10.2015
+// Modified by  19.11.2015 at 14:59
 
 namespace Assets.Scripts.State.Progress.Storage {
     internal interface IProgressStorage {
@@ -8,12 +8,11 @@ namespace Assets.Scripts.State.Progress.Storage {
         /// </summary>
         /// <param name="levelNumber">Level number</param>
         /// <returns></returns>
-        ILevelProgress this[int levelNumber] { get; }
-
+        //ILevelProgress this[int levelNumber] { get; }
         /// <summary>
-        /// Returns current level progress
+        /// Returns current level
         /// </summary>
-        ILevelProgress CurrentLevelProgress { get; }
+        int CurrentLevel { get; }
 
         /// <summary>
         /// Sets current level
