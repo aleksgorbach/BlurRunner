@@ -1,5 +1,5 @@
-﻿// Created 07.11.2015
-// Modified by Александр 08.11.2015 at 20:22
+﻿// Created 03.11.2015
+// Modified by  20.11.2015 at 12:41
 
 namespace Assets.Scripts.EndlessEngine.Decorations {
     #region References

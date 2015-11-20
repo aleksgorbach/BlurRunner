@@ -40,6 +40,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _background: {fileID: 21300000, guid: 22a3bdacdfd08da4ba772b99ed902473, type: 3}
+  _decorations:
+  - {fileID: 11499664, guid: 5705839b278c71b47a0f343e10c64393, type: 2}
+  - {fileID: 11420900, guid: 089d63c6c5e75cb4988ec1fca2e16d70, type: 2}
+  - {fileID: 11411558, guid: b5afe0fb3f086644b876859d78542da6, type: 2}
+  - {fileID: 11444340, guid: e1aa0085d4a6eeb4fb4bfba0f12931b8, type: 2}
+  - {fileID: 11440520, guid: 62d85bdf735a2bc4a9684540eee20af9, type: 2}
   _hero: {fileID: 11445208, guid: 5364281ff96ed6d4c9b08e73b1a112fe, type: 2}
   _length: 15000
   _levelNumber: 0
@@ -51,6 +57,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: _decorations.Array.size
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: _background
       value: 
@@ -70,6 +80,16 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: 89ed97b3bd378394f915c24284416c74,
         type: 3}
+    - target: {fileID: 0}
+      propertyPath: _decorations.Array.data[3]
+      value: 
+      objectReference: {fileID: 11444340, guid: e1aa0085d4a6eeb4fb4bfba0f12931b8,
+        type: 2}
+    - target: {fileID: 0}
+      propertyPath: _decorations.Array.data[4]
+      value: 
+      objectReference: {fileID: 11440520, guid: 62d85bdf735a2bc4a9684540eee20af9,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 199096}

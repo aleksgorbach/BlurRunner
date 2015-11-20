@@ -8,9 +8,9 @@ AnimatorOverrideController:
   m_Name: Hero
   m_Controller: {fileID: 9100000, guid: 030a325892d35d34bb035a8aa4350464, type: 2}
   m_Clips:
-  - m_OriginalClip: {fileID: 7400000, guid: 06caa2589254d084f98c874b9496b258, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: 40d9cde7c17dd3d40a218197378e6199, type: 2}
-  - m_OriginalClip: {fileID: 7400000, guid: 618232b65e5a8994698d2b19bf98a4bf, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: 7eaa711b8e75d3e4698b2f422da71a8a, type: 2}
   - m_OriginalClip: {fileID: 7400000, guid: 490467bce5da1c34f91a3e6b6847b9c4, type: 2}
     m_OverrideClip: {fileID: 7400000, guid: 490467bce5da1c34f91a3e6b6847b9c4, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 067f78ab0bbc90847af61f3606d79436, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 40d9cde7c17dd3d40a218197378e6199, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: c93f2c970fd608b4b9be15fe20c3d942, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 7eaa711b8e75d3e4698b2f422da71a8a, type: 2}

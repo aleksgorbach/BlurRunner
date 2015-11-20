@@ -17,8 +17,8 @@ TagManager:
   - Player
   - Ground
   - Decorations
-  - Foot
-  - GroundObstacle
+  - 
+  - Obstacle
   - 
   - 
   - 

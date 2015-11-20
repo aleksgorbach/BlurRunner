@@ -1,5 +1,5 @@
-﻿// Created 08.11.2015
-// Modified by Александр 08.11.2015 at 18:08
+﻿// Created 10.11.2015
+// Modified by  20.11.2015 at 13:22
 
 namespace Assets.Scripts.EndlessEngine.Decorations {
     #region References
@@ -18,7 +18,9 @@ namespace Assets.Scripts.EndlessEngine.Decorations {
         [SerializeField]
         private DecorationStrategy _strategy;
 
-        protected override ChooseStrategy<DecorationItem> Strategy { get { return _strategy; } }
+        protected override ChooseStrategy<DecorationItem> Strategy {
+            get { return _strategy; }
+        }
 
         protected override IEnumerable<DecorationItem> Items {
             get { return _prefabs; }

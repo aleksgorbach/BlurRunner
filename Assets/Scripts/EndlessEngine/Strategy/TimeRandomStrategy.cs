@@ -1,26 +1,15 @@
-﻿// Created 06.11.2015 
-// Modified by Gorbach Alex 06.11.2015 at 14:31
+﻿// Created 06.11.2015
+// Modified by  20.11.2015 at 13:17
 
 namespace Assets.Scripts.EndlessEngine.Strategy {
     #region References
 
     using System;
     using Engine.Utils;
-    using UnityEngine;
-    using Random = UnityEngine.Random;
 
     #endregion
 
-    internal class TimeRandomStrategy : AbstractStrategy {
-        [SerializeField]
-        private float _minTime;
-
-        [SerializeField]
-        private float _maxTime;
-
-        [SerializeField]
-        private AnimationCurve _timeRandom;
-
+    internal class TimeRandomStrategy : RandomStrategy {
         private Timer _timer;
 
         protected override void Awake() {
@@ -36,9 +25,8 @@ namespace Assets.Scripts.EndlessEngine.Strategy {
         }
 
         private void StartTimer() {
-            var x = Random.value;
-            var y = _timeRandom.Evaluate(x);
-            var time = TimeSpan.FromSeconds(_minTime + y * (_maxTime - _minTime));
+            var random = GetRandomValueWithDistribution();
+            var time = TimeSpan.FromSeconds(random);
             _timer.StartTimer(time);
         }
     }

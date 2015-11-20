@@ -107,9 +107,9 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 70.447998, y: -32}
+  m_AnchoredPosition: {x: 70.4475098, y: -25.3834839}
   m_SizeDelta: {x: 257.899994, y: 289}
-  m_Pivot: {x: .5, y: .0673652589}
+  m_Pivot: {x: .499999702, y: .0902596936}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

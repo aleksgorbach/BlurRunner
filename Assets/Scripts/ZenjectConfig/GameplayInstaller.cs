@@ -1,5 +1,5 @@
-﻿// Created 19.11.2015
-// Modified by Александр 19.11.2015 at 19:15
+﻿// Created 20.10.2015
+// Modified by  20.11.2015 at 13:22
 
 #region References
 
@@ -40,6 +40,7 @@ namespace Assets.Scripts.ZenjectConfig {
             Container.Bind<ILevelProgress>().ToSingleInstance(new LevelProgress());
             Container.Bind<IScoreSource>().ToInstance(_bonusGenerator);
             Container.Bind<int>(Identifiers.Scores.MinValue).ToInstance(_scoreSettings.ScoreToLose);
+            //Container.Bind<DecorationItem[]>().ToGetter<LevelData>(data => data.Decorations);
         }
 
         [Serializable]
