@@ -1,5 +1,5 @@
 ﻿// Created 20.10.2015
-// Modified by  20.11.2015 at 13:22
+// Modified by  23.11.2015 at 15:26
 
 #region References
 
@@ -10,10 +10,14 @@ namespace Assets.Scripts.ZenjectConfig {
 
     using System;
     using EndlessEngine.Bonuses;
+    using EndlessEngine.Decorations;
+    using EndlessEngine.Obstacles;
     using Gameplay;
     using Gameplay.Consts;
     using Gameplay.GameState.Manager;
     using Gameplay.GameState.StateChangedSources;
+    using State.Levels;
+    using State.Levels.Storage;
     using State.Progress;
     using State.Progress.Score;
     using UnityEngine;
@@ -36,11 +40,17 @@ namespace Assets.Scripts.ZenjectConfig {
             Container.Bind<IGameStateManager>().ToSingle<GameStateManager>();
             Container.Bind<Camera>().ToSingleInstance(Camera.main);
             Container.Bind<IWinSource>().ToInstance(_game);
-            //Container.Bind<ILevelProgress>().ToGetter<IProgressStorage>(x => x.CurrentLevelProgress);
             Container.Bind<ILevelProgress>().ToSingleInstance(new LevelProgress());
             Container.Bind<IScoreSource>().ToInstance(_bonusGenerator);
             Container.Bind<int>(Identifiers.Scores.MinValue).ToInstance(_scoreSettings.ScoreToLose);
-            //Container.Bind<DecorationItem[]>().ToGetter<LevelData>(data => data.Decorations);
+            Container.Bind<ILevel>().ToGetter<ILevelStorage>(storage => storage.CurrentLevel);
+            Container.Bind<string>(Identifiers.Obstacles.Layer).ToInstance("PlayerTrigger");
+            InstallLevelSettings();
+        }
+
+        private void InstallLevelSettings() {
+            Container.Bind<DecorationItem[]>().ToGetter<ILevel>(level => level.Decorations);
+            Container.Bind<Obstacle[]>().ToGetter<ILevel>(level => level.Obstacles);
         }
 
         [Serializable]

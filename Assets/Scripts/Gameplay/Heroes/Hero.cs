@@ -1,5 +1,5 @@
-﻿// Created 19.11.2015
-// Modified by Александр 19.11.2015 at 21:39
+﻿// Created 20.10.2015
+// Modified by  23.11.2015 at 14:26
 
 namespace Assets.Scripts.Gameplay.Heroes {
     #region References
@@ -17,6 +17,7 @@ namespace Assets.Scripts.Gameplay.Heroes {
 
         [SerializeField]
         private LayerMask _groundLayer;
+
 
         private bool _isJumping;
 

@@ -1,5 +1,5 @@
-﻿// Created 20.10.2015 
-// Modified by Gorbach Alex 12.11.2015 at 11:35
+﻿// Created 20.10.2015
+// Modified by  23.11.2015 at 12:58
 
 namespace Assets.Scripts.Engine.Pool {
     #region References
@@ -15,13 +15,13 @@ namespace Assets.Scripts.Engine.Pool {
 
     internal abstract class GameObjectPool<T> : MonoBehaviourBase, IObjectPool<T>
         where T : MonoBehaviour {
-        protected List<Item> _pool;
-
         [SerializeField]
         private int _initialSize;
 
         [Inject]
         private IInstantiator _instantiator;
+
+        protected List<Item> _pool = new List<Item>();
 
         protected abstract Factory.IFactory<T> Factory { get; }
 
@@ -53,20 +53,20 @@ namespace Assets.Scripts.Engine.Pool {
             obj.gameObject.SetActive(false);
         }
 
-        protected override void Awake() {
-            base.Awake();
-            _pool = new List<Item>();
-        }
-
-        [PostInject]
-        private void PostInject() {
-            AddInitialItems(_initialSize);
-        }
 
         private void AddInitialItems(int count) {
             for (var i = 0; i < count; i++) {
                 AddNew();
             }
+        }
+
+        protected override void Awake() {
+            base.Awake();
+            Factory.Loaded += OnFactoryLoaded;
+        }
+
+        private void OnFactoryLoaded() {
+            AddInitialItems(_initialSize);
         }
 
         private T AddNew() {
@@ -76,7 +76,7 @@ namespace Assets.Scripts.Engine.Pool {
             }
             obj.transform.SetParent(transform);
             obj.gameObject.SetActive(false);
-            var item = new Item { Object = obj, Free = true };
+            var item = new Item {Object = obj, Free = true};
             _pool.Add(item);
             return item.Object;
         }

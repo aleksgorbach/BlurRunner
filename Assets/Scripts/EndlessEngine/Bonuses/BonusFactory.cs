@@ -26,5 +26,10 @@ namespace Assets.Scripts.EndlessEngine.Bonuses {
         protected override IEnumerable<Bonus> Items {
             get { return _prefabs; }
         }
+
+        protected override void Start() {
+            base.Start();
+            OnLoaded();
+        }
     }
 }

@@ -1,5 +1,5 @@
-﻿// Created 15.10.2015
-// Modified by Александр 01.11.2015 at 17:26
+﻿// Created 20.10.2015
+// Modified by  23.11.2015 at 10:52
 
 namespace Assets.Scripts.State.Levels.Storage {
     #region References
@@ -10,5 +10,7 @@ namespace Assets.Scripts.State.Levels.Storage {
 
     internal interface ILevelStorage : IEnumerable<ILevel> {
         ILevel this[int levelNumber] { get; }
+        Level CurrentLevel { get; }
+        void SetCurrentLevel(int levelNumber);
     }
 }

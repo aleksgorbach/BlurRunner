@@ -12,7 +12,7 @@ GameObject:
   - 114: {fileID: 11445964}
   - 50: {fileID: 5039292}
   - 114: {fileID: 11472908}
-  - 60: {fileID: 6053024}
+  - 60: {fileID: 6006228}
   m_Layer: 13
   m_Name: FallenTree
   m_TagString: Untagged
@@ -29,7 +29,7 @@ GameObject:
   m_Component:
   - 224: {fileID: 22406814}
   - 60: {fileID: 6002662}
-  m_Layer: 13
+  m_Layer: 14
   m_Name: Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ PolygonCollider2D:
       - {x: 92.3195343, y: 110.523445}
       - {x: -59.9499664, y: 50.6126175}
       - {x: -173.358337, y: -71.1168365}
---- !u!60 &6053024
+--- !u!60 &6006228
 PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -85,19 +85,16 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Points:
     m_Paths:
-    - - {x: 173.008545, y: -109.395889}
-      - {x: 122.669495, y: -109.777374}
-      - {x: 70.7487335, y: -80.7981262}
-      - {x: -46.7807388, y: -106.989792}
-      - {x: -147.341965, y: -106.791489}
-      - {x: -181.712677, y: -66.9819031}
-      - {x: -159.60321, y: -28.7173767}
-      - {x: -113.496552, y: -39.1338043}
-      - {x: -92.6767273, y: -30.8848648}
-      - {x: -86.8901215, y: 21.2308426}
-      - {x: -41.2165222, y: 65.1097565}
-      - {x: 98.6259308, y: 107.939178}
-      - {x: 145.694244, y: 105.761826}
+    - - {x: -138.38443, y: -107.74707}
+      - {x: -173.313629, y: -71.3577576}
+      - {x: -152.119156, y: -33.0429001}
+      - {x: -92.3204422, y: -34.0683365}
+      - {x: -82.6584778, y: 25.987339}
+      - {x: -40.6489868, y: 55.7609253}
+      - {x: 61.1162872, y: 73.6156921}
+      - {x: 96.5343933, y: 113.423477}
+      - {x: 167.12915, y: 98.5170135}
+      - {x: 174.766418, y: -104.125809}
 --- !u!114 &11445964
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -199,6 +196,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Size.y
+      value: 5.03000021
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

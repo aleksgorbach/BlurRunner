@@ -1,5 +1,5 @@
 ﻿// Created 10.11.2015
-// Modified by  20.11.2015 at 13:22
+// Modified by  23.11.2015 at 12:57
 
 namespace Assets.Scripts.EndlessEngine.Decorations {
     #region References
@@ -8,11 +8,12 @@ namespace Assets.Scripts.EndlessEngine.Decorations {
     using Engine.Factory;
     using Engine.Factory.Strategy;
     using UnityEngine;
+    using Zenject;
 
     #endregion
 
     internal class DecorationsFactory : MultipleGameObjectFactory<DecorationItem> {
-        [SerializeField]
+        [Inject]
         private DecorationItem[] _prefabs;
 
         [SerializeField]
@@ -24,6 +25,11 @@ namespace Assets.Scripts.EndlessEngine.Decorations {
 
         protected override IEnumerable<DecorationItem> Items {
             get { return _prefabs; }
+        }
+
+        [PostInject]
+        private void Inject() {
+            OnLoaded();
         }
     }
 }

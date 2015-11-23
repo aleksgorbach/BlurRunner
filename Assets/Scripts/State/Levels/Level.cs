@@ -1,10 +1,12 @@
-﻿// Created 20.10.2015
-// Modified by Александр 05.11.2015 at 19:30
+﻿// Created 22.10.2015
+// Modified by  23.11.2015 at 13:05
 
 namespace Assets.Scripts.State.Levels {
     #region References
 
     using Data;
+    using EndlessEngine.Decorations;
+    using EndlessEngine.Obstacles;
     using Gameplay.Heroes;
     using UnityEngine;
 
@@ -19,6 +21,14 @@ namespace Assets.Scripts.State.Levels {
 
         public Level(LevelData data) {
             _data = data;
+        }
+
+        public DecorationItem[] Decorations {
+            get { return _data.Decorations; }
+        }
+
+        public Obstacle[] Obstacles {
+            get { return _data.Obstacles; }
         }
 
         public int Number {

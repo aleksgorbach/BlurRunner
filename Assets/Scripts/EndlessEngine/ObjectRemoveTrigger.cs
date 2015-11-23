@@ -1,5 +1,5 @@
-﻿// Created 09.11.2015 
-// Modified by Gorbach Alex 09.11.2015 at 9:35
+﻿// Created 10.11.2015
+// Modified by  23.11.2015 at 14:55
 
 namespace Assets.Scripts.EndlessEngine {
     #region References
@@ -9,10 +9,11 @@ namespace Assets.Scripts.EndlessEngine {
 
     #endregion
 
-    [RequireComponent(typeof(Collider2D))]
+    [RequireComponent(typeof (Collider2D))]
     internal class ObjectRemoveTrigger : MonoBehaviourBase {
         private void OnTriggerExit2D(Collider2D collision) {
-            var removable = collision.gameObject.GetComponent(typeof(IRemovable));
+            // todo не искать компонент, особенно в родителях
+            var removable = collision.gameObject.GetComponentInParent(typeof (IRemovable));
             if (removable != null) {
                 (removable as IRemovable).Remove();
             }

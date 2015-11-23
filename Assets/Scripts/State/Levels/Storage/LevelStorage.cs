@@ -1,5 +1,5 @@
-﻿// Created 15.10.2015
-// Modified by Александр 01.11.2015 at 17:28
+﻿// Created 20.10.2015
+// Modified by  23.11.2015 at 10:54
 
 namespace Assets.Scripts.State.Levels.Storage {
     #region References
@@ -13,6 +13,7 @@ namespace Assets.Scripts.State.Levels.Storage {
     #endregion
 
     internal class LevelStorage : ILevelStorage {
+        private int _currentLevelNumber = 0;
         private Dictionary<int, Level> _levels;
 
         public LevelStorage(ILevelLoader loader) {
@@ -22,6 +23,14 @@ namespace Assets.Scripts.State.Levels.Storage {
 
         public ILevel this[int levelNumber] {
             get { return _levels[levelNumber]; }
+        }
+
+        public Level CurrentLevel {
+            get { return _levels[_currentLevelNumber]; }
+        }
+
+        public void SetCurrentLevel(int levelNumber) {
+            _currentLevelNumber = levelNumber;
         }
 
         public IEnumerator<ILevel> GetEnumerator() {

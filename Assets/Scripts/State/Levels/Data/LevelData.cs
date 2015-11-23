@@ -1,10 +1,11 @@
 ﻿// Created 02.11.2015
-// Modified by  20.11.2015 at 10:24
+// Modified by  23.11.2015 at 13:05
 
 namespace Assets.Scripts.State.Levels.Data {
     #region References
 
     using EndlessEngine.Decorations;
+    using EndlessEngine.Obstacles;
     using Engine;
     using Gameplay.Heroes;
     using UnityEngine;
@@ -26,6 +27,9 @@ namespace Assets.Scripts.State.Levels.Data {
 
         [SerializeField]
         private int _levelNumber;
+
+        [SerializeField]
+        private Obstacle[] _obstacles;
 
         [SerializeField]
         private Sprite _startPoint;
@@ -52,6 +56,10 @@ namespace Assets.Scripts.State.Levels.Data {
 
         public DecorationItem[] Decorations {
             get { return _decorations; }
+        }
+
+        public Obstacle[] Obstacles {
+            get { return _obstacles; }
         }
     }
 }

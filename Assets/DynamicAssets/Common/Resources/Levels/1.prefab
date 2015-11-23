@@ -40,9 +40,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _background: {fileID: 21300000, guid: fc6b3f9f344f76846afac143cde7c560, type: 3}
+  _decorations:
+  - {fileID: 11494226, guid: 317663db3644c4547922ab78b03e85a7, type: 2}
   _hero: {fileID: 11493252, guid: 5ec4f305a40dcbe4f9f580306274ff00, type: 2}
-  _levelNumber: 1
   _length: 20000
+  _levelNumber: 1
+  _obstacles:
+  - {fileID: 11472908, guid: 0ec6ef19fadf7074c82122bde0a8ed8d, type: 2}
+  _startPoint: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -50,6 +55,14 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: _obstacles.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _decorations.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: _background
       value: 

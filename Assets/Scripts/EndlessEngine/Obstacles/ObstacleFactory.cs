@@ -1,5 +1,5 @@
 ﻿// Created 20.11.2015
-// Modified by  20.11.2015 at 13:42
+// Modified by  23.11.2015 at 13:13
 
 namespace Assets.Scripts.EndlessEngine.Obstacles {
     #region References
@@ -8,11 +8,12 @@ namespace Assets.Scripts.EndlessEngine.Obstacles {
     using Engine.Factory;
     using Engine.Factory.Strategy;
     using UnityEngine;
+    using Zenject;
 
     #endregion
 
     internal class ObstacleFactory : MultipleGameObjectFactory<Obstacle> {
-        [SerializeField]
+        [Inject]
         private Obstacle[] _prefabs;
 
         [SerializeField]
@@ -24,6 +25,11 @@ namespace Assets.Scripts.EndlessEngine.Obstacles {
 
         protected override IEnumerable<Obstacle> Items {
             get { return _prefabs; }
+        }
+
+        protected override void Start() {
+            base.Start();
+            OnLoaded();
         }
     }
 }

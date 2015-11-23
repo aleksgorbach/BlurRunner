@@ -1015,20 +1015,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 655a2796642b92b42ad8e671069373d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefabs:
-  - {fileID: 11499664, guid: 5705839b278c71b47a0f343e10c64393, type: 2}
-  - {fileID: 11420900, guid: 089d63c6c5e75cb4988ec1fca2e16d70, type: 2}
-  - {fileID: 11411558, guid: b5afe0fb3f086644b876859d78542da6, type: 2}
-  - {fileID: 11400842, guid: 31f8cde064bda17469be85e518ea5442, type: 2}
-  - {fileID: 11494226, guid: 317663db3644c4547922ab78b03e85a7, type: 2}
-  - {fileID: 11415484, guid: 209a7e0c6e396d047b027eb5c90dd247, type: 2}
-  - {fileID: 11443660, guid: 5c5635bc237d3dd4cb486d8e0ac39a97, type: 2}
-  - {fileID: 11472288, guid: fffbc2ef7e2a9d34f87ade41302d6087, type: 2}
-  - {fileID: 11444340, guid: e1aa0085d4a6eeb4fb4bfba0f12931b8, type: 2}
-  - {fileID: 11477976, guid: 4b6d1c28dd526724590c728ef569a921, type: 2}
-  - {fileID: 11494628, guid: 7bff718be4ad9394180f1881b8b70b2f, type: 2}
-  - {fileID: 11407990, guid: bb11b4cdc154f8243af0a93572f968b9, type: 2}
-  - {fileID: 11440520, guid: 62d85bdf735a2bc4a9684540eee20af9, type: 2}
   _strategy: {fileID: 696239642}
 --- !u!114 &696239641
 MonoBehaviour:
@@ -1086,7 +1072,7 @@ RectTransform:
   m_RootOrder: 4
   m_AnchorMin: {x: 1, y: .5}
   m_AnchorMax: {x: 1, y: .5}
-  m_AnchoredPosition: {x: 49.9998779, y: 0}
+  m_AnchoredPosition: {x: 50, y: 0}
   m_SizeDelta: {x: 10, y: 10}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &721510328
@@ -2466,8 +2452,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f4d088b5b4a3b8488387bc7d417afe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefabs:
-  - {fileID: 11472908, guid: 0ec6ef19fadf7074c82122bde0a8ed8d, type: 2}
   _strategy: {fileID: 1647817903}
 --- !u!1 &1737098034
 GameObject:

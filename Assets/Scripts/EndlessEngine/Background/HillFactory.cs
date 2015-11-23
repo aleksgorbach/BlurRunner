@@ -1,5 +1,5 @@
-﻿// Created 09.11.2015 
-// Modified by Gorbach Alex 09.11.2015 at 10:12
+﻿// Created 10.11.2015
+// Modified by  23.11.2015 at 12:57
 
 namespace Assets.Scripts.EndlessEngine.Background {
     #region References
@@ -19,15 +19,16 @@ namespace Assets.Scripts.EndlessEngine.Background {
         private HillStrategy _strategy;
 
         protected override ChooseStrategy<HillItem> Strategy {
-            get {
-                return _strategy;
-            }
+            get { return _strategy; }
         }
 
         protected override IEnumerable<HillItem> Items {
-            get {
-                return _prefabs;
-            }
+            get { return _prefabs; }
+        }
+
+        protected override void Start() {
+            base.Start();
+            OnLoaded();
         }
     }
 }

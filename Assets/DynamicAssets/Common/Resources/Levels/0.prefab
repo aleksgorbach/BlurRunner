@@ -49,6 +49,8 @@ MonoBehaviour:
   _hero: {fileID: 11445208, guid: 5364281ff96ed6d4c9b08e73b1a112fe, type: 2}
   _length: 15000
   _levelNumber: 0
+  _obstacles:
+  - {fileID: 11472908, guid: 0ec6ef19fadf7074c82122bde0a8ed8d, type: 2}
   _startPoint: {fileID: 21300000, guid: 89ed97b3bd378394f915c24284416c74, type: 3}
 --- !u!1001 &100100000
 Prefab:
@@ -57,6 +59,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: _obstacles.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: _decorations.Array.size
       value: 5
