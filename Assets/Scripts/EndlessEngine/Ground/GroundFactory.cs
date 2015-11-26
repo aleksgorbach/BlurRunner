@@ -1,34 +1,34 @@
-﻿// Created 10.11.2015
-// Modified by  23.11.2015 at 12:57
+﻿// Created 26.11.2015
+// Modified by Александр 26.11.2015 at 20:58
 
 namespace Assets.Scripts.EndlessEngine.Ground {
     #region References
 
-    using System.Collections.Generic;
-    using Engine.Factory;
-    using Engine.Factory.Strategy;
-    using UnityEngine;
+    using System.Linq;
+    using Engine.Extensions;
+    using Zenject;
 
     #endregion
 
-    internal class GroundFactory : AbstractGameObjectFactory<GroundBlock> {
-        [SerializeField]
+    internal class GroundFactory : IGroundFactory {
+        [Inject]
+        private IInstantiator _container;
+
         private GroundBlock[] _prefabs;
 
-        [SerializeField]
-        private GroundStrategy _strategy;
-
-        protected override ChooseStrategy<GroundBlock> Strategy {
-            get { return _strategy; }
+        public GroundBlock Create(GroundBlock prevBlock = null) {
+            GroundBlock prefab;
+            if (prevBlock == null) {
+                prefab = _prefabs.Random();
+            }
+            else {
+                prefab = _prefabs.Where(block => block.IsCompatibleWith(prevBlock)).Random();
+            }
+            return _container.InstantiatePrefabForComponent<GroundBlock>(prefab.gameObject);
         }
 
-        protected override IEnumerable<GroundBlock> Items {
-            get { return _prefabs; }
-        }
-
-        protected override void Start() {
-            base.Start();
-            OnLoaded();
+        public void Init(GroundBlock[] ground) {
+            _prefabs = ground;
         }
     }
 }

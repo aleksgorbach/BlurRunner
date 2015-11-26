@@ -1,5 +1,5 @@
-﻿// Created 20.10.2015
-// Modified by  25.11.2015 at 12:44
+﻿// Created 26.11.2015
+// Modified by Александр 26.11.2015 at 20:40
 
 #region References
 
@@ -11,6 +11,7 @@ namespace Assets.Scripts.ZenjectConfig {
     using System;
     using EndlessEngine.Bonuses;
     using EndlessEngine.Decorations;
+    using EndlessEngine.Ground;
     using EndlessEngine.Obstacles;
     using Gameplay;
     using Gameplay.Consts;
@@ -45,6 +46,7 @@ namespace Assets.Scripts.ZenjectConfig {
             Container.Bind<int>(Identifiers.Scores.MinValue).ToInstance(_scoreSettings.ScoreToLose);
             Container.Bind<ILevel>().ToGetter<ILevelStorage>(storage => storage.CurrentLevel);
             Container.Bind<string>(Identifiers.Obstacles.Layer).ToInstance("Obstacle");
+            Container.Bind<IGroundFactory>().ToTransient<GroundFactory>();
             InstallLevelSettings();
         }
 

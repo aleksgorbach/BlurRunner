@@ -1,12 +1,12 @@
-﻿// Created 20.10.2015
-// Modified by  25.11.2015 at 12:50
+﻿// Created 26.11.2015
+// Modified by Александр 26.11.2015 at 21:12
 
 namespace Assets.Scripts.Gameplay {
     #region References
 
     using System;
-    using EndlessEngine;
     using EndlessEngine.Endpoints;
+    using EndlessEngine.Levels;
     using Engine;
     using GameState.Manager;
     using GameState.StateChangedSources;
@@ -30,16 +30,16 @@ namespace Assets.Scripts.Gameplay {
         [Inject]
         private IInstantiator _container;
 
-        [SerializeField]
-        private AbstractGenerator[] _generators;
-
         private Hero _hero;
 
         [SerializeField]
         private HeroSpawner _heroSpawner;
 
         private bool _isPaused;
-        private ILevel _level;
+        //private ILevel _level;
+
+        [SerializeField]
+        private LevelGenerator _levelGenerator;
 
         [Inject]
         private ILevelProgress _progress;
@@ -55,12 +55,19 @@ namespace Assets.Scripts.Gameplay {
         }
 
         public void StartLevel(ILevel level) {
-            _level = level;
-            _background.sprite = level.Background;
-            _heroSpawner.Sprite = level.Startpoint;
+            //_level = level;
+            //_background.sprite = level.Background;
+            //_heroSpawner.Sprite = level.Startpoint;
+            _levelGenerator.Generated += OnLevelGenerated;
+            _levelGenerator.Generate(level);
         }
 
         public event Action<IWinSource> Win;
+
+        private void OnLevelGenerated() {
+            //todo стартовать игру
+            throw new NotImplementedException();
+        }
 
         private void OnStateChanged(Consts.GameState state) {
             switch (state) {
@@ -106,12 +113,12 @@ namespace Assets.Scripts.Gameplay {
         [PostInject]
         private void PostInject() {
             _stateManager.StateChanged += OnStateChanged;
-            _hero = _container.InstantiatePrefabForComponent<Hero>(_level.Hero.gameObject);
-            _hero.transform.SetParent(_heroSpawner.Container);
-            _hero.transform.localPosition = Vector3.zero;
-            _cameraAnchor.SetTarget(_hero.transform);
-            _hero.Destination = _level.Length;
-            _hero.Win += OnWin;
+            //_hero = _container.InstantiatePrefabForComponent<Hero>(_level.Hero.gameObject);
+            //_hero.transform.SetParent(_heroSpawner.Container);
+            //_hero.transform.localPosition = Vector3.zero;
+            //_cameraAnchor.SetTarget(_hero.transform);
+            //_hero.Destination = _level.Length;
+            //_hero.Win += OnWin;
             _scoreSource.ScoreChanged += OnScoreChanged;
             _stateManager.Run();
         }

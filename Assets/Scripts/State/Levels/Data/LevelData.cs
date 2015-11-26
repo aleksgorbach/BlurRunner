@@ -1,10 +1,11 @@
-﻿// Created 02.11.2015
-// Modified by  23.11.2015 at 13:05
+﻿// Created 26.11.2015
+// Modified by Александр 26.11.2015 at 20:38
 
 namespace Assets.Scripts.State.Levels.Data {
     #region References
 
     using EndlessEngine.Decorations;
+    using EndlessEngine.Ground;
     using EndlessEngine.Obstacles;
     using Engine;
     using Gameplay.Heroes;
@@ -18,6 +19,9 @@ namespace Assets.Scripts.State.Levels.Data {
 
         [SerializeField]
         private DecorationItem[] _decorations;
+
+        [SerializeField]
+        private GroundBlock[] _ground;
 
         [SerializeField]
         private Hero _hero;
@@ -60,6 +64,10 @@ namespace Assets.Scripts.State.Levels.Data {
 
         public Obstacle[] Obstacles {
             get { return _obstacles; }
+        }
+
+        public GroundBlock[] Ground {
+            get { return _ground; }
         }
     }
 }

@@ -46,6 +46,13 @@ MonoBehaviour:
   - {fileID: 11411558, guid: b5afe0fb3f086644b876859d78542da6, type: 2}
   - {fileID: 11444340, guid: e1aa0085d4a6eeb4fb4bfba0f12931b8, type: 2}
   - {fileID: 11440520, guid: 62d85bdf735a2bc4a9684540eee20af9, type: 2}
+  _ground:
+  - {fileID: 11487656, guid: 2518ba203a66c4546ad4c94a56749b6d, type: 2}
+  - {fileID: 11448344, guid: fc8a6661c9484a24b840ac931fcc4ac4, type: 2}
+  - {fileID: 11498154, guid: 528def06b57fd3e4781abb5410e234ab, type: 2}
+  - {fileID: 11427364, guid: 96796bbae59995c4e86d935530ee142a, type: 2}
+  - {fileID: 11417276, guid: e8d961edfa2404742bd56414064bcb95, type: 2}
+  - {fileID: 11489896, guid: 6460101e560671945b4c29a549d21850, type: 2}
   _hero: {fileID: 11493252, guid: 5ec4f305a40dcbe4f9f580306274ff00, type: 2}
   _length: 15000
   _levelNumber: 0
@@ -60,6 +67,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: _ground.Array.size
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: _obstacles.Array.size
       value: 2
