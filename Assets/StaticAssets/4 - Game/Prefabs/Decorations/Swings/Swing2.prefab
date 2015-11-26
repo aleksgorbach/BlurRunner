@@ -13,7 +13,7 @@ GameObject:
   - 61: {fileID: 6106570}
   - 114: {fileID: 11420900}
   - 50: {fileID: 5046222}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Swing2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,9 +46,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 192.600006}
+  m_Offset: {x: .00280761719, y: 137.033234}
   serializedVersion: 2
-  m_Size: {x: 472.350006, y: 395.779999}
+  m_Size: {x: 348.457245, y: 284.646423}
 --- !u!114 &11414036
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -107,8 +107,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: -1212.59998, y: 24.8821716}
-  m_SizeDelta: {x: 476, y: 499}
+  m_AnchoredPosition: {x: -1591, y: 155}
+  m_SizeDelta: {x: 356, y: 340}
   m_Pivot: {x: .5, y: .176749974}
 --- !u!1001 &100100000
 Prefab:
@@ -124,6 +124,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_IsKinematic
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

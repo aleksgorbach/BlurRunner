@@ -1,5 +1,5 @@
 ﻿// Created 20.11.2015
-// Modified by  23.11.2015 at 15:38
+// Modified by  25.11.2015 at 12:51
 
 namespace Assets.Scripts.Gameplay.Heroes {
     #region References
@@ -13,6 +13,8 @@ namespace Assets.Scripts.Gameplay.Heroes {
     [RequireComponent(typeof (Animator))]
     internal class AnimatedHero : Hero {
         private Animator _animator;
+
+        private bool _isOnObstacle = false;
 
         [Inject(Identifiers.Obstacles.Layer)]
         private string _obstaclesLayer;
@@ -29,9 +31,28 @@ namespace Assets.Scripts.Gameplay.Heroes {
         }
 
         private void OnTriggerEnter2D(Collider2D collision) {
-            if (_obstaclesLayer == LayerMask.LayerToName(collision.gameObject.layer)) {
-                _animator.SetTrigger("trip");
+            if (_isOnObstacle) {
+                return;
             }
+            if (IsObstacleLayer(collision.gameObject.layer)) {
+                _animator.SetTrigger("trip");
+                _isOnObstacle = true;
+            }
+        }
+
+        private void OnTriggerExit2D(Collider2D collision) {
+            if (IsObstacleLayer(collision.gameObject.layer)) {
+                _isOnObstacle = false;
+            }
+        }
+
+        private bool IsObstacleLayer(int layer) {
+            return _obstaclesLayer == LayerMask.LayerToName(layer);
+        }
+
+        public override void Kill() {
+            base.Kill();
+            _animator.SetTrigger("die");
         }
     }
 }

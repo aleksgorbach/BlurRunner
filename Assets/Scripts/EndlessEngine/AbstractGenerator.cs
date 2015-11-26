@@ -1,5 +1,5 @@
-﻿// Created 06.11.2015 
-// Modified by Gorbach Alex 06.11.2015 at 14:03
+﻿// Created 06.11.2015
+// Modified by  25.11.2015 at 12:49
 
 namespace Assets.Scripts.EndlessEngine {
     #region References
@@ -9,16 +9,14 @@ namespace Assets.Scripts.EndlessEngine {
     #endregion
 
     internal abstract class AbstractGenerator : MonoBehaviourBase {
-        private bool _isStopped;
+        //private bool _isStopped;
 
         protected bool CanGenerate {
-            get {
-                return !_isStopped;
-            }
+            get { return true; }
         }
 
-        public void Stop() {
-            _isStopped = true;
-        }
+        //public void Stop() {
+        //    _isStopped = true;
+        //}
     }
 }

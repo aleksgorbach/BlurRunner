@@ -1,5 +1,5 @@
-﻿// Created 19.11.2015
-// Modified by Александр 19.11.2015 at 21:31
+﻿// Created 20.10.2015
+// Modified by  25.11.2015 at 12:50
 
 namespace Assets.Scripts.Gameplay {
     #region References
@@ -71,10 +71,10 @@ namespace Assets.Scripts.Gameplay {
                     Pause();
                     break;
                 case Consts.GameState.Lose:
-                    Stop();
+                    OnDie();
                     break;
                 case Consts.GameState.Win:
-                    Stop();
+                    OnWin();
                     break;
             }
         }
@@ -87,12 +87,14 @@ namespace Assets.Scripts.Gameplay {
             Time.timeScale = 1;
         }
 
-        private void Stop() {
-            foreach (var generator in _generators) {
-                generator.Stop();
-            }
-            _hero.Stop();
+        private void OnDie() {
+            _hero.Kill();
         }
+
+        private void OnWin() {
+            _hero.Congratulate();
+        }
+
 
         private void OnWin(IWinSource winSource) {
             var handler = Win;

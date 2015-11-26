@@ -1,5 +1,5 @@
 ﻿// Created 20.10.2015
-// Modified by  23.11.2015 at 14:26
+// Modified by  25.11.2015 at 12:49
 
 namespace Assets.Scripts.Gameplay.Heroes {
     #region References
@@ -53,8 +53,16 @@ namespace Assets.Scripts.Gameplay.Heroes {
             }
         }
 
-        public void Stop() {
+        private void Stop() {
             Speed = 0;
+        }
+
+        public virtual void Kill() {
+            Stop();
+        }
+
+        public virtual void Congratulate() {
+            Stop();
         }
 
 
