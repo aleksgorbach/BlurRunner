@@ -11,8 +11,8 @@ GameObject:
   - 222: {fileID: 22245506}
   - 114: {fileID: 11419518}
   - 50: {fileID: 5055040}
-  - 60: {fileID: 6087366}
   - 114: {fileID: 11491086}
+  - 61: {fileID: 6138386}
   m_Layer: 13
   m_Name: Trash
   m_TagString: Untagged
@@ -36,8 +36,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!60 &6087366
-PolygonCollider2D:
+--- !u!61 &6138386
+BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -46,15 +46,9 @@ PolygonCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
-  m_Points:
-    m_Paths:
-    - - {x: 56.5844803, y: 3.64892578}
-      - {x: 41.7014542, y: 30.0027466}
-      - {x: 52.7183533, y: 133.909882}
-      - {x: -40.1968575, y: 127.409363}
-      - {x: -41.6040306, y: 20.1934814}
-      - {x: -59.9445419, y: 1.15112305}
+  m_Offset: {x: 0, y: 40.2400017}
+  serializedVersion: 2
+  m_Size: {x: 77.4899979, y: 79.9100037}
 --- !u!114 &11419518
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -113,8 +107,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 9, y: -144.5}
-  m_SizeDelta: {x: 117, y: 138}
+  m_AnchoredPosition: {x: -109.300003, y: -153.5}
+  m_SizeDelta: {x: 84.3000031, y: 79.5999985}
   m_Pivot: {x: .5, y: -2.23517418e-08}
 --- !u!1001 &100100000
 Prefab:

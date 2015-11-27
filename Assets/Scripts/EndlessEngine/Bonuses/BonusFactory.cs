@@ -1,35 +1,19 @@
-﻿// Created 08.11.2015
-// Modified by Александр 08.11.2015 at 20:57
+﻿// Created 10.11.2015
+// Modified by  27.11.2015 at 9:17
 
 namespace Assets.Scripts.EndlessEngine.Bonuses {
     #region References
 
-    using System.Collections.Generic;
+    using Engine.Extensions;
     using Engine.Factory;
-    using Engine.Factory.Strategy;
     using Gameplay.Bonuses;
-    using UnityEngine;
+    using Zenject;
 
     #endregion
 
     internal class BonusFactory : AbstractGameObjectFactory<Bonus> {
-        [SerializeField]
-        private Bonus[] _prefabs;
-
-        [SerializeField]
-        private BonusStrategy _strategy;
-
-        protected override ChooseStrategy<Bonus> Strategy {
-            get { return _strategy; }
-        }
-
-        protected override IEnumerable<Bonus> Items {
-            get { return _prefabs; }
-        }
-
-        protected override void Start() {
-            base.Start();
-            OnLoaded();
+        public Bonus Create() {
+            return Container.InstantiatePrefabForComponent<Bonus>(Prefabs.Random().gameObject);
         }
     }
 }

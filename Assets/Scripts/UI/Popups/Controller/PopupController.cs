@@ -1,38 +1,35 @@
-﻿// Created 23.10.2015 
-// Modified by Gorbach Alex 12.11.2015 at 10:30
+﻿// Created 23.10.2015
+// Modified by  27.11.2015 at 14:02
 
 namespace Assets.Scripts.UI.Popups.Controller {
     #region References
 
     using System;
     using System.Collections.Generic;
-    using Gameplay.Consts;
-    using Implementations;
-    using Gameplay.GameState.Manager;
     using Engine;
     using Factory;
+    using Gameplay.Consts;
+    using Gameplay.GameState.Manager;
+    using Implementations;
     using UnityEngine;
     using Zenject;
 
     #endregion
 
     internal class PopupController : MonoBehaviourBase, IPopupController {
-        [SerializeField]
-        private PopupPool _pool;
+        [Inject]
+        private PopupFactory _factory;
 
-        private PopupStrategy _strategy;
+        private Stack<Popup> _popups;
 
         [Inject]
         private IGameStateManager _stateManager;
-
-        private Stack<Popup> _popups;
 
         public event Action<IPopup, int> PopupOpened;
         public event Action<IPopup, int> PopupClosed;
 
         private IPopup Show<TPopup>() where TPopup : Popup {
-            _strategy.SetTarget<TPopup>();
-            var popup = _pool.Get();
+            var popup = _factory.Create<TPopup>();
             popup.gameObject.SetActive(true);
             popup.transform.SetParent(transform);
             popup.rectTransform.anchoredPosition = Vector2.zero;
@@ -70,11 +67,11 @@ namespace Assets.Scripts.UI.Popups.Controller {
             }
         }
 
-        private void OnClose(IPopup popup) {
+        private void OnClose(Popup popup) {
             if (_popups.Count > 0) {
                 var top = _popups.Pop();
                 Unsubscribe(top);
-                _pool.Release(top);
+                Destroy(popup.gameObject);
                 OnPopupClosed(popup);
             }
         }
@@ -82,7 +79,6 @@ namespace Assets.Scripts.UI.Popups.Controller {
         protected override void Awake() {
             base.Awake();
             _popups = new Stack<Popup>();
-            _strategy = _pool.Strategy as PopupStrategy;
         }
 
         [PostInject]

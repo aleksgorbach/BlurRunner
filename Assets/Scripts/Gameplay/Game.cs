@@ -1,16 +1,14 @@
-﻿// Created 26.11.2015
-// Modified by Александр 26.11.2015 at 21:12
+﻿// Created 20.10.2015
+// Modified by  27.11.2015 at 13:13
 
 namespace Assets.Scripts.Gameplay {
     #region References
 
     using System;
-    using EndlessEngine.Endpoints;
     using EndlessEngine.Levels;
     using Engine;
     using GameState.Manager;
     using GameState.StateChangedSources;
-    using Heroes;
     using State.Levels;
     using State.Progress;
     using State.Progress.Score;
@@ -26,17 +24,6 @@ namespace Assets.Scripts.Gameplay {
 
         [SerializeField]
         private ObjectAnchor _cameraAnchor;
-
-        [Inject]
-        private IInstantiator _container;
-
-        private Hero _hero;
-
-        [SerializeField]
-        private HeroSpawner _heroSpawner;
-
-        private bool _isPaused;
-        //private ILevel _level;
 
         [SerializeField]
         private LevelGenerator _levelGenerator;
@@ -65,8 +52,7 @@ namespace Assets.Scripts.Gameplay {
         public event Action<IWinSource> Win;
 
         private void OnLevelGenerated() {
-            //todo стартовать игру
-            throw new NotImplementedException();
+            _levelGenerator.StartLevel();
         }
 
         private void OnStateChanged(Consts.GameState state) {
@@ -78,10 +64,10 @@ namespace Assets.Scripts.Gameplay {
                     Pause();
                     break;
                 case Consts.GameState.Lose:
-                    OnDie();
+                    //OnDie();
                     break;
                 case Consts.GameState.Win:
-                    OnWin();
+                    //OnWin();
                     break;
             }
         }
@@ -94,13 +80,13 @@ namespace Assets.Scripts.Gameplay {
             Time.timeScale = 1;
         }
 
-        private void OnDie() {
-            _hero.Kill();
-        }
+        //private void OnDie() {
+        //    _hero.Kill();
+        //}
 
-        private void OnWin() {
-            _hero.Congratulate();
-        }
+        //private void OnWin() {
+        //    _hero.Congratulate();
+        //}
 
 
         private void OnWin(IWinSource winSource) {

@@ -24,7 +24,7 @@ namespace Assets.Scripts.State.Levels {
         /// </summary>
         float Length { get; }
 
-        DecorationItem[] Decorations { get; }
+        Decoration[] Decorations { get; }
 
         Obstacle[] Obstacles { get; }
         GroundBlock[] Ground { get; }

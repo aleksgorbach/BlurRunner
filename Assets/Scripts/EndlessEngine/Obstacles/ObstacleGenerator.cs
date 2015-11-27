@@ -1,46 +1,33 @@
 ﻿// Created 20.11.2015
-// Modified by  20.11.2015 at 14:22
+// Modified by  27.11.2015 at 10:52
 
 namespace Assets.Scripts.EndlessEngine.Obstacles {
     #region References
 
-    using Engine.Extensions;
-    using Engine.Pool;
+    using Engine;
     using Strategy;
     using UnityEngine;
+    using Zenject;
 
     #endregion
 
-    internal class ObstacleGenerator : HidingItemGenerator<Obstacle> {
-        [SerializeField]
-        private Transform _container;
-
-        [SerializeField]
-        private ObstaclePool _pool;
+    internal class ObstacleGenerator : AbstractGenerator<Obstacle> {
+        [Inject]
+        private ObstacleFactory _factory;
 
         [SerializeField]
         private AbstractStrategy _strategy;
 
-        protected override GameObjectPool<Obstacle> Pool {
-            get { return _pool; }
-        }
-
-        private void Add() {
-            if (!CanGenerate) {
-                return;
+        public override void Generate(float length, Obstacle[] prefabs) {
+            _factory.Init(prefabs);
+            var currentPos = _strategy.DistanceToGenerate;
+            while (currentPos < length) {
+                var obstacle = _factory.Create();
+                AddItem(obstacle);
+                obstacle.transform.SetParent(transform);
+                obstacle.rectTransform.anchoredPosition3D = new Vector3(currentPos, 0, 0);
+                currentPos += _strategy.DistanceToGenerate;
             }
-            var created = Create();
-            created.gameObject.SetActive(true);
-            created.transform.SetParent(_container, false);
-            created.transform.position = transform.position;
-            created.transform.SetLocalZ(0);
-            Add(created);
-        }
-
-
-        protected override void Awake() {
-            base.Awake();
-            _strategy.NeedGenerate += Add;
         }
     }
 }

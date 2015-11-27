@@ -24,7 +24,7 @@ namespace Assets.Scripts.State.Levels {
             _data = data;
         }
 
-        public DecorationItem[] Decorations {
+        public Decoration[] Decorations {
             get { return _data.Decorations; }
         }
 

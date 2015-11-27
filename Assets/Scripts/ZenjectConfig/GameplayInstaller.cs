@@ -1,5 +1,5 @@
-﻿// Created 26.11.2015
-// Modified by Александр 26.11.2015 at 20:40
+﻿// Created 20.10.2015
+// Modified by  27.11.2015 at 12:21
 
 #region References
 
@@ -28,7 +28,7 @@ namespace Assets.Scripts.ZenjectConfig {
 
     internal class GameplayInstaller : MonoInstaller {
         [SerializeField]
-        private BonusGenerator _bonusGenerator;
+        private Bonuses _bonusGenerator;
 
         [SerializeField]
         private Game _game;
@@ -46,12 +46,17 @@ namespace Assets.Scripts.ZenjectConfig {
             Container.Bind<int>(Identifiers.Scores.MinValue).ToInstance(_scoreSettings.ScoreToLose);
             Container.Bind<ILevel>().ToGetter<ILevelStorage>(storage => storage.CurrentLevel);
             Container.Bind<string>(Identifiers.Obstacles.Layer).ToInstance("Obstacle");
-            Container.Bind<IGroundFactory>().ToTransient<GroundFactory>();
+
+            Container.Bind<GroundFactory>().ToTransient();
+            Container.Bind<DecorationsFactory>().ToTransient();
+            Container.Bind<ObstacleFactory>().ToTransient();
+            Container.Bind<BonusFactory>().ToTransient();
+
             InstallLevelSettings();
         }
 
         private void InstallLevelSettings() {
-            Container.Bind<DecorationItem[]>().ToGetter<ILevel>(level => level.Decorations);
+            Container.Bind<Decoration[]>().ToGetter<ILevel>(level => level.Decorations);
             Container.Bind<Obstacle[]>().ToGetter<ILevel>(level => level.Obstacles);
         }
 

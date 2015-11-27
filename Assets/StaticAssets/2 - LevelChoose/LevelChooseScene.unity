@@ -355,7 +355,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b5a12305ac77e346b82693b11505f91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _size: 9
 --- !u!1 &1508522176
 GameObject:
   m_ObjectHideFlags: 0
@@ -584,6 +583,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a670ece937826654887f31ab4e9ee5d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _levelsMenu: {fileID: 1461670208}
   _openShopButton: {fileID: 2063071179}
 --- !u!1 &1806489368
 GameObject:

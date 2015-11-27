@@ -1,5 +1,5 @@
-﻿// Created 23.10.2015 
-// Modified by Gorbach Alex 11.11.2015 at 14:54
+﻿// Created 23.10.2015
+// Modified by  27.11.2015 at 12:15
 
 namespace Assets.Scripts.UI.Popups {
     #region References
@@ -13,7 +13,7 @@ namespace Assets.Scripts.UI.Popups {
     internal abstract class Popup : MonoBehaviourBase, IPopup {
         private EventTrigger _eventTrigger;
 
-        public event Action<IPopup> Closed;
+        public event Action<Popup> Closed;
 
         protected override void Awake() {
             base.Awake();
@@ -21,7 +21,7 @@ namespace Assets.Scripts.UI.Popups {
             var trigger = new EventTrigger.TriggerEvent();
             trigger.AddListener(OnClick);
             _eventTrigger.triggers.Add(
-                new EventTrigger.Entry { eventID = EventTriggerType.PointerClick, callback = trigger });
+                new EventTrigger.Entry {eventID = EventTriggerType.PointerClick, callback = trigger});
         }
 
         private void OnClick(BaseEventData args) {

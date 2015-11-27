@@ -1,47 +1,27 @@
-﻿// Created 12.11.2015 
-// Modified by Gorbach Alex 12.11.2015 at 11:23
+﻿// Created 12.11.2015
+// Modified by  27.11.2015 at 14:01
 
 namespace Assets.Scripts.UI.Popups.Factory {
     #region References
 
-    using System.Collections.Generic;
     using System.Linq;
-    using Assets.Scripts.Engine.Factory;
-    using Assets.Scripts.Engine.Factory.Strategy;
-    using Engine;
-    using UnityEngine;
+    using Engine.Factory;
     using Zenject;
 
     #endregion
 
     internal class PopupFactory : AbstractGameObjectFactory<Popup> {
-        [SerializeField]
+        [Inject]
         private Popup[] _prefabs;
 
-        [SerializeField]
-        private PopupStrategy _strategy;
-
-        //[Inject]
-        //private IInstantiator _instantiator;
-
-        //public virtual Popup Create<TPopup>() where TPopup : Popup {
-        //    var prefab = _prefabs.OfType<TPopup>().FirstOrDefault();
-        //    if (prefab == null) {
-        //        return null;
-        //    }
-        //    var created = _instantiator.InstantiatePrefabForComponent<TPopup>(prefab.gameObject);
-        //    return created;
-        //}
-        protected override ChooseStrategy<Popup> Strategy {
-            get {
-                return _strategy;
-            }
+        public Popup Create<T>() where T : Popup {
+            var prefab = Prefabs.OfType<T>().First();
+            return Container.InstantiatePrefabForComponent<T>(prefab.gameObject);
         }
 
-        protected override IEnumerable<Popup> Items {
-            get {
-                return _prefabs;
-            }
+        [PostInject]
+        private void PostInject() {
+            Init(_prefabs);
         }
     }
 }

@@ -1,5 +1,5 @@
-﻿// Created 04.11.2015
-// Modified by Александр 26.11.2015 at 21:24
+﻿// Created 20.10.2015
+// Modified by  27.11.2015 at 12:52
 
 namespace Assets.Scripts.EndlessEngine.Ground {
     #region References
@@ -19,8 +19,8 @@ namespace Assets.Scripts.EndlessEngine.Ground {
         private BorderLevel _rightLevel;
 
 
-        public float Length {
-            get { return 256; }
+        public virtual float Length {
+            get { return rectTransform.sizeDelta.x; }
         }
 
         public bool IsCompatibleWith(GroundBlock other) {

@@ -28,7 +28,6 @@ GameObject:
   - 114: {fileID: 11487656}
   - 68: {fileID: 6815022}
   - 50: {fileID: 5095750}
-  - 61: {fileID: 6104644}
   m_Layer: 10
   m_Name: Block_5
   m_TagString: Untagged
@@ -52,19 +51,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &6104644
-BoxCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 196432}
-  m_Enabled: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_Offset: {x: 241.100006, y: 90.5}
-  serializedVersion: 2
-  m_Size: {x: 30, y: 30}
 --- !u!68 &6815022
 EdgeCollider2D:
   m_ObjectHideFlags: 1
@@ -77,11 +63,10 @@ EdgeCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   m_Points:
-  - {x: 255.792969, y: 202.521576}
-  - {x: 229.210449, y: 191.638184}
-  - {x: 170.147461, y: 189.793732}
-  - {x: 84.3735352, y: 194.218475}
-  - {x: 10.8945312, y: 211.866486}
+  - {x: 96.0627441, y: 73.2058411}
+  - {x: 70.7160645, y: 76.9468231}
+  - {x: 29.9228516, y: 79.7932892}
+  - {x: 2.66821289, y: 90.8910217}
 --- !u!114 &11487656
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -90,7 +75,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 196432}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1cf67d153b7d25a4eb497e4c9f327806, type: 3}
+  m_Script: {fileID: 11500000, guid: 5e76e39b86ea75140aa22e72b32be48a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _leftLevel: 2
@@ -115,7 +100,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 770d76c4618c9db408ab2e73bc84db02, type: 3}
-  m_Type: 1
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -144,7 +129,7 @@ RectTransform:
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 2373, y: -150}
-  m_SizeDelta: {x: 256, y: 256}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 6.14672899e-08, y: -1.24797225e-07}
 --- !u!224 &22457900
 RectTransform:
@@ -181,6 +166,18 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: _rightLevel
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_SizeDelta.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_SizeDelta.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Type
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

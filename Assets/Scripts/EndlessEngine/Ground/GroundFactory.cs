@@ -1,34 +1,22 @@
-﻿// Created 26.11.2015
-// Modified by Александр 26.11.2015 at 20:58
+﻿// Created 10.11.2015
+// Modified by  27.11.2015 at 9:17
 
 namespace Assets.Scripts.EndlessEngine.Ground {
     #region References
 
     using System.Linq;
     using Engine.Extensions;
+    using Engine.Factory;
     using Zenject;
 
     #endregion
 
-    internal class GroundFactory : IGroundFactory {
-        [Inject]
-        private IInstantiator _container;
-
-        private GroundBlock[] _prefabs;
-
+    internal class GroundFactory : AbstractGameObjectFactory<GroundBlock>, IGroundFactory {
         public GroundBlock Create(GroundBlock prevBlock = null) {
-            GroundBlock prefab;
-            if (prevBlock == null) {
-                prefab = _prefabs.Random();
-            }
-            else {
-                prefab = _prefabs.Where(block => block.IsCompatibleWith(prevBlock)).Random();
-            }
-            return _container.InstantiatePrefabForComponent<GroundBlock>(prefab.gameObject);
-        }
-
-        public void Init(GroundBlock[] ground) {
-            _prefabs = ground;
+            var prefab = prevBlock == null
+                ? Prefabs.Random()
+                : Prefabs.Where(block => block.IsCompatibleWith(prevBlock)).Random();
+            return Container.InstantiatePrefabForComponent<GroundBlock>(prefab.gameObject);
         }
     }
 }

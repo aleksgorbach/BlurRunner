@@ -18,7 +18,7 @@ namespace Assets.Scripts.State.Levels.Data {
         private Sprite _background;
 
         [SerializeField]
-        private DecorationItem[] _decorations;
+        private Decoration[] _decorations;
 
         [SerializeField]
         private GroundBlock[] _ground;
@@ -58,7 +58,7 @@ namespace Assets.Scripts.State.Levels.Data {
             get { return _startPoint; }
         }
 
-        public DecorationItem[] Decorations {
+        public Decoration[] Decorations {
             get { return _decorations; }
         }
 
