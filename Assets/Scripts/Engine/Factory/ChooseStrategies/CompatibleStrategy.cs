@@ -1,13 +1,15 @@
 ﻿// Created 30.11.2015
-// Modified by  30.11.2015 at 10:09
+// Modified by Александр 30.11.2015 at 22:01
 
 namespace Assets.Scripts.Engine.Factory.ChooseStrategies {
     #region References
 
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using Extensions;
     using Pool;
+    using UnityEngine;
 
     #endregion
 
@@ -15,10 +17,16 @@ namespace Assets.Scripts.Engine.Factory.ChooseStrategies {
         private T _lastChosen = null;
 
         public T Choose(IEnumerable<T> items) {
-            _lastChosen = _lastChosen == null
-                ? items.Random()
-                : items.Where(item => item.IsCompatibleWith(_lastChosen)).Random();
-            return _lastChosen;
+            try {
+                _lastChosen = _lastChosen == null
+                    ? items.Random()
+                    : items.Where(item => item.IsCompatibleWith(_lastChosen)).Random();
+                return _lastChosen;
+            }
+            catch (Exception) {
+                Debug.Log(_lastChosen);
+                return null;
+            }
         }
     }
 }

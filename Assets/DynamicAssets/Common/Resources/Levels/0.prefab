@@ -54,6 +54,12 @@ MonoBehaviour:
   - {fileID: 11427364, guid: 96796bbae59995c4e86d935530ee142a, type: 2}
   - {fileID: 11417276, guid: e8d961edfa2404742bd56414064bcb95, type: 2}
   - {fileID: 11489896, guid: 6460101e560671945b4c29a549d21850, type: 2}
+  - {fileID: 11417276, guid: 1c24975f8afc10046813708774f16641, type: 2}
+  - {fileID: 11448344, guid: 636d5106446977b43bbf76ed958d74e6, type: 2}
+  - {fileID: 11487656, guid: 9e93c88edf8a4dc459e6597fe426b8df, type: 2}
+  - {fileID: 11489896, guid: 9ee87c9af4762df44b71ed138fbee194, type: 2}
+  - {fileID: 11498154, guid: ea5eeeff29b9b644988d4df15acb00c4, type: 2}
+  - {fileID: 11427364, guid: ebcad494dac0ed649b9e50166a98aba8, type: 2}
   _hero: {fileID: 11493252, guid: 5ec4f305a40dcbe4f9f580306274ff00, type: 2}
   _hills:
   - {fileID: 11489896, guid: 0b39488c09f553240a102575300cd689, type: 2}
@@ -81,7 +87,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: _ground.Array.size
-      value: 6
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: _obstacles.Array.size

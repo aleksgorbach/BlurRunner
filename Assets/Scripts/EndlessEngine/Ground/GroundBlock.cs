@@ -1,5 +1,5 @@
-﻿// Created 20.10.2015
-// Modified by  30.11.2015 at 14:10
+﻿// Created 30.11.2015
+// Modified by Александр 30.11.2015 at 21:53
 
 namespace Assets.Scripts.EndlessEngine.Ground {
     #region References
@@ -13,14 +13,10 @@ namespace Assets.Scripts.EndlessEngine.Ground {
 
     [RequireComponent(typeof (EdgeCollider2D))]
     internal class GroundBlock : MonoBehaviourBase, IGroundBlock, ICompatible<GroundBlock> {
+        /// <summary>
+        /// Max offset between blocks edges that keeps compatibility
+        /// </summary>
         private const float DROP_MAX = 10;
-
-        [SerializeField]
-        private BorderLevel _leftLevel;
-
-        [SerializeField]
-        private BorderLevel _rightLevel;
-
 
         public float Length {
             get { return rectTransform.sizeDelta.x; }
@@ -44,7 +40,6 @@ namespace Assets.Scripts.EndlessEngine.Ground {
             if (other == null) {
                 return true;
             }
-            //return _leftLevel == other._rightLevel;
             return Mathf.Abs(LeftHeight - other.RightHeight) < DROP_MAX;
         }
     }

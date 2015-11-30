@@ -8,7 +8,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 224: {fileID: 22457900}
-  m_Layer: 11
+  m_Layer: 10
   m_Name: TreeContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,8 +28,8 @@ GameObject:
   - 114: {fileID: 11487656}
   - 68: {fileID: 6815022}
   - 50: {fileID: 5095750}
-  m_Layer: 11
-  m_Name: Hill_1
+  m_Layer: 10
+  m_Name: Block_11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -63,10 +63,10 @@ EdgeCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   m_Points:
-  - {x: 96.0627441, y: 73.2058411}
-  - {x: 70.7160645, y: 76.9468231}
-  - {x: 29.9228516, y: 79.7932892}
-  - {x: 2.66821289, y: 90.8910217}
+  - {x: 197.187988, y: 148.487473}
+  - {x: 149.393311, y: 139.76265}
+  - {x: 29.9663086, y: 151.347198}
+  - {x: 1.94018555, y: 176.815491}
 --- !u!114 &11487656
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -78,8 +78,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cf67d153b7d25a4eb497e4c9f327806, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _leftLevel: 0
-  _rightLevel: 0
 --- !u!114 &11490066
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -92,7 +90,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: .0955882072, g: .0955882072, b: .0955882072, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -100,7 +98,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 770d76c4618c9db408ab2e73bc84db02, type: 3}
-  m_Type: 0
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -129,7 +127,7 @@ RectTransform:
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 2373, y: -150}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 6.14672899e-08, y: -1.24797225e-07}
 --- !u!224 &22457900
 RectTransform:
@@ -169,7 +167,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_SizeDelta.x
-      value: 100
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_SizeDelta.y
@@ -178,26 +176,6 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Type
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Color.r
-      value: .0955882072
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Color.g
-      value: .0955882072
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Color.b
-      value: .0955882072
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Color.a
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
