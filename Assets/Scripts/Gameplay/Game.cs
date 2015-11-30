@@ -1,5 +1,5 @@
 ﻿// Created 20.10.2015
-// Modified by  27.11.2015 at 13:13
+// Modified by  30.11.2015 at 14:57
 
 namespace Assets.Scripts.Gameplay {
     #region References
@@ -23,9 +23,6 @@ namespace Assets.Scripts.Gameplay {
         private Image _background;
 
         [SerializeField]
-        private ObjectAnchor _cameraAnchor;
-
-        [SerializeField]
         private LevelGenerator _levelGenerator;
 
         [Inject]
@@ -43,7 +40,7 @@ namespace Assets.Scripts.Gameplay {
 
         public void StartLevel(ILevel level) {
             //_level = level;
-            //_background.sprite = level.Background;
+            _background.sprite = level.Background;
             //_heroSpawner.Sprite = level.Startpoint;
             _levelGenerator.Generated += OnLevelGenerated;
             _levelGenerator.Generate(level);
@@ -99,11 +96,6 @@ namespace Assets.Scripts.Gameplay {
         [PostInject]
         private void PostInject() {
             _stateManager.StateChanged += OnStateChanged;
-            //_hero = _container.InstantiatePrefabForComponent<Hero>(_level.Hero.gameObject);
-            //_hero.transform.SetParent(_heroSpawner.Container);
-            //_hero.transform.localPosition = Vector3.zero;
-            //_cameraAnchor.SetTarget(_hero.transform);
-            //_hero.Destination = _level.Length;
             //_hero.Win += OnWin;
             _scoreSource.ScoreChanged += OnScoreChanged;
             _stateManager.Run();

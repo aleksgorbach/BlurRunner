@@ -1,5 +1,5 @@
-﻿// Created 26.11.2015
-// Modified by Александр 26.11.2015 at 20:38
+﻿// Created 02.11.2015
+// Modified by  30.11.2015 at 14:02
 
 namespace Assets.Scripts.State.Levels.Data {
     #region References
@@ -8,6 +8,7 @@ namespace Assets.Scripts.State.Levels.Data {
     using EndlessEngine.Ground;
     using EndlessEngine.Obstacles;
     using Engine;
+    using Gameplay.Bonuses;
     using Gameplay.Heroes;
     using UnityEngine;
 
@@ -18,6 +19,9 @@ namespace Assets.Scripts.State.Levels.Data {
         private Sprite _background;
 
         [SerializeField]
+        private Bonus[] _bonuses;
+
+        [SerializeField]
         private Decoration[] _decorations;
 
         [SerializeField]
@@ -25,6 +29,9 @@ namespace Assets.Scripts.State.Levels.Data {
 
         [SerializeField]
         private Hero _hero;
+
+        [SerializeField]
+        private GroundBlock[] _hills;
 
         [SerializeField]
         private float _length;
@@ -68,6 +75,14 @@ namespace Assets.Scripts.State.Levels.Data {
 
         public GroundBlock[] Ground {
             get { return _ground; }
+        }
+
+        public Bonus[] Bonuses {
+            get { return _bonuses; }
+        }
+
+        public GroundBlock[] Hills {
+            get { return _hills; }
         }
     }
 }

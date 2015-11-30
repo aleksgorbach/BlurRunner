@@ -1,5 +1,5 @@
 ﻿// Created 20.10.2015
-// Modified by  27.11.2015 at 9:12
+// Modified by  30.11.2015 at 9:04
 
 namespace Assets.Scripts.Engine.Factory {
 
@@ -11,8 +11,8 @@ namespace Assets.Scripts.Engine.Factory {
 
     #endregion
 
-    internal interface IFactory<in T>
+    internal interface IFactory<T>
         where T : class {
-        void Init(T[] prefabs);
+        void Init(T[] prefabs, IChooseStrategy<T> strategy);
     }
 }

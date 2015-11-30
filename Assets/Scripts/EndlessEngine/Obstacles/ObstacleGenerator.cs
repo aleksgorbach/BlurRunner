@@ -1,33 +1,29 @@
 ﻿// Created 20.11.2015
-// Modified by  27.11.2015 at 10:52
+// Modified by  30.11.2015 at 13:52
 
 namespace Assets.Scripts.EndlessEngine.Obstacles {
     #region References
 
     using Engine;
-    using Strategy;
-    using UnityEngine;
+    using Engine.Factory;
     using Zenject;
 
     #endregion
 
-    internal class ObstacleGenerator : AbstractGenerator<Obstacle> {
+    internal class ObstacleGenerator : RandomDistanceGenerator<Obstacle> {
         [Inject]
-        private ObstacleFactory _factory;
+        private AbstractGameObjectFactory<Obstacle> _factory;
 
-        [SerializeField]
-        private AbstractStrategy _strategy;
+        [Inject]
+        private IChooseStrategy<Obstacle> _strategy;
 
-        public override void Generate(float length, Obstacle[] prefabs) {
-            _factory.Init(prefabs);
-            var currentPos = _strategy.DistanceToGenerate;
-            while (currentPos < length) {
-                var obstacle = _factory.Create();
-                AddItem(obstacle);
-                obstacle.transform.SetParent(transform);
-                obstacle.rectTransform.anchoredPosition3D = new Vector3(currentPos, 0, 0);
-                currentPos += _strategy.DistanceToGenerate;
-            }
+
+        protected override AbstractGameObjectFactory<Obstacle> Factory {
+            get { return _factory; }
+        }
+
+        protected override IChooseStrategy<Obstacle> Strategy {
+            get { return _strategy; }
         }
     }
 }

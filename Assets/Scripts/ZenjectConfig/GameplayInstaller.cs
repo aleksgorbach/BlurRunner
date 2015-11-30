@@ -1,5 +1,5 @@
 ﻿// Created 20.10.2015
-// Modified by  27.11.2015 at 12:21
+// Modified by  30.11.2015 at 11:37
 
 #region References
 
@@ -13,7 +13,10 @@ namespace Assets.Scripts.ZenjectConfig {
     using EndlessEngine.Decorations;
     using EndlessEngine.Ground;
     using EndlessEngine.Obstacles;
+    using Engine.Factory;
+    using Engine.Factory.ChooseStrategies;
     using Gameplay;
+    using Gameplay.Bonuses;
     using Gameplay.Consts;
     using Gameplay.GameState.Manager;
     using Gameplay.GameState.StateChangedSources;
@@ -47,10 +50,15 @@ namespace Assets.Scripts.ZenjectConfig {
             Container.Bind<ILevel>().ToGetter<ILevelStorage>(storage => storage.CurrentLevel);
             Container.Bind<string>(Identifiers.Obstacles.Layer).ToInstance("Obstacle");
 
-            Container.Bind<GroundFactory>().ToTransient();
-            Container.Bind<DecorationsFactory>().ToTransient();
-            Container.Bind<ObstacleFactory>().ToTransient();
-            Container.Bind<BonusFactory>().ToTransient();
+            Container.Bind<AbstractGameObjectFactory<Obstacle>>().ToTransient<ObstacleFactory>();
+            Container.Bind<AbstractGameObjectFactory<GroundBlock>>().ToTransient<GroundFactory>();
+            Container.Bind<AbstractGameObjectFactory<Bonus>>().ToTransient<BonusFactory>();
+            Container.Bind<AbstractGameObjectFactory<Decoration>>().ToTransient<DecorationsFactory>();
+
+            Container.Bind<IChooseStrategy<Decoration>>().ToTransient<RandomStrategy<Decoration>>();
+            Container.Bind<IChooseStrategy<Bonus>>().ToTransient<RandomStrategy<Bonus>>();
+            Container.Bind<IChooseStrategy<Obstacle>>().ToTransient<RandomStrategy<Obstacle>>();
+            Container.Bind<IChooseStrategy<GroundBlock>>().ToTransient<CompatibleStrategy<GroundBlock>>();
 
             InstallLevelSettings();
         }

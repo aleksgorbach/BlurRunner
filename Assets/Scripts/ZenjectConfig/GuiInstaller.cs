@@ -1,5 +1,5 @@
 ﻿// Created 23.10.2015
-// Modified by  27.11.2015 at 14:03
+// Modified by  30.11.2015 at 11:38
 
 namespace Assets.Scripts.ZenjectConfig {
     #region References
@@ -28,6 +28,7 @@ namespace Assets.Scripts.ZenjectConfig {
             Container.Bind<IBonusVisualizer>().ToInstance(_bonusVisualizer);
             Container.Bind<Popup[]>().ToInstance(_popups);
             Container.Bind<PopupFactory>().ToTransient();
+            Container.Bind<PopupStrategy>().ToTransient();
         }
     }
 }

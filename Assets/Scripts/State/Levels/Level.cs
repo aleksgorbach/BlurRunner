@@ -1,5 +1,5 @@
-﻿// Created 26.11.2015
-// Modified by Александр 26.11.2015 at 20:38
+﻿// Created 22.10.2015
+// Modified by  30.11.2015 at 14:01
 
 namespace Assets.Scripts.State.Levels {
     #region References
@@ -8,6 +8,7 @@ namespace Assets.Scripts.State.Levels {
     using EndlessEngine.Decorations;
     using EndlessEngine.Ground;
     using EndlessEngine.Obstacles;
+    using Gameplay.Bonuses;
     using Gameplay.Heroes;
     using UnityEngine;
 
@@ -24,6 +25,10 @@ namespace Assets.Scripts.State.Levels {
             _data = data;
         }
 
+        public Bonus[] Bonuses {
+            get { return _data.Bonuses; }
+        }
+
         public Decoration[] Decorations {
             get { return _data.Decorations; }
         }
@@ -34,6 +39,10 @@ namespace Assets.Scripts.State.Levels {
 
         public GroundBlock[] Ground {
             get { return _data.Ground; }
+        }
+
+        public GroundBlock[] Hills {
+            get { return _data.Hills; }
         }
 
         public int Number {

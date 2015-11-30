@@ -1,5 +1,5 @@
-﻿// Created 26.11.2015
-// Modified by Александр 26.11.2015 at 20:26
+﻿// Created 22.10.2015
+// Modified by  30.11.2015 at 14:01
 
 namespace Assets.Scripts.State.Levels {
     #region References
@@ -28,5 +28,6 @@ namespace Assets.Scripts.State.Levels {
 
         Obstacle[] Obstacles { get; }
         GroundBlock[] Ground { get; }
+        GroundBlock[] Hills { get; }
     }
 }

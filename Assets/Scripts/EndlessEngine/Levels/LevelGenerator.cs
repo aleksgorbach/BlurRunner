@@ -1,5 +1,5 @@
 ﻿// Created 27.11.2015
-// Modified by  27.11.2015 at 14:50
+// Modified by  30.11.2015 at 14:01
 
 namespace Assets.Scripts.EndlessEngine.Levels {
     #region References
@@ -42,9 +42,10 @@ namespace Assets.Scripts.EndlessEngine.Levels {
         [SerializeField]
         private ObstacleGenerator _obstacles;
 
+
         public void Generate(ILevel level) {
             _ground.Generate(level.Length, level.Ground);
-            _decorations.Generate(level.Length, level.Decorations);
+            _decorations.Generate(level.Length, level.Decorations, level.Hills);
             _obstacles.Generate(level.Length, level.Obstacles);
             _bonuses.Generate(level.Length, _bonusesPrefabs);
 

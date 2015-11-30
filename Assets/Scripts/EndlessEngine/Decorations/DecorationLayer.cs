@@ -1,33 +1,28 @@
-﻿// Created 28.11.2015
-// Modified by Александр 28.11.2015 at 22:05
+﻿// Created 30.11.2015
+// Modified by  30.11.2015 at 13:52
 
 namespace Assets.Scripts.EndlessEngine.Decorations {
     #region References
 
     using Engine;
-    using Strategy;
-    using UnityEngine;
+    using Engine.Factory;
     using Zenject;
 
     #endregion
 
-    internal class DecorationLayer : AbstractGenerator<Decoration>, IDecorationGenerator {
+    internal class DecorationLayer : RandomDistanceGenerator<Decoration> {
         [Inject]
-        private DecorationsFactory _factory;
+        private AbstractGameObjectFactory<Decoration> _factory;
 
-        [SerializeField]
-        private AbstractStrategy _strategy;
+        [Inject]
+        private IChooseStrategy<Decoration> _strategy;
 
-        public override void Generate(float length, Decoration[] prefabs) {
-            _factory.Init(prefabs);
-            var currentPos = _strategy.DistanceToGenerate;
-            while (currentPos < length) {
-                var decoration = _factory.Create();
-                AddItem(decoration);
-                decoration.transform.SetParent(transform);
-                decoration.rectTransform.anchoredPosition3D = new Vector3(currentPos, 0, 0);
-                currentPos += _strategy.DistanceToGenerate;
-            }
+        protected override AbstractGameObjectFactory<Decoration> Factory {
+            get { return _factory; }
+        }
+
+        protected override IChooseStrategy<Decoration> Strategy {
+            get { return _strategy; }
         }
     }
 }

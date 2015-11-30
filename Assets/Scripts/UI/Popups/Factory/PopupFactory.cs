@@ -1,10 +1,9 @@
 ﻿// Created 12.11.2015
-// Modified by  27.11.2015 at 14:01
+// Modified by  30.11.2015 at 11:06
 
 namespace Assets.Scripts.UI.Popups.Factory {
     #region References
 
-    using System.Linq;
     using Engine.Factory;
     using Zenject;
 
@@ -14,14 +13,17 @@ namespace Assets.Scripts.UI.Popups.Factory {
         [Inject]
         private Popup[] _prefabs;
 
-        public Popup Create<T>() where T : Popup {
-            var prefab = Prefabs.OfType<T>().First();
-            return Container.InstantiatePrefabForComponent<T>(prefab.gameObject);
-        }
+        [Inject]
+        private PopupStrategy _strategy;
 
         [PostInject]
         private void PostInject() {
-            Init(_prefabs);
+            Init(_prefabs, _strategy);
+        }
+
+        public Popup Create<T>() where T : Popup {
+            _strategy.SetType<T>();
+            return Create();
         }
     }
 }

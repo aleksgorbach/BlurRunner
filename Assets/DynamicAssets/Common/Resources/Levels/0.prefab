@@ -40,6 +40,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _background: {fileID: 21300000, guid: 22a3bdacdfd08da4ba772b99ed902473, type: 3}
+  _bonuses: []
   _decorations:
   - {fileID: 11499664, guid: 5705839b278c71b47a0f343e10c64393, type: 2}
   - {fileID: 11420900, guid: 089d63c6c5e75cb4988ec1fca2e16d70, type: 2}
@@ -54,6 +55,13 @@ MonoBehaviour:
   - {fileID: 11417276, guid: e8d961edfa2404742bd56414064bcb95, type: 2}
   - {fileID: 11489896, guid: 6460101e560671945b4c29a549d21850, type: 2}
   _hero: {fileID: 11493252, guid: 5ec4f305a40dcbe4f9f580306274ff00, type: 2}
+  _hills:
+  - {fileID: 11489896, guid: 0b39488c09f553240a102575300cd689, type: 2}
+  - {fileID: 11448344, guid: 0ccbe3ad673c0c8469dc6247fb9203ab, type: 2}
+  - {fileID: 11417276, guid: 6b88bce8b533eb740bb5dee0e20c2819, type: 2}
+  - {fileID: 11498154, guid: 9312094e7e9612948892b16133058a75, type: 2}
+  - {fileID: 11487656, guid: 959e492351c3aa14998e93a1409ff6b9, type: 2}
+  - {fileID: 11427364, guid: ba2d2be18927259418ae5c0cdd4e905b, type: 2}
   _length: 15000
   _levelNumber: 0
   _obstacles:
@@ -67,6 +75,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: _hills.Array.size
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: _ground.Array.size
       value: 6

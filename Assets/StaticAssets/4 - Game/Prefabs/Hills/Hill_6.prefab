@@ -26,16 +26,16 @@ GameObject:
   - 222: {fileID: 22291256}
   - 114: {fileID: 11401092}
   - 114: {fileID: 11498154}
-  - 61: {fileID: 6179946}
-  - 50: {fileID: 5047924}
+  - 68: {fileID: 6886038}
+  - 50: {fileID: 5001630}
   m_Layer: 11
-  m_Name: Hill_0
+  m_Name: Hill_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!50 &5047924
+--- !u!50 &5001630
 Rigidbody2D:
   serializedVersion: 2
   m_ObjectHideFlags: 1
@@ -51,19 +51,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &6179946
-BoxCollider2D:
+--- !u!68 &6886038
+EdgeCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 128782}
   m_Enabled: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_Material: {fileID: 6200000, guid: a0ab00764d33c884e94b76b295671490, type: 2}
+  m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 200, y: 0}
-  serializedVersion: 2
-  m_Size: {x: 400, y: 30}
+  m_Offset: {x: 0, y: 0}
+  m_Points:
+  - {x: 98.8995361, y: 46.6837616}
+  - {x: 2.79541016, y: 90.842865}
 --- !u!114 &11401092
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -76,15 +77,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: .117647052, g: .108131483, b: .108131483, a: 1}
+  m_Color: {r: .0955882072, g: .0955882072, b: .0955882072, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: efbe09cd5a25c61468fd2e58eb1da423, type: 3}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: b2a6d1fe2621c914eafa3ffd8d8774d6, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -99,11 +100,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 128782}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23f380971b05ac740ab54a251d72f76c, type: 3}
+  m_Script: {fileID: 11500000, guid: 5e76e39b86ea75140aa22e72b32be48a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _leftLevel: 0
-  _rightLevel: 1
+  _leftLevel: 2
+  _rightLevel: 0
 --- !u!222 &22291256
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -142,8 +143,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 514, y: 59}
-  m_SizeDelta: {x: 400, y: 400}
+  m_AnchoredPosition: {x: 680, y: -150}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 6.14672899e-08, y: -1.24797225e-07}
 --- !u!1001 &100100000
 Prefab:
@@ -153,33 +154,44 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 0}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: efbe09cd5a25c61468fd2e58eb1da423,
-        type: 3}
-    - target: {fileID: 0}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
       propertyPath: m_IsKinematic
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
+      propertyPath: _leftLevel
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_SizeDelta.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_SizeDelta.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: m_Color.r
-      value: .117647052
+      value: .0955882072
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Color.g
-      value: .108131483
+      value: .0955882072
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Color.b
-      value: .108131483
+      value: .0955882072
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Layer
       value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Color.a
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
