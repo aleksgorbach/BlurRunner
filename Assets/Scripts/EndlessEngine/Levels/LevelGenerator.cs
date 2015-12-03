@@ -1,5 +1,5 @@
-﻿// Created 27.11.2015
-// Modified by  30.11.2015 at 14:01
+﻿// Created 30.11.2015
+// Modified by Александр 03.12.2015 at 20:49
 
 namespace Assets.Scripts.EndlessEngine.Levels {
     #region References
@@ -9,7 +9,6 @@ namespace Assets.Scripts.EndlessEngine.Levels {
     using Decorations;
     using Endpoints;
     using Engine;
-    using Gameplay.Bonuses;
     using Gameplay.Heroes;
     using Ground;
     using Obstacles;
@@ -21,9 +20,6 @@ namespace Assets.Scripts.EndlessEngine.Levels {
     internal class LevelGenerator : MonoBehaviourBase, ILevelGenerator {
         [SerializeField]
         private Bonuses _bonuses;
-
-        [SerializeField]
-        private Bonus[] _bonusesPrefabs;
 
         [SerializeField]
         private ObjectAnchor _cameraAnchor;
@@ -47,7 +43,7 @@ namespace Assets.Scripts.EndlessEngine.Levels {
             _ground.Generate(level.Length, level.Ground);
             _decorations.Generate(level.Length, level.Decorations, level.Hills);
             _obstacles.Generate(level.Length, level.Obstacles);
-            _bonuses.Generate(level.Length, _bonusesPrefabs);
+            _bonuses.Generate(level.Length, level.Bonuses);
 
             _hero = _heroSpawner.Generate(level.Hero);
             _cameraAnchor.SetTarget(_hero.transform);
