@@ -212,13 +212,13 @@ Rigidbody2D:
   m_GameObject: {fileID: 141052}
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: .0500000007
-  m_GravityScale: 1.39999998
+  m_AngularDrag: 5
+  m_GravityScale: 1.5
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 0
 --- !u!58 &5826784
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -487,9 +487,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4d88b00355aded4392b933317c51080, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _jumpForce: 1000
+  _jumpForce: 800
   _movable: {fileID: 11445208}
-  _runForce: 500
+  _runForce: 250
 --- !u!114 &11489076
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -743,7 +743,7 @@ RectTransform:
   m_RootOrder: 4
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: -54.530117, y: -134}
+  m_AnchoredPosition: {x: -69, y: -152}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22484304
@@ -771,7 +771,7 @@ RectTransform:
   m_GameObject: {fileID: 141052}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: .5, y: .5, z: 1}
   m_Children:
   - {fileID: 22425646}
   - {fileID: 22456566}
@@ -782,7 +782,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: -745, y: 53}
+  m_AnchoredPosition: {x: -146.949997, y: -272.910004}
   m_SizeDelta: {x: 329.799988, y: 178.899994}
   m_Pivot: {x: .334656954, y: .213122159}
 --- !u!1001 &100100000
@@ -798,19 +798,35 @@ Prefab:
       objectReference: {fileID: 11445208}
     - target: {fileID: 0}
       propertyPath: _jumpForce
-      value: 1000
+      value: 800
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: _runForce
-      value: 500
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Constraints
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_GravityScale
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _maxAngle
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_AngularDrag
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

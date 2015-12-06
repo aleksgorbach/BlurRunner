@@ -1,5 +1,5 @@
-﻿// Created 20.10.2015
-// Modified by  30.11.2015 at 14:57
+﻿// Created 30.11.2015
+// Modified by Александр 06.12.2015 at 18:37
 
 namespace Assets.Scripts.Gameplay {
     #region References
@@ -9,6 +9,7 @@ namespace Assets.Scripts.Gameplay {
     using Engine;
     using GameState.Manager;
     using GameState.StateChangedSources;
+    using Heroes;
     using State.Levels;
     using State.Progress;
     using State.Progress.Score;
@@ -21,6 +22,8 @@ namespace Assets.Scripts.Gameplay {
     internal class Game : MonoBehaviourBase, IGame, IWinSource {
         [SerializeField]
         private Image _background;
+
+        private Hero _hero;
 
         [SerializeField]
         private LevelGenerator _levelGenerator;
@@ -42,15 +45,11 @@ namespace Assets.Scripts.Gameplay {
             //_level = level;
             _background.sprite = level.Background;
             //_heroSpawner.Sprite = level.Startpoint;
-            _levelGenerator.Generated += OnLevelGenerated;
-            _levelGenerator.Generate(level);
+            _hero = _levelGenerator.Generate(level);
+            _hero.Win += OnWin;
         }
 
         public event Action<IWinSource> Win;
-
-        private void OnLevelGenerated() {
-            _levelGenerator.StartLevel();
-        }
 
         private void OnStateChanged(Consts.GameState state) {
             switch (state) {
@@ -61,10 +60,10 @@ namespace Assets.Scripts.Gameplay {
                     Pause();
                     break;
                 case Consts.GameState.Lose:
-                    //OnDie();
+                    OnDie();
                     break;
                 case Consts.GameState.Win:
-                    //OnWin();
+                    OnWin();
                     break;
             }
         }
@@ -77,13 +76,13 @@ namespace Assets.Scripts.Gameplay {
             Time.timeScale = 1;
         }
 
-        //private void OnDie() {
-        //    _hero.Kill();
-        //}
+        private void OnDie() {
+            _hero.Kill();
+        }
 
-        //private void OnWin() {
-        //    _hero.Congratulate();
-        //}
+        private void OnWin() {
+            _hero.Congratulate();
+        }
 
 
         private void OnWin(IWinSource winSource) {
@@ -96,7 +95,6 @@ namespace Assets.Scripts.Gameplay {
         [PostInject]
         private void PostInject() {
             _stateManager.StateChanged += OnStateChanged;
-            //_hero.Win += OnWin;
             _scoreSource.ScoreChanged += OnScoreChanged;
             _stateManager.Run();
         }

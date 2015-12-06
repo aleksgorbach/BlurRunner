@@ -1,5 +1,5 @@
-﻿// Created 20.10.2015
-// Modified by  30.11.2015 at 11:37
+﻿// Created 30.11.2015
+// Modified by Александр 06.12.2015 at 18:20
 
 #region References
 
@@ -15,6 +15,7 @@ namespace Assets.Scripts.ZenjectConfig {
     using EndlessEngine.Obstacles;
     using Engine.Factory;
     using Engine.Factory.ChooseStrategies;
+    using Engine.Video;
     using Gameplay;
     using Gameplay.Bonuses;
     using Gameplay.Consts;
@@ -59,6 +60,8 @@ namespace Assets.Scripts.ZenjectConfig {
             Container.Bind<IChooseStrategy<Bonus>>().ToTransient<RandomStrategy<Bonus>>();
             Container.Bind<IChooseStrategy<Obstacle>>().ToTransient<RandomStrategy<Obstacle>>();
             Container.Bind<IChooseStrategy<GroundBlock>>().ToTransient<CompatibleStrategy<GroundBlock>>();
+            Container.Bind<IVideoPlatform>().ToTransient<MobileVideoPlatform>();
+            Container.Bind<string>(Identifiers.Video.Intro).ToInstance("tizer.mp4");
 
             InstallLevelSettings();
         }

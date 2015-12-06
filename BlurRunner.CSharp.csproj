@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Full v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>5.2.1f1</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -353,6 +355,8 @@
     <Compile Include="Assets\Scripts\Engine\Utils\StatedObjects\ImageStatesObject.cs" />
     <Compile Include="Assets\Scripts\Engine\Utils\StatedObjects\StatedObject.cs" />
     <Compile Include="Assets\Scripts\Engine\Utils\Timer.cs" />
+    <Compile Include="Assets\Scripts\Engine\Video\IVideoPlatform.cs" />
+    <Compile Include="Assets\Scripts\Engine\Video\MobileVideoPlatform.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Bonuses\Bonus.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Bonuses\IBonus.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Bonuses\Implementations\Negative\BrokenLifeBonus.cs" />

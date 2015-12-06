@@ -1,20 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &194228
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 224: {fileID: 22457900}
-  m_Layer: 11
-  m_Name: TreeContainer
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &196432
 GameObject:
   m_ObjectHideFlags: 0
@@ -27,7 +12,6 @@ GameObject:
   - 114: {fileID: 11490066}
   - 114: {fileID: 11487656}
   - 68: {fileID: 6815022}
-  - 50: {fileID: 5095750}
   m_Layer: 11
   m_Name: Hill_10
   m_TagString: Untagged
@@ -35,22 +19,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!50 &5095750
-Rigidbody2D:
-  serializedVersion: 2
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 196432}
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: .0500000007
-  m_GravityScale: 1
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!68 &6815022
 EdgeCollider2D:
   m_ObjectHideFlags: 1
@@ -59,7 +27,7 @@ EdgeCollider2D:
   m_GameObject: {fileID: 196432}
   m_Enabled: 1
   m_Material: {fileID: 6200000, guid: a0ab00764d33c884e94b76b295671490, type: 2}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   m_Points:
@@ -120,8 +88,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -700}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 22457900}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_AnchorMin: {x: .5, y: .5}
@@ -129,23 +96,6 @@ RectTransform:
   m_AnchoredPosition: {x: 2373, y: -150}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 6.14672899e-08, y: -1.24797225e-07}
---- !u!224 &22457900
-RectTransform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 194228}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 22433770}
-  m_RootOrder: 0
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: -3, y: -35}
-  m_SizeDelta: {x: 5, y: 5}
-  m_Pivot: {x: .5, y: .5}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -195,6 +145,10 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

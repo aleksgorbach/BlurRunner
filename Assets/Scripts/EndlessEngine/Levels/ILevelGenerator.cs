@@ -4,13 +4,12 @@
 namespace Assets.Scripts.EndlessEngine.Levels {
     #region References
 
-    using System;
+    using Gameplay.Heroes;
     using State.Levels;
 
     #endregion
 
     internal interface ILevelGenerator {
-        void Generate(ILevel level);
-        event Action Generated;
+        Hero Generate(ILevel level);
     }
 }

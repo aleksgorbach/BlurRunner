@@ -7,4 +7,12 @@ AnimatorOverrideController:
   m_PrefabInternal: {fileID: 0}
   m_Name: Hero
   m_Controller: {fileID: 9100000, guid: 030a325892d35d34bb035a8aa4350464, type: 2}
-  m_Clips: []
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 40d9cde7c17dd3d40a218197378e6199, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 06caa2589254d084f98c874b9496b258, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 7eaa711b8e75d3e4698b2f422da71a8a, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 618232b65e5a8994698d2b19bf98a4bf, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: e9d97bffe19f5ca439d4cc6ca07a947e, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: e9d97bffe19f5ca439d4cc6ca07a947e, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: ce2883d9be96a824e86bfe75dafc7faf, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: ce2883d9be96a824e86bfe75dafc7faf, type: 2}

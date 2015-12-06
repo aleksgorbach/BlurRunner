@@ -10,5 +10,9 @@ namespace Assets.Scripts.Gameplay.Consts {
         public static class Obstacles {
             public const string Layer = "obstacle_layer";
         }
+
+        public static class Video {
+            public const string Intro = "intro_video";
+        }
     }
 }

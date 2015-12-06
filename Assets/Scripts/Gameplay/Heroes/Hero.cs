@@ -1,5 +1,5 @@
-﻿// Created 20.10.2015
-// Modified by  27.11.2015 at 13:29
+﻿// Created 28.11.2015
+// Modified by Александр 06.12.2015 at 18:31
 
 namespace Assets.Scripts.Gameplay.Heroes {
     #region References
@@ -27,6 +27,7 @@ namespace Assets.Scripts.Gameplay.Heroes {
         protected float Speed { get; private set; }
 
         protected Collider2D Grounded { get; private set; }
+        public float Destination { private get; set; }
 
         public event Action<IWinSource> Win;
 
@@ -46,6 +47,9 @@ namespace Assets.Scripts.Gameplay.Heroes {
             Grounded = Physics2D.OverlapCircle(_groundCheck.position, 35f, _groundLayer);
             _isJumping = !Grounded;
             _rigidbody.velocity = new Vector2(Speed, _rigidbody.velocity.y);
+            if (_rigidbody.position.x >= Destination) {
+                OnWin();
+            }
         }
 
         private void Stop() {

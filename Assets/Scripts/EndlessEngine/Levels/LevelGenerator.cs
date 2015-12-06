@@ -1,10 +1,9 @@
 ﻿// Created 30.11.2015
-// Modified by Александр 03.12.2015 at 20:49
+// Modified by Александр 06.12.2015 at 18:38
 
 namespace Assets.Scripts.EndlessEngine.Levels {
     #region References
 
-    using System;
     using Bonuses;
     using Decorations;
     using Endpoints;
@@ -39,27 +38,16 @@ namespace Assets.Scripts.EndlessEngine.Levels {
         private ObstacleGenerator _obstacles;
 
 
-        public void Generate(ILevel level) {
+        public Hero Generate(ILevel level) {
             _ground.Generate(level.Length, level.Ground);
             _decorations.Generate(level.Length, level.Decorations, level.Hills);
             _obstacles.Generate(level.Length, level.Obstacles);
             _bonuses.Generate(level.Length, level.Bonuses);
 
             _hero = _heroSpawner.Generate(level.Hero);
+            _hero.Destination = level.Length*.95f;
             _cameraAnchor.SetTarget(_hero.transform);
-            OnGenerated();
-        }
-
-        public event Action Generated;
-
-        private void OnGenerated() {
-            var handler = Generated;
-            if (handler != null) {
-                handler();
-            }
-        }
-
-        public void StartLevel() {
+            return _hero;
         }
     }
 }
