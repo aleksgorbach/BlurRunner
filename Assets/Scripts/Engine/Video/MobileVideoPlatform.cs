@@ -1,5 +1,5 @@
-﻿// Created 06.12.2015
-// Modified by Александр 06.12.2015 at 18:17
+﻿// Created 07.12.2015
+// Modified by  07.12.2015 at 11:35
 
 namespace Assets.Scripts.Engine.Video {
     #region References
@@ -10,7 +10,9 @@ namespace Assets.Scripts.Engine.Video {
 
     internal class MobileVideoPlatform : IVideoPlatform {
         public void PlayVideo(string filename) {
+#if UNITY_ANDROID
             Handheld.PlayFullScreenMovie(filename);
+#endif
         }
     }
 }

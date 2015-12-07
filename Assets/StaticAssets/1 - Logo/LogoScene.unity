@@ -247,6 +247,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 877633043}
   - 114: {fileID: 877633044}
+  - 114: {fileID: 877633045}
   m_Layer: 0
   m_Name: ZenjectRoot
   m_TagString: Untagged
@@ -282,7 +283,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnlyInjectWhenActive: 1
   InjectFullScene: 0
-  Installers: []
+  Installers:
+  - {fileID: 877633045}
+--- !u!114 &877633045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 877633042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6a10be9f489daf4baf6db140f327231, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1027519541
 GameObject:
   m_ObjectHideFlags: 0

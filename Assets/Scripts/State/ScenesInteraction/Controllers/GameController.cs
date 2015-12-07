@@ -1,5 +1,5 @@
-﻿// Created 26.11.2015
-// Modified by Александр 06.12.2015 at 18:29
+﻿// Created 28.10.2015
+// Modified by  07.12.2015 at 12:27
 
 namespace Assets.Scripts.State.ScenesInteraction.Controllers {
     #region References
