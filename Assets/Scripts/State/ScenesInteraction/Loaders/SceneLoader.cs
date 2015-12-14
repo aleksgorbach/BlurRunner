@@ -1,5 +1,5 @@
 ﻿// Created 22.10.2015
-// Modified by  07.12.2015 at 11:09
+// Modified by  14.12.2015 at 14:42
 
 namespace Assets.Scripts.State.ScenesInteraction.Loaders {
     #region References
@@ -30,8 +30,8 @@ namespace Assets.Scripts.State.ScenesInteraction.Loaders {
 
         public void GoToScene(Scene scene) {
             _nextSceneName = string.Format("{0}{1}", scene, "Scene");
-            //Application.LoadLevel("SplashScene");
-            Application.LoadLevel(_nextSceneName);
+            Application.LoadLevel("SplashScene");
+            //Application.LoadLevel(_nextSceneName);
         }
 
         public void LoadNextScene() {

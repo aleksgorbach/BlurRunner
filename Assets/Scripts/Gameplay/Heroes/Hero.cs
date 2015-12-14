@@ -1,5 +1,5 @@
-﻿// Created 28.11.2015
-// Modified by Александр 06.12.2015 at 18:31
+﻿// Created 20.10.2015
+// Modified by  14.12.2015 at 13:16
 
 namespace Assets.Scripts.Gameplay.Heroes {
     #region References
@@ -28,6 +28,10 @@ namespace Assets.Scripts.Gameplay.Heroes {
 
         protected Collider2D Grounded { get; private set; }
         public float Destination { private get; set; }
+
+        public Transform Target {
+            get { return transform; }
+        }
 
         public event Action<IWinSource> Win;
 

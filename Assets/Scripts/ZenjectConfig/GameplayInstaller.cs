@@ -1,5 +1,5 @@
-﻿// Created 30.11.2015
-// Modified by Александр 06.12.2015 at 18:20
+﻿// Created 20.10.2015
+// Modified by  14.12.2015 at 14:32
 
 #region References
 
@@ -57,7 +57,7 @@ namespace Assets.Scripts.ZenjectConfig {
             Container.Bind<AbstractGameObjectFactory<Decoration>>().ToTransient<DecorationsFactory>();
 
             Container.Bind<IChooseStrategy<Decoration>>().ToTransient<RandomStrategy<Decoration>>();
-            Container.Bind<IChooseStrategy<Bonus>>().ToTransient<RandomStrategy<Bonus>>();
+            Container.Bind<IChooseStrategy<Bonus>>().ToTransient<ChanceStrategy<Bonus>>();
             Container.Bind<IChooseStrategy<Obstacle>>().ToTransient<RandomStrategy<Obstacle>>();
             Container.Bind<IChooseStrategy<GroundBlock>>().ToTransient<CompatibleStrategy<GroundBlock>>();
             Container.Bind<IVideoPlatform>().ToTransient<MobileVideoPlatform>();

@@ -1,5 +1,5 @@
 ﻿// Created 28.10.2015
-// Modified by  27.11.2015 at 9:14
+// Modified by  14.12.2015 at 14:33
 
 namespace Assets.Scripts.Gameplay.Bonuses {
     #region References
@@ -7,11 +7,12 @@ namespace Assets.Scripts.Gameplay.Bonuses {
     using System;
     using EndlessEngine.Bonuses;
     using Engine;
+    using Engine.Factory.ChooseStrategies;
     using UnityEngine;
 
     #endregion
 
-    internal abstract class Bonus : MonoBehaviourBase, IBonus {
+    internal abstract class Bonus : MonoBehaviourBase, IBonus, IWeightable {
         private bool _isCollectedNow = false;
 
         protected abstract int Direction { get; }
@@ -25,6 +26,10 @@ namespace Assets.Scripts.Gameplay.Bonuses {
         }
 
         public abstract void Apply();
+
+        public virtual float Weight {
+            get { return 1; }
+        }
 
         public void OnTriggerEnter2D(Collider2D collision) {
             if (_isCollectedNow) {

@@ -47,6 +47,7 @@ MonoBehaviour:
   - {fileID: 11477616, guid: 332e6a4b8e8a6f249a38a840548fb1d9, type: 2}
   - {fileID: 11440800, guid: 910e927bcbd91934098d1339d4834350, type: 2}
   - {fileID: 11477616, guid: 395861ec0229c994aa1f096b2550a726, type: 2}
+  - {fileID: 11477616, guid: 98d735fe30d4a5a49910901fb4170f80, type: 2}
   _decorations:
   - {fileID: 11400842, guid: 31f8cde064bda17469be85e518ea5442, type: 2}
   - {fileID: 11444340, guid: e1aa0085d4a6eeb4fb4bfba0f12931b8, type: 2}
@@ -125,7 +126,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: _bonuses.Array.size
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: _obstacles.Array.size

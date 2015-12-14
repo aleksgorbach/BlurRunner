@@ -1,5 +1,5 @@
-﻿// Created 30.11.2015
-// Modified by Александр 06.12.2015 at 18:38
+﻿// Created 27.11.2015
+// Modified by  14.12.2015 at 12:59
 
 namespace Assets.Scripts.EndlessEngine.Levels {
     #region References
@@ -46,7 +46,7 @@ namespace Assets.Scripts.EndlessEngine.Levels {
 
             _hero = _heroSpawner.Generate(level.Hero);
             _hero.Destination = level.Length*.95f;
-            _cameraAnchor.SetTarget(_hero.transform);
+            _cameraAnchor.SetTarget(_hero.Target);
             return _hero;
         }
     }
