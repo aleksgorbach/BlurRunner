@@ -2,6 +2,8 @@
 // Modified by  07.12.2015 at 11:04
 
 namespace Assets.Scripts.State.ScenesInteraction.Loaders {
+    using System.Collections;
+
     internal enum Scene {
         Logo,
         LevelChoose,
@@ -24,5 +26,6 @@ namespace Assets.Scripts.State.ScenesInteraction.Loaders {
 
 
         void LoadNextScene();
+        IEnumerator LoadLevelAdditive(int number);
     }
 }

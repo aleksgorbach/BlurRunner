@@ -1,5 +1,5 @@
-﻿// Created 22.10.2015
-// Modified by  14.12.2015 at 14:42
+﻿// Created 15.12.2015
+// Modified by Александр 15.12.2015 at 21:18
 
 namespace Assets.Scripts.State.ScenesInteraction.Loaders {
     #region References
@@ -36,6 +36,11 @@ namespace Assets.Scripts.State.ScenesInteraction.Loaders {
 
         public void LoadNextScene() {
             StartCoroutine(LoadScene());
+        }
+
+        public IEnumerator LoadLevelAdditive(int number) {
+            var sceneName = string.Format("Level_{0}", number);
+            yield return Application.LoadLevelAdditiveAsync(sceneName);
         }
 
         private IEnumerator LoadScene() {
