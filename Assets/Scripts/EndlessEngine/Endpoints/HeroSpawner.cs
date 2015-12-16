@@ -1,5 +1,5 @@
-﻿// Created 20.11.2015
-// Modified by  27.11.2015 at 13:04
+﻿// Created 28.11.2015
+// Modified by Александр 16.12.2015 at 21:35
 
 namespace Assets.Scripts.EndlessEngine.Endpoints {
     #region References
@@ -7,7 +7,6 @@ namespace Assets.Scripts.EndlessEngine.Endpoints {
     using Engine;
     using Gameplay.Heroes;
     using UnityEngine;
-    using UnityEngine.UI;
     using Zenject;
 
     #endregion
@@ -17,10 +16,10 @@ namespace Assets.Scripts.EndlessEngine.Endpoints {
         private IInstantiator _container;
 
         [SerializeField]
-        private Image _startPoint;
+        private Hero _heroPrefab;
 
-        public Hero Generate(Hero prefab) {
-            var hero = _container.InstantiatePrefabForComponent<Hero>(prefab.gameObject);
+        public Hero Generate() {
+            var hero = _container.InstantiatePrefabForComponent<Hero>(_heroPrefab.gameObject);
             hero.transform.SetParent(transform);
             hero.rectTransform.anchoredPosition3D = Vector3.zero;
             return hero;

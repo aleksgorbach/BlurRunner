@@ -1,18 +1,16 @@
 ﻿// Created 30.11.2015
-// Modified by Александр 06.12.2015 at 18:37
+// Modified by Александр 16.12.2015 at 21:55
 
 namespace Assets.Scripts.Gameplay {
     #region References
 
     using System;
-    using EndlessEngine.Levels;
     using Engine;
     using GameState.Manager;
     using GameState.StateChangedSources;
     using Heroes;
-    using State.Levels;
     using State.Progress;
-    using State.Progress.Score;
+    using State.ScenesInteraction.Loaders;
     using UnityEngine;
     using UnityEngine.UI;
     using Zenject;
@@ -23,16 +21,16 @@ namespace Assets.Scripts.Gameplay {
         [SerializeField]
         private Image _background;
 
-        private Hero _hero;
+        [Inject]
+        private Camera _camera;
 
-        [SerializeField]
-        private LevelGenerator _levelGenerator;
+        private Hero _hero;
 
         [Inject]
         private ILevelProgress _progress;
 
-        [Inject]
-        private IScoreSource _scoreSource;
+        //[Inject]
+        //private IScoreSource _scoreSource;
 
         [Inject]
         private IGameStateManager _stateManager;
@@ -41,12 +39,15 @@ namespace Assets.Scripts.Gameplay {
             get { return _progress; }
         }
 
-        public void StartLevel(ILevel level) {
-            //_level = level;
-            _background.sprite = level.Background;
-            //_heroSpawner.Sprite = level.Startpoint;
-            _hero = _levelGenerator.Generate(level);
-            _hero.Win += OnWin;
+        public LevelWorld World {
+            set {
+                var world = value;
+                world.Camera = _camera;
+                world.transform.SetParent(transform);
+                _background.sprite = world.Background;
+                _hero = world.Hero;
+                _hero.Win += OnWin;
+            }
         }
 
         public event Action<IWinSource> Win;
@@ -95,7 +96,7 @@ namespace Assets.Scripts.Gameplay {
         [PostInject]
         private void PostInject() {
             _stateManager.StateChanged += OnStateChanged;
-            _scoreSource.ScoreChanged += OnScoreChanged;
+            //_scoreSource.ScoreChanged += OnScoreChanged;
             _stateManager.Run();
         }
 

@@ -1,5 +1,5 @@
 ﻿// Created 13.12.2015
-// Modified by Александр 15.12.2015 at 21:33
+// Modified by Александр 16.12.2015 at 21:50
 
 namespace Assets.Scripts.State.ScenesInteraction.Controllers {
     #region References
@@ -33,7 +33,6 @@ namespace Assets.Scripts.State.ScenesInteraction.Controllers {
             if (_currentLevel.Number == INTRO_LEVEL) {
                 _videoPlatform.PlayVideo(_movieFilename);
             }
-            _game.StartLevel(_currentLevel);
         }
     }
 }

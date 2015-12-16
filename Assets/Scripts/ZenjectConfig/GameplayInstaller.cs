@@ -1,5 +1,5 @@
-﻿// Created 20.10.2015
-// Modified by  14.12.2015 at 14:32
+﻿// Created 15.12.2015
+// Modified by Александр 16.12.2015 at 21:54
 
 #region References
 
@@ -24,7 +24,6 @@ namespace Assets.Scripts.ZenjectConfig {
     using State.Levels;
     using State.Levels.Storage;
     using State.Progress;
-    using State.Progress.Score;
     using UnityEngine;
     using Zenject;
 
@@ -46,7 +45,7 @@ namespace Assets.Scripts.ZenjectConfig {
             Container.Bind<Camera>().ToSingleInstance(Camera.main);
             Container.Bind<IWinSource>().ToInstance(_game);
             Container.Bind<ILevelProgress>().ToSingleInstance(new LevelProgress());
-            Container.Bind<IScoreSource>().ToInstance(_bonusGenerator);
+            //Container.Bind<IScoreSource>().ToInstance(_bonusGenerator);
             Container.Bind<int>(Identifiers.Scores.MinValue).ToInstance(_scoreSettings.ScoreToLose);
             Container.Bind<ILevel>().ToGetter<ILevelStorage>(storage => storage.CurrentLevel);
             Container.Bind<string>(Identifiers.Obstacles.Layer).ToInstance("Obstacle");

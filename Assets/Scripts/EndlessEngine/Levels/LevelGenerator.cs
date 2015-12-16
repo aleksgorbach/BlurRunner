@@ -1,53 +1,45 @@
-﻿// Created 27.11.2015
-// Modified by  14.12.2015 at 12:59
+﻿// Created 15.12.2015
+// Modified by Александр 16.12.2015 at 21:40
 
 namespace Assets.Scripts.EndlessEngine.Levels {
     #region References
 
-    using Bonuses;
-    using Decorations;
-    using Endpoints;
-    using Engine;
-    using Gameplay.Heroes;
-    using Ground;
-    using Obstacles;
-    using State.Levels;
-    using UnityEngine;
+    
 
     #endregion
 
-    internal class LevelGenerator : MonoBehaviourBase, ILevelGenerator {
-        [SerializeField]
-        private Bonuses _bonuses;
+    //internal class LevelGenerator : MonoBehaviourBase, ILevelGenerator {
+    //[SerializeField]
+    //private Bonuses _bonuses;
 
-        [SerializeField]
-        private ObjectAnchor _cameraAnchor;
+    //[SerializeField]
+    //private ObjectAnchor _cameraAnchor;
 
-        [SerializeField]
-        private Decorations _decorations;
+    //[SerializeField]
+    //private Decorations _decorations;
 
-        [SerializeField]
-        private Ground _ground;
+    //[SerializeField]
+    //private Ground _ground;
 
-        private Hero _hero;
+    //private Hero _hero;
 
-        [SerializeField]
-        private HeroSpawner _heroSpawner;
+    //[SerializeField]
+    //private HeroSpawner _heroSpawner;
 
-        [SerializeField]
-        private ObstacleGenerator _obstacles;
+    //[SerializeField]
+    //private ObstacleGenerator _obstacles;
 
 
-        public Hero Generate(ILevel level) {
-            _ground.Generate(level.Length, level.Ground);
-            _decorations.Generate(level.Length, level.Decorations, level.Hills);
-            _obstacles.Generate(level.Length, level.Obstacles);
-            _bonuses.Generate(level.Length, level.Bonuses);
+    //public Hero Generate(ILevel level) {
+    //_ground.Generate(level.Length, level.Ground);
+    //_decorations.Generate(level.Length, level.Decorations, level.Hills);
+    //_obstacles.Generate(level.Length, level.Obstacles);
+    //_bonuses.Generate(level.Length, level.Bonuses);
 
-            _hero = _heroSpawner.Generate(level.Hero);
-            _hero.Destination = level.Length*.95f;
-            _cameraAnchor.SetTarget(_hero.Target);
-            return _hero;
-        }
-    }
+    //_hero = _heroSpawner.Generate(level.Hero);
+    //_hero.Destination = level.Length*.95f;
+    //_cameraAnchor.SetTarget(_hero.Target);
+    //return _hero;
+    //}
+    //}
 }

@@ -1,11 +1,12 @@
 ﻿// Created 15.12.2015
-// Modified by Александр 15.12.2015 at 21:33
+// Modified by Александр 16.12.2015 at 21:45
 
 namespace Assets.Scripts.State.ScenesInteraction.Loaders {
     #region References
 
     using System.Collections;
     using Engine;
+    using Gameplay;
     using Levels;
     using UnityEngine;
     using Zenject;
@@ -15,6 +16,9 @@ namespace Assets.Scripts.State.ScenesInteraction.Loaders {
     internal class WorldLoader : MonoBehaviourBase {
         [Inject]
         private Camera _camera;
+
+        [Inject]
+        private IGame _game;
 
         [Inject]
         private ILevel _level;
@@ -31,8 +35,7 @@ namespace Assets.Scripts.State.ScenesInteraction.Loaders {
             var sceneName = string.Format("Level_{0}", _level.Number);
             yield return Application.LoadLevelAdditiveAsync(sceneName);
             var world = FindObjectOfType<LevelWorld>();
-            world.Camera = _camera;
-            world.transform.SetParent(transform);
+            _game.World = world;
         }
     }
 }
