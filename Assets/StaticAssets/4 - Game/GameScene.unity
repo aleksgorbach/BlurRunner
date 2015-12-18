@@ -1255,6 +1255,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _background: {fileID: 1567104349}
+  _camera: {fileID: 1231569324}
+  _worldLoader: {fileID: 960673576}
 --- !u!114 &960673576
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1452,6 +1454,7 @@ GameObject:
   - 4: {fileID: 1231569325}
   - 20: {fileID: 1231569327}
   - 114: {fileID: 1231569326}
+  - 114: {fileID: 1231569324}
   m_Layer: 5
   m_Name: WorldCamera
   m_TagString: MainCamera
@@ -1459,6 +1462,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1231569324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1231569323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1707476908efe44eb309502b3130449, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: {fileID: 0}
 --- !u!4 &1231569325
 Transform:
   m_ObjectHideFlags: 0
@@ -1478,7 +1493,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1231569323}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1b425763cd3c78f4cbf921b806fb5693, type: 3}
   m_Name: 

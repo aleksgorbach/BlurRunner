@@ -1,41 +1,32 @@
-﻿// Created 15.12.2015
-// Modified by Александр 16.12.2015 at 21:45
+﻿// Created 16.12.2015
+// Modified by  18.12.2015 at 16:17
 
 namespace Assets.Scripts.State.ScenesInteraction.Loaders {
     #region References
 
+    using System;
     using System.Collections;
     using Engine;
-    using Gameplay;
-    using Levels;
     using UnityEngine;
-    using Zenject;
 
     #endregion
 
     internal class WorldLoader : MonoBehaviourBase {
-        [Inject]
-        private Camera _camera;
+        private LevelWorld _world = null;
 
-        [Inject]
-        private IGame _game;
-
-        [Inject]
-        private ILevel _level;
-
-        [Inject]
-        private ISceneLoader _sceneLoader;
-
-        [PostInject]
-        private void Inject() {
-            StartCoroutine(LevelLoading());
+        private IEnumerator LevelLoading(int levelNumber, Action<LevelWorld> onLoaded) {
+            var sceneName = string.Format("Level_{0}", levelNumber);
+            yield return Application.LoadLevelAdditiveAsync(sceneName);
+            _world = FindObjectOfType<LevelWorld>();
+            onLoaded(_world);
         }
 
-        private IEnumerator LevelLoading() {
-            var sceneName = string.Format("Level_{0}", _level.Number);
-            yield return Application.LoadLevelAdditiveAsync(sceneName);
-            var world = FindObjectOfType<LevelWorld>();
-            _game.World = world;
+        public void Load(int levelNumber, Action<LevelWorld> onLoaded) {
+            if (_world != null) {
+                onLoaded(_world);
+                return;
+            }
+            StartCoroutine(LevelLoading(levelNumber, onLoaded));
         }
     }
 }

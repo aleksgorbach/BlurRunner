@@ -1,11 +1,13 @@
-﻿// Created 30.11.2015
-// Modified by Александр 16.12.2015 at 21:55
+﻿// Created 20.10.2015
+// Modified by  18.12.2015 at 16:36
 
 namespace Assets.Scripts.Gameplay {
     #region References
 
     using System;
+    using Consts;
     using Engine;
+    using Engine.Camera;
     using GameState.Manager;
     using GameState.StateChangedSources;
     using Heroes;
@@ -21,33 +23,31 @@ namespace Assets.Scripts.Gameplay {
         [SerializeField]
         private Image _background;
 
-        [Inject]
-        private Camera _camera;
-
-        private Hero _hero;
-
-        [Inject]
-        private ILevelProgress _progress;
+        [SerializeField]
+        private SmoothFollow2D _camera;
 
         //[Inject]
         //private IScoreSource _scoreSource;
 
         [Inject]
+        private IInstantiator _container;
+
+        private Hero _hero;
+
+        [Inject(Identifiers.Levels.CurrentLevel)]
+        private int _levelNumber;
+
+        [Inject]
+        private ILevelProgress _progress;
+
+        [Inject]
         private IGameStateManager _stateManager;
+
+        [SerializeField]
+        private WorldLoader _worldLoader;
 
         public ILevelProgress Progress {
             get { return _progress; }
-        }
-
-        public LevelWorld World {
-            set {
-                var world = value;
-                world.Camera = _camera;
-                world.transform.SetParent(transform);
-                _background.sprite = world.Background;
-                _hero = world.Hero;
-                _hero.Win += OnWin;
-            }
         }
 
         public event Action<IWinSource> Win;
@@ -97,7 +97,20 @@ namespace Assets.Scripts.Gameplay {
         private void PostInject() {
             _stateManager.StateChanged += OnStateChanged;
             //_scoreSource.ScoreChanged += OnScoreChanged;
+            _worldLoader.Load(_levelNumber, OnWorldLoaded);
             _stateManager.Run();
+        }
+
+        private void OnWorldLoaded(LevelWorld world) {
+            // инициализация уровня из world
+            world.Camera = _camera.Camera;
+            world.transform.SetParent(transform);
+            world.transform.SetAsFirstSibling();
+            _background.sprite = world.Background;
+            _hero = _container.InstantiatePrefabForComponent<Hero>(world.HeroPrefab.gameObject);
+            _hero.transform.SetParent(world.StartPoint);
+            _hero.transform.localPosition = Vector3.zero;
+            _camera.SetTarget(_hero.transform);
         }
 
         private void OnScoreChanged(int deltaScore) {

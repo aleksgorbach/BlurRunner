@@ -1,5 +1,5 @@
-﻿// Created 15.12.2015
-// Modified by Александр 16.12.2015 at 21:54
+﻿// Created 20.10.2015
+// Modified by  18.12.2015 at 16:20
 
 #region References
 
@@ -49,6 +49,9 @@ namespace Assets.Scripts.ZenjectConfig {
             Container.Bind<int>(Identifiers.Scores.MinValue).ToInstance(_scoreSettings.ScoreToLose);
             Container.Bind<ILevel>().ToGetter<ILevelStorage>(storage => storage.CurrentLevel);
             Container.Bind<string>(Identifiers.Obstacles.Layer).ToInstance("Obstacle");
+
+            Container.Bind<int>(Identifiers.Levels.CurrentLevel)
+                .ToGetter<ILevelStorage>(storage => storage.CurrentLevel.Number);
 
             Container.Bind<AbstractGameObjectFactory<Obstacle>>().ToTransient<ObstacleFactory>();
             Container.Bind<AbstractGameObjectFactory<GroundBlock>>().ToTransient<GroundFactory>();

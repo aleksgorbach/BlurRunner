@@ -1,5 +1,5 @@
-﻿// Created 15.12.2015
-// Modified by Александр 16.12.2015 at 21:59
+﻿// Created 16.12.2015
+// Modified by  18.12.2015 at 16:22
 
 namespace Assets.Scripts.State.ScenesInteraction.Loaders {
     #region References
@@ -18,10 +18,11 @@ namespace Assets.Scripts.State.ScenesInteraction.Loaders {
 
         private Canvas _canvas;
 
-        private Hero _hero;
+        [SerializeField]
+        private Hero _heroPrefab;
 
         [SerializeField]
-        private HeroSpawner _heroSpawner;
+        private Transform _startPoint;
 
         public Camera Camera {
             set { _canvas.worldCamera = value; }
@@ -31,13 +32,12 @@ namespace Assets.Scripts.State.ScenesInteraction.Loaders {
             get { return _background; }
         }
 
-        public Hero Hero {
-            get {
-                if (_hero == null) {
-                    _hero = _heroSpawner.Generate();
-                }
-                return _hero;
-            }
+        public Hero HeroPrefab {
+            get { return _heroPrefab; }
+        }
+
+        public Transform StartPoint {
+            get { return _startPoint; }
         }
 
         protected override void Awake() {

@@ -1,9 +1,10 @@
 ﻿// Created 26.10.2015
-// Modified by  19.11.2015 at 14:30
+// Modified by  18.12.2015 at 16:30
 
 namespace Assets.Scripts.Gameplay.GameState.Manager {
     #region References
 
+    using System;
     using System.Collections.Generic;
     using Consts;
     using State.Progress;
@@ -21,8 +22,8 @@ namespace Assets.Scripts.Gameplay.GameState.Manager {
 
         private GameState _state;
 
-        [Inject]
-        private List<IWinSource> _winSources;
+        // todo в какой-то момент (update?) проходиться по списку и проверять на выигрыш
+        private List<Func<bool>> _winReasons;
 
         public GameState State {
             get { return _state; }
@@ -52,12 +53,12 @@ namespace Assets.Scripts.Gameplay.GameState.Manager {
             ChangeState(GameState.Running);
         }
 
+        public void AddWinReason(Func<bool> reason) {
+            _winReasons.Add(reason);
+        }
+
         [PostInject]
         private void PostInject() {
-            foreach (var source in _winSources) {
-                source.Win += (s) => ChangeState(GameState.Win);
-            }
-
             _progress.Changed += OnProgressChanged;
         }
 

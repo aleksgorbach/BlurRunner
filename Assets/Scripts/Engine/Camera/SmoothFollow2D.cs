@@ -1,5 +1,5 @@
 ﻿// Created 14.12.2015
-// Modified by  14.12.2015 at 13:05
+// Modified by  18.12.2015 at 16:35
 
 #region References
 
@@ -15,7 +15,7 @@ namespace Assets.Scripts.Engine.Camera {
 
     #endregion
 
-    public class SmoothFollow2D : MonoBehaviour {
+    internal class SmoothFollow2D : MonoBehaviourBase {
         [Inject]
         private Camera _camera;
 
@@ -24,14 +24,20 @@ namespace Assets.Scripts.Engine.Camera {
 
         private Vector3 _velocity = Vector3.zero;
 
+        public Camera Camera {
+            get { return _camera; }
+        }
+
         // Update is called once per frame
-        private void Update() {
+        protected override void Update() {
+            base.Update();
             if (_target) {
                 var point = _camera.WorldToViewportPoint(_target.position);
                 var delta = _target.position - _camera.ViewportToWorldPoint(new Vector3(0.2f, 0.5f, point.z));
                 //(new Vector3(0.5, 0.5, point.z));
                 var destination = transform.position + delta;
-                transform.position = Vector3.SmoothDamp(transform.position, destination, ref _velocity, 0);
+                var x = Vector3.SmoothDamp(transform.position, destination, ref _velocity, 0).x;
+                transform.position = new Vector3(x, transform.position.y, transform.position.z);
             }
         }
 
