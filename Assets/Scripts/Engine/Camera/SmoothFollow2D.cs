@@ -1,5 +1,5 @@
 ﻿// Created 14.12.2015
-// Modified by  18.12.2015 at 16:35
+// Modified by  21.12.2015 at 13:14
 
 #region References
 
@@ -33,7 +33,7 @@ namespace Assets.Scripts.Engine.Camera {
             base.Update();
             if (_target) {
                 var point = _camera.WorldToViewportPoint(_target.position);
-                var delta = _target.position - _camera.ViewportToWorldPoint(new Vector3(0.2f, 0.5f, point.z));
+                var delta = _target.position - _camera.ViewportToWorldPoint(new Vector3(0.3f, 0.5f, point.z));
                 //(new Vector3(0.5, 0.5, point.z));
                 var destination = transform.position + delta;
                 var x = Vector3.SmoothDamp(transform.position, destination, ref _velocity, 0).x;

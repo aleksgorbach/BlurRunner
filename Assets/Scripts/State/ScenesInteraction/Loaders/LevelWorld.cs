@@ -1,22 +1,24 @@
 ﻿// Created 16.12.2015
-// Modified by  18.12.2015 at 16:22
+// Modified by  21.12.2015 at 13:29
 
 namespace Assets.Scripts.State.ScenesInteraction.Loaders {
     #region References
 
-    using EndlessEngine.Endpoints;
     using Engine;
     using Gameplay.Heroes;
     using UnityEngine;
 
     #endregion
 
-    [RequireComponent(typeof (Canvas))]
     internal class LevelWorld : MonoBehaviourBase {
         [SerializeField]
         private Sprite _background;
 
-        private Canvas _canvas;
+        [SerializeField]
+        private Canvas _backgroundCanvas;
+
+        [SerializeField]
+        private Canvas _foregroundCanvas;
 
         [SerializeField]
         private Hero _heroPrefab;
@@ -24,8 +26,12 @@ namespace Assets.Scripts.State.ScenesInteraction.Loaders {
         [SerializeField]
         private Transform _startPoint;
 
-        public Camera Camera {
-            set { _canvas.worldCamera = value; }
+        public Camera ForegroundCamera {
+            set { _foregroundCanvas.worldCamera = value; }
+        }
+
+        public Camera BackgroundCamera {
+            set { _backgroundCanvas.worldCamera = value; }
         }
 
         public Sprite Background {
@@ -38,10 +44,6 @@ namespace Assets.Scripts.State.ScenesInteraction.Loaders {
 
         public Transform StartPoint {
             get { return _startPoint; }
-        }
-
-        protected override void Awake() {
-            _canvas = GetComponent<Canvas>();
         }
     }
 }

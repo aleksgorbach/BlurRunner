@@ -1,5 +1,5 @@
 ﻿// Created 20.10.2015
-// Modified by  18.12.2015 at 16:36
+// Modified by  21.12.2015 at 13:35
 
 namespace Assets.Scripts.Gameplay {
     #region References
@@ -31,6 +31,9 @@ namespace Assets.Scripts.Gameplay {
 
         [Inject]
         private IInstantiator _container;
+
+        [SerializeField]
+        private Camera _foregroundCamera;
 
         private Hero _hero;
 
@@ -103,7 +106,8 @@ namespace Assets.Scripts.Gameplay {
 
         private void OnWorldLoaded(LevelWorld world) {
             // инициализация уровня из world
-            world.Camera = _camera.Camera;
+            world.ForegroundCamera = _camera.Camera;
+            world.BackgroundCamera = _foregroundCamera;
             world.transform.SetParent(transform);
             world.transform.SetAsFirstSibling();
             _background.sprite = world.Background;

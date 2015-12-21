@@ -1,5 +1,5 @@
-﻿// Created 15.12.2015
-// Modified by Александр 15.12.2015 at 19:48
+﻿// Created 16.12.2015
+// Modified by  21.12.2015 at 10:01
 
 namespace Assets.Editor.LevelEditor {
     #region References
@@ -29,9 +29,13 @@ namespace Assets.Editor.LevelEditor {
         }
 
         private void Create(IEnumerable<Object> prefabs) {
+            var length = 0f;
             foreach (var prefab in prefabs) {
                 var created = Instantiate(prefab) as GameObject;
                 created.transform.SetParent(_container);
+                var transf = created.GetComponent<RectTransform>();
+                transf.anchoredPosition = new Vector3(length, 0);
+                length += transf.sizeDelta.x;
             }
         }
     }
