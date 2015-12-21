@@ -5,6 +5,8 @@ namespace Assets.Scripts.Gameplay.Heroes {
     #region References
 
     using Engine.Moving;
+    using JumpEngines;
+    using RunEngines;
     using UnityEngine;
 
     #endregion
@@ -20,7 +22,10 @@ namespace Assets.Scripts.Gameplay.Heroes {
         private bool _isJumping;
 
         [SerializeField]
-        private Rigidbody2D _rigidbody;
+        private HeroJumpingEngine _jumpingEngine;
+
+        [SerializeField]
+        private HeroRunningEngine _runningEngine;
 
         protected float Speed { get; private set; }
 
@@ -28,20 +33,21 @@ namespace Assets.Scripts.Gameplay.Heroes {
 
         public override void Jump(float jumpForce) {
             if (!_isJumping) {
-                //_rigidbody.velocity += new Vector2(0, jumpForce);
-                _rigidbody.velocity = new Vector2(_rigidbody.velocity.y, jumpForce);
+                //_rigidbody.velocity = new Vector2(_rigidbody.velocity.y, jumpForce);
+                _jumpingEngine.Jump(jumpForce);
                 _isJumping = true;
             }
         }
 
         public override void Run(float speed) {
-            Speed = speed;
+            //Speed = speed;
+            _runningEngine.Run(speed);
         }
 
         protected virtual void FixedUpdate() {
             Grounded = Physics2D.OverlapCircle(_groundCheck.position, 35f, _groundLayer);
             _isJumping = !Grounded;
-            _rigidbody.velocity = new Vector2(Speed, _rigidbody.velocity.y);
+            //_rigidbody.velocity = new Vector2(Speed, _rigidbody.velocity.y);
         }
 
         private void Stop() {

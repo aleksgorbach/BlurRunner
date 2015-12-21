@@ -9,7 +9,6 @@ GameObject:
   m_Component:
   - 224: {fileID: 22456690}
   - 68: {fileID: 6825148}
-  - 114: {fileID: 11418498}
   - 222: {fileID: 22252078}
   - 114: {fileID: 11437988}
   m_Layer: 10
@@ -27,7 +26,7 @@ EdgeCollider2D:
   m_GameObject: {fileID: 184004}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: a0ab00764d33c884e94b76b295671490, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
@@ -38,17 +37,6 @@ EdgeCollider2D:
   - {x: 348.41235, y: 47.05574}
   - {x: 433.386, y: 47.181686}
   - {x: 511.0244, y: 56.359375}
---- !u!114 &11418498
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 184004}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e76e39b86ea75140aa22e72b32be48a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &11437988
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -105,7 +93,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: a0ab00764d33c884e94b76b295671490, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 184004}

@@ -10,19 +10,14 @@ namespace Assets.Scripts.Gameplay.Heroes {
 
     #endregion
 
-    [RequireComponent(typeof (Animator))]
     internal class AnimatedHero : Hero {
+        [SerializeField]
         private Animator _animator;
 
-        private bool _isOnObstacle = false;
+        private bool _isOnObstacle;
 
         [Inject(Identifiers.Obstacles.Layer)]
         private string _obstaclesLayer;
-
-        protected override void Awake() {
-            base.Awake();
-            _animator = GetComponent<Animator>();
-        }
 
         protected override void FixedUpdate() {
             base.FixedUpdate();
