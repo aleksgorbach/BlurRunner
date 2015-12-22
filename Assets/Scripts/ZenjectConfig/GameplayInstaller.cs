@@ -1,5 +1,5 @@
 ﻿// Created 20.10.2015
-// Modified by  18.12.2015 at 16:20
+// Modified by  22.12.2015 at 10:31
 
 #region References
 
@@ -20,7 +20,6 @@ namespace Assets.Scripts.ZenjectConfig {
     using Gameplay.Bonuses;
     using Gameplay.Consts;
     using Gameplay.GameState.Manager;
-    using Gameplay.GameState.StateChangedSources;
     using State.Levels;
     using State.Levels.Storage;
     using State.Progress;
@@ -43,7 +42,6 @@ namespace Assets.Scripts.ZenjectConfig {
             Container.Bind<IGame>().ToInstance(_game);
             Container.Bind<IGameStateManager>().ToSingle<GameStateManager>();
             Container.Bind<Camera>().ToSingleInstance(Camera.main);
-            Container.Bind<IWinSource>().ToInstance(_game);
             Container.Bind<ILevelProgress>().ToSingleInstance(new LevelProgress());
             //Container.Bind<IScoreSource>().ToInstance(_bonusGenerator);
             Container.Bind<int>(Identifiers.Scores.MinValue).ToInstance(_scoreSettings.ScoreToLose);

@@ -1,11 +1,12 @@
 ﻿// Created 26.10.2015
-// Modified by  18.12.2015 at 16:28
+// Modified by  22.12.2015 at 10:07
 
 namespace Assets.Scripts.Gameplay.GameState.Manager {
     #region References
 
     using System;
     using Consts;
+    using StateChangedSources;
 
     #endregion
 
@@ -13,6 +14,7 @@ namespace Assets.Scripts.Gameplay.GameState.Manager {
 
     internal interface IGameStateManager {
         GameState State { get; }
+        IWinSource Target { set; }
         event StateChangedDelegate StateChanged;
 
         void Pause();
@@ -20,7 +22,5 @@ namespace Assets.Scripts.Gameplay.GameState.Manager {
         void Resume();
 
         void Run();
-
-        void AddWinReason(Func<bool> reason);
     }
 }

@@ -1,10 +1,9 @@
 ﻿// Created 26.10.2015
-// Modified by  18.12.2015 at 16:30
+// Modified by  22.12.2015 at 10:10
 
 namespace Assets.Scripts.Gameplay.GameState.Manager {
     #region References
 
-    using System;
     using System.Collections.Generic;
     using Consts;
     using State.Progress;
@@ -14,6 +13,8 @@ namespace Assets.Scripts.Gameplay.GameState.Manager {
     #endregion
 
     internal class GameStateManager : IGameStateManager {
+        private readonly List<IWinSource> _winReasons;
+
         [Inject]
         private ILevelProgress _progress;
 
@@ -22,8 +23,9 @@ namespace Assets.Scripts.Gameplay.GameState.Manager {
 
         private GameState _state;
 
-        // todo в какой-то момент (update?) проходиться по списку и проверять на выигрыш
-        private List<Func<bool>> _winReasons;
+        public GameStateManager() {
+            _winReasons = new List<IWinSource>();
+        }
 
         public GameState State {
             get { return _state; }
@@ -32,6 +34,13 @@ namespace Assets.Scripts.Gameplay.GameState.Manager {
                     _state = value;
                     OnStateChanged(_state);
                 }
+            }
+        }
+
+        public IWinSource Target {
+            set {
+                value.Win += OnWin;
+                _winReasons.Add(value);
             }
         }
 
@@ -53,13 +62,13 @@ namespace Assets.Scripts.Gameplay.GameState.Manager {
             ChangeState(GameState.Running);
         }
 
-        public void AddWinReason(Func<bool> reason) {
-            _winReasons.Add(reason);
-        }
-
         [PostInject]
         private void PostInject() {
             _progress.Changed += OnProgressChanged;
+        }
+
+        private void OnWin(IWinSource sender) {
+            ChangeState(GameState.Win);
         }
 
         private void OnProgressChanged(int currentScore) {

@@ -1,5 +1,5 @@
 ﻿// Created 22.10.2015
-// Modified by  27.11.2015 at 14:42
+// Modified by  22.12.2015 at 10:44
 
 namespace Assets.Scripts.UI.Menus.Levels {
     #region References
@@ -43,6 +43,7 @@ namespace Assets.Scripts.UI.Menus.Levels {
                 item.transform.SetParent(transform);
                 var width = item.rectTransform.sizeDelta.x;
                 item.rectTransform.anchoredPosition = new Vector2(length, 0);
+                item.rectTransform.localScale = Vector3.one;
                 length += width;
                 item.Level = level;
                 item.LevelChoosed += OnLevelChoosed;

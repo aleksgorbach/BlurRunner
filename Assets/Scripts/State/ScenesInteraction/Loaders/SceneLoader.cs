@@ -1,5 +1,5 @@
-﻿// Created 15.12.2015
-// Modified by Александр 15.12.2015 at 21:18
+﻿// Created 22.10.2015
+// Modified by  22.12.2015 at 16:06
 
 namespace Assets.Scripts.State.ScenesInteraction.Loaders {
     #region References
@@ -7,11 +7,12 @@ namespace Assets.Scripts.State.ScenesInteraction.Loaders {
     using System.Collections;
     using Engine;
     using UnityEngine;
+    using UnityEngine.SceneManagement;
 
     #endregion
 
     internal class SceneLoader : MonoBehaviourBase, ISceneLoader {
-        private AsyncOperation _loadingOperation = null;
+        private AsyncOperation _loadingOperation;
         private string _nextSceneName = "LoginScene";
 
         public float Progress {
@@ -30,7 +31,7 @@ namespace Assets.Scripts.State.ScenesInteraction.Loaders {
 
         public void GoToScene(Scene scene) {
             _nextSceneName = string.Format("{0}{1}", scene, "Scene");
-            Application.LoadLevel("SplashScene");
+            SceneManager.LoadScene("SplashScene");
             //Application.LoadLevel(_nextSceneName);
         }
 
@@ -40,12 +41,12 @@ namespace Assets.Scripts.State.ScenesInteraction.Loaders {
 
         public IEnumerator LoadLevelAdditive(int number) {
             var sceneName = string.Format("Level_{0}", number);
-            yield return Application.LoadLevelAdditiveAsync(sceneName);
+            yield return SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
         }
 
         private IEnumerator LoadScene() {
             yield return Resources.UnloadUnusedAssets();
-            _loadingOperation = Application.LoadLevelAsync(_nextSceneName);
+            _loadingOperation = SceneManager.LoadSceneAsync(_nextSceneName);
             yield return _loadingOperation;
             _loadingOperation = null;
         }

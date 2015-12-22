@@ -1,10 +1,12 @@
 ﻿// Created 16.12.2015
-// Modified by  21.12.2015 at 13:29
+// Modified by  22.12.2015 at 10:07
 
 namespace Assets.Scripts.State.ScenesInteraction.Loaders {
     #region References
 
+    using EndlessEngine.Endpoints;
     using Engine;
+    using Gameplay.GameState.StateChangedSources;
     using Gameplay.Heroes;
     using UnityEngine;
 
@@ -16,6 +18,9 @@ namespace Assets.Scripts.State.ScenesInteraction.Loaders {
 
         [SerializeField]
         private Canvas _backgroundCanvas;
+
+        [SerializeField]
+        private LevelEnd _endPoint;
 
         [SerializeField]
         private Canvas _foregroundCanvas;
@@ -44,6 +49,10 @@ namespace Assets.Scripts.State.ScenesInteraction.Loaders {
 
         public Transform StartPoint {
             get { return _startPoint; }
+        }
+
+        public IWinSource EndPoint {
+            get { return _endPoint; }
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿// Created 14.12.2015
-// Modified by  14.12.2015 at 10:56
+// Modified by  22.12.2015 at 10:39
 
 namespace Assets.Scripts.Gameplay.Heroes.RunEngines {
     #region References
@@ -9,8 +9,17 @@ namespace Assets.Scripts.Gameplay.Heroes.RunEngines {
     #endregion
 
     internal abstract class HeroRunningEngine : MonoBehaviourBase {
-        public abstract void Run(float speed);
+        protected bool Running { get; private set; }
+        protected float Speed { get; private set; }
 
-        public abstract bool Reached(float destination);
+        public virtual void Run(float speed) {
+            Speed = speed;
+            Running = true;
+        }
+
+        public virtual void Stop() {
+            Speed = 0;
+            Running = false;
+        }
     }
 }

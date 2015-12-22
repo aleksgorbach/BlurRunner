@@ -1,5 +1,5 @@
 ﻿// Created 20.11.2015
-// Modified by  25.11.2015 at 12:51
+// Modified by  22.12.2015 at 10:00
 
 namespace Assets.Scripts.Gameplay.Heroes {
     #region References

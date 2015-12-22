@@ -1,15 +1,13 @@
 ﻿// Created 20.10.2015
-// Modified by  21.12.2015 at 13:35
+// Modified by  22.12.2015 at 10:32
 
 namespace Assets.Scripts.Gameplay {
     #region References
 
-    using System;
     using Consts;
     using Engine;
     using Engine.Camera;
     using GameState.Manager;
-    using GameState.StateChangedSources;
     using Heroes;
     using State.Progress;
     using State.ScenesInteraction.Loaders;
@@ -19,7 +17,7 @@ namespace Assets.Scripts.Gameplay {
 
     #endregion
 
-    internal class Game : MonoBehaviourBase, IGame, IWinSource {
+    internal class Game : MonoBehaviourBase, IGame {
         [SerializeField]
         private Image _background;
 
@@ -52,8 +50,6 @@ namespace Assets.Scripts.Gameplay {
         public ILevelProgress Progress {
             get { return _progress; }
         }
-
-        public event Action<IWinSource> Win;
 
         private void OnStateChanged(Consts.GameState state) {
             switch (state) {
@@ -89,13 +85,6 @@ namespace Assets.Scripts.Gameplay {
         }
 
 
-        private void OnWin(IWinSource winSource) {
-            var handler = Win;
-            if (handler != null) {
-                handler.Invoke(winSource);
-            }
-        }
-
         [PostInject]
         private void PostInject() {
             _stateManager.StateChanged += OnStateChanged;
@@ -115,6 +104,7 @@ namespace Assets.Scripts.Gameplay {
             _hero.transform.SetParent(world.StartPoint);
             _hero.transform.localPosition = Vector3.zero;
             _camera.SetTarget(_hero.transform);
+            _stateManager.Target = world.EndPoint;
         }
 
         private void OnScoreChanged(int deltaScore) {
