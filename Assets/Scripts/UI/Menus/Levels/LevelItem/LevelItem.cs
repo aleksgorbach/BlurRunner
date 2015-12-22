@@ -5,6 +5,7 @@ namespace Assets.Scripts.UI.Menus.Levels.LevelItem {
     #region References
 
     using Engine;
+    using Engine.Utils;
     using State.Levels;
     using UnityEngine;
     using UnityEngine.UI;
@@ -12,6 +13,9 @@ namespace Assets.Scripts.UI.Menus.Levels.LevelItem {
     #endregion
 
     internal class LevelItem : MonoBehaviourBase, ILevelItem {
+        [SerializeField]
+        private SymbolText _ageText;
+
         [SerializeField]
         private Image _background;
 
@@ -21,6 +25,7 @@ namespace Assets.Scripts.UI.Menus.Levels.LevelItem {
             set {
                 _level = value;
                 _background.sprite = _level.Background;
+                _ageText.Text = _level.Number + "";
             }
         }
 

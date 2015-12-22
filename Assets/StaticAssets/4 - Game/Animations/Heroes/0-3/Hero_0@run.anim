@@ -10,9 +10,34 @@ AnimationClip:
   m_Legacy: 0
   m_Compressed: 0
   m_UseHighQualityCurve: 1
-  m_RotationCurves: []
+  m_RotationCurves:
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 0, y: 0, z: 0, w: 1}
+        inSlope: {x: 1.62550622e-43, y: NaN, z: NaN, w: 8.26766094e-44}
+        outSlope: {x: 0, y: 0, z: -.000325723027, w: 0}
+        tangentMode: 0
+      - time: .333333343
+        value: {x: 0, y: 0, z: -.0362076685, w: .999344289}
+        inSlope: {x: 0, y: 0, z: -.000335276127, w: 0}
+        outSlope: {x: 0, y: 0, z: .00064074999, w: 0}
+        tangentMode: 0
+      - time: .833333313
+        value: {x: 0, y: 0, z: .0712363198, w: .997459471}
+        inSlope: {x: 0, y: 0, z: .000700354634, w: 0}
+        outSlope: {x: 0, y: 0, z: -.00129640091, w: 0}
+        tangentMode: 0
+      - time: 1
+        value: {x: 0, y: 0, z: 0, w: 1}
+        inSlope: {x: 0, y: 0, z: -.00129829103, w: 0}
+        outSlope: {x: 0, y: 0, z: 0, w: 3.1619761}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: Caret
   m_CompressedRotationCurves: []
-  m_EulerCurves: []
   m_PositionCurves: []
   m_ScaleCurves: []
   m_FloatCurves:
@@ -31,7 +56,6 @@ AnimationClip:
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
-      m_RotationOrder: 4
     attribute: m_AnchoredPosition.x
     path: Caret
     classID: 224
@@ -40,23 +64,22 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: -63.45
-        inSlope: 27.119999
-        outSlope: 27.119999
+        value: -63.4500008
+        inSlope: 17.5920048
+        outSlope: 17.5920048
         tangentMode: 10
-      - time: 0.41666666
-        value: -52.15
-        inSlope: 3.8742867
-        outSlope: 3.8742867
+      - time: .416666657
+        value: -56.1199989
+        inSlope: 2.51314402
+        outSlope: 2.51314402
         tangentMode: 10
       - time: 1
-        value: -63.45
-        inSlope: -19.371426
-        outSlope: -19.371426
+        value: -63.4500008
+        inSlope: -12.5657167
+        outSlope: -12.5657167
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
-      m_RotationOrder: 4
     attribute: m_AnchoredPosition.y
     path: Caret
     classID: 224
@@ -69,19 +92,18 @@ AnimationClip:
         inSlope: 0
         outSlope: 0
         tangentMode: 10
-      - time: 0.33333334
+      - time: .333333343
         value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 10
-      - time: 0.8333333
+      - time: .833333313
         value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
-      m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
     path: Caret
     classID: 224
@@ -94,19 +116,18 @@ AnimationClip:
         inSlope: 0
         outSlope: 0
         tangentMode: 10
-      - time: 0.33333334
+      - time: .333333343
         value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 10
-      - time: 0.8333333
+      - time: .833333313
         value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
-      m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
     path: Caret
     classID: 224
@@ -115,23 +136,22 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: 0.03
-        inSlope: -36.869995
-        outSlope: -36.869995
+        value: .0299999993
+        inSlope: -36.8699951
+        outSlope: -36.8699951
         tangentMode: 10
-      - time: 0.33333334
-        value: -12.259999
-        inSlope: -9.574997
-        outSlope: -9.574997
+      - time: .333333343
+        value: -12.2599993
+        inSlope: -9.57499695
+        outSlope: -9.57499695
         tangentMode: 10
-      - time: 0.8333333
-        value: -3.3999999
-        inSlope: 17.720001
-        outSlope: 17.720001
+      - time: .833333313
+        value: -3.39999986
+        inSlope: 17.7200012
+        outSlope: 17.7200012
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
-      m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
     path: Caret
     classID: 224
@@ -144,6 +164,12 @@ AnimationClip:
     m_Extent: {x: 0, y: 0, z: 0}
   m_ClipBindingConstant:
     genericBindings:
+    - path: 1115476763
+      attribute: 2
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
     - path: 1115476763
       attribute: 538195251
       script: {fileID: 0}
@@ -177,14 +203,11 @@ AnimationClip:
     pptrCurveMapping: []
   m_AnimationClipSettings:
     serializedVersion: 2
-    m_AdditiveReferencePoseClip: {fileID: 0}
-    m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
     m_StopTime: 1
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
-    m_HasAdditiveReferencePose: 0
     m_LoopTime: 1
     m_LoopBlend: 0
     m_LoopBlendOrientation: 0
@@ -211,7 +234,6 @@ AnimationClip:
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
-      m_RotationOrder: 4
     attribute: m_AnchoredPosition.x
     path: Caret
     classID: 224
@@ -220,23 +242,22 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: -63.45
-        inSlope: 27.119999
-        outSlope: 27.119999
+        value: -63.4500008
+        inSlope: 17.5920048
+        outSlope: 17.5920048
         tangentMode: 10
-      - time: 0.41666666
-        value: -52.15
-        inSlope: 3.8742867
-        outSlope: 3.8742867
+      - time: .416666657
+        value: -56.1199989
+        inSlope: 2.51314402
+        outSlope: 2.51314402
         tangentMode: 10
       - time: 1
-        value: -63.45
-        inSlope: -19.371426
-        outSlope: -19.371426
+        value: -63.4500008
+        inSlope: -12.5657167
+        outSlope: -12.5657167
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
-      m_RotationOrder: 4
     attribute: m_AnchoredPosition.y
     path: Caret
     classID: 224
@@ -249,19 +270,18 @@ AnimationClip:
         inSlope: 0
         outSlope: 0
         tangentMode: 10
-      - time: 0.33333334
+      - time: .333333343
         value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 10
-      - time: 0.8333333
+      - time: .833333313
         value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
-      m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
     path: Caret
     classID: 224
@@ -274,19 +294,18 @@ AnimationClip:
         inSlope: 0
         outSlope: 0
         tangentMode: 10
-      - time: 0.33333334
+      - time: .333333343
         value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 10
-      - time: 0.8333333
+      - time: .833333313
         value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
-      m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
     path: Caret
     classID: 224
@@ -295,55 +314,227 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: 0.03
-        inSlope: -36.869995
-        outSlope: -36.869995
+        value: .0299999993
+        inSlope: -36.8699951
+        outSlope: -36.8699951
         tangentMode: 10
-      - time: 0.33333334
-        value: -12.259999
-        inSlope: -9.574997
-        outSlope: -9.574997
+      - time: .333333343
+        value: -12.2599993
+        inSlope: -9.57499695
+        outSlope: -9.57499695
         tangentMode: 10
-      - time: 0.8333333
-        value: -3.3999999
-        inSlope: 17.720001
-        outSlope: 17.720001
+      - time: .833333313
+        value: -3.39999986
+        inSlope: 17.7200012
+        outSlope: 17.7200012
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
-      m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
+    path: Caret
+    classID: 224
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 1.62550622e-43
+        outSlope: 0
+        tangentMode: 0
+      - time: .333333343
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - time: .833333313
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_LocalRotation.x
+    path: Caret
+    classID: 224
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: NaN
+        outSlope: 0
+        tangentMode: 0
+      - time: .333333343
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - time: .833333313
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_LocalRotation.y
+    path: Caret
+    classID: 224
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: NaN
+        outSlope: -.000325723027
+        tangentMode: 0
+      - time: .333333343
+        value: -.0362076685
+        inSlope: -.000335276127
+        outSlope: .00064074999
+        tangentMode: 0
+      - time: .833333313
+        value: .0712363198
+        inSlope: .000700354634
+        outSlope: -.00129640091
+        tangentMode: 0
+      - time: 1
+        value: 0
+        inSlope: -.00129829103
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_LocalRotation.z
+    path: Caret
+    classID: 224
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1
+        inSlope: 8.26766094e-44
+        outSlope: 0
+        tangentMode: 0
+      - time: .333333343
+        value: .999344289
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - time: .833333313
+        value: .997459471
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 3.1619761
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_LocalRotation.w
     path: Caret
     classID: 224
     script: {fileID: 0}
   m_EulerEditorCurves:
   - curve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - time: 0
+        value: -0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - time: .333333343
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - time: .833333313
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.x
+    attribute: localEulerAngles.x
     path: Caret
     classID: 224
     script: {fileID: 0}
   - curve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - time: .333333343
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - time: .833333313
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.y
+    attribute: localEulerAngles.y
     path: Caret
     classID: 224
     script: {fileID: 0}
   - curve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - time: .333333343
+        value: -4.1500001
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - time: .833333313
+        value: 8.17000008
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.z
+    attribute: localEulerAngles.z
     path: Caret
     classID: 224
     script: {fileID: 0}
