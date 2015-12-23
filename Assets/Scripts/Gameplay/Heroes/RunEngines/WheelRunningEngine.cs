@@ -9,18 +9,21 @@ namespace Assets.Scripts.Gameplay.Heroes.RunEngines {
     #endregion
 
     internal class WheelRunningEngine : HeroRunningEngine {
+        private JointMotor2D _motor;
+
         [SerializeField]
         private Rigidbody2D _rigidbody;
 
         [SerializeField]
         private HingeJoint2D _wheel;
 
+        protected override void Awake() {
+            base.Awake();
+            _motor = _wheel.motor;
+        }
 
-        private void FixedUpdate() {
-            if (Running) {
-                var motor = _wheel.motor;
-                motor.motorSpeed = Speed;
-            }
+        public override void Run(float speed) {
+            _motor.motorSpeed = speed;
         }
     }
 }

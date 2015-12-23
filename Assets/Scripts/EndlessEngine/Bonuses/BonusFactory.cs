@@ -12,7 +12,7 @@ namespace Assets.Scripts.EndlessEngine.Bonuses {
     #endregion
 
     internal class BonusFactory : AbstractGameObjectFactory<Bonus> {
-        public Bonus Create() {
+        public new Bonus Create() {
             return Container.InstantiatePrefabForComponent<Bonus>(Prefabs.Random().gameObject);
         }
     }

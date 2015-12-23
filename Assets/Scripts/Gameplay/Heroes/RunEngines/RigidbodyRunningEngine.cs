@@ -12,8 +12,8 @@ namespace Assets.Scripts.Gameplay.Heroes.RunEngines {
         [SerializeField]
         private Rigidbody2D _rigidbody;
 
-        private void FixedUpdate() {
-            _rigidbody.velocity = new Vector2(Running ? Speed : 0, _rigidbody.velocity.y);
+        public override void Run(float speed) {
+            _rigidbody.velocity = new Vector2(speed, _rigidbody.velocity.y);
         }
     }
 }

@@ -59,9 +59,6 @@ namespace Assets.Scripts.Gameplay {
                 case Consts.GameState.Paused:
                     Pause();
                     break;
-                case Consts.GameState.Lose:
-                    OnDie();
-                    break;
                 case Consts.GameState.Win:
                     OnWin();
                     break;
@@ -76,9 +73,6 @@ namespace Assets.Scripts.Gameplay {
             Time.timeScale = 1;
         }
 
-        private void OnDie() {
-            _hero.Kill();
-        }
 
         private void OnWin() {
             _hero.Congratulate();

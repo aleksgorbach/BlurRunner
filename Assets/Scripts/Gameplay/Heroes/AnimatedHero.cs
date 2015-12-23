@@ -4,9 +4,9 @@
 namespace Assets.Scripts.Gameplay.Heroes {
     #region References
 
-    using Consts;
+    using System;
+    using System.Collections;
     using UnityEngine;
-    using Zenject;
 
     #endregion
 
@@ -14,40 +14,28 @@ namespace Assets.Scripts.Gameplay.Heroes {
         [SerializeField]
         private Animator _animator;
 
-        private bool _isOnObstacle;
-
-        [Inject(Identifiers.Obstacles.Layer)]
-        private string _obstaclesLayer;
-
-        protected override void FixedUpdate() {
-            base.FixedUpdate();
+        protected override void Run() {
+            base.Run();
             _animator.SetBool("grounded", Grounded);
             _animator.SetFloat("speed", Speed);
         }
 
-        private void OnTriggerEnter2D(Collider2D collision) {
-            if (_isOnObstacle) {
-                return;
-            }
-            if (IsObstacleLayer(collision.gameObject.layer)) {
-                _animator.SetTrigger("trip");
-                _isOnObstacle = true;
-            }
-        }
 
-        private void OnTriggerExit2D(Collider2D collision) {
-            if (IsObstacleLayer(collision.gameObject.layer)) {
-                _isOnObstacle = false;
-            }
-        }
-
-        private bool IsObstacleLayer(int layer) {
-            return _obstaclesLayer == LayerMask.LayerToName(layer);
-        }
-
-        public override void Kill() {
-            base.Kill();
+        public override void Die() {
+            base.Die();
             _animator.SetTrigger("die");
+        }
+
+        protected override void Stumble(Action callback) {
+            base.Stumble(callback);
+            _animator.SetTrigger("trip");
+            var clip = _animator.GetCurrentAnimatorClipInfo(0)[0].clip;
+            StartCoroutine(StumbleCoroutine(clip.length*1.4f, callback));
+        }
+
+        private IEnumerator StumbleCoroutine(float duration, Action callback) {
+            yield return new WaitForSeconds(duration);
+            callback();
         }
     }
 }

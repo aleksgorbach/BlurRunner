@@ -9,17 +9,6 @@ namespace Assets.Scripts.Gameplay.Heroes.RunEngines {
     #endregion
 
     internal abstract class HeroRunningEngine : MonoBehaviourBase {
-        protected bool Running { get; private set; }
-        protected float Speed { get; private set; }
-
-        public virtual void Run(float speed) {
-            Speed = speed;
-            Running = true;
-        }
-
-        public virtual void Stop() {
-            Speed = 0;
-            Running = false;
-        }
+        public abstract void Run(float speed);
     }
 }

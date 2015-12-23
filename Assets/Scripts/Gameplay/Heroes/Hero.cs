@@ -5,28 +5,40 @@ namespace Assets.Scripts.Gameplay.Heroes {
     #region References
 
     using System;
+    using Consts;
     using Engine.Moving;
     using JumpEngines;
     using RunEngines;
     using UnityEngine;
+    using Zenject;
 
     #endregion
 
     internal class Hero : Movable {
+        #region Visible in inspector
+
         [SerializeField]
         private Transform _groundCheck;
 
         [SerializeField]
         private LayerMask _groundLayer;
 
-        private float _health;
-
-
         [SerializeField]
         private HeroJumpingEngine _jumpingEngine;
 
+
         [SerializeField]
         private HeroRunningEngine _runningEngine;
+
+        #endregion
+
+        private float _health;
+
+        private bool _isStubmled;
+
+
+        [Inject(Identifiers.Obstacles.Layer)]
+        private string _obstaclesLayer;
 
         protected float Speed { get; private set; }
 
@@ -42,7 +54,11 @@ namespace Assets.Scripts.Gameplay.Heroes {
             }
         }
 
-        public void Die() {
+        private bool IsObstacleLayer(int layer) {
+            return _obstaclesLayer == LayerMask.LayerToName(layer);
+        }
+
+        public virtual void Die() {
             var handler = Died;
             if (handler != null) {
                 handler();
@@ -59,24 +75,42 @@ namespace Assets.Scripts.Gameplay.Heroes {
 
         public override void Run(float speed) {
             Speed = speed;
-            _runningEngine.Run(speed);
         }
 
-        protected virtual void FixedUpdate() {
+        private void FixedUpdate() {
             Grounded = Physics2D.OverlapCircle(_groundCheck.position, 10f, _groundLayer);
+            if (Grounded && !_isStubmled) {
+                Run();
+            }
         }
 
         private void Stop() {
             Speed = 0;
-            _runningEngine.Stop();
         }
 
-        public virtual void Kill() {
-            Stop();
+        protected virtual void Run() {
+            _runningEngine.Run(Speed);
         }
 
         public virtual void Congratulate() {
             Stop();
+        }
+
+        protected virtual void Stumble(Action callback) {
+            _isStubmled = true;
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision) {
+            if (_isStubmled) {
+                return;
+            }
+            if (IsObstacleLayer(collision.gameObject.layer)) {
+                Stumble(OnStumbleEnded);
+            }
+        }
+
+        private void OnStumbleEnded() {
+            _isStubmled = false;
         }
     }
 }
