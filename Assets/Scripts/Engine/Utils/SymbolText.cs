@@ -1,4 +1,7 @@
-﻿namespace Assets.Scripts.Engine.Utils {
+﻿// Created 23.12.2015
+// Modified by  23.12.2015 at 9:08
+
+namespace Assets.Scripts.Engine.Utils {
     #region References
 
     using System;
@@ -22,7 +25,6 @@
                 _currentSymbols.Clear();
                 var currentPosition = 0f;
                 foreach (var c in GetPrefabs(value)) {
-                    Debug.Log(c);
                     var obj = Instantiate(c);
                     var rect = obj.GetComponent<RectTransform>();
                     rect.SetParent(transform);

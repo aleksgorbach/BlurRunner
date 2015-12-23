@@ -1,9 +1,10 @@
 ﻿// Created 20.10.2015
-// Modified by  22.12.2015 at 10:35
+// Modified by  23.12.2015 at 13:23
 
 namespace Assets.Scripts.Gameplay.Heroes {
     #region References
 
+    using System;
     using Engine.Moving;
     using JumpEngines;
     using RunEngines;
@@ -18,8 +19,8 @@ namespace Assets.Scripts.Gameplay.Heroes {
         [SerializeField]
         private LayerMask _groundLayer;
 
+        private float _health;
 
-        private bool _isJumping;
 
         [SerializeField]
         private HeroJumpingEngine _jumpingEngine;
@@ -31,10 +32,28 @@ namespace Assets.Scripts.Gameplay.Heroes {
 
         protected bool Grounded { get; private set; }
 
+        public float Health {
+            get { return _health; }
+            private set {
+                _health = value;
+                if (_health <= 0) {
+                    Die();
+                }
+            }
+        }
+
+        public void Die() {
+            var handler = Died;
+            if (handler != null) {
+                handler();
+            }
+        }
+
+        public event Action Died;
+
         public override void Jump(float jumpForce) {
-            if (!_isJumping) {
+            if (Grounded) {
                 _jumpingEngine.Jump(jumpForce);
-                _isJumping = true;
             }
         }
 
@@ -44,8 +63,7 @@ namespace Assets.Scripts.Gameplay.Heroes {
         }
 
         protected virtual void FixedUpdate() {
-            Grounded = Physics2D.OverlapCircle(_groundCheck.position, 35f, _groundLayer);
-            _isJumping = !Grounded;
+            Grounded = Physics2D.OverlapCircle(_groundCheck.position, 10f, _groundLayer);
         }
 
         private void Stop() {

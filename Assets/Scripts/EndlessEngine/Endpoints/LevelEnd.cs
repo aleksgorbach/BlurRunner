@@ -14,7 +14,7 @@ namespace Assets.Scripts.EndlessEngine.Endpoints {
     internal class LevelEnd : MonoBehaviourBase, IWinSource {
         public event Action<IWinSource> Win;
 
-        private void OnTriggerEnter2D(Collider2D collision) {
+        private void OnTriggerExit2D(Collider2D collision) {
             OnWin();
         }
 
