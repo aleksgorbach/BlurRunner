@@ -1,10 +1,11 @@
 ﻿// Created 23.10.2015
-// Modified by  27.11.2015 at 14:02
+// Modified by  24.12.2015 at 12:57
 
 namespace Assets.Scripts.UI.Popups.Controller {
     #region References
 
     using System;
+    using System.Collections;
     using System.Collections.Generic;
     using Engine;
     using Factory;
@@ -30,6 +31,12 @@ namespace Assets.Scripts.UI.Popups.Controller {
 
         private IPopup Show<TPopup>() where TPopup : Popup {
             var popup = _factory.Create<TPopup>();
+            StartCoroutine(PopupShowingCoroutine(popup));
+            return popup;
+        }
+
+        private IEnumerator PopupShowingCoroutine(Popup popup) {
+            yield return new WaitForSeconds(popup.Delay);
             popup.gameObject.SetActive(true);
             popup.transform.SetParent(transform);
             popup.rectTransform.anchoredPosition = Vector2.zero;
@@ -38,7 +45,6 @@ namespace Assets.Scripts.UI.Popups.Controller {
             _popups.Push(popup);
             Subscribe(popup);
             OnPopupOpened(popup);
-            return popup;
         }
 
         private void Subscribe(IPopup popup) {

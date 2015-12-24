@@ -1,31 +1,28 @@
 ﻿// Created 26.10.2015
-// Modified by  22.12.2015 at 10:10
+// Modified by  24.12.2015 at 11:30
 
 namespace Assets.Scripts.Gameplay.GameState.Manager {
     #region References
 
-    using System.Collections.Generic;
     using Consts;
-    using State.Progress;
+    using Heroes;
+    using State.ScenesInteraction.Loaders;
     using StateChangedSources;
     using Zenject;
 
     #endregion
 
     internal class GameStateManager : IGameStateManager {
-        private readonly List<IWinSource> _winReasons;
+        #region Injected dependencies
 
         [Inject]
-        private ILevelProgress _progress;
+        private IGame _game;
 
-        [Inject(Identifiers.Scores.MinValue)]
-        private int _scoreToLose;
+        #endregion
 
         private GameState _state;
 
-        public GameStateManager() {
-            _winReasons = new List<IWinSource>();
-        }
+        #region
 
         public GameState State {
             get { return _state; }
@@ -37,14 +34,9 @@ namespace Assets.Scripts.Gameplay.GameState.Manager {
             }
         }
 
-        public IWinSource Target {
-            set {
-                value.Win += OnWin;
-                _winReasons.Add(value);
-            }
-        }
-
         public event StateChangedDelegate StateChanged;
+
+        #endregion
 
         public void Pause() {
             if (State == GameState.Running) {
@@ -64,17 +56,24 @@ namespace Assets.Scripts.Gameplay.GameState.Manager {
 
         [PostInject]
         private void PostInject() {
-            _progress.Changed += OnProgressChanged;
+            _game.WorldLoaded += OnWorldLoaded;
+            _game.HeroSpawned += OnHeroSpawned;
         }
 
-        private void OnWin(IWinSource sender) {
+        private void OnWorldLoaded(object sender, WorldLoader.WorldLoadedEventArgs e) {
+            e.World.EndPoint.Win += Win;
+        }
+
+        private void OnHeroSpawned(object sender, Hero.HeroSpawnedEventArgs e) {
+            e.Hero.Died += Lose;
+        }
+
+        private void Win(IWinSource sender) {
             ChangeState(GameState.Win);
         }
 
-        private void OnProgressChanged(int currentScore) {
-            if (currentScore <= _scoreToLose) {
-                ChangeState(GameState.Lose);
-            }
+        private void Lose() {
+            ChangeState(GameState.Lose);
         }
 
         private void ChangeState(GameState to) {

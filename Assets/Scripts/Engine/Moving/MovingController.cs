@@ -1,5 +1,5 @@
-﻿// Created 28.10.2015
-// Modified by Александр 01.11.2015 at 12:37
+﻿// Created 20.10.2015
+// Modified by  24.12.2015 at 9:26
 
 #region References
 
@@ -8,6 +8,7 @@
 namespace Assets.Scripts.Engine.Moving {
     #region References
 
+    using System.Collections.Generic;
     using Input;
     using UnityEngine;
     using Zenject;
@@ -15,22 +16,36 @@ namespace Assets.Scripts.Engine.Moving {
     #endregion
 
     internal class MovingController : MonoBehaviourBase, IMovingController {
-        [Inject]
-        private IInputController _controller;
-
-        [SerializeField]
-        private int _jumpForce;
-
-        [SerializeField]
-        private Movable _movable;
-
+        #region Visible in inspector
 
         [SerializeField]
         private int _runForce;
 
+        [SerializeField]
+        private int _jumpForce;
+
+        #endregion
+
+        [Inject]
+        private IInputController _controller;
+
+        private List<IMovable> _movables;
+
+
+        public void RegisterMovable(IMovable movable) {
+            _movables.Add(movable);
+        }
+
+        protected override void Awake() {
+            base.Awake();
+            _movables = new List<IMovable>();
+        }
+
         protected override void Start() {
             base.Start();
-            _movable.Run(_runForce);
+            foreach (var movable in _movables) {
+                movable.Run(_runForce);
+            }
         }
 
         [PostInject]
@@ -39,7 +54,9 @@ namespace Assets.Scripts.Engine.Moving {
         }
 
         private void OnClick(Vector2 screenpos) {
-            _movable.Jump(_jumpForce);
+            foreach (var movable in _movables) {
+                movable.Jump(_jumpForce);
+            }
         }
     }
 }

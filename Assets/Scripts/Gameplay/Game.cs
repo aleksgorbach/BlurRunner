@@ -1,9 +1,10 @@
 ﻿// Created 20.10.2015
-// Modified by  22.12.2015 at 10:32
+// Modified by  24.12.2015 at 11:30
 
 namespace Assets.Scripts.Gameplay {
     #region References
 
+    using System;
     using Consts;
     using Engine;
     using Engine.Camera;
@@ -18,22 +19,26 @@ namespace Assets.Scripts.Gameplay {
     #endregion
 
     internal class Game : MonoBehaviourBase, IGame {
+        #region Visible in inspector
+
         [SerializeField]
         private Image _background;
 
         [SerializeField]
         private SmoothFollow2D _camera;
 
-        //[Inject]
-        //private IScoreSource _scoreSource;
-
-        [Inject]
-        private IInstantiator _container;
-
         [SerializeField]
         private Camera _foregroundCamera;
 
-        private Hero _hero;
+        [SerializeField]
+        private WorldLoader _worldLoader;
+
+        #endregion
+
+        #region Injected dependencies
+
+        [Inject]
+        private IInstantiator _container;
 
         [Inject(Identifiers.Levels.CurrentLevel)]
         private int _levelNumber;
@@ -44,12 +49,24 @@ namespace Assets.Scripts.Gameplay {
         [Inject]
         private IGameStateManager _stateManager;
 
-        [SerializeField]
-        private WorldLoader _worldLoader;
+        #endregion
+
+        private Hero _hero;
+
+        #region Interface
 
         public ILevelProgress Progress {
             get { return _progress; }
         }
+
+        #region Events
+
+        public event EventHandler<WorldLoader.WorldLoadedEventArgs> WorldLoaded;
+        public event EventHandler<Hero.HeroSpawnedEventArgs> HeroSpawned;
+
+        #endregion
+
+        #endregion
 
         private void OnStateChanged(Consts.GameState state) {
             switch (state) {
@@ -98,7 +115,18 @@ namespace Assets.Scripts.Gameplay {
             _hero.transform.SetParent(world.StartPoint);
             _hero.transform.localPosition = Vector3.zero;
             _camera.SetTarget(_hero.transform);
-            _stateManager.Target = world.EndPoint;
+            var handler = WorldLoaded;
+            if (handler != null) {
+                handler(this, new WorldLoader.WorldLoadedEventArgs(world));
+            }
+            OnHeroSpawned(_hero);
+        }
+
+        private void OnHeroSpawned(Hero hero) {
+            var handler = HeroSpawned;
+            if (handler != null) {
+                handler.Invoke(this, new Hero.HeroSpawnedEventArgs(hero));
+            }
         }
 
         private void OnScoreChanged(int deltaScore) {

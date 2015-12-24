@@ -1,5 +1,5 @@
 ﻿// Created 22.10.2015
-// Modified by  22.12.2015 at 16:06
+// Modified by  24.12.2015 at 14:51
 
 namespace Assets.Scripts.State.ScenesInteraction.Loaders {
     #region References
@@ -8,10 +8,20 @@ namespace Assets.Scripts.State.ScenesInteraction.Loaders {
     using Engine;
     using UnityEngine;
     using UnityEngine.SceneManagement;
+    using UnityEngine.UI;
 
     #endregion
 
     internal class SceneLoader : MonoBehaviourBase, ISceneLoader {
+        private const float FADE_DURATION = 1f;
+
+        #region Visible in inspector
+
+        [SerializeField]
+        private Image _loadingScreen;
+
+        #endregion
+
         private AsyncOperation _loadingOperation;
         private string _nextSceneName = "LoginScene";
 
@@ -31,11 +41,11 @@ namespace Assets.Scripts.State.ScenesInteraction.Loaders {
 
         public void GoToScene(Scene scene) {
             _nextSceneName = string.Format("{0}{1}", scene, "Scene");
-            SceneManager.LoadScene("SplashScene");
-            //Application.LoadLevel(_nextSceneName);
+            LoadNextScene();
+            //SceneManager.LoadScene("SplashScene");
         }
 
-        public void LoadNextScene() {
+        private void LoadNextScene() {
             StartCoroutine(LoadScene());
         }
 
@@ -45,10 +55,32 @@ namespace Assets.Scripts.State.ScenesInteraction.Loaders {
         }
 
         private IEnumerator LoadScene() {
+            yield return StartCoroutine(LoadingFadeIn());
             yield return Resources.UnloadUnusedAssets();
             _loadingOperation = SceneManager.LoadSceneAsync(_nextSceneName);
             yield return _loadingOperation;
+            yield return StartCoroutine(LoadingFadeOut());
             _loadingOperation = null;
+        }
+
+        private IEnumerator LoadingFadeIn() {
+            var time = 0f;
+            while (time < FADE_DURATION) {
+                _loadingScreen.color = new Color(_loadingScreen.color.r, _loadingScreen.color.g, _loadingScreen.color.b,
+                    time/FADE_DURATION);
+                time += Time.deltaTime;
+                yield return null;
+            }
+        }
+
+        private IEnumerator LoadingFadeOut() {
+            var time = 0f;
+            while (time < FADE_DURATION) {
+                _loadingScreen.color = new Color(_loadingScreen.color.r, _loadingScreen.color.g, _loadingScreen.color.b,
+                    1 - time/FADE_DURATION);
+                time += Time.deltaTime;
+                yield return null;
+            }
         }
     }
 }

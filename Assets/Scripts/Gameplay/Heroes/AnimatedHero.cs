@@ -1,5 +1,5 @@
 ﻿// Created 20.11.2015
-// Modified by  22.12.2015 at 10:00
+// Modified by  24.12.2015 at 10:15
 
 namespace Assets.Scripts.Gameplay.Heroes {
     #region References
@@ -26,8 +26,8 @@ namespace Assets.Scripts.Gameplay.Heroes {
             _animator.SetTrigger("die");
         }
 
-        protected override void Stumble(Action callback) {
-            base.Stumble(callback);
+        protected override void Stumble(int damage, Action callback) {
+            base.Stumble(damage, callback);
             _animator.SetTrigger("trip");
             var clip = _animator.GetCurrentAnimatorClipInfo(0)[0].clip;
             StartCoroutine(StumbleCoroutine(clip.length*1.4f, callback));

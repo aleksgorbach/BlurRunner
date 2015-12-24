@@ -8,6 +8,6 @@ namespace Assets.Scripts.UI.Visualizers.Bonuses {
 
     #endregion
 
-    internal interface IBonusVisualizer {
+    internal interface IHealthVisualizer {
     }
 }

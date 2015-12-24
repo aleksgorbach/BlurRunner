@@ -1,5 +1,5 @@
 ﻿// Created 04.11.2015
-// Modified by  07.12.2015 at 10:02
+// Modified by  24.12.2015 at 14:06
 
 namespace Assets.Scripts.ZenjectConfig.Global {
     #region References
@@ -17,13 +17,17 @@ namespace Assets.Scripts.ZenjectConfig.Global {
         [SerializeField]
         private string _levelsPath;
 
+        [SerializeField]
+        private SceneLoader _sceneLoader;
+
         public override void InstallBindings() {
-            //            Container.Bind<PresenterFactory>().ToSingle();
             Container.Bind<ILevelStorage>().ToSingle<LevelStorage>();
             Container.Bind<ILevelLoader>().ToTransient<ResourcesLevelLoader>();
             Container.Bind<string>().ToInstance(_levelsPath).WhenInjectedInto<ResourcesLevelLoader>();
-            Container.Bind<ISceneLoader>().ToSingleGameObject<SceneLoader>("SceneLoader");
+
+
             Container.Bind<LanguageManager>().ToSingleInstance(LanguageManager.Instance);
+            Container.Bind<ISceneLoader>().ToSinglePrefab<SceneLoader>(_sceneLoader.gameObject);
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿// Created 23.10.2015
-// Modified by  27.11.2015 at 12:15
+// Modified by  24.12.2015 at 12:52
 
 namespace Assets.Scripts.UI.Popups {
     #region References
@@ -14,6 +14,10 @@ namespace Assets.Scripts.UI.Popups {
         private EventTrigger _eventTrigger;
 
         public event Action<Popup> Closed;
+
+        public virtual float Delay {
+            get { return 0; }
+        }
 
         protected override void Awake() {
             base.Awake();

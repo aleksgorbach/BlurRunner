@@ -1,14 +1,18 @@
 ﻿// Created 22.10.2015
-// Modified by  07.12.2015 at 11:04
+// Modified by  24.12.2015 at 14:50
 
 namespace Assets.Scripts.State.ScenesInteraction.Loaders {
+    #region References
+
     using System.Collections;
+
+    #endregion
 
     internal enum Scene {
         Logo,
         LevelChoose,
         Shop,
-        Game,
+        Game
     }
 
     internal interface ISceneLoader {
@@ -25,7 +29,6 @@ namespace Assets.Scripts.State.ScenesInteraction.Loaders {
         void GoToScene(Scene scene);
 
 
-        void LoadNextScene();
         IEnumerator LoadLevelAdditive(int number);
     }
 }
