@@ -1,5 +1,5 @@
 ﻿// Created 16.12.2015
-// Modified by  24.12.2015 at 10:29
+// Modified by  28.12.2015 at 9:10
 
 namespace Assets.Scripts.State.ScenesInteraction.Loaders {
     #region References
@@ -7,16 +7,19 @@ namespace Assets.Scripts.State.ScenesInteraction.Loaders {
     using System;
     using System.Collections;
     using Engine;
-    using UnityEngine.SceneManagement;
+    using Zenject;
 
     #endregion
 
     internal class WorldLoader : MonoBehaviourBase {
         private LevelWorld _world;
 
+        [Inject]
+        private ISceneLoader _sceneLoader;
+
         private IEnumerator LevelLoading(int levelNumber, Action<LevelWorld> onLoaded) {
-            var sceneName = string.Format("Level_{0}", levelNumber);
-            yield return SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+            //var sceneName = string.Format("Level_{0}", levelNumber);
+            yield return _sceneLoader.LoadLevelAdditive(levelNumber);
             _world = FindObjectOfType<LevelWorld>();
             onLoaded(_world);
         }
