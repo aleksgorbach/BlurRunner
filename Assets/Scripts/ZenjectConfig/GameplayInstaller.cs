@@ -67,8 +67,6 @@ namespace Assets.Scripts.ZenjectConfig {
         }
 
         private void InstallLevelSettings() {
-            Container.Bind<Decoration[]>().ToGetter<ILevel>(level => level.Decorations);
-            Container.Bind<Obstacle[]>().ToGetter<ILevel>(level => level.Obstacles);
         }
 
         [Serializable]

@@ -4,6 +4,8 @@
 namespace Assets.Scripts.ZenjectConfig.Global {
     #region References
 
+    using Ads;
+    using Services;
     using SmartLocalization;
     using State.Levels.Loaders;
     using State.Levels.Storage;
@@ -31,6 +33,8 @@ namespace Assets.Scripts.ZenjectConfig.Global {
             Container.Bind<LanguageManager>().ToSingleInstance(LanguageManager.Instance);
             Container.Bind<ISceneLoader>().ToSinglePrefab<SceneLoader>(_sceneLoader.gameObject);
             Container.Bind<IPlayerPrefs>().ToTransient<PlayerPrefs>();
+            Container.Bind<IAdManager>().ToSingle<AdManager>();
+            Container.Bind<IServicesConfig>().ToTransient<AndroidServicesConfig>();
         }
     }
 }

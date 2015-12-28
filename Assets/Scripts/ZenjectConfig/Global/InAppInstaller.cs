@@ -14,7 +14,8 @@ namespace Assets.Scripts.ZenjectConfig.Global {
     internal class InAppInstaller : MonoInstaller {
         public override void InstallBindings() {
             Container.Bind<IInAppStorage>().ToSingle<InAppStorage>();
-            Container.Bind<IInAppHandler>().ToSingle<EditorInAppHandler>();
+            Container.Bind<IInAppHandler>().ToSingle<UnityIAPHandler>();
+            Container.Bind<IInitializable>().ToSingle<UnityIAPHandler>();
             Container.Bind<IInAppItem>().ToInstance(new InAppItem("vitamine"));
             Container.Bind<IInAppItem>().ToInstance(new InAppItem("book"));
             Container.Bind<IInAppItem>().ToInstance(new InAppItem("health"));

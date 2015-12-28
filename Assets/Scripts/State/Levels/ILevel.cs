@@ -16,20 +16,6 @@ namespace Assets.Scripts.State.Levels {
     internal interface ILevel {
         int Number { get; }
         Sprite Background { get; }
-        Hero Hero { get; }
-        Sprite Startpoint { get; }
-
-
-        /// <summary>
-        /// Hero's position at those level ends
-        /// </summary>
-        float Length { get; }
-
-        Decoration[] Decorations { get; }
-
-        Obstacle[] Obstacles { get; }
-        GroundBlock[] Ground { get; }
-        GroundBlock[] Hills { get; }
-        Bonus[] Bonuses { get; }
+        int HeroAge { get; }
     }
 }

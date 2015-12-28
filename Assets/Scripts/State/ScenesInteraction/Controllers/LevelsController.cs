@@ -4,6 +4,7 @@
 namespace Assets.Scripts.State.ScenesInteraction.Controllers {
     #region References
 
+    using Ads;
     using Engine;
     using Levels;
     using Levels.Storage;
@@ -28,6 +29,9 @@ namespace Assets.Scripts.State.ScenesInteraction.Controllers {
         [Inject]
         private ISceneLoader _sceneLoader;
 
+        [Inject]
+        private IAdManager _adManager;
+
         protected override void Awake() {
             base.Awake();
             _openShopButton.onClick.AddListener(OpenShop);
@@ -39,7 +43,13 @@ namespace Assets.Scripts.State.ScenesInteraction.Controllers {
             _sceneLoader.GoToScene(Scene.Game);
         }
 
+        protected override void Start() {
+            base.Start();
+            _adManager.ShowBanner();
+        }
+
         private void OpenShop() {
+            _adManager.ShowFullscreen();
             _sceneLoader.GoToScene(Scene.Shop);
         }
     }

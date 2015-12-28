@@ -25,7 +25,7 @@ namespace Assets.Scripts.UI.Menus.Levels.LevelItem {
             set {
                 _level = value;
                 _background.sprite = _level.Background;
-                _ageText.Text = _level.Number + "";
+                _ageText.Text = _level.HeroAge + "";
             }
         }
 

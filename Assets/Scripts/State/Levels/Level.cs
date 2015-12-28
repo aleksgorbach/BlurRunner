@@ -5,11 +5,6 @@ namespace Assets.Scripts.State.Levels {
     #region References
 
     using Data;
-    using EndlessEngine.Decorations;
-    using EndlessEngine.Ground;
-    using EndlessEngine.Obstacles;
-    using Gameplay.Bonuses;
-    using Gameplay.Heroes;
     using UnityEngine;
 
     #endregion
@@ -25,26 +20,6 @@ namespace Assets.Scripts.State.Levels {
             _data = data;
         }
 
-        public Bonus[] Bonuses {
-            get { return _data.Bonuses; }
-        }
-
-        public Decoration[] Decorations {
-            get { return _data.Decorations; }
-        }
-
-        public Obstacle[] Obstacles {
-            get { return _data.Obstacles; }
-        }
-
-        public GroundBlock[] Ground {
-            get { return _data.Ground; }
-        }
-
-        public GroundBlock[] Hills {
-            get { return _data.Hills; }
-        }
-
         public int Number {
             get { return _data.Number; }
         }
@@ -53,16 +28,8 @@ namespace Assets.Scripts.State.Levels {
             get { return _data.Background; }
         }
 
-        public Hero Hero {
-            get { return _data.Hero; }
-        }
-
-        public Sprite Startpoint {
-            get { return _data.Startpoint; }
-        }
-
-        public float Length {
-            get { return _data.Length; }
+        public int HeroAge {
+            get { return _data.HeroAge; }
         }
     }
 }
