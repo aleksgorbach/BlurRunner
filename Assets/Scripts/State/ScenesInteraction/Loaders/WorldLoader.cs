@@ -1,35 +1,46 @@
 ﻿// Created 16.12.2015
-// Modified by  28.12.2015 at 9:10
+// Modified by  28.12.2015 at 10:45
 
 namespace Assets.Scripts.State.ScenesInteraction.Loaders {
     #region References
 
     using System;
     using System.Collections;
-    using Engine;
+    using Gameplay.Consts;
     using Zenject;
 
     #endregion
 
-    internal class WorldLoader : MonoBehaviourBase {
+    internal class WorldLoader : InitializingLoader, IWorldLoader {
         private LevelWorld _world;
+
+        #region Injected dependencies
 
         [Inject]
         private ISceneLoader _sceneLoader;
 
-        private IEnumerator LevelLoading(int levelNumber, Action<LevelWorld> onLoaded) {
+        [Inject(Identifiers.Levels.CurrentLevel)]
+        private int _levelNumber;
+
+        #endregion
+
+        private IEnumerator LevelLoading() {
             //var sceneName = string.Format("Level_{0}", levelNumber);
-            yield return _sceneLoader.LoadLevelAdditive(levelNumber);
+            yield return _sceneLoader.LoadLevelAdditive(_levelNumber);
             _world = FindObjectOfType<LevelWorld>();
-            onLoaded(_world);
+            OnLoaded(_world);
         }
 
-        public void Load(int levelNumber, Action<LevelWorld> onLoaded) {
-            if (_world != null) {
-                onLoaded(_world);
-                return;
+        private void OnLoaded(LevelWorld world) {
+            var handler = WorldLoaded;
+            if (handler != null) {
+                handler.Invoke(this, new WorldLoadedEventArgs(world));
             }
-            StartCoroutine(LevelLoading(levelNumber, onLoaded));
+        }
+
+        [PostInject]
+        private void Load() {
+            StartCoroutine(LevelLoading());
         }
 
         public class WorldLoadedEventArgs : EventArgs {
@@ -38,6 +49,12 @@ namespace Assets.Scripts.State.ScenesInteraction.Loaders {
             public WorldLoadedEventArgs(LevelWorld world) {
                 World = world;
             }
+        }
+
+        public event EventHandler<WorldLoadedEventArgs> WorldLoaded;
+
+        public override bool IsLoaded {
+            get { return _world != null; }
         }
     }
 }

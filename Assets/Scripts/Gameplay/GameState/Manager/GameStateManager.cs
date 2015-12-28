@@ -1,5 +1,5 @@
 ﻿// Created 26.10.2015
-// Modified by  24.12.2015 at 11:30
+// Modified by  28.12.2015 at 10:42
 
 namespace Assets.Scripts.Gameplay.GameState.Manager {
     #region References
@@ -17,6 +17,9 @@ namespace Assets.Scripts.Gameplay.GameState.Manager {
 
         [Inject]
         private IGame _game;
+
+        [Inject]
+        private IWorldLoader _worldLoader;
 
         #endregion
 
@@ -56,7 +59,7 @@ namespace Assets.Scripts.Gameplay.GameState.Manager {
 
         [PostInject]
         private void PostInject() {
-            _game.WorldLoaded += OnWorldLoaded;
+            _worldLoader.WorldLoaded += OnWorldLoaded;
             _game.HeroSpawned += OnHeroSpawned;
         }
 

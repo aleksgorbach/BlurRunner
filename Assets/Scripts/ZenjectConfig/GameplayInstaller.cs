@@ -1,9 +1,5 @@
 ﻿// Created 20.10.2015
-// Modified by  22.12.2015 at 10:31
-
-#region References
-
-#endregion
+// Modified by  28.12.2015 at 10:47
 
 namespace Assets.Scripts.ZenjectConfig {
     #region References
@@ -23,28 +19,28 @@ namespace Assets.Scripts.ZenjectConfig {
     using State.Levels;
     using State.Levels.Storage;
     using State.Progress;
+    using State.ScenesInteraction.Loaders;
     using UnityEngine;
     using Zenject;
 
     #endregion
 
     internal class GameplayInstaller : MonoInstaller {
-        [SerializeField]
-        private Bonuses _bonusGenerator;
+        #region Visible in inspector
 
         [SerializeField]
         private Game _game;
 
         [SerializeField]
-        private ScoreSettings _scoreSettings;
+        private WorldLoader _worldLoader;
+
+        #endregion
 
         public override void InstallBindings() {
             Container.Bind<IGame>().ToInstance(_game);
             Container.Bind<IGameStateManager>().ToSingle<GameStateManager>();
             Container.Bind<Camera>().ToSingleInstance(Camera.main);
             Container.Bind<ILevelProgress>().ToSingleInstance(new LevelProgress());
-            //Container.Bind<IScoreSource>().ToInstance(_bonusGenerator);
-            Container.Bind<int>(Identifiers.Scores.MinValue).ToInstance(_scoreSettings.ScoreToLose);
             Container.Bind<ILevel>().ToGetter<ILevelStorage>(storage => storage.CurrentLevel);
             Container.Bind<string>(Identifiers.Obstacles.Layer).ToInstance("Obstacle");
 
@@ -62,6 +58,7 @@ namespace Assets.Scripts.ZenjectConfig {
             Container.Bind<IChooseStrategy<GroundBlock>>().ToTransient<CompatibleStrategy<GroundBlock>>();
             Container.Bind<IVideoPlatform>().ToTransient<MobileVideoPlatform>();
             Container.Bind<string>(Identifiers.Video.Intro).ToInstance("tizer.mp4");
+            Container.Bind<IWorldLoader>().ToInstance(_worldLoader);
 
             InstallLevelSettings();
         }

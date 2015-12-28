@@ -1,11 +1,10 @@
 ﻿// Created 20.10.2015
-// Modified by  24.12.2015 at 11:30
+// Modified by  28.12.2015 at 10:42
 
 namespace Assets.Scripts.Gameplay {
     #region References
 
     using System;
-    using Consts;
     using Engine;
     using Engine.Camera;
     using GameState.Manager;
@@ -40,9 +39,6 @@ namespace Assets.Scripts.Gameplay {
         [Inject]
         private IInstantiator _container;
 
-        [Inject(Identifiers.Levels.CurrentLevel)]
-        private int _levelNumber;
-
         [Inject]
         private ILevelProgress _progress;
 
@@ -61,12 +57,16 @@ namespace Assets.Scripts.Gameplay {
 
         #region Events
 
-        public event EventHandler<WorldLoader.WorldLoadedEventArgs> WorldLoaded;
         public event EventHandler<Hero.HeroSpawnedEventArgs> HeroSpawned;
 
         #endregion
 
         #endregion
+
+        protected override void Awake() {
+            base.Awake();
+            _worldLoader.WorldLoaded += OnWorldLoaded;
+        }
 
         private void OnStateChanged(Consts.GameState state) {
             switch (state) {
@@ -100,12 +100,12 @@ namespace Assets.Scripts.Gameplay {
         private void PostInject() {
             _stateManager.StateChanged += OnStateChanged;
             //_scoreSource.ScoreChanged += OnScoreChanged;
-            _worldLoader.Load(_levelNumber, OnWorldLoaded);
             _stateManager.Run();
         }
 
-        private void OnWorldLoaded(LevelWorld world) {
+        private void OnWorldLoaded(object sender, WorldLoader.WorldLoadedEventArgs args) {
             // инициализация уровня из world
+            var world = args.World;
             world.ForegroundCamera = _camera.Camera;
             world.BackgroundCamera = _foregroundCamera;
             world.transform.SetParent(transform);
@@ -115,10 +115,6 @@ namespace Assets.Scripts.Gameplay {
             _hero.transform.SetParent(world.StartPoint);
             _hero.transform.localPosition = Vector3.zero;
             _camera.SetTarget(_hero.transform);
-            var handler = WorldLoaded;
-            if (handler != null) {
-                handler(this, new WorldLoader.WorldLoadedEventArgs(world));
-            }
             OnHeroSpawned(_hero);
         }
 
@@ -127,10 +123,6 @@ namespace Assets.Scripts.Gameplay {
             if (handler != null) {
                 handler.Invoke(this, new Hero.HeroSpawnedEventArgs(hero));
             }
-        }
-
-        private void OnScoreChanged(int deltaScore) {
-            _progress.Score += deltaScore;
         }
     }
 }

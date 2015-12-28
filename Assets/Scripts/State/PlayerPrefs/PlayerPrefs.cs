@@ -1,5 +1,5 @@
 ﻿// Created 28.12.2015
-// Modified by  28.12.2015 at 9:01
+// Modified by  28.12.2015 at 10:56
 
 namespace Assets.Scripts.State.PlayerPrefs {
     #region References
@@ -16,6 +16,15 @@ namespace Assets.Scripts.State.PlayerPrefs {
 
         public string GetString(string key) {
             return UnityEngine.PlayerPrefs.GetString(key);
+        }
+
+        public bool GetBool(string key) {
+            return UnityEngine.PlayerPrefs.GetInt(key, 0) == 1;
+        }
+
+        public void SaveBool(string key, bool value) {
+            UnityEngine.PlayerPrefs.SetInt(key, value ? 1 : 0);
+            UnityEngine.PlayerPrefs.Save();
         }
 
         public void Save(string key, object obj) {

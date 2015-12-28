@@ -65,7 +65,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: -1384, y: 0}
-  m_SizeDelta: {x: 512, y: 229}
+  m_SizeDelta: {x: 512, y: 281}
   m_Pivot: {x: 0, y: 0}
 --- !u!1001 &100100000
 Prefab:

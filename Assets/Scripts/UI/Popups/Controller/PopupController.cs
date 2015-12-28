@@ -1,5 +1,5 @@
 ﻿// Created 23.10.2015
-// Modified by  24.12.2015 at 12:57
+// Modified by  28.12.2015 at 15:10
 
 namespace Assets.Scripts.UI.Popups.Controller {
     #region References
@@ -18,16 +18,25 @@ namespace Assets.Scripts.UI.Popups.Controller {
     #endregion
 
     internal class PopupController : MonoBehaviourBase, IPopupController {
+        #region Injected dependencies
+
         [Inject]
         private PopupFactory _factory;
-
-        private Stack<Popup> _popups;
 
         [Inject]
         private IGameStateManager _stateManager;
 
-        public event Action<IPopup, int> PopupOpened;
-        public event Action<IPopup, int> PopupClosed;
+        #endregion
+
+        #region Interface
+
+        public event EventHandler<PopupEventArgs> PopupOpened;
+        public event EventHandler<PopupEventArgs> PopupClosed;
+
+        #endregion
+
+        private Stack<Popup> _popups;
+
 
         private IPopup Show<TPopup>() where TPopup : Popup {
             var popup = _factory.Create<TPopup>();
@@ -42,6 +51,7 @@ namespace Assets.Scripts.UI.Popups.Controller {
             popup.rectTransform.anchoredPosition = Vector2.zero;
             popup.rectTransform.offsetMax = Vector2.zero;
             popup.rectTransform.offsetMin = Vector2.zero;
+            popup.rectTransform.localScale = Vector3.one;
             _popups.Push(popup);
             Subscribe(popup);
             OnPopupOpened(popup);
@@ -95,14 +105,14 @@ namespace Assets.Scripts.UI.Popups.Controller {
         private void OnPopupOpened(IPopup popup) {
             var handler = PopupOpened;
             if (handler != null) {
-                handler.Invoke(popup, _popups.Count);
+                handler.Invoke(this, new PopupEventArgs(popup, _popups.Count));
             }
         }
 
         private void OnPopupClosed(IPopup popup) {
             var handler = PopupClosed;
             if (handler != null) {
-                handler.Invoke(popup, _popups.Count);
+                handler.Invoke(this, new PopupEventArgs(popup, _popups.Count));
             }
         }
     }

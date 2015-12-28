@@ -1,10 +1,11 @@
 ﻿// Created 22.10.2015
-// Modified by  28.12.2015 at 9:07
+// Modified by  28.12.2015 at 10:47
 
 namespace Assets.Scripts.State.ScenesInteraction.Loaders {
     #region References
 
     using System.Collections;
+    using System.Linq;
     using Engine;
     using UnityEngine;
     using UnityEngine.SceneManagement;
@@ -13,7 +14,7 @@ namespace Assets.Scripts.State.ScenesInteraction.Loaders {
     #endregion
 
     internal class SceneLoader : MonoBehaviourBase, ISceneLoader {
-        private const float FADE_DURATION = 1f;
+        private const float FADE_DURATION = .5f;
 
         #region Visible in inspector
 
@@ -59,6 +60,10 @@ namespace Assets.Scripts.State.ScenesInteraction.Loaders {
             yield return Resources.UnloadUnusedAssets();
             _loadingOperation = SceneManager.LoadSceneAsync(_nextSceneName);
             yield return _loadingOperation;
+            var loaders = FindObjectsOfType(typeof (InitializingLoader)) as InitializingLoader[];
+            while (loaders != null && loaders.Any(loader => !loader.IsLoaded)) {
+                yield return null;
+            }
             yield return StartCoroutine(LoadingFadeOut());
             _loadingOperation = null;
         }

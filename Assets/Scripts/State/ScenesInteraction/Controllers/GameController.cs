@@ -1,5 +1,5 @@
-﻿// Created 13.12.2015
-// Modified by Александр 16.12.2015 at 21:50
+﻿// Created 28.10.2015
+// Modified by  28.12.2015 at 11:15
 
 namespace Assets.Scripts.State.ScenesInteraction.Controllers {
     #region References
@@ -9,6 +9,7 @@ namespace Assets.Scripts.State.ScenesInteraction.Controllers {
     using Gameplay;
     using Gameplay.Consts;
     using Levels;
+    using PlayerPrefs;
     using Zenject;
 
     #endregion
@@ -26,12 +27,17 @@ namespace Assets.Scripts.State.ScenesInteraction.Controllers {
         private string _movieFilename;
 
         [Inject]
+        private IPlayerPrefs _prefs;
+
+        [Inject]
         private IVideoPlatform _videoPlatform;
 
         [PostInject]
         private void Inject() {
-            if (_currentLevel.Number == INTRO_LEVEL) {
+            var wasShowed = _prefs.GetBool(Identifiers.Video.WasShowed);
+            if (_currentLevel.Number == INTRO_LEVEL && !wasShowed) {
                 _videoPlatform.PlayVideo(_movieFilename);
+                _prefs.SaveBool(Identifiers.Video.WasShowed, true);
             }
         }
     }
