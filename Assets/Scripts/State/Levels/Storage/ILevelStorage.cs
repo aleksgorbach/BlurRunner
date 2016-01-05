@@ -10,7 +10,7 @@ namespace Assets.Scripts.State.Levels.Storage {
 
     internal interface ILevelStorage : IEnumerable<ILevel> {
         ILevel this[int levelNumber] { get; }
-        Level CurrentLevel { get; }
+        ILevel CurrentLevel { get; }
         void SetCurrentLevel(int levelNumber);
     }
 }

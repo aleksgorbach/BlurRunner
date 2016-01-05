@@ -11,7 +11,10 @@ namespace Assets.Scripts.Gameplay.Heroes {
     using JumpEngines;
     using Obstacles;
     using RunEngines;
+    using State.Progress;
+    using State.Progress.Storage;
     using UnityEngine;
+    using Zenject;
 
     #endregion
 
@@ -32,34 +35,20 @@ namespace Assets.Scripts.Gameplay.Heroes {
         [SerializeField]
         private HeroRunningEngine _runningEngine;
 
-        [SerializeField]
-        private int _startHealth = 5;
-
         #endregion
 
-        private int _health;
+        [Inject]
+        private IProgressStorage _progressStorage;
 
-        private bool _isStubmled;
+        [Inject]
+        private IGame _game;
 
-        private IMovingController _movingController;
-
-        protected float Speed { get; private set; }
-
-        protected bool Grounded { get; private set; }
-
-        public int Health {
-            get { return _health; }
-            private set {
-                if (_health != value) {
-                    var prev = _health;
-                    _health = Mathf.Max(value, 0);
-                    OnHealthChanged(prev, _health);
-                    if (_health <= 0) {
-                        Die();
-                    }
-                }
-            }
+        [PostInject]
+        private void PostInject() {
+            _game.ProgressChanged += OnProgressChanged;
         }
+
+        #region Interface
 
         public void Jump(float jumpForce) {
             if (Grounded && !_isStubmled) {
@@ -74,35 +63,42 @@ namespace Assets.Scripts.Gameplay.Heroes {
 
         public virtual void Die() {
             Stop();
-            var handler = Died;
-            if (handler != null) {
-                handler();
-            }
+            Died.SafeInvoke(this, new HeroEventArgs(this));
         }
 
-        private void OnHealthChanged(float previousHealth, float currentHealth) {
-            var handler = HealthChanged;
-            if (handler != null) {
-                handler.Invoke(previousHealth, currentHealth);
-            }
+        public virtual void Win() {
+            Stop();
         }
 
         #region Events
 
-        public event Action Died;
-
-        /// <summary>
-        /// Fire when health changed, arguments are <i>previous health</i> and <i>current health</i>
-        /// </summary>
-        public event Action<float, float> HealthChanged;
+        public event EventHandler<HeroEventArgs> Died;
 
         #endregion
+
+        #endregion
+
+        private bool _isStubmled;
+        private IMovingController _movingController;
+
+        protected float Speed { get; private set; }
+
+        protected bool Grounded { get; private set; }
+
+        public Vector2 Position {
+            get { return transform.position; }
+        }
+
 
         private void FixedUpdate() {
             Grounded = Physics2D.OverlapCircle(_groundCheck.position, 10f, _groundLayer);
             if (Grounded && !_isStubmled) {
                 Run();
             }
+        }
+
+        private void OnProgressChanged(object sender, ProgressChangedArgs e) {
+            _progressStorage.ActualAge += e.DeltaAge;
         }
 
         private void Stop() {
@@ -113,13 +109,10 @@ namespace Assets.Scripts.Gameplay.Heroes {
             _runningEngine.Run(Speed);
         }
 
-        public virtual void Congratulate() {
-            Stop();
-        }
 
         protected virtual void Stumble(int damage, Action callback) {
             _isStubmled = true;
-            Health -= damage;
+            _progressStorage.ActualAge -= damage/10f;
         }
 
         private void OnTriggerEnter2D(Collider2D collision) {
@@ -140,11 +133,10 @@ namespace Assets.Scripts.Gameplay.Heroes {
             base.Awake();
             _movingController = GetInterfaceComponent<IMovingController>();
             _movingController.RegisterMovable(this);
-            _health = _startHealth;
         }
 
-        public class HeroSpawnedEventArgs : EventArgs {
-            public HeroSpawnedEventArgs(Hero hero) {
+        public class HeroEventArgs : EventArgs {
+            public HeroEventArgs(Hero hero) {
                 Hero = hero;
             }
 

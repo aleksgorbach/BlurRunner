@@ -291,7 +291,41 @@ AnimationClip:
   m_CompressedRotationCurves: []
   m_EulerCurves: []
   m_PositionCurves: []
-  m_ScaleCurves: []
+  m_ScaleCurves:
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 0.62222224, y: 0.62222224, z: 0.62222224}
+        inSlope: {x: 0.8954732, y: 0.8954732, z: 0.8954732}
+        outSlope: {x: 0.8954732, y: 0.8954732, z: 0.8954732}
+        tangentMode: 0
+      - time: 0.421875
+        value: {x: 1, y: 1, z: 1}
+        inSlope: {x: 0.8954732, y: 0.8954732, z: 0.8954732}
+        outSlope: {x: 0.8954732, y: 0.8954732, z: 0.8954732}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: BiologicAgeBar (1)
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 0.62222224, y: 0.62222224, z: 0.62222224}
+        inSlope: {x: 0.8954732, y: 0.8954732, z: 0.8954732}
+        outSlope: {x: 0.8954732, y: 0.8954732, z: 0.8954732}
+        tangentMode: 0
+      - time: 0.421875
+        value: {x: 1, y: 1, z: 1}
+        inSlope: {x: 0.8954732, y: 0.8954732, z: 0.8954732}
+        outSlope: {x: 0.8954732, y: 0.8954732, z: 0.8954732}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: AgeBar/BiologicalAgeProgress (1)
   m_FloatCurves:
   - curve:
       serializedVersion: 2
@@ -343,6 +377,486 @@ AnimationClip:
     path: Body
     classID: 224
     script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 232.33778
+        inSlope: -276.94888
+        outSlope: -276.94888
+        tangentMode: 10
+      - time: 0.421875
+        value: 115.49998
+        inSlope: -276.94888
+        outSlope: -276.94888
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_AnchoredPosition.x
+    path: BiologicAgeBar (1)
+    classID: 224
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 411.30756
+        inSlope: -955.91724
+        outSlope: -955.91724
+        tangentMode: 10
+      - time: 0.421875
+        value: 8.029968
+        inSlope: -955.91724
+        outSlope: -955.91724
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_AnchoredPosition.y
+    path: BiologicAgeBar (1)
+    classID: 224
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0.5
+        inSlope: -1.1851852
+        outSlope: -1.1851852
+        tangentMode: 10
+      - time: 0.421875
+        value: 0
+        inSlope: -1.1851852
+        outSlope: -1.1851852
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_AnchorMin.x
+    path: AgeBar/BiologicalAgeProgress
+    classID: 224
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0.5
+        inSlope: -1.1851852
+        outSlope: -1.1851852
+        tangentMode: 10
+      - time: 0.421875
+        value: 0
+        inSlope: -1.1851852
+        outSlope: -1.1851852
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_AnchorMin.y
+    path: AgeBar/BiologicalAgeProgress
+    classID: 224
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0.5
+        inSlope: 1.1851852
+        outSlope: 1.1851852
+        tangentMode: 10
+      - time: 0.421875
+        value: 1
+        inSlope: 1.1851852
+        outSlope: 1.1851852
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_AnchorMax.x
+    path: AgeBar/BiologicalAgeProgress
+    classID: 224
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0.5
+        inSlope: 1.1851852
+        outSlope: 1.1851852
+        tangentMode: 10
+      - time: 0.421875
+        value: 1
+        inSlope: 1.1851852
+        outSlope: 1.1851852
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_AnchorMax.y
+    path: AgeBar/BiologicalAgeProgress
+    classID: 224
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 100
+        inSlope: -237.03703
+        outSlope: -237.03703
+        tangentMode: 10
+      - time: 0.421875
+        value: 0
+        inSlope: -237.03703
+        outSlope: -237.03703
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_SizeDelta.x
+    path: AgeBar/BiologicalAgeProgress
+    classID: 224
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 100
+        inSlope: -237.03703
+        outSlope: -237.03703
+        tangentMode: 10
+      - time: 0.421875
+        value: 0
+        inSlope: -237.03703
+        outSlope: -237.03703
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_SizeDelta.y
+    path: AgeBar/BiologicalAgeProgress
+    classID: 224
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 0.421875
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_AnchoredPosition.x
+    path: AgeBar/BiologicalAgeProgress
+    classID: 224
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 0.421875
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_AnchoredPosition.y
+    path: AgeBar/BiologicalAgeProgress
+    classID: 224
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1
+        inSlope: -1.8157037
+        outSlope: -1.8157037
+        tangentMode: 10
+      - time: 0.421875
+        value: 0.234
+        inSlope: -1.8157037
+        outSlope: -1.8157037
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_Color.a
+    path: AgeBar/BiologicalAgeProgress
+    classID: 114
+    script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0.46324134
+        inSlope: 0.5925782
+        outSlope: 0.5925782
+        tangentMode: 10
+      - time: 0.421875
+        value: 0.71323526
+        inSlope: 0.5925782
+        outSlope: 0.5925782
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_Color.g
+    path: AgeBar/BiologicalAgeProgress
+    classID: 114
+    script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0.041955013
+        inSlope: 0.84497327
+        outSlope: 0.84497327
+        tangentMode: 10
+      - time: 0.421875
+        value: 0.3984281
+        inSlope: 0.84497327
+        outSlope: 0.84497327
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_Color.r
+    path: AgeBar/BiologicalAgeProgress
+    classID: 114
+    script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0.71323526
+        inSlope: -1.5911828
+        outSlope: -1.5911828
+        tangentMode: 10
+      - time: 0.421875
+        value: 0.041955013
+        inSlope: -1.5911828
+        outSlope: -1.5911828
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_Color.b
+    path: AgeBar/BiologicalAgeProgress
+    classID: 114
+    script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 232.33778
+        inSlope: -550.7266
+        outSlope: -550.7266
+        tangentMode: 10
+      - time: 0.421875
+        value: -0.000015258789
+        inSlope: -550.7266
+        outSlope: -550.7266
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_AnchoredPosition.x
+    path: AgeBar/BiologicalAgeProgress (1)
+    classID: 224
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 411.30756
+        inSlope: -974.9512
+        outSlope: -974.9512
+        tangentMode: 10
+      - time: 0.421875
+        value: 0.000030517578
+        inSlope: -974.9512
+        outSlope: -974.9512
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_AnchoredPosition.y
+    path: AgeBar/BiologicalAgeProgress (1)
+    classID: 224
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 341.3
+        inSlope: -809.0074
+        outSlope: -809.0074
+        tangentMode: 10
+      - time: 0.421875
+        value: 0
+        inSlope: -809.0074
+        outSlope: -809.0074
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_SizeDelta.x
+    path: AgeBar/BiologicalAgeProgress (1)
+    classID: 224
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 64
+        inSlope: -151.7037
+        outSlope: -151.7037
+        tangentMode: 10
+      - time: 0.421875
+        value: 0
+        inSlope: -151.7037
+        outSlope: -151.7037
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_SizeDelta.y
+    path: AgeBar/BiologicalAgeProgress (1)
+    classID: 224
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0.3984281
+        inSlope: 1.4259483
+        outSlope: 1.4259483
+        tangentMode: 10
+      - time: 0.421875
+        value: 1
+        inSlope: 1.4259483
+        outSlope: 1.4259483
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_Color.r
+    path: AgeBar/ActualAgeProgress
+    classID: 114
+    script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0.71323526
+        inSlope: 0.025843443
+        outSlope: 0.025843443
+        tangentMode: 10
+      - time: 0.421875
+        value: 0.72413796
+        inSlope: 0.025843443
+        outSlope: 0.025843443
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_Color.g
+    path: AgeBar/ActualAgeProgress
+    classID: 114
+    script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0.041955013
+        inSlope: -0.09944892
+        outSlope: -0.09944892
+        tangentMode: 10
+      - time: 0.421875
+        value: 0
+        inSlope: -0.09944892
+        outSlope: -0.09944892
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_Color.b
+    path: AgeBar/ActualAgeProgress
+    classID: 114
+    script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1
+        inSlope: -1.8322963
+        outSlope: -1.8322963
+        tangentMode: 10
+      - time: 0.421875
+        value: 0.227
+        inSlope: -1.8322963
+        outSlope: -1.8322963
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_FillAmount
+    path: AgeBar/ActualAgeProgress
+    classID: 114
+    script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1
+        inSlope: -1.6379259
+        outSlope: -1.6379259
+        tangentMode: 10
+      - time: 0.421875
+        value: 0.309
+        inSlope: -1.6379259
+        outSlope: -1.6379259
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_FillAmount
+    path: AgeBar/BiologicalAgeProgress
+    classID: 114
+    script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0.259
+        inSlope: -0.22044447
+        outSlope: -0.22044447
+        tangentMode: 10
+      - time: 0.421875
+        value: 0.166
+        inSlope: -0.22044447
+        outSlope: -0.22044447
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_Color.a
+    path: AgeBar/ActualAgeProgress
+    classID: 114
+    script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_PPtrCurves: []
   m_SampleRate: 128
   m_WrapMode: 0
@@ -387,7 +901,163 @@ AnimationClip:
       classID: 4
       customType: 0
       isPPtrCurve: 0
+    - path: 4289282602
+      attribute: 3
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 2763928837
+      attribute: 3
+      script: {fileID: 0}
+      classID: 4
+      customType: 0
+      isPPtrCurve: 0
     - path: 2073732236
+      attribute: 538195251
+      script: {fileID: 0}
+      classID: 224
+      customType: 0
+      isPPtrCurve: 0
+    - path: 4289282602
+      attribute: 1460864421
+      script: {fileID: 0}
+      classID: 224
+      customType: 0
+      isPPtrCurve: 0
+    - path: 4289282602
+      attribute: 538195251
+      script: {fileID: 0}
+      classID: 224
+      customType: 0
+      isPPtrCurve: 0
+    - path: 3103519464
+      attribute: 2089119715
+      script: {fileID: 0}
+      classID: 224
+      customType: 0
+      isPPtrCurve: 0
+    - path: 3103519464
+      attribute: 193093493
+      script: {fileID: 0}
+      classID: 224
+      customType: 0
+      isPPtrCurve: 0
+    - path: 3103519464
+      attribute: 2711263438
+      script: {fileID: 0}
+      classID: 224
+      customType: 0
+      isPPtrCurve: 0
+    - path: 3103519464
+      attribute: 3600656472
+      script: {fileID: 0}
+      classID: 224
+      customType: 0
+      isPPtrCurve: 0
+    - path: 3103519464
+      attribute: 1967290853
+      script: {fileID: 0}
+      classID: 224
+      customType: 0
+      isPPtrCurve: 0
+    - path: 3103519464
+      attribute: 38095219
+      script: {fileID: 0}
+      classID: 224
+      customType: 0
+      isPPtrCurve: 0
+    - path: 3103519464
+      attribute: 304273561
+      script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+      classID: 114
+      customType: 0
+      isPPtrCurve: 0
+    - path: 3103519464
+      attribute: 4215373228
+      script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+      classID: 114
+      customType: 0
+      isPPtrCurve: 0
+    - path: 3103519464
+      attribute: 2526845255
+      script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+      classID: 114
+      customType: 0
+      isPPtrCurve: 0
+    - path: 3103519464
+      attribute: 2334886179
+      script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+      classID: 114
+      customType: 0
+      isPPtrCurve: 0
+    - path: 2763928837
+      attribute: 1460864421
+      script: {fileID: 0}
+      classID: 224
+      customType: 0
+      isPPtrCurve: 0
+    - path: 2763928837
+      attribute: 538195251
+      script: {fileID: 0}
+      classID: 224
+      customType: 0
+      isPPtrCurve: 0
+    - path: 2763928837
+      attribute: 1967290853
+      script: {fileID: 0}
+      classID: 224
+      customType: 0
+      isPPtrCurve: 0
+    - path: 2763928837
+      attribute: 38095219
+      script: {fileID: 0}
+      classID: 224
+      customType: 0
+      isPPtrCurve: 0
+    - path: 3675727867
+      attribute: 2526845255
+      script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+      classID: 114
+      customType: 0
+      isPPtrCurve: 0
+    - path: 3675727867
+      attribute: 4215373228
+      script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+      classID: 114
+      customType: 0
+      isPPtrCurve: 0
+    - path: 3675727867
+      attribute: 2334886179
+      script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+      classID: 114
+      customType: 0
+      isPPtrCurve: 0
+    - path: 3675727867
+      attribute: 3063383489
+      script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+      classID: 114
+      customType: 0
+      isPPtrCurve: 0
+    - path: 3103519464
+      attribute: 3063383489
+      script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+      classID: 114
+      customType: 0
+      isPPtrCurve: 0
+    - path: 3675727867
+      attribute: 304273561
+      script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+      classID: 114
+      customType: 0
+      isPPtrCurve: 0
+    - path: 3103519464
+      attribute: 1460864421
+      script: {fileID: 0}
+      classID: 224
+      customType: 0
+      isPPtrCurve: 0
+    - path: 3103519464
       attribute: 538195251
       script: {fileID: 0}
       classID: 224
@@ -1645,6 +2315,606 @@ AnimationClip:
     path: Body/Leg_L/Foot_L
     classID: 224
     script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0.62222224
+        inSlope: 0.8954732
+        outSlope: 0.8954732
+        tangentMode: 10
+      - time: 0.421875
+        value: 1
+        inSlope: 0.8954732
+        outSlope: 0.8954732
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalScale.x
+    path: BiologicAgeBar (1)
+    classID: 224
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0.62222224
+        inSlope: 0.8954732
+        outSlope: 0.8954732
+        tangentMode: 10
+      - time: 0.421875
+        value: 1
+        inSlope: 0.8954732
+        outSlope: 0.8954732
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalScale.y
+    path: BiologicAgeBar (1)
+    classID: 224
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0.62222224
+        inSlope: 0.8954732
+        outSlope: 0.8954732
+        tangentMode: 10
+      - time: 0.421875
+        value: 1
+        inSlope: 0.8954732
+        outSlope: 0.8954732
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalScale.z
+    path: BiologicAgeBar (1)
+    classID: 224
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 232.33778
+        inSlope: -276.94888
+        outSlope: -276.94888
+        tangentMode: 10
+      - time: 0.421875
+        value: 115.49998
+        inSlope: -276.94888
+        outSlope: -276.94888
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_AnchoredPosition.x
+    path: BiologicAgeBar (1)
+    classID: 224
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 411.30756
+        inSlope: -955.91724
+        outSlope: -955.91724
+        tangentMode: 10
+      - time: 0.421875
+        value: 8.029968
+        inSlope: -955.91724
+        outSlope: -955.91724
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_AnchoredPosition.y
+    path: BiologicAgeBar (1)
+    classID: 224
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0.5
+        inSlope: -1.1851852
+        outSlope: -1.1851852
+        tangentMode: 10
+      - time: 0.421875
+        value: 0
+        inSlope: -1.1851852
+        outSlope: -1.1851852
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_AnchorMin.x
+    path: AgeBar/BiologicalAgeProgress
+    classID: 224
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0.5
+        inSlope: -1.1851852
+        outSlope: -1.1851852
+        tangentMode: 10
+      - time: 0.421875
+        value: 0
+        inSlope: -1.1851852
+        outSlope: -1.1851852
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_AnchorMin.y
+    path: AgeBar/BiologicalAgeProgress
+    classID: 224
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0.5
+        inSlope: 1.1851852
+        outSlope: 1.1851852
+        tangentMode: 10
+      - time: 0.421875
+        value: 1
+        inSlope: 1.1851852
+        outSlope: 1.1851852
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_AnchorMax.x
+    path: AgeBar/BiologicalAgeProgress
+    classID: 224
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0.5
+        inSlope: 1.1851852
+        outSlope: 1.1851852
+        tangentMode: 10
+      - time: 0.421875
+        value: 1
+        inSlope: 1.1851852
+        outSlope: 1.1851852
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_AnchorMax.y
+    path: AgeBar/BiologicalAgeProgress
+    classID: 224
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 100
+        inSlope: -237.03703
+        outSlope: -237.03703
+        tangentMode: 10
+      - time: 0.421875
+        value: 0
+        inSlope: -237.03703
+        outSlope: -237.03703
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_SizeDelta.x
+    path: AgeBar/BiologicalAgeProgress
+    classID: 224
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 100
+        inSlope: -237.03703
+        outSlope: -237.03703
+        tangentMode: 10
+      - time: 0.421875
+        value: 0
+        inSlope: -237.03703
+        outSlope: -237.03703
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_SizeDelta.y
+    path: AgeBar/BiologicalAgeProgress
+    classID: 224
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 0.421875
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_AnchoredPosition.x
+    path: AgeBar/BiologicalAgeProgress
+    classID: 224
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 0.421875
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_AnchoredPosition.y
+    path: AgeBar/BiologicalAgeProgress
+    classID: 224
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1
+        inSlope: -1.8157037
+        outSlope: -1.8157037
+        tangentMode: 10
+      - time: 0.421875
+        value: 0.234
+        inSlope: -1.8157037
+        outSlope: -1.8157037
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_Color.a
+    path: AgeBar/BiologicalAgeProgress
+    classID: 114
+    script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0.46324134
+        inSlope: 0.5925782
+        outSlope: 0.5925782
+        tangentMode: 10
+      - time: 0.421875
+        value: 0.71323526
+        inSlope: 0.5925782
+        outSlope: 0.5925782
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_Color.g
+    path: AgeBar/BiologicalAgeProgress
+    classID: 114
+    script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0.041955013
+        inSlope: 0.84497327
+        outSlope: 0.84497327
+        tangentMode: 10
+      - time: 0.421875
+        value: 0.3984281
+        inSlope: 0.84497327
+        outSlope: 0.84497327
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_Color.r
+    path: AgeBar/BiologicalAgeProgress
+    classID: 114
+    script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0.71323526
+        inSlope: -1.5911828
+        outSlope: -1.5911828
+        tangentMode: 10
+      - time: 0.421875
+        value: 0.041955013
+        inSlope: -1.5911828
+        outSlope: -1.5911828
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_Color.b
+    path: AgeBar/BiologicalAgeProgress
+    classID: 114
+    script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0.62222224
+        inSlope: 0.8954732
+        outSlope: 0.8954732
+        tangentMode: 10
+      - time: 0.421875
+        value: 1
+        inSlope: 0.8954732
+        outSlope: 0.8954732
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalScale.x
+    path: AgeBar/BiologicalAgeProgress (1)
+    classID: 224
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0.62222224
+        inSlope: 0.8954732
+        outSlope: 0.8954732
+        tangentMode: 10
+      - time: 0.421875
+        value: 1
+        inSlope: 0.8954732
+        outSlope: 0.8954732
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalScale.y
+    path: AgeBar/BiologicalAgeProgress (1)
+    classID: 224
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0.62222224
+        inSlope: 0.8954732
+        outSlope: 0.8954732
+        tangentMode: 10
+      - time: 0.421875
+        value: 1
+        inSlope: 0.8954732
+        outSlope: 0.8954732
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalScale.z
+    path: AgeBar/BiologicalAgeProgress (1)
+    classID: 224
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 232.33778
+        inSlope: -550.7266
+        outSlope: -550.7266
+        tangentMode: 10
+      - time: 0.421875
+        value: -0.000015258789
+        inSlope: -550.7266
+        outSlope: -550.7266
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_AnchoredPosition.x
+    path: AgeBar/BiologicalAgeProgress (1)
+    classID: 224
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 411.30756
+        inSlope: -974.9512
+        outSlope: -974.9512
+        tangentMode: 10
+      - time: 0.421875
+        value: 0.000030517578
+        inSlope: -974.9512
+        outSlope: -974.9512
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_AnchoredPosition.y
+    path: AgeBar/BiologicalAgeProgress (1)
+    classID: 224
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 341.3
+        inSlope: -809.0074
+        outSlope: -809.0074
+        tangentMode: 10
+      - time: 0.421875
+        value: 0
+        inSlope: -809.0074
+        outSlope: -809.0074
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_SizeDelta.x
+    path: AgeBar/BiologicalAgeProgress (1)
+    classID: 224
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 64
+        inSlope: -151.7037
+        outSlope: -151.7037
+        tangentMode: 10
+      - time: 0.421875
+        value: 0
+        inSlope: -151.7037
+        outSlope: -151.7037
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_SizeDelta.y
+    path: AgeBar/BiologicalAgeProgress (1)
+    classID: 224
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0.3984281
+        inSlope: 1.4259483
+        outSlope: 1.4259483
+        tangentMode: 10
+      - time: 0.421875
+        value: 1
+        inSlope: 1.4259483
+        outSlope: 1.4259483
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_Color.r
+    path: AgeBar/ActualAgeProgress
+    classID: 114
+    script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0.71323526
+        inSlope: 0.025843443
+        outSlope: 0.025843443
+        tangentMode: 10
+      - time: 0.421875
+        value: 0.72413796
+        inSlope: 0.025843443
+        outSlope: 0.025843443
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_Color.g
+    path: AgeBar/ActualAgeProgress
+    classID: 114
+    script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0.041955013
+        inSlope: -0.09944892
+        outSlope: -0.09944892
+        tangentMode: 10
+      - time: 0.421875
+        value: 0
+        inSlope: -0.09944892
+        outSlope: -0.09944892
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_Color.b
+    path: AgeBar/ActualAgeProgress
+    classID: 114
+    script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1
+        inSlope: -1.8322963
+        outSlope: -1.8322963
+        tangentMode: 10
+      - time: 0.421875
+        value: 0.227
+        inSlope: -1.8322963
+        outSlope: -1.8322963
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_FillAmount
+    path: AgeBar/ActualAgeProgress
+    classID: 114
+    script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1
+        inSlope: -1.6379259
+        outSlope: -1.6379259
+        tangentMode: 10
+      - time: 0.421875
+        value: 0.309
+        inSlope: -1.6379259
+        outSlope: -1.6379259
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_FillAmount
+    path: AgeBar/BiologicalAgeProgress
+    classID: 114
+    script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0.259
+        inSlope: -0.22044447
+        outSlope: -0.22044447
+        tangentMode: 10
+      - time: 0.421875
+        value: 0.166
+        inSlope: -0.22044447
+        outSlope: -0.22044447
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_Color.a
+    path: AgeBar/ActualAgeProgress
+    classID: 114
+    script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_EulerEditorCurves:
   - curve:
       serializedVersion: 2

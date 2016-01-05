@@ -9,10 +9,6 @@ namespace Assets.Scripts.State.Levels {
 
     #endregion
 
-    #region References
-
-    #endregion
-
     internal class Level : ILevel {
         private readonly LevelData _data;
 

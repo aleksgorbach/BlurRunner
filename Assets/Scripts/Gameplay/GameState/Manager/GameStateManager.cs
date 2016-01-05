@@ -5,6 +5,7 @@ namespace Assets.Scripts.Gameplay.GameState.Manager {
     #region References
 
     using Consts;
+    using Events;
     using Heroes;
     using State.ScenesInteraction.Loaders;
     using StateChangedSources;
@@ -25,7 +26,7 @@ namespace Assets.Scripts.Gameplay.GameState.Manager {
 
         private GameState _state;
 
-        #region
+        #region Interface
 
         public GameState State {
             get { return _state; }
@@ -36,10 +37,6 @@ namespace Assets.Scripts.Gameplay.GameState.Manager {
                 }
             }
         }
-
-        public event StateChangedDelegate StateChanged;
-
-        #endregion
 
         public void Pause() {
             if (State == GameState.Running) {
@@ -57,17 +54,21 @@ namespace Assets.Scripts.Gameplay.GameState.Manager {
             ChangeState(GameState.Running);
         }
 
+        public event StateChangedDelegate StateChanged;
+
+        #endregion
+
         [PostInject]
         private void PostInject() {
             _worldLoader.WorldLoaded += OnWorldLoaded;
-            _game.HeroSpawned += OnHeroSpawned;
+            _game.Started += OnGameStarted;
         }
 
         private void OnWorldLoaded(object sender, WorldLoader.WorldLoadedEventArgs e) {
             e.World.EndPoint.Win += Win;
         }
 
-        private void OnHeroSpawned(object sender, Hero.HeroSpawnedEventArgs e) {
+        private void OnGameStarted(object sender, GameStartedEventArgs e) {
             e.Hero.Died += Lose;
         }
 
@@ -75,7 +76,7 @@ namespace Assets.Scripts.Gameplay.GameState.Manager {
             ChangeState(GameState.Win);
         }
 
-        private void Lose() {
+        private void Lose(object sender, Hero.HeroEventArgs heroEventArgs) {
             ChangeState(GameState.Lose);
         }
 

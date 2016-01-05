@@ -5,13 +5,17 @@ namespace Assets.Scripts.Gameplay {
     #region References
 
     using System;
-    using Heroes;
+    using Events;
     using State.Progress;
 
     #endregion
 
     internal interface IGame {
-        ILevelProgress Progress { get; }
-        event EventHandler<Hero.HeroSpawnedEventArgs> HeroSpawned;
+        event EventHandler<GameStartedEventArgs> Started;
+        event EventHandler<GameFinishedEventArgs> Finished;
+        event EventHandler<GameWinEventArgs> Win;
+        event EventHandler<GameLoseEventArgs> Lose;
+        float Progress { get; }
+        event EventHandler<ProgressChangedArgs> ProgressChanged;
     }
 }

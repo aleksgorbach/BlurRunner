@@ -18,7 +18,6 @@ namespace Assets.Scripts.ZenjectConfig {
     using Gameplay.GameState.Manager;
     using State.Levels;
     using State.Levels.Storage;
-    using State.Progress;
     using State.ScenesInteraction.Loaders;
     using UnityEngine;
     using Zenject;
@@ -40,7 +39,6 @@ namespace Assets.Scripts.ZenjectConfig {
             Container.Bind<IGame>().ToInstance(_game);
             Container.Bind<IGameStateManager>().ToSingle<GameStateManager>();
             Container.Bind<Camera>().ToSingleInstance(Camera.main);
-            Container.Bind<ILevelProgress>().ToSingleInstance(new LevelProgress());
             Container.Bind<ILevel>().ToGetter<ILevelStorage>(storage => storage.CurrentLevel);
             Container.Bind<string>(Identifiers.Obstacles.Layer).ToInstance("Obstacle");
 

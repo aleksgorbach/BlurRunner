@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Full v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>Android:13</UnityBuildTarget>
     <UnityVersion>5.3.1f1</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -362,6 +364,7 @@
     <Compile Include="Assets\Scripts\Engine\Camera\SmoothFollow2D.cs" />
     <Compile Include="Assets\Scripts\Engine\Extensions\CameraExtensions.cs" />
     <Compile Include="Assets\Scripts\Engine\Extensions\EnumerableExtensions.cs" />
+    <Compile Include="Assets\Scripts\Engine\Extensions\EventHandlerExtensions.cs" />
     <Compile Include="Assets\Scripts\Engine\Extensions\GameObjectExtensions.cs" />
     <Compile Include="Assets\Scripts\Engine\Extensions\ListExtensions.cs" />
     <Compile Include="Assets\Scripts\Engine\Extensions\TransformExtensions.cs" />
@@ -407,7 +410,11 @@
     <Compile Include="Assets\Scripts\Gameplay\Bonuses\Implementations\Positive\VitamineBonus.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Consts\GameState.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Consts\Identifiers.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\Events\GameFinishedEventArgs.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\Events\GameLoseEventArgs.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\Events\GameWinEventArgs.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Game.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\Events\GameStartedEventArgs.cs" />
     <Compile Include="Assets\Scripts\Gameplay\GameState\Manager\GameStateManager.cs" />
     <Compile Include="Assets\Scripts\Gameplay\GameState\Manager\IGameStateManager.cs" />
     <Compile Include="Assets\Scripts\Gameplay\GameState\StateChangedSources\IWinSource.cs" />
@@ -444,9 +451,10 @@
     <Compile Include="Assets\Scripts\State\PlayerPrefs\IPlayerPrefs.cs" />
     <Compile Include="Assets\Scripts\State\PlayerPrefs\KeyNotFoundException.cs" />
     <Compile Include="Assets\Scripts\State\PlayerPrefs\PlayerPrefs.cs" />
-    <Compile Include="Assets\Scripts\State\Progress\ILevelProgress.cs" />
-    <Compile Include="Assets\Scripts\State\Progress\LevelProgress.cs" />
+    <Compile Include="Assets\Scripts\State\Progress\ProgressChangedArgs.cs" />
     <Compile Include="Assets\Scripts\State\Progress\Score\IScoreSource.cs" />
+    <Compile Include="Assets\Scripts\State\Progress\Storage\IProgressStorage.cs" />
+    <Compile Include="Assets\Scripts\State\Progress\Storage\ProgressStorage.cs" />
     <Compile Include="Assets\Scripts\State\ScenesInteraction\Controllers\GameController.cs" />
     <Compile Include="Assets\Scripts\State\ScenesInteraction\Controllers\LevelsController.cs" />
     <Compile Include="Assets\Scripts\State\ScenesInteraction\Controllers\ShopController.cs" />

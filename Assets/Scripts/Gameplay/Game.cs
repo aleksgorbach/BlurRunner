@@ -7,9 +7,13 @@ namespace Assets.Scripts.Gameplay {
     using System;
     using Engine;
     using Engine.Camera;
+    using Engine.Extensions;
+    using Events;
     using GameState.Manager;
     using Heroes;
+    using State.Levels.Storage;
     using State.Progress;
+    using State.Progress.Storage;
     using State.ScenesInteraction.Loaders;
     using UnityEngine;
     using UnityEngine.UI;
@@ -18,6 +22,8 @@ namespace Assets.Scripts.Gameplay {
     #endregion
 
     internal class Game : MonoBehaviourBase, IGame {
+        private const float TOLERANCE = 0.01f;
+
         #region Visible in inspector
 
         [SerializeField]
@@ -40,26 +46,44 @@ namespace Assets.Scripts.Gameplay {
         private IInstantiator _container;
 
         [Inject]
-        private ILevelProgress _progress;
+        private ILevelStorage _levelStorage;
 
         [Inject]
         private IGameStateManager _stateManager;
 
+        [Inject]
+        private IProgressStorage _progressStorage;
+
         #endregion
 
         private Hero _hero;
+        private float _levelLength;
 
         #region Interface
 
-        public ILevelProgress Progress {
-            get { return _progress; }
-        }
-
         #region Events
 
-        public event EventHandler<Hero.HeroSpawnedEventArgs> HeroSpawned;
+        public event EventHandler<GameStartedEventArgs> Started;
+        public event EventHandler<GameFinishedEventArgs> Finished;
+        public event EventHandler<GameWinEventArgs> Win;
+        public event EventHandler<GameLoseEventArgs> Lose;
+        public event EventHandler<ProgressChangedArgs> ProgressChanged;
 
         #endregion
+
+        public float Progress { get; private set; }
+
+        private float _prevProgress;
+
+        private void FixedUpdate() {
+            if (_hero == null) {
+                return;
+            }
+            _prevProgress = Progress;
+            Progress = _hero.Position.x/_levelLength;
+            var delta = Math.Abs(Progress - _prevProgress);
+            ProgressChanged.SafeInvoke(this, new ProgressChangedArgs(delta));
+        }
 
         #endregion
 
@@ -79,8 +103,12 @@ namespace Assets.Scripts.Gameplay {
                 case Consts.GameState.Win:
                     OnWin();
                     break;
+                case Consts.GameState.Lose:
+                    OnLose();
+                    break;
             }
         }
+
 
         private void Pause() {
             Time.timeScale = 0;
@@ -92,14 +120,18 @@ namespace Assets.Scripts.Gameplay {
 
 
         private void OnWin() {
-            _hero.Congratulate();
+            _hero.Win();
+            Win.SafeInvoke(this, new GameWinEventArgs());
+        }
+
+        private void OnLose() {
+            Lose.SafeInvoke(this, new GameLoseEventArgs());
         }
 
 
         [PostInject]
         private void PostInject() {
             _stateManager.StateChanged += OnStateChanged;
-            //_scoreSource.ScoreChanged += OnScoreChanged;
             _stateManager.Run();
         }
 
@@ -114,15 +146,14 @@ namespace Assets.Scripts.Gameplay {
             _hero = _container.InstantiatePrefabForComponent<Hero>(world.HeroPrefab.gameObject);
             _hero.transform.SetParent(world.StartPoint);
             _hero.transform.localPosition = Vector3.zero;
+            _progressStorage.CurrentAge = _levelStorage.CurrentLevel.HeroAge;
+            _levelLength = world.Length;
             _camera.SetTarget(_hero.transform);
-            OnHeroSpawned(_hero);
+            OnGameReady();
         }
 
-        private void OnHeroSpawned(Hero hero) {
-            var handler = HeroSpawned;
-            if (handler != null) {
-                handler.Invoke(this, new Hero.HeroSpawnedEventArgs(hero));
-            }
+        private void OnGameReady() {
+            Started.SafeInvoke(this, new GameStartedEventArgs(_levelStorage.CurrentLevel, _hero));
         }
     }
 }

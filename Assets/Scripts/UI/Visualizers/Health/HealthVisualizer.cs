@@ -7,7 +7,9 @@ namespace Assets.Scripts.UI.Visualizers.Health {
     using Bonuses;
     using Engine;
     using Gameplay;
-    using Gameplay.Heroes;
+    using State.Levels;
+    using State.Progress;
+    using State.Progress.Storage;
     using UnityEngine;
     using UnityEngine.UI;
     using Zenject;
@@ -18,46 +20,61 @@ namespace Assets.Scripts.UI.Visualizers.Health {
         #region Visible in inspector
 
         [SerializeField]
-        private float _maxProgress;
+        private Image _biologicalProgress;
 
         [SerializeField]
-        private Text _points;
+        private Image _actualProgress;
 
         [SerializeField]
-        private Image _progressbar;
+        private Text _startAge;
+
+        [SerializeField]
+        private Text _endAge;
 
         #endregion
+
+        #region Injected dependencies
 
         [Inject]
         private IGame _game;
 
-        private float Balanse {
-            set {
-                _points.text = "" + value;
-                _progressbar.fillAmount = value/10f;
-            }
-        }
+        [Inject]
+        private ILevel _currentLevel;
+
+        [Inject]
+        private IProgressStorage _progressStorage;
+
+        #endregion
 
         [PostInject]
         private void PostInject() {
-            _game.HeroSpawned += OnHeroSpawned;
-        }
-
-        private void OnProgressChanged(int currentScore) {
-            Balanse = currentScore;
+            _startAge.text = "" + _currentLevel.HeroAge;
+            _endAge.text = "" + (_currentLevel.HeroAge + 1);
+            _game.ProgressChanged += OnProgressChanged;
+            _progressStorage.ActualAgeChanged += OnActualAgeChanged;
         }
 
         protected override void OnDestroy() {
-            _game.HeroSpawned -= OnHeroSpawned;
+            base.OnDestroy();
+            _progressStorage.ActualAgeChanged -= OnActualAgeChanged;
         }
 
-        private void OnHeroSpawned(object sender, Hero.HeroSpawnedEventArgs e) {
-            e.Hero.HealthChanged += OnHealthChanged;
-            Balanse = e.Hero.Health;
+        private void OnActualAgeChanged(object sender, ProgressChangedArgs e) {
+            ActualProgress += e.DeltaAge;
         }
 
-        private void OnHealthChanged(float previousHealth, float currentHealth) {
-            Balanse = currentHealth;
+        private void OnProgressChanged(object sender, ProgressChangedArgs e) {
+            Progress += e.DeltaAge;
+        }
+
+        private float Progress {
+            get { return _biologicalProgress.fillAmount; }
+            set { _biologicalProgress.fillAmount = value; }
+        }
+
+        private float ActualProgress {
+            get { return _actualProgress.fillAmount; }
+            set { _actualProgress.fillAmount = value; }
         }
     }
 }

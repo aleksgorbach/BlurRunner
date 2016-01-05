@@ -54,5 +54,9 @@ namespace Assets.Scripts.State.ScenesInteraction.Loaders {
         public IWinSource EndPoint {
             get { return _endPoint; }
         }
+
+        public float Length {
+            get { return _endPoint.transform.position.x - _startPoint.transform.position.x; }
+        }
     }
 }

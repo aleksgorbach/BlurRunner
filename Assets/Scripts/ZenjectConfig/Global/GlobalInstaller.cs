@@ -10,6 +10,7 @@ namespace Assets.Scripts.ZenjectConfig.Global {
     using State.Levels.Loaders;
     using State.Levels.Storage;
     using State.PlayerPrefs;
+    using State.Progress.Storage;
     using State.ScenesInteraction.Loaders;
     using UnityEngine;
     using Zenject;
@@ -28,7 +29,7 @@ namespace Assets.Scripts.ZenjectConfig.Global {
             Container.Bind<ILevelStorage>().ToSingle<LevelStorage>();
             Container.Bind<ILevelLoader>().ToTransient<ResourcesLevelLoader>();
             Container.Bind<string>().ToInstance(_levelsPath).WhenInjectedInto<ResourcesLevelLoader>();
-
+            Container.Bind<IProgressStorage>().ToSingle<ProgressStorage>();
 
             Container.Bind<LanguageManager>().ToSingleInstance(LanguageManager.Instance);
             Container.Bind<ISceneLoader>().ToSinglePrefab<SceneLoader>(_sceneLoader.gameObject);

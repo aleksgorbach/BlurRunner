@@ -1,12 +1,12 @@
 fileFormatVersion: 2
 guid: bd70d448b18cfbc46af26466f752332c
-timeCreated: 1451031324
+timeCreated: 1452018392
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
   defaultReferences:
   - focalTransform: {instanceID: 0}
-  - dofHdrShader: {fileID: 4800000, guid: 987fb0677d01f43ce8a9dbf12271e668, type: 3}
+  - dofHdrShader: {fileID: 4800000, guid: acd613035ff3e455e8abf23fdc8c8c24, type: 3}
   - dx11BokehShader: {fileID: 4800000, guid: d8e82664aa8686642a424c88ab10164a, type: 3}
   - dx11BokehTexture: {instanceID: 0}
   executionOrder: 0
