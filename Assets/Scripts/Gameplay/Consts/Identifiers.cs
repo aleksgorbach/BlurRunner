@@ -19,5 +19,9 @@ namespace Assets.Scripts.Gameplay.Consts {
         public static class Levels {
             public const string CurrentLevel = "currentLevel";
         }
+
+        public static class Progress {
+            public const string Storage = "progress_storage";
+        }
     }
 }

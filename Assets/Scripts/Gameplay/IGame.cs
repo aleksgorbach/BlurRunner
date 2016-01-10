@@ -6,7 +6,6 @@ namespace Assets.Scripts.Gameplay {
 
     using System;
     using Events;
-    using State.Progress;
 
     #endregion
 
@@ -15,7 +14,7 @@ namespace Assets.Scripts.Gameplay {
         event EventHandler<GameFinishedEventArgs> Finished;
         event EventHandler<GameWinEventArgs> Win;
         event EventHandler<GameLoseEventArgs> Lose;
+        event EventHandler<GameProgressChangedArgs> ProgressChanged;
         float Progress { get; }
-        event EventHandler<ProgressChangedArgs> ProgressChanged;
     }
 }

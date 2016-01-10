@@ -1,40 +1,51 @@
 ﻿namespace Assets.Scripts.State.Progress.Storage {
     #region References
 
-    using System;
-    using Engine.Extensions;
+    using Gameplay.Consts;
+    using PlayerPrefs;
+    using UnityEngine;
+    using Zenject;
 
     #endregion
 
     internal class ProgressStorage : IProgressStorage {
-        private const float TOLERANCE = 0.01f;
+        [Inject]
+        private IPlayerPrefs _prefs;
 
-        private float _actualAge;
-        private int _currentAge;
+        [PostInject]
+        private void PostInject() {
+            Load();
+        }
 
         #region Interface
 
-        public int CurrentAge {
-            get { return _currentAge; }
-            set {
-                var prev = _currentAge;
-                _currentAge = value;
-                CurrentAgeChanged.SafeInvoke(this, new ProgressChangedArgs(_currentAge - prev));
-            }
-        }
+        public int CurrentAge { get; set; }
 
-        public float ActualAge {
-            get { return _actualAge; }
-            set {
-                var prev = _actualAge;
-                _actualAge = value;
-                ActualAgeChanged.SafeInvoke(this, new ProgressChangedArgs(_actualAge - prev));
-            }
-        }
+        public float ActualAge { get; set; }
 
-        public event EventHandler<ProgressChangedArgs> ActualAgeChanged;
-        public event EventHandler<ProgressChangedArgs> CurrentAgeChanged;
+        public void Save() {
+            var state = new State {ActualAge = ActualAge, CurrentAge = CurrentAge};
+            _prefs.Save(Identifiers.Progress.Storage, state);
+        }
 
         #endregion
+
+        private void Load() {
+            try {
+                var state = _prefs.Get<State>(Identifiers.Progress.Storage);
+                CurrentAge = state.CurrentAge;
+                ActualAge = state.ActualAge;
+                Debug.Log("Loaded actual age:" + ActualAge);
+            }
+            catch (KeyNotFoundException e) {
+                Debug.Log(e);
+            }
+        }
+
+
+        public class State {
+            public int CurrentAge;
+            public float ActualAge;
+        }
     }
 }

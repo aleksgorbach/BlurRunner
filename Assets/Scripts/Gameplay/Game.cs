@@ -12,7 +12,6 @@ namespace Assets.Scripts.Gameplay {
     using GameState.Manager;
     using Heroes;
     using State.Levels.Storage;
-    using State.Progress;
     using State.Progress.Storage;
     using State.ScenesInteraction.Loaders;
     using UnityEngine;
@@ -22,8 +21,6 @@ namespace Assets.Scripts.Gameplay {
     #endregion
 
     internal class Game : MonoBehaviourBase, IGame {
-        private const float TOLERANCE = 0.01f;
-
         #region Visible in inspector
 
         [SerializeField]
@@ -58,6 +55,7 @@ namespace Assets.Scripts.Gameplay {
 
         private Hero _hero;
         private float _levelLength;
+        private float _progress;
 
         #region Interface
 
@@ -67,22 +65,24 @@ namespace Assets.Scripts.Gameplay {
         public event EventHandler<GameFinishedEventArgs> Finished;
         public event EventHandler<GameWinEventArgs> Win;
         public event EventHandler<GameLoseEventArgs> Lose;
-        public event EventHandler<ProgressChangedArgs> ProgressChanged;
+        public event EventHandler<GameProgressChangedArgs> ProgressChanged;
 
         #endregion
 
-        public float Progress { get; private set; }
-
-        private float _prevProgress;
+        public float Progress {
+            get { return _progress; }
+            private set {
+                var prev = Progress;
+                _progress = value;
+                ProgressChanged.SafeInvoke(this, new GameProgressChangedArgs(_progress, _progress - prev));
+            }
+        }
 
         private void FixedUpdate() {
             if (_hero == null) {
                 return;
             }
-            _prevProgress = Progress;
             Progress = _hero.Position.x/_levelLength;
-            var delta = Math.Abs(Progress - _prevProgress);
-            ProgressChanged.SafeInvoke(this, new ProgressChangedArgs(delta));
         }
 
         #endregion
@@ -121,6 +121,7 @@ namespace Assets.Scripts.Gameplay {
 
         private void OnWin() {
             _hero.Win();
+            _progressStorage.Save();
             Win.SafeInvoke(this, new GameWinEventArgs());
         }
 

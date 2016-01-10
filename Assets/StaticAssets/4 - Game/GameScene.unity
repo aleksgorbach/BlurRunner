@@ -681,7 +681,6 @@ GameObject:
   - 114: {fileID: 919084798}
   - 114: {fileID: 919084800}
   - 114: {fileID: 919084801}
-  - 114: {fileID: 919084802}
   m_Layer: 0
   m_Name: ZenjectRoot
   m_TagString: Untagged
@@ -729,13 +728,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89715ad69b973a14899afa2c6730b30b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnlyInjectWhenActive: 0
-  InjectFullScene: 1
+  OnlyInjectWhenActive: 1
+  InjectFullScene: 0
   Installers:
   - {fileID: 919084798}
   - {fileID: 919084800}
   - {fileID: 919084801}
-  - {fileID: 919084802}
 --- !u!114 &919084800
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -765,18 +763,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inputController: {fileID: 1324737412}
---- !u!114 &919084802
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 919084796}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd9971c3b91ae6149bb781d2c7276282, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _isDebug: 0
 --- !u!1 &936604128
 GameObject:
   m_ObjectHideFlags: 0

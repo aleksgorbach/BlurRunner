@@ -7,8 +7,8 @@ namespace Assets.Scripts.UI.Visualizers.Health {
     using Bonuses;
     using Engine;
     using Gameplay;
+    using Gameplay.Events;
     using State.Levels;
-    using State.Progress;
     using State.Progress.Storage;
     using UnityEngine;
     using UnityEngine.UI;
@@ -46,34 +46,29 @@ namespace Assets.Scripts.UI.Visualizers.Health {
 
         #endregion
 
+        private float _levelStartAge;
+
         [PostInject]
         private void PostInject() {
             _startAge.text = "" + _currentLevel.HeroAge;
             _endAge.text = "" + (_currentLevel.HeroAge + 1);
+            _levelStartAge = _currentLevel.HeroAge;
             _game.ProgressChanged += OnProgressChanged;
-            _progressStorage.ActualAgeChanged += OnActualAgeChanged;
         }
 
-        protected override void OnDestroy() {
-            base.OnDestroy();
-            _progressStorage.ActualAgeChanged -= OnActualAgeChanged;
+        private void OnProgressChanged(object sender, GameProgressChangedArgs e) {
+            Progress = e.Progress;
         }
 
-        private void OnActualAgeChanged(object sender, ProgressChangedArgs e) {
-            ActualProgress += e.DeltaAge;
-        }
-
-        private void OnProgressChanged(object sender, ProgressChangedArgs e) {
-            Progress += e.DeltaAge;
+        private void FixedUpdate() {
+            ActualProgress = _progressStorage.ActualAge - _levelStartAge;
         }
 
         private float Progress {
-            get { return _biologicalProgress.fillAmount; }
             set { _biologicalProgress.fillAmount = value; }
         }
 
         private float ActualProgress {
-            get { return _actualProgress.fillAmount; }
             set { _actualProgress.fillAmount = value; }
         }
     }

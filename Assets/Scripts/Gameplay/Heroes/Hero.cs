@@ -8,10 +8,10 @@ namespace Assets.Scripts.Gameplay.Heroes {
     using Engine;
     using Engine.Extensions;
     using Engine.Moving;
+    using Events;
     using JumpEngines;
     using Obstacles;
     using RunEngines;
-    using State.Progress;
     using State.Progress.Storage;
     using UnityEngine;
     using Zenject;
@@ -97,8 +97,8 @@ namespace Assets.Scripts.Gameplay.Heroes {
             }
         }
 
-        private void OnProgressChanged(object sender, ProgressChangedArgs e) {
-            _progressStorage.ActualAge += e.DeltaAge;
+        private void OnProgressChanged(object sender, GameProgressChangedArgs e) {
+            _progressStorage.ActualAge += e.DeltaProgress;
         }
 
         private void Stop() {
