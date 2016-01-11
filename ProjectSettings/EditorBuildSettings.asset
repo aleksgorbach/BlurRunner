@@ -17,3 +17,5 @@ EditorBuildSettings:
     path: Assets/StaticAssets/4 - Game/Levels/0/level_0.unity
   - enabled: 1
     path: Assets/StaticAssets/4 - Game/Levels/1/level_1.unity
+  - enabled: 1
+    path: Assets/StaticAssets/4 - Game/Levels/2/level_2.unity
