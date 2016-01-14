@@ -1,5 +1,5 @@
 ﻿// Created 28.10.2015
-// Modified by  14.12.2015 at 14:33
+// Modified by  14.01.2016 at 9:52
 
 namespace Assets.Scripts.Gameplay.Bonuses {
     #region References
@@ -13,7 +13,7 @@ namespace Assets.Scripts.Gameplay.Bonuses {
     #endregion
 
     internal abstract class Bonus : MonoBehaviourBase, IBonus, IWeightable {
-        private bool _isCollectedNow = false;
+        private bool _isCollectedNow;
 
         protected abstract int Direction { get; }
         protected abstract int Force { get; }
@@ -56,6 +56,7 @@ namespace Assets.Scripts.Gameplay.Bonuses {
             if (handler != null) {
                 handler.Invoke(this);
             }
+            Destroy(gameObject);
         }
 
         protected virtual void CollectAnimation() {

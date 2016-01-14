@@ -1,5 +1,5 @@
 ﻿// Created 20.10.2015
-// Modified by  28.12.2015 at 10:42
+// Modified by  14.01.2016 at 9:07
 
 namespace Assets.Scripts.Gameplay {
     #region References
@@ -92,8 +92,8 @@ namespace Assets.Scripts.Gameplay {
             _worldLoader.WorldLoaded += OnWorldLoaded;
         }
 
-        private void OnStateChanged(Consts.GameState state) {
-            switch (state) {
+        private void OnStateChanged(object sender, GameStateChangedArgs e) {
+            switch (e.State) {
                 case Consts.GameState.Running:
                     Run();
                     break;

@@ -1,10 +1,10 @@
 ﻿// Created 16.12.2015
-// Modified by  22.12.2015 at 10:07
+// Modified by  14.01.2016 at 9:40
 
 namespace Assets.Scripts.State.ScenesInteraction.Loaders {
     #region References
 
-    using EndlessEngine.Endpoints;
+    using EndlessEngine.Checkpoints;
     using Engine;
     using Gameplay.GameState.StateChangedSources;
     using Gameplay.Heroes;

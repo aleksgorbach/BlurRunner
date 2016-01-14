@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Full v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>Android:13</UnityBuildTarget>
     <UnityVersion>5.3.1f1</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -335,12 +337,14 @@
     <Compile Include="Assets\Scripts\EndlessEngine\Bonuses\BonusFactory.cs" />
     <Compile Include="Assets\Scripts\EndlessEngine\Bonuses\Bonuses.cs" />
     <Compile Include="Assets\Scripts\EndlessEngine\Bonuses\IBonuses.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\Checkpoints\Checkpoint.cs" />
     <Compile Include="Assets\Scripts\EndlessEngine\Decorations\Decoration.cs" />
     <Compile Include="Assets\Scripts\EndlessEngine\Decorations\DecorationLayer.cs" />
     <Compile Include="Assets\Scripts\EndlessEngine\Decorations\Decorations.cs" />
     <Compile Include="Assets\Scripts\EndlessEngine\Decorations\DecorationsFactory.cs" />
-    <Compile Include="Assets\Scripts\EndlessEngine\Endpoints\HeroSpawner.cs" />
-    <Compile Include="Assets\Scripts\EndlessEngine\Endpoints\LevelEnd.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\Checkpoints\CameraTrigger.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\Checkpoints\HeroSpawner.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\Checkpoints\LevelEnd.cs" />
     <Compile Include="Assets\Scripts\EndlessEngine\Ground\Ground.cs" />
     <Compile Include="Assets\Scripts\EndlessEngine\Ground\GroundBlock.cs" />
     <Compile Include="Assets\Scripts\EndlessEngine\Ground\GroundFactory.cs" />
@@ -414,9 +418,11 @@
     <Compile Include="Assets\Scripts\Gameplay\Events\GameStartedEventArgs.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Events\GameWinEventArgs.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Game.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\GameState\Manager\GameStateChangedArgs.cs" />
     <Compile Include="Assets\Scripts\Gameplay\GameState\Manager\GameStateManager.cs" />
     <Compile Include="Assets\Scripts\Gameplay\GameState\Manager\IGameStateManager.cs" />
     <Compile Include="Assets\Scripts\Gameplay\GameState\StateChangedSources\IWinSource.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\GameState\StateChangedSources\WinSourceArgs.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Heroes\AnimatedHero.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Heroes\Hero.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Heroes\JumpEngines\HeroJumpingEngine.cs" />

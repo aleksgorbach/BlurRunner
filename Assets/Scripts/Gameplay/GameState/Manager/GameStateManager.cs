@@ -1,10 +1,12 @@
 ﻿// Created 26.10.2015
-// Modified by  28.12.2015 at 10:42
+// Modified by  14.01.2016 at 9:06
 
 namespace Assets.Scripts.Gameplay.GameState.Manager {
     #region References
 
+    using System;
     using Consts;
+    using Engine.Extensions;
     using Events;
     using Heroes;
     using State.ScenesInteraction.Loaders;
@@ -54,7 +56,7 @@ namespace Assets.Scripts.Gameplay.GameState.Manager {
             ChangeState(GameState.Running);
         }
 
-        public event StateChangedDelegate StateChanged;
+        public event EventHandler<GameStateChangedArgs> StateChanged;
 
         #endregion
 
@@ -72,11 +74,11 @@ namespace Assets.Scripts.Gameplay.GameState.Manager {
             e.Hero.Died += Lose;
         }
 
-        private void Win(IWinSource sender) {
+        private void Win(object o, WinSourceArgs e) {
             ChangeState(GameState.Win);
         }
 
-        private void Lose(object sender, Hero.HeroEventArgs heroEventArgs) {
+        private void Lose(object sender, Hero.HeroEventArgs e) {
             ChangeState(GameState.Lose);
         }
 
@@ -85,10 +87,7 @@ namespace Assets.Scripts.Gameplay.GameState.Manager {
         }
 
         private void OnStateChanged(GameState state) {
-            var handler = StateChanged;
-            if (handler != null) {
-                handler.Invoke(state);
-            }
+            StateChanged.SafeInvoke(this, new GameStateChangedArgs(state));
         }
     }
 }

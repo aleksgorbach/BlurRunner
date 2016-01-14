@@ -1,7 +1,7 @@
 ﻿// Created 28.11.2015
 // Modified by Александр 16.12.2015 at 21:35
 
-namespace Assets.Scripts.EndlessEngine.Endpoints {
+namespace Assets.Scripts.EndlessEngine.Checkpoints {
     #region References
 
     using Engine;

@@ -1,9 +1,10 @@
 ﻿// Created 26.10.2015
-// Modified by  24.12.2015 at 11:24
+// Modified by  14.01.2016 at 9:06
 
 namespace Assets.Scripts.Gameplay.GameState.Manager {
     #region References
 
+    using System;
     using Consts;
 
     #endregion
@@ -12,7 +13,7 @@ namespace Assets.Scripts.Gameplay.GameState.Manager {
 
     internal interface IGameStateManager {
         GameState State { get; }
-        event StateChangedDelegate StateChanged;
+        event EventHandler<GameStateChangedArgs> StateChanged;
 
         void Pause();
 

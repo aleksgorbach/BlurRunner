@@ -1,4 +1,4 @@
-﻿// Created 05.11.2015
+﻿// Created 14.01.2016
 // Modified by  14.01.2016 at 9:03
 
 namespace Assets.Scripts.Gameplay.GameState.StateChangedSources {
@@ -8,7 +8,6 @@ namespace Assets.Scripts.Gameplay.GameState.StateChangedSources {
 
     #endregion
 
-    internal interface IWinSource {
-        event EventHandler<WinSourceArgs> Win;
+    internal class WinSourceArgs : EventArgs {
     }
 }

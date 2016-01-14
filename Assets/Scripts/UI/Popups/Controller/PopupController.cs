@@ -1,5 +1,5 @@
 ﻿// Created 23.10.2015
-// Modified by  28.12.2015 at 15:10
+// Modified by  14.01.2016 at 9:07
 
 namespace Assets.Scripts.UI.Popups.Controller {
     #region References
@@ -69,8 +69,8 @@ namespace Assets.Scripts.UI.Popups.Controller {
             _stateManager.StateChanged += OnStateChanged;
         }
 
-        private void OnStateChanged(GameState state) {
-            switch (state) {
+        private void OnStateChanged(object sender, GameStateChangedArgs e) {
+            switch (e.State) {
                 case GameState.Paused:
                     Show<PausePopup>();
                     break;
