@@ -92,9 +92,7 @@ namespace Assets.Scripts.Gameplay.Heroes {
 
         private void FixedUpdate() {
             Grounded = Physics2D.OverlapCircle(_groundCheck.position, 10f, _groundLayer);
-            if (Grounded && !_isStubmled) {
-                Run();
-            }
+            Run();
         }
 
         private void OnProgressChanged(object sender, GameProgressChangedArgs e) {
@@ -106,7 +104,9 @@ namespace Assets.Scripts.Gameplay.Heroes {
         }
 
         protected virtual void Run() {
-            _runningEngine.Run(Speed);
+            if (!_isStubmled) {
+                _runningEngine.Run(Speed);
+            }
         }
 
 

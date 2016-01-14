@@ -30,7 +30,7 @@ namespace Assets.Scripts.Gameplay.Heroes {
             base.Stumble(damage, callback);
             _animator.SetTrigger("trip");
             var clip = _animator.GetCurrentAnimatorClipInfo(0)[0].clip;
-            StartCoroutine(StumbleCoroutine(clip.length*1.4f, callback));
+            StartCoroutine(StumbleCoroutine(clip.length, callback));
         }
 
         private IEnumerator StumbleCoroutine(float duration, Action callback) {
