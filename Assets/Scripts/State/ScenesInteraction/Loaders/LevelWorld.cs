@@ -1,10 +1,10 @@
 ﻿// Created 16.12.2015
-// Modified by  14.01.2016 at 9:40
+// Modified by  15.01.2016 at 8:42
 
 namespace Assets.Scripts.State.ScenesInteraction.Loaders {
     #region References
 
-    using EndlessEngine.Checkpoints;
+    using EndlessEngine.Actions;
     using Engine;
     using Gameplay.GameState.StateChangedSources;
     using Gameplay.Heroes;
@@ -20,7 +20,7 @@ namespace Assets.Scripts.State.ScenesInteraction.Loaders {
         private Canvas _backgroundCanvas;
 
         [SerializeField]
-        private LevelEnd _endPoint;
+        private LevelEndAction _endPoint;
 
         [SerializeField]
         private Canvas _foregroundCanvas;
