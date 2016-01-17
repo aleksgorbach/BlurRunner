@@ -12,7 +12,7 @@ GameObject:
   - 58: {fileID: 5846210}
   - 50: {fileID: 5028174}
   - 95: {fileID: 9588386}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Coin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30,7 +30,7 @@ GameObject:
   - 222: {fileID: 22213910}
   - 114: {fileID: 11428946}
   - 212: {fileID: 21260030}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65,9 +65,9 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: -37.77}
+  m_Offset: {x: 0, y: -21.9}
   serializedVersion: 2
-  m_Radius: 54.3
+  m_Radius: 30
 --- !u!95 &9588386
 Animator:
   serializedVersion: 3
@@ -174,8 +174,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 6.2, y: -3.2}
-  m_SizeDelta: {x: 119.1, y: 195.8}
+  m_AnchoredPosition: {x: 5338, y: -115}
+  m_SizeDelta: {x: 65.8, y: 109.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22476934
 RectTransform:
