@@ -1,5 +1,5 @@
 ﻿// Created 03.11.2015
-// Modified by  24.12.2015 at 15:08
+// Modified by  19.01.2016 at 15:37
 
 namespace Assets.Scripts.UI.Visualizers.Health {
     #region References
@@ -57,11 +57,12 @@ namespace Assets.Scripts.UI.Visualizers.Health {
         }
 
         private void OnProgressChanged(object sender, GameProgressChangedArgs e) {
-            Progress = e.Progress;
+            //Progress = e.Progress;
         }
 
         private void FixedUpdate() {
             ActualProgress = _progressStorage.ActualAge - _levelStartAge;
+            Progress = _progressStorage.CurrentAge/10f;
         }
 
         private float Progress {

@@ -16,5 +16,6 @@ namespace Assets.Scripts.Gameplay {
         event EventHandler<GameLoseEventArgs> Lose;
         event EventHandler<GameProgressChangedArgs> ProgressChanged;
         float Progress { get; }
+        float PerfectLevelTime { get; }
     }
 }

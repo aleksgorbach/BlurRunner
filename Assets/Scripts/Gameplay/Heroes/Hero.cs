@@ -1,5 +1,5 @@
 ﻿// Created 20.10.2015
-// Modified by  24.12.2015 at 12:32
+// Modified by  19.01.2016 at 15:19
 
 namespace Assets.Scripts.Gameplay.Heroes {
     #region References
@@ -81,7 +81,7 @@ namespace Assets.Scripts.Gameplay.Heroes {
         private bool _isStubmled;
         private IMovingController _movingController;
 
-        protected float Speed { get; private set; }
+        public float Speed { get; private set; }
 
         protected bool Grounded { get; private set; }
 
