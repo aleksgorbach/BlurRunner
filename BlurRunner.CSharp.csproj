@@ -489,8 +489,8 @@
     <Compile Include="Assets\Scripts\UI\Popups\Implementations\PausePopup.cs" />
     <Compile Include="Assets\Scripts\UI\Popups\Popup.cs" />
     <Compile Include="Assets\Scripts\UI\Popups\PopupEventArgs.cs" />
-    <Compile Include="Assets\Scripts\UI\Visualizers\Health\HealthVisualizer.cs" />
-    <Compile Include="Assets\Scripts\UI\Visualizers\Health\IHealthVisualizer.cs" />
+    <Compile Include="Assets\Scripts\UI\Visualizers\Age\AgeVisualizer.cs" />
+    <Compile Include="Assets\Scripts\UI\Visualizers\Age\IAgeVisualizer.cs" />
     <Compile Include="Assets\Scripts\UI\Visualizers\InApps\VisualPurchase.cs" />
     <Compile Include="Assets\Scripts\ZenjectConfig\DebugInstaller.cs" />
     <Compile Include="Assets\Scripts\ZenjectConfig\GameplayInstaller.cs" />

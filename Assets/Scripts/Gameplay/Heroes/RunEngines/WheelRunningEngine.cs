@@ -1,5 +1,5 @@
 ﻿// Created 14.12.2015
-// Modified by  22.12.2015 at 10:40
+// Modified by  20.01.2016 at 13:00
 
 namespace Assets.Scripts.Gameplay.Heroes.RunEngines {
     #region References
@@ -24,6 +24,10 @@ namespace Assets.Scripts.Gameplay.Heroes.RunEngines {
 
         public override void Run(float speed) {
             _motor.motorSpeed = speed;
+        }
+
+        public override Vector2 Speed {
+            get { return _rigidbody.velocity; }
         }
     }
 }

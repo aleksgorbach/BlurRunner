@@ -1,5 +1,5 @@
 ﻿// Created 20.10.2015
-// Modified by  19.01.2016 at 15:23
+// Modified by  20.01.2016 at 12:37
 
 namespace Assets.Scripts.ZenjectConfig {
     #region References
@@ -8,7 +8,6 @@ namespace Assets.Scripts.ZenjectConfig {
     using EndlessEngine.Decorations;
     using EndlessEngine.Ground;
     using EndlessEngine.Obstacles;
-    using Engine;
     using Engine.Factory;
     using Engine.Factory.ChooseStrategies;
     using Engine.Video;
@@ -16,10 +15,8 @@ namespace Assets.Scripts.ZenjectConfig {
     using Gameplay.Bonuses;
     using Gameplay.Consts;
     using Gameplay.GameState.Manager;
-    using State;
     using State.Levels;
     using State.Levels.Storage;
-    using State.Progress.Storage;
     using State.ScenesInteraction.Loaders;
     using UnityEngine;
     using Zenject;
@@ -60,8 +57,8 @@ namespace Assets.Scripts.ZenjectConfig {
             Container.Bind<string>(Identifiers.Video.Intro).ToInstance("tizer.mp4");
             Container.Bind<IWorldLoader>().ToInstance(_worldLoader);
 
-            Container.Bind<IGameStartedHandler>().ToTransient<ProgressStorage>();
-            Container.Bind<IGameLoopUpdatable>().ToTransient<ProgressStorage>();
+            //Container.Bind<IGameStartedHandler>().ToTransient<ProgressStorage>();
+            //Container.Bind<IGameLoopUpdatable>().ToTransient<ProgressStorage>();
 
             InstallLevelSettings();
         }

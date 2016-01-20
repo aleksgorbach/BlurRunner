@@ -1,5 +1,5 @@
 ﻿// Created 20.10.2015
-// Modified by  19.01.2016 at 15:19
+// Modified by  20.01.2016 at 13:47
 
 namespace Assets.Scripts.Gameplay.Heroes {
     #region References
@@ -8,13 +8,10 @@ namespace Assets.Scripts.Gameplay.Heroes {
     using Engine;
     using Engine.Extensions;
     using Engine.Moving;
-    using Events;
     using JumpEngines;
     using Obstacles;
     using RunEngines;
-    using State.Progress.Storage;
     using UnityEngine;
-    using Zenject;
 
     #endregion
 
@@ -31,22 +28,10 @@ namespace Assets.Scripts.Gameplay.Heroes {
         [SerializeField]
         private HeroJumpingEngine _jumpingEngine;
 
-
         [SerializeField]
         private HeroRunningEngine _runningEngine;
 
         #endregion
-
-        [Inject]
-        private IProgressStorage _progressStorage;
-
-        [Inject]
-        private IGame _game;
-
-        [PostInject]
-        private void PostInject() {
-            _game.ProgressChanged += OnProgressChanged;
-        }
 
         #region Interface
 
@@ -56,8 +41,10 @@ namespace Assets.Scripts.Gameplay.Heroes {
             }
         }
 
+        public float NominalSpeed { get; private set; }
+
         public void Run(float speed) {
-            Speed = speed;
+            NominalSpeed = speed;
         }
 
 
@@ -68,6 +55,10 @@ namespace Assets.Scripts.Gameplay.Heroes {
 
         public virtual void Win() {
             Stop();
+        }
+
+        public Vector2 Speed {
+            get { return _runningEngine.Speed; }
         }
 
         #region Events
@@ -81,38 +72,27 @@ namespace Assets.Scripts.Gameplay.Heroes {
         private bool _isStubmled;
         private IMovingController _movingController;
 
-        public float Speed { get; private set; }
 
         protected bool Grounded { get; private set; }
-
-        public Vector2 Position {
-            get { return transform.position; }
-        }
-
 
         private void FixedUpdate() {
             Grounded = Physics2D.OverlapCircle(_groundCheck.position, 10f, _groundLayer);
             Run();
         }
 
-        private void OnProgressChanged(object sender, GameProgressChangedArgs e) {
-            _progressStorage.ActualAge += e.DeltaProgress;
-        }
-
         private void Stop() {
-            Speed = 0;
+            NominalSpeed = 0;
         }
 
         protected virtual void Run() {
             if (!_isStubmled) {
-                _runningEngine.Run(Speed);
+                _runningEngine.Run(NominalSpeed);
             }
         }
 
 
         protected virtual void Stumble(int damage, Action callback) {
             _isStubmled = true;
-            _progressStorage.ActualAge -= damage/10f;
         }
 
         private void OnTriggerEnter2D(Collider2D collision) {

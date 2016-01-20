@@ -1,11 +1,12 @@
 ﻿// Created 26.10.2015
-// Modified by  28.12.2015 at 10:41
+// Modified by  20.01.2016 at 13:54
 
 namespace Assets.Scripts.Gameplay {
     #region References
 
     using System;
     using Events;
+    using UnityEngine;
 
     #endregion
 
@@ -15,7 +16,8 @@ namespace Assets.Scripts.Gameplay {
         event EventHandler<GameWinEventArgs> Win;
         event EventHandler<GameLoseEventArgs> Lose;
         event EventHandler<GameProgressChangedArgs> ProgressChanged;
-        float Progress { get; }
-        float PerfectLevelTime { get; }
+        Vector2 CurrentHeroSpeed { get; }
+        float LevelLength { get; }
+        float NominalHeroSpeed { get; }
     }
 }

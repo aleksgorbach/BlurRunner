@@ -1,5 +1,5 @@
 ﻿// Created 20.10.2015
-// Modified by  19.01.2016 at 15:59
+// Modified by  20.01.2016 at 13:55
 
 namespace Assets.Scripts.Gameplay {
     #region References
@@ -62,8 +62,6 @@ namespace Assets.Scripts.Gameplay {
         #endregion
 
         private Hero _hero;
-        private float _levelLength;
-        private float _progress;
 
         #region Interface
 
@@ -77,25 +75,19 @@ namespace Assets.Scripts.Gameplay {
 
         #endregion
 
-        public float Progress {
-            get { return _progress; }
-            private set {
-                var prev = Progress;
-                _progress = value;
-                ProgressChanged.SafeInvoke(this, new GameProgressChangedArgs(_progress, _progress - prev));
-            }
-        }
-
         public float PerfectLevelTime {
-            get { return _levelLength/_hero.Speed; }
+            get { return LevelLength/_hero.NominalSpeed; }
         }
 
-        private void FixedUpdate() {
-            if (_hero == null) {
-                return;
-            }
-            Progress = _hero.Position.x/_levelLength;
+        public Vector2 CurrentHeroSpeed {
+            get { return _hero.Speed; }
         }
+
+        public float NominalHeroSpeed {
+            get { return _hero.NominalSpeed; }
+        }
+
+        public float LevelLength { get; private set; }
 
         #endregion
 
@@ -142,7 +134,6 @@ namespace Assets.Scripts.Gameplay {
 
         private void OnWin() {
             _hero.Win();
-            _progressStorage.Save();
             Win.SafeInvoke(this, new GameWinEventArgs());
         }
 
@@ -167,7 +158,7 @@ namespace Assets.Scripts.Gameplay {
             _hero = _container.InstantiatePrefabForComponent<Hero>(world.HeroPrefab.gameObject);
             _hero.transform.SetParent(world.StartPoint);
             _hero.transform.localPosition = Vector3.zero;
-            _levelLength = world.Length;
+            LevelLength = world.Length;
             _camera.SetTarget(_hero.transform);
             OnGameReady();
         }

@@ -1,5 +1,5 @@
 ﻿// Created 04.11.2015
-// Modified by  28.12.2015 at 9:03
+// Modified by  20.01.2016 at 12:37
 
 namespace Assets.Scripts.ZenjectConfig.Global {
     #region References
@@ -29,7 +29,7 @@ namespace Assets.Scripts.ZenjectConfig.Global {
             Container.Bind<ILevelStorage>().ToSingle<LevelStorage>();
             Container.Bind<ILevelLoader>().ToTransient<ResourcesLevelLoader>();
             Container.Bind<string>().ToInstance(_levelsPath).WhenInjectedInto<ResourcesLevelLoader>();
-            Container.Bind<IProgressStorage>().ToSingle<ProgressStorage>();
+            Container.BindAllInterfacesToSingle<ProgressStorage>();
 
             Container.Bind<LanguageManager>().ToSingleInstance(LanguageManager.Instance);
             Container.Bind<ISceneLoader>().ToSinglePrefab<SceneLoader>(_sceneLoader.gameObject);

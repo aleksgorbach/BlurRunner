@@ -1,5 +1,5 @@
 ﻿// Created 14.01.2016
-// Modified by  19.01.2016 at 15:59
+// Modified by  20.01.2016 at 13:06
 
 namespace Assets.Scripts.State.Progress.Storage {
 
@@ -8,8 +8,14 @@ namespace Assets.Scripts.State.Progress.Storage {
     #endregion
 
     internal interface IProgressStorage {
+        /// <summary>
+        /// Идеальный возраст, идущий независимо
+        /// </summary>
         float CurrentAge { get; }
-        float ActualAge { get; set; }
-        void Save();
+
+        /// <summary>
+        /// Фактический возраст (прогресс), зависит от успешности прохождения уровня
+        /// </summary>
+        float ActualAge { get; }
     }
 }

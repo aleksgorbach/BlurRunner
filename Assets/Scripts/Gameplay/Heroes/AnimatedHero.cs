@@ -1,5 +1,5 @@
 ﻿// Created 20.11.2015
-// Modified by  24.12.2015 at 10:15
+// Modified by  20.01.2016 at 13:02
 
 namespace Assets.Scripts.Gameplay.Heroes {
     #region References
@@ -17,7 +17,7 @@ namespace Assets.Scripts.Gameplay.Heroes {
         protected override void Run() {
             base.Run();
             _animator.SetBool("grounded", Grounded);
-            _animator.SetFloat("speed", Speed);
+            _animator.SetFloat("speed", Speed.x);
         }
 
 
