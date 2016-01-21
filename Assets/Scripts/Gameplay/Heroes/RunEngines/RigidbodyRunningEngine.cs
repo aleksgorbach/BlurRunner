@@ -1,5 +1,5 @@
 ﻿// Created 14.12.2015
-// Modified by  20.01.2016 at 13:00
+// Modified by  21.01.2016 at 10:57
 
 namespace Assets.Scripts.Gameplay.Heroes.RunEngines {
     #region References
@@ -12,8 +12,8 @@ namespace Assets.Scripts.Gameplay.Heroes.RunEngines {
         [SerializeField]
         private Rigidbody2D _rigidbody;
 
-        public override void Run(float speed) {
-            _rigidbody.velocity = new Vector2(speed, _rigidbody.velocity.y);
+        public override void Run() {
+            _rigidbody.velocity = new Vector2(Force, _rigidbody.velocity.y);
         }
 
         public override Vector2 Speed {

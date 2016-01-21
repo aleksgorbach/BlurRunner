@@ -8516,7 +8516,7 @@ MonoBehaviour:
   _backgroundCanvas: {fileID: 986348671}
   _endPoint: {fileID: 990820675}
   _foregroundCanvas: {fileID: 710250426}
-  _heroPrefab: {fileID: 11493252, guid: 5ec4f305a40dcbe4f9f580306274ff00, type: 2}
+  _heroPrefab: {fileID: 11492502, guid: 5ec4f305a40dcbe4f9f580306274ff00, type: 2}
   _startPoint: {fileID: 1108186618}
 --- !u!1001 &1753215586
 Prefab:

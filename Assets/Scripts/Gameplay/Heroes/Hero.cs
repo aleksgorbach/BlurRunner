@@ -1,5 +1,5 @@
 ﻿// Created 20.10.2015
-// Modified by  20.01.2016 at 13:47
+// Modified by  21.01.2016 at 15:42
 
 namespace Assets.Scripts.Gameplay.Heroes {
     #region References
@@ -7,16 +7,27 @@ namespace Assets.Scripts.Gameplay.Heroes {
     using System;
     using Engine;
     using Engine.Extensions;
-    using Engine.Moving;
+    using Engine.Input;
     using JumpEngines;
     using Obstacles;
     using RunEngines;
+    using StateBehaviours;
     using UnityEngine;
+    using Zenject;
 
     #endregion
 
-    [RequireComponent(typeof (MovingController))]
-    internal class Hero : MonoBehaviourBase, IMovable {
+    [RequireComponent(typeof (Animator))]
+    internal class Hero : MonoBehaviourBase {
+        private static class Keys {
+            public const string Grounded = "grounded";
+            public const string SpeedX = "speedX";
+            public const string SpeedY = "speedY";
+            public const string Died = "die";
+            public const string Win = "win";
+            public const string Stumbled = "trip";
+        }
+
         #region Visible in inspector
 
         [SerializeField]
@@ -33,28 +44,27 @@ namespace Assets.Scripts.Gameplay.Heroes {
 
         #endregion
 
+        #region Injected dependencies
+
+        [Inject]
+        private IInputController _controller;
+
+        #endregion
+
         #region Interface
 
-        public void Jump(float jumpForce) {
-            if (Grounded && !_isStubmled) {
-                _jumpingEngine.Jump(jumpForce);
-            }
+        public float NominalSpeed {
+            get { return _runningEngine.Force; }
         }
 
-        public float NominalSpeed { get; private set; }
-
-        public void Run(float speed) {
-            NominalSpeed = speed;
-        }
-
-
-        public virtual void Die() {
+        public void Die() {
             Stop();
-            Died.SafeInvoke(this, new HeroEventArgs(this));
+            _animator.SetTrigger(Keys.Died);
         }
 
-        public virtual void Win() {
+        public void Win() {
             Stop();
+            _animator.SetTrigger(Keys.Win);
         }
 
         public Vector2 Speed {
@@ -69,50 +79,95 @@ namespace Assets.Scripts.Gameplay.Heroes {
 
         #endregion
 
-        private bool _isStubmled;
-        private IMovingController _movingController;
+        private Animator _animator;
 
+        #region State handlers
 
-        protected bool Grounded { get; private set; }
-
-        private void FixedUpdate() {
-            Grounded = Physics2D.OverlapCircle(_groundCheck.position, 10f, _groundLayer);
-            Run();
+        private void OnRunStateEntered(object sender, StateEventArgs e) {
+            _isRunning = true;
         }
 
-        private void Stop() {
-            NominalSpeed = 0;
+        private void OnStopRunning(object sender, StateEventArgs e) {
+            _isRunning = false;
         }
 
-        protected virtual void Run() {
-            if (!_isStubmled) {
-                _runningEngine.Run(NominalSpeed);
+        private void OnJumpStateEntered(object sender, StateEventArgs e) {
+            _jumpingEngine.Jump();
+        }
+
+        private void OnDieStateEntered(object sender, StateEventArgs e) {
+            Died.SafeInvoke(this, new HeroEventArgs(this));
+        }
+
+        private void OnStumbleStateEntered(object sender, StateEventArgs e) {
+        }
+
+        #endregion
+
+        private void InitBehaviours() {
+            RegisterHandler<RunStateBehaviour>(OnRunStateEntered).Exited += OnStopRunning;
+            RegisterHandler<JumpStateBehaviour>(OnJumpStateEntered);
+            RegisterHandler<DiedStateBehaviour>(OnDieStateEntered);
+            RegisterHandler<StumbledStateBehaviour>(OnStumbleStateEntered);
+        }
+
+
+        private TStateBehaviour RegisterHandler<TStateBehaviour>(EventHandler<StateEventArgs> handler)
+            where TStateBehaviour : HeroStateBehaviour {
+            var behaviour = _animator.GetBehaviour<TStateBehaviour>();
+            behaviour.StateEntered += handler;
+            return behaviour;
+        }
+
+
+        private bool _grounded;
+        private bool _isRunning;
+
+        [PostInject]
+        private void PostInject() {
+            _controller.Click += Jump;
+        }
+
+        private void Update() {
+            _grounded = Physics2D.OverlapCircle(_groundCheck.position, 10f, _groundLayer);
+            _animator.SetBool(Keys.Grounded, _grounded);
+            _animator.SetFloat(Keys.SpeedX, Speed.x);
+            _animator.SetFloat(Keys.SpeedY, Speed.y);
+            if (_isRunning) {
+                _runningEngine.Run();
             }
-        }
-
-
-        protected virtual void Stumble(int damage, Action callback) {
-            _isStubmled = true;
         }
 
         private void OnTriggerEnter2D(Collider2D collision) {
-            if (_isStubmled) {
-                return;
-            }
             var danger = collision.gameObject.GetInterfaceComponent<IDanger>();
             if (danger != null) {
-                Stumble(danger.Damage, OnStumbleEnded);
+                Stumble();
             }
         }
 
-        private void OnStumbleEnded() {
-            _isStubmled = false;
+        private void Stop() {
+            _runningEngine.Stop();
         }
+
+
+        private void Jump(Vector2 screenPos) {
+            if (_isRunning) {
+                _jumpingEngine.Jump();
+            }
+        }
+
+        private void Stumble() {
+            if (_isRunning) {
+                _animator.SetTrigger(Keys.Stumbled);
+                _isRunning = false;
+            }
+        }
+
 
         protected override void Awake() {
             base.Awake();
-            _movingController = GetInterfaceComponent<IMovingController>();
-            _movingController.RegisterMovable(this);
+            _animator = GetComponent<Animator>();
+            InitBehaviours();
         }
 
         public class HeroEventArgs : EventArgs {

@@ -323,14 +323,13 @@ GameObject:
   m_Component:
   - 224: {fileID: 22405884}
   - 95: {fileID: 9596224}
-  - 114: {fileID: 11407006}
   - 50: {fileID: 5035800}
-  - 114: {fileID: 11493252}
   - 58: {fileID: 5834560}
   - 61: {fileID: 6197056}
   - 114: {fileID: 11414780}
   - 114: {fileID: 11453538}
   - 114: {fileID: 11417070}
+  - 114: {fileID: 11492502}
   m_Layer: 9
   m_Name: Hero
   m_TagString: Untagged
@@ -702,19 +701,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &11407006
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 178320}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4d88b00355aded4392b933317c51080, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _runForce: 250
-  _jumpForce: 800
 --- !u!114 &11407160
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -869,6 +855,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 602d93ca6ce03ee4191f5d01c103f304, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _force: 700
   _rigidbody: {fileID: 5035800}
 --- !u!114 &11418356
 MonoBehaviour:
@@ -1030,6 +1017,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d91ada3c4a24a541866ed6e814d1d3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _force: 250
   _rigidbody: {fileID: 5035800}
 --- !u!114 &11455092
 MonoBehaviour:
@@ -1390,7 +1378,7 @@ MonoBehaviour:
   polygonSides: 3
   freezeSize: 0
   color: {r: 0, g: 1, b: 0, a: 1}
---- !u!114 &11493252
+--- !u!114 &11492502
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1398,7 +1386,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 178320}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b200fcdd58b72e4680d8e239e23cce3, type: 3}
+  m_Script: {fileID: 11500000, guid: e80e993f25de3ac4c809a5b7482f0f45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _groundCheck: {fileID: 22446420}
@@ -1407,8 +1395,6 @@ MonoBehaviour:
     m_Bits: 1024
   _jumpingEngine: {fileID: 11417070}
   _runningEngine: {fileID: 11453538}
-  _startHealth: 5
-  _animator: {fileID: 9596224}
 --- !u!114 &11496252
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1731,6 +1717,14 @@ Prefab:
       propertyPath: _jumpingEngine
       value: 
       objectReference: {fileID: 11417070}
+    - target: {fileID: 0}
+      propertyPath: _groundCheck
+      value: 
+      objectReference: {fileID: 22446420}
+    - target: {fileID: 0}
+      propertyPath: _force
+      value: 250
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 178320}
