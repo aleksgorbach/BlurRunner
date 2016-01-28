@@ -2269,7 +2269,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22489892, guid: 945b5ff3a50c8e44caca84239c31148e, type: 2}
       propertyPath: m_RootOrder
-      value: 15
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 22489892, guid: 945b5ff3a50c8e44caca84239c31148e, type: 2}
       propertyPath: m_AnchoredPosition.x
@@ -3738,10 +3738,10 @@ RectTransform:
   - {fileID: 98108469}
   - {fileID: 1291661970}
   - {fileID: 1837971773}
+  - {fileID: 215253650}
   - {fileID: 1108058872}
   - {fileID: 1635128511}
   - {fileID: 256643679}
-  - {fileID: 215253650}
   - {fileID: 1757623248}
   m_Father: {fileID: 710250423}
   m_RootOrder: 0
@@ -15101,7 +15101,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22405206, guid: 69dacf26dab1376478c1c2fd77b09b3c, type: 2}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 22405206, guid: 69dacf26dab1376478c1c2fd77b09b3c, type: 2}
       propertyPath: m_AnchoredPosition.x
