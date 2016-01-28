@@ -1,5 +1,5 @@
 ﻿// Created 23.10.2015
-// Modified by  14.01.2016 at 9:07
+// Modified by  28.01.2016 at 12:40
 
 namespace Assets.Scripts.UI.Popups.Controller {
     #region References
@@ -32,6 +32,13 @@ namespace Assets.Scripts.UI.Popups.Controller {
 
         public event EventHandler<PopupEventArgs> PopupOpened;
         public event EventHandler<PopupEventArgs> PopupClosed;
+
+        public void Close() {
+            var popup = _popups.Peek();
+            if (popup != null) {
+                popup.Close();
+            }
+        }
 
         #endregion
 

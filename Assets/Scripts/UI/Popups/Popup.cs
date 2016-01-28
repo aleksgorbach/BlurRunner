@@ -1,5 +1,5 @@
 ﻿// Created 23.10.2015
-// Modified by  24.12.2015 at 12:52
+// Modified by  28.01.2016 at 12:40
 
 namespace Assets.Scripts.UI.Popups {
     #region References
@@ -35,7 +35,7 @@ namespace Assets.Scripts.UI.Popups {
         protected virtual void OnClose() {
         }
 
-        private void Close() {
+        public void Close() {
             OnClose();
             var handler = Closed;
             if (handler != null) {

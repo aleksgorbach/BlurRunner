@@ -11,5 +11,6 @@ namespace Assets.Scripts.UI.Popups.Controller {
     internal interface IPopupController {
         event EventHandler<PopupEventArgs> PopupOpened;
         event EventHandler<PopupEventArgs> PopupClosed;
+        void Close();
     }
 }

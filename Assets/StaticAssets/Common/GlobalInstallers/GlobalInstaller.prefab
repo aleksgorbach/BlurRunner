@@ -127,6 +127,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _levelsPath: Levels
   _sceneLoader: {fileID: 11488386, guid: 642d4453df82c3047ac00927693d71f9, type: 2}
+  _levelPrefab: {fileID: 11489484, guid: f2f9fb816796be447a85988650ee2634, type: 2}
 --- !u!114 &11482180
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -174,6 +175,11 @@ Prefab:
       propertyPath: _sceneLoader
       value: 
       objectReference: {fileID: 11488386, guid: 642d4453df82c3047ac00927693d71f9,
+        type: 2}
+    - target: {fileID: 0}
+      propertyPath: _levelPrefab
+      value: 
+      objectReference: {fileID: 11489484, guid: f2f9fb816796be447a85988650ee2634,
         type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

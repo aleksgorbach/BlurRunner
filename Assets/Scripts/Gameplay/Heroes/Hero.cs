@@ -1,5 +1,5 @@
 ﻿// Created 20.10.2015
-// Modified by  21.01.2016 at 15:42
+// Modified by  28.01.2016 at 12:03
 
 namespace Assets.Scripts.Gameplay.Heroes {
     #region References
@@ -128,7 +128,8 @@ namespace Assets.Scripts.Gameplay.Heroes {
             _controller.Click += Jump;
         }
 
-        private void Update() {
+        protected override void Update() {
+            base.Update();
             _grounded = Physics2D.OverlapCircle(_groundCheck.position, 10f, _groundLayer);
             _animator.SetBool(Keys.Grounded, _grounded);
             _animator.SetFloat(Keys.SpeedX, Speed.x);

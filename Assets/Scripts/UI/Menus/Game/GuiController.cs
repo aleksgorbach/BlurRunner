@@ -1,5 +1,5 @@
 ﻿// Created 23.10.2015
-// Modified by  28.12.2015 at 15:02
+// Modified by  28.01.2016 at 12:27
 
 namespace Assets.Scripts.UI.Menus.Game {
     #region References
@@ -9,23 +9,11 @@ namespace Assets.Scripts.UI.Menus.Game {
     using Popups;
     using Popups.Controller;
     using State.ScenesInteraction.Loaders;
-    using UnityEngine;
-    using UnityEngine.UI;
     using Zenject;
 
     #endregion
 
     internal class GuiController : MonoBehaviourBase {
-        #region Visible in inspector
-
-        [SerializeField]
-        private Button _backButton;
-
-        [SerializeField]
-        private Button _pauseButton;
-
-        #endregion
-
         #region Injected dependencies
 
         [Inject]
@@ -38,12 +26,6 @@ namespace Assets.Scripts.UI.Menus.Game {
         private IPopupController _popupController;
 
         #endregion
-
-        protected override void Awake() {
-            base.Awake();
-            _pauseButton.onClick.AddListener(OnPause);
-            _backButton.onClick.AddListener(Exit);
-        }
 
         [PostInject]
         private void PostInject() {
@@ -60,11 +42,11 @@ namespace Assets.Scripts.UI.Menus.Game {
             }
         }
 
-        private void Exit() {
+        public void Exit() {
             _sceneLoader.GoToScene(Scene.LevelChoose);
         }
 
-        private void OnPause() {
+        public void OnPause() {
             _stateManager.Pause();
         }
     }

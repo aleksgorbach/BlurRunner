@@ -1,5 +1,5 @@
 ﻿// Created 22.10.2015
-// Modified by  22.12.2015 at 10:44
+// Modified by  28.01.2016 at 12:38
 
 namespace Assets.Scripts.UI.Menus.Levels {
     #region References
@@ -8,6 +8,7 @@ namespace Assets.Scripts.UI.Menus.Levels {
     using LevelItem;
     using State.Levels;
     using State.Levels.Storage;
+    using State.ScenesInteraction.Loaders;
     using Zenject;
 
     #region References
@@ -25,6 +26,9 @@ namespace Assets.Scripts.UI.Menus.Levels {
         [Inject]
         private ILevelStorage _levelStorage;
 
+        [Inject]
+        private ISceneLoader _sceneLoader;
+
 
         public event LevelChoosedDelegate LevelChoosed;
 
@@ -33,6 +37,7 @@ namespace Assets.Scripts.UI.Menus.Levels {
             if (handler != null) {
                 handler.Invoke(level);
             }
+            GoToGame(level);
         }
 
         [PostInject]
@@ -50,6 +55,11 @@ namespace Assets.Scripts.UI.Menus.Levels {
             }
 
             rectTransform.sizeDelta = new Vector2(length, rectTransform.sizeDelta.y);
+        }
+
+        protected virtual void GoToGame(ILevel level) {
+            _levelStorage.SetCurrentLevel(level.Number);
+            _sceneLoader.GoToScene(Scene.Game);
         }
     }
 }

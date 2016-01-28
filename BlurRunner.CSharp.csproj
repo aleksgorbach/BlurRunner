@@ -388,6 +388,12 @@
     <Compile Include="Assets\Scripts\Engine\Scrollers\IRoundScroller.cs" />
     <Compile Include="Assets\Scripts\Engine\Scrollers\IScrollerItem.cs" />
     <Compile Include="Assets\Scripts\Engine\Scrollers\RoundScroller.cs" />
+    <Compile Include="Assets\Scripts\Engine\StateMachines\IStateMachine.cs" />
+    <Compile Include="Assets\Scripts\Engine\StateMachines\StateMachine.cs" />
+    <Compile Include="Assets\Scripts\Engine\StateMachines\States\IState.cs" />
+    <Compile Include="Assets\Scripts\Engine\StateMachines\Transitions\Conditions\ICondition.cs" />
+    <Compile Include="Assets\Scripts\Engine\StateMachines\Transitions\ITransition.cs" />
+    <Compile Include="Assets\Scripts\Engine\StateMachines\Transitions\Transition.cs" />
     <Compile Include="Assets\Scripts\Engine\Utils\StatedObjects\ImageStatesObject.cs" />
     <Compile Include="Assets\Scripts\Engine\Utils\StatedObjects\StatedObject.cs" />
     <Compile Include="Assets\Scripts\Engine\Utils\SymbolText.cs" />
@@ -432,6 +438,9 @@
     <Compile Include="Assets\Scripts\Gameplay\Heroes\StateBehaviours\RunStateBehaviour.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Heroes\StateBehaviours\StateEventArgs.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Heroes\StateBehaviours\StumbledStateBehaviour.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\Heroes\StateHandling\Conditions\Transition.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\Heroes\StateHandling\HeroStateMachine.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\Heroes\StateHandling\States\RunningState.cs" />
     <Compile Include="Assets\Scripts\Gameplay\IGame.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Obstacles\IDanger.cs" />
     <Compile Include="Assets\Scripts\Localization\ILocalizable.cs" />
@@ -476,6 +485,7 @@
     <Compile Include="Assets\Scripts\UI\Graphics\GraphicsCache.cs" />
     <Compile Include="Assets\Scripts\UI\Menus\Game\GuiController.cs" />
     <Compile Include="Assets\Scripts\UI\Menus\Levels\ILevelChoosingMenu.cs" />
+    <Compile Include="Assets\Scripts\UI\Menus\Levels\InGameLevelChoosingMenu.cs" />
     <Compile Include="Assets\Scripts\UI\Menus\Levels\LevelItem\ILevelItem.cs" />
     <Compile Include="Assets\Scripts\UI\Menus\Levels\LevelItem\LevelItem.cs" />
     <Compile Include="Assets\Scripts\UI\Menus\Levels\LevelsChoosingMenu.cs" />

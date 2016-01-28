@@ -17,9 +17,6 @@ namespace Assets.Scripts.State.ScenesInteraction.Controllers {
     #endregion
 
     internal class LevelsController : MonoBehaviourBase {
-        [SerializeField]
-        private LevelsChoosingMenu _levelsMenu;
-
         [Inject]
         private ILevelStorage _levelStorage;
 
@@ -35,13 +32,8 @@ namespace Assets.Scripts.State.ScenesInteraction.Controllers {
         protected override void Awake() {
             base.Awake();
             _openShopButton.onClick.AddListener(OpenShop);
-            _levelsMenu.LevelChoosed += GoToGame;
         }
-
-        private void GoToGame(ILevel level) {
-            _levelStorage.SetCurrentLevel(level.Number);
-            _sceneLoader.GoToScene(Scene.Game);
-        }
+        
 
         protected override void Start() {
             base.Start();
