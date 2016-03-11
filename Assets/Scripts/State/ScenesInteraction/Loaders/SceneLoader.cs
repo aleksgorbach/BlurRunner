@@ -57,9 +57,10 @@ namespace Assets.Scripts.State.ScenesInteraction.Loaders {
 
         private IEnumerator LoadScene() {
             yield return StartCoroutine(LoadingFadeIn());
-            yield return Resources.UnloadUnusedAssets();
+
             _loadingOperation = SceneManager.LoadSceneAsync(_nextSceneName);
             yield return _loadingOperation;
+            yield return Resources.UnloadUnusedAssets();
             var loaders = FindObjectsOfType(typeof (InitializingLoader)) as InitializingLoader[];
             while (loaders != null && loaders.Any(loader => !loader.IsLoaded)) {
                 yield return null;

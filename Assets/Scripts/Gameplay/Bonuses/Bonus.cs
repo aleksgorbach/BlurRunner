@@ -56,7 +56,7 @@ namespace Assets.Scripts.Gameplay.Bonuses {
             if (handler != null) {
                 handler.Invoke(this);
             }
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
 
         protected virtual void CollectAnimation() {

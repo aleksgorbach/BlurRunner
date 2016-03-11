@@ -18,6 +18,7 @@
     <UnityBuildTarget>Android:13</UnityBuildTarget>
     <UnityVersion>5.3.1f1</UnityVersion>
     <RootNamespace></RootNamespace>
+    <LangVersion Condition=" '$(VisualStudioVersion)' != '10.0' ">4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -143,6 +144,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Editor\AppodealPostProcess.cs" />
+    <Compile Include="Assets\Editor\HillsEditor\HillsEditor.cs" />
     <Compile Include="Assets\Editor\LevelEditor\GroundCreator.cs" />
     <Compile Include="Assets\Editor\PlayerPrefsCleaner.cs" />
     <Compile Include="Assets\Extensions\SmartLocalization\Scripts\uGUI\Editor\LocalizedTextInspector.cs" />
@@ -170,6 +172,8 @@
     <Compile Include="Assets\Extensions\Zenject\Main\Editor\UnityInspectorListEditor.cs" />
     <Compile Include="Assets\Extensions\Zenject\Main\Editor\ZenEditorUtil.cs" />
     <Compile Include="Assets\Extensions\Zenject\Main\Editor\ZenjectMenu.cs" />
+    <Compile Include="Assets\WaypointPro\Script\Editor\CustomEditor.cs" />
+    <Compile Include="Assets\WaypointPro\Script\Editor\WaypointManagerEditor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Extensions\SmartLocalization\Editor\SmartLocalization_Editor.XML" />
