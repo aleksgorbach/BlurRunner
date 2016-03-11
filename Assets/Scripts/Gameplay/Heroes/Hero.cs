@@ -1,7 +1,4 @@
-﻿// Created 20.10.2015
-// Modified by  28.01.2016 at 12:03
-
-namespace Assets.Scripts.Gameplay.Heroes {
+﻿namespace Assets.Scripts.Gameplay.Heroes {
     #region References
 
     using System;
