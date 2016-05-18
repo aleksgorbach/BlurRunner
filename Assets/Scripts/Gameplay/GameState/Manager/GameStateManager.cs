@@ -1,28 +1,34 @@
 ﻿// Created 26.10.2015
-// Modified by  19.11.2015 at 14:30
+// Modified by  14.01.2016 at 9:06
 
 namespace Assets.Scripts.Gameplay.GameState.Manager {
     #region References
 
-    using System.Collections.Generic;
+    using System;
     using Consts;
-    using State.Progress;
+    using Engine.Extensions;
+    using Events;
+    using Heroes;
+    using State.ScenesInteraction.Loaders;
     using StateChangedSources;
     using Zenject;
 
     #endregion
 
     internal class GameStateManager : IGameStateManager {
-        [Inject]
-        private ILevelProgress _progress;
+        #region Injected dependencies
 
-        [Inject(Identifiers.Scores.MinValue)]
-        private int _scoreToLose;
+        [Inject]
+        private IGame _game;
+
+        [Inject]
+        private IWorldLoader _worldLoader;
+
+        #endregion
 
         private GameState _state;
 
-        [Inject]
-        private List<IWinSource> _winSources;
+        #region Interface
 
         public GameState State {
             get { return _state; }
@@ -33,8 +39,6 @@ namespace Assets.Scripts.Gameplay.GameState.Manager {
                 }
             }
         }
-
-        public event StateChangedDelegate StateChanged;
 
         public void Pause() {
             if (State == GameState.Running) {
@@ -52,19 +56,30 @@ namespace Assets.Scripts.Gameplay.GameState.Manager {
             ChangeState(GameState.Running);
         }
 
+        public event EventHandler<GameStateChangedArgs> StateChanged;
+
+        #endregion
+
         [PostInject]
         private void PostInject() {
-            foreach (var source in _winSources) {
-                source.Win += (s) => ChangeState(GameState.Win);
-            }
-
-            _progress.Changed += OnProgressChanged;
+            _worldLoader.WorldLoaded += OnWorldLoaded;
+            _game.Started += OnGameStarted;
         }
 
-        private void OnProgressChanged(int currentScore) {
-            if (currentScore <= _scoreToLose) {
-                ChangeState(GameState.Lose);
-            }
+        private void OnWorldLoaded(object sender, WorldLoader.WorldLoadedEventArgs e) {
+            e.World.EndPoint.Win += Win;
+        }
+
+        private void OnGameStarted(object sender, GameStartedEventArgs e) {
+            e.Hero.Died += Lose;
+        }
+
+        private void Win(object o, WinSourceArgs e) {
+            ChangeState(GameState.Win);
+        }
+
+        private void Lose(object sender, Hero.HeroEventArgs e) {
+            ChangeState(GameState.Lose);
         }
 
         private void ChangeState(GameState to) {
@@ -72,10 +87,7 @@ namespace Assets.Scripts.Gameplay.GameState.Manager {
         }
 
         private void OnStateChanged(GameState state) {
-            var handler = StateChanged;
-            if (handler != null) {
-                handler.Invoke(state);
-            }
+            StateChanged.SafeInvoke(this, new GameStateChangedArgs(state));
         }
     }
 }

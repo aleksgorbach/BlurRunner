@@ -1,17 +1,14 @@
-﻿// Created 22.10.2015 
-// Modified by Gorbach Alex 22.10.2015 at 14:46
+﻿// Created 22.10.2015
+// Modified by  28.01.2016 at 12:38
 
 namespace Assets.Scripts.UI.Menus.Levels {
     #region References
 
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using Assets.Scripts.Engine;
-    using Engine.Presenter;
+    using Engine;
     using LevelItem;
-    using Presenter;
     using State.Levels;
+    using State.Levels.Storage;
+    using State.ScenesInteraction.Loaders;
     using Zenject;
 
     #region References
@@ -23,26 +20,15 @@ namespace Assets.Scripts.UI.Menus.Levels {
     #endregion
 
     internal class LevelsChoosingMenu : MonoBehaviourBase, ILevelChoosingMenu {
-        private readonly int _fromLevel = 0;
+        [Inject]
         private IFactory<LevelItem.LevelItem> _factory;
-        private IList<ILevelItem> _levels;
 
-        [SerializeField]
-        private int _size;
+        [Inject]
+        private ILevelStorage _levelStorage;
 
-        public IEnumerable<ILevel> Levels {
-            set {
-                var array = value.ToArray();
-                Array.Sort(array, (x, y) => x.Number.CompareTo(y.Number));
-                _levels = array.Select(
-                    x => {
-                        var lvl = AddItem(_factory.Create());
-                        lvl.Level = x;
-                        lvl.LevelChoosed += OnLevelChoosed;
-                        return lvl;
-                    }).ToList();
-            }
-        }
+        [Inject]
+        private ISceneLoader _sceneLoader;
+
 
         public event LevelChoosedDelegate LevelChoosed;
 
@@ -51,29 +37,29 @@ namespace Assets.Scripts.UI.Menus.Levels {
             if (handler != null) {
                 handler.Invoke(level);
             }
+            GoToGame(level);
         }
 
         [PostInject]
-        private void Inject(LevelItem.LevelItem.Factory factory, PresenterFactory presenterFactory) {
-            _factory = factory;
-            _levels = new List<ILevelItem>();
-            var presenter = presenterFactory.Create<LevelChoosingPresenter, ILevelChoosingMenu>(this);
-            presenter.Init(_fromLevel, _fromLevel + _size);
+        private void PostInject() {
+            var length = 0f;
+            foreach (var level in _levelStorage) {
+                var item = _factory.Create();
+                item.transform.SetParent(transform);
+                var width = item.rectTransform.sizeDelta.x;
+                item.rectTransform.anchoredPosition = new Vector2(length, 0);
+                item.rectTransform.localScale = Vector3.one;
+                length += width;
+                item.Level = level;
+                item.LevelChoosed += OnLevelChoosed;
+            }
+
+            rectTransform.sizeDelta = new Vector2(length, rectTransform.sizeDelta.y);
         }
 
-        private ILevelItem AddItem(ILevelItem item) {
-            var transf = GetComponent<RectTransform>();
-            item.Transform.SetParent(transf, false);
-            var width = item.Size.x;
-            var length = 0f;
-            foreach (var level in _levels) {
-                length += level.Size.x;
-            }
-            (item.Transform as RectTransform).anchoredPosition = new Vector2(length, 0);
-            _levels.Add(item);
-
-            transf.sizeDelta = new Vector2(length + width, transf.sizeDelta.y);
-            return item;
+        protected virtual void GoToGame(ILevel level) {
+            _levelStorage.SetCurrentLevel(level.Number);
+            _sceneLoader.GoToScene(Scene.Game);
         }
     }
 }

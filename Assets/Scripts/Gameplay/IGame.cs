@@ -1,16 +1,23 @@
-﻿// Created 24.10.2015
-// Modified by Александр 05.11.2015 at 19:53
+﻿// Created 26.10.2015
+// Modified by  20.01.2016 at 13:54
 
 namespace Assets.Scripts.Gameplay {
     #region References
 
-    using State.Levels;
-    using State.Progress;
+    using System;
+    using Events;
+    using UnityEngine;
 
     #endregion
 
     internal interface IGame {
-        ILevelProgress Progress { get; }
-        void StartLevel(ILevel level);
+        event EventHandler<GameStartedEventArgs> Started;
+        event EventHandler<GameFinishedEventArgs> Finished;
+        event EventHandler<GameWinEventArgs> Win;
+        event EventHandler<GameLoseEventArgs> Lose;
+        event EventHandler<GameProgressChangedArgs> ProgressChanged;
+        Vector2 CurrentHeroSpeed { get; }
+        float LevelLength { get; }
+        float NominalHeroSpeed { get; }
     }
 }

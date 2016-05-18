@@ -1,5 +1,5 @@
-﻿// Created 20.10.2015 
-// Modified by Gorbach Alex 04.11.2015 at 10:18
+﻿// Created 20.10.2015
+// Modified by  30.11.2015 at 15:04
 
 namespace Assets.Scripts.Engine {
     #region References
@@ -12,14 +12,14 @@ namespace Assets.Scripts.Engine {
         [SerializeField]
         private Transform _anchoredObject;
 
+        private Vector3 _initialPos;
+        private float _velocity;
+
         [SerializeField]
         private bool _xAnchor;
 
         [SerializeField]
         private bool _yAnchor;
-
-        private Vector3 _initialPos;
-        private float _velocity;
 
         protected override void Awake() {
             base.Awake();

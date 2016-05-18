@@ -1,83 +1,127 @@
 ﻿// Created 20.10.2015
-// Modified by  25.11.2015 at 12:50
+// Modified by  20.01.2016 at 13:55
 
 namespace Assets.Scripts.Gameplay {
     #region References
 
     using System;
-    using EndlessEngine;
-    using EndlessEngine.Endpoints;
+    using System.Collections.Generic;
     using Engine;
+    using Engine.Camera;
+    using Engine.Extensions;
+    using Events;
     using GameState.Manager;
-    using GameState.StateChangedSources;
     using Heroes;
-    using State.Levels;
-    using State.Progress;
-    using State.Progress.Score;
+    using State;
+    using State.Levels.Storage;
+    using State.Progress.Storage;
+    using State.ScenesInteraction.Loaders;
     using UnityEngine;
     using UnityEngine.UI;
     using Zenject;
 
     #endregion
 
-    internal class Game : MonoBehaviourBase, IGame, IWinSource {
+    internal class Game : MonoBehaviourBase, IGame {
+        #region Visible in inspector
+
         [SerializeField]
         private Image _background;
 
         [SerializeField]
-        private ObjectAnchor _cameraAnchor;
+        private SmoothFollow2D _camera;
+
+        [SerializeField]
+        private Camera _foregroundCamera;
+
+        [SerializeField]
+        private WorldLoader _worldLoader;
+
+        #endregion
+
+        #region Injected dependencies
 
         [Inject]
         private IInstantiator _container;
 
-        [SerializeField]
-        private AbstractGenerator[] _generators;
-
-        private Hero _hero;
-
-        [SerializeField]
-        private HeroSpawner _heroSpawner;
-
-        private bool _isPaused;
-        private ILevel _level;
-
         [Inject]
-        private ILevelProgress _progress;
-
-        [Inject]
-        private IScoreSource _scoreSource;
+        private ILevelStorage _levelStorage;
 
         [Inject]
         private IGameStateManager _stateManager;
 
-        public ILevelProgress Progress {
-            get { return _progress; }
+        [Inject]
+        private IProgressStorage _progressStorage;
+
+        [Inject]
+        private List<IGameStartedHandler> _gameStartedHandlers;
+
+        [Inject]
+        private List<IGameLoopUpdatable> _updatables;
+
+        #endregion
+
+        private Hero _hero;
+
+        #region Interface
+
+        #region Events
+
+        public event EventHandler<GameStartedEventArgs> Started;
+        public event EventHandler<GameFinishedEventArgs> Finished;
+        public event EventHandler<GameWinEventArgs> Win;
+        public event EventHandler<GameLoseEventArgs> Lose;
+        public event EventHandler<GameProgressChangedArgs> ProgressChanged;
+
+        #endregion
+
+        public float PerfectLevelTime {
+            get { return LevelLength/_hero.NominalSpeed; }
         }
 
-        public void StartLevel(ILevel level) {
-            _level = level;
-            _background.sprite = level.Background;
-            _heroSpawner.Sprite = level.Startpoint;
+        public Vector2 CurrentHeroSpeed {
+            get { return _hero.Speed; }
         }
 
-        public event Action<IWinSource> Win;
+        public float NominalHeroSpeed {
+            get { return _hero.NominalSpeed; }
+        }
 
-        private void OnStateChanged(Consts.GameState state) {
-            switch (state) {
+        public float LevelLength { get; private set; }
+
+        #endregion
+
+        protected override void Awake() {
+            base.Awake();
+            _worldLoader.WorldLoaded += OnWorldLoaded;
+        }
+
+        protected override void Update() {
+            base.Update();
+            if (_stateManager.State == Consts.GameState.Running) {
+                foreach (var updatable in _updatables) {
+                    updatable.Update(this);
+                }
+            }
+        }
+
+        private void OnStateChanged(object sender, GameStateChangedArgs e) {
+            switch (e.State) {
                 case Consts.GameState.Running:
                     Run();
                     break;
                 case Consts.GameState.Paused:
                     Pause();
                     break;
-                case Consts.GameState.Lose:
-                    OnDie();
-                    break;
                 case Consts.GameState.Win:
                     OnWin();
                     break;
+                case Consts.GameState.Lose:
+                    OnLose();
+                    break;
             }
         }
+
 
         private void Pause() {
             Time.timeScale = 0;
@@ -87,37 +131,44 @@ namespace Assets.Scripts.Gameplay {
             Time.timeScale = 1;
         }
 
-        private void OnDie() {
-            _hero.Kill();
-        }
 
         private void OnWin() {
-            _hero.Congratulate();
+            _hero.Win();
+            Win.SafeInvoke(this, new GameWinEventArgs());
         }
 
-
-        private void OnWin(IWinSource winSource) {
-            var handler = Win;
-            if (handler != null) {
-                handler.Invoke(winSource);
-            }
+        private void OnLose() {
+            Lose.SafeInvoke(this, new GameLoseEventArgs());
         }
+
 
         [PostInject]
         private void PostInject() {
             _stateManager.StateChanged += OnStateChanged;
-            _hero = _container.InstantiatePrefabForComponent<Hero>(_level.Hero.gameObject);
-            _hero.transform.SetParent(_heroSpawner.Container);
-            _hero.transform.localPosition = Vector3.zero;
-            _cameraAnchor.SetTarget(_hero.transform);
-            _hero.Destination = _level.Length;
-            _hero.Win += OnWin;
-            _scoreSource.ScoreChanged += OnScoreChanged;
-            _stateManager.Run();
         }
 
-        private void OnScoreChanged(int deltaScore) {
-            _progress.Score += deltaScore;
+        private void OnWorldLoaded(object sender, WorldLoader.WorldLoadedEventArgs args) {
+            // инициализация уровня из world
+            var world = args.World;
+            world.ForegroundCamera = _camera.Camera;
+            world.BackgroundCamera = _foregroundCamera;
+            world.transform.SetParent(transform);
+            world.transform.SetAsFirstSibling();
+            _background.sprite = world.Background;
+            _hero = _container.InstantiatePrefabForComponent<Hero>(world.HeroPrefab.gameObject);
+            _hero.transform.SetParent(world.StartPoint);
+            _hero.transform.localPosition = Vector3.zero;
+            LevelLength = world.Length;
+            _camera.SetTarget(_hero.transform);
+            OnGameReady();
+        }
+
+        private void OnGameReady() {
+            Started.SafeInvoke(this, new GameStartedEventArgs(_levelStorage.CurrentLevel, _hero));
+            _stateManager.Run();
+            foreach (var gameStartedHandler in _gameStartedHandlers) {
+                gameStartedHandler.OnGameStarted(this);
+            }
         }
     }
 }

@@ -13,7 +13,7 @@ namespace Assets.Scripts.State.Levels.Storage {
     #endregion
 
     internal class LevelStorage : ILevelStorage {
-        private int _currentLevelNumber = 0;
+        private int _currentLevelNumber;
         private Dictionary<int, Level> _levels;
 
         public LevelStorage(ILevelLoader loader) {
@@ -25,7 +25,7 @@ namespace Assets.Scripts.State.Levels.Storage {
             get { return _levels[levelNumber]; }
         }
 
-        public Level CurrentLevel {
+        public ILevel CurrentLevel {
             get { return _levels[_currentLevelNumber]; }
         }
 

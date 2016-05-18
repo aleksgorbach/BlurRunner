@@ -1,26 +1,20 @@
-﻿// Created 23.10.2015 
-// Modified by Gorbach Alex 11.11.2015 at 14:04
+﻿// Created 23.10.2015
+// Modified by  28.01.2016 at 12:27
 
 namespace Assets.Scripts.UI.Menus.Game {
     #region References
 
-    using Popups;
-    using Gameplay.GameState.Manager;
     using Engine;
+    using Gameplay.GameState.Manager;
+    using Popups;
     using Popups.Controller;
     using State.ScenesInteraction.Loaders;
-    using UnityEngine;
-    using UnityEngine.UI;
     using Zenject;
 
     #endregion
 
     internal class GuiController : MonoBehaviourBase {
-        [SerializeField]
-        private Button _backButton;
-
-        [SerializeField]
-        private Button _pauseButton;
+        #region Injected dependencies
 
         [Inject]
         private IGameStateManager _stateManager;
@@ -31,11 +25,7 @@ namespace Assets.Scripts.UI.Menus.Game {
         [Inject]
         private IPopupController _popupController;
 
-        protected override void Awake() {
-            base.Awake();
-            _pauseButton.onClick.AddListener(OnPause);
-            _backButton.onClick.AddListener(Exit);
-        }
+        #endregion
 
         [PostInject]
         private void PostInject() {
@@ -43,8 +33,8 @@ namespace Assets.Scripts.UI.Menus.Game {
             _popupController.PopupClosed += OnPopupCountChanged;
         }
 
-        private void OnPopupCountChanged(IPopup popup, int activePopupsCount) {
-            if (activePopupsCount > 0) {
+        private void OnPopupCountChanged(object sender, PopupEventArgs args) {
+            if (args.OpenedPopupsCount > 0) {
                 _stateManager.Pause();
             }
             else {
@@ -52,11 +42,11 @@ namespace Assets.Scripts.UI.Menus.Game {
             }
         }
 
-        private void Exit() {
+        public void Exit() {
             _sceneLoader.GoToScene(Scene.LevelChoose);
         }
 
-        private void OnPause() {
+        public void OnPause() {
             _stateManager.Pause();
         }
     }
