@@ -15,9 +15,10 @@
     <TargetFrameworkProfile>Unity Full v3.5</TargetFrameworkProfile>
     <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
-    <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
-    <UnityVersion>5.2.1f1</UnityVersion>
+    <UnityBuildTarget>Android:13</UnityBuildTarget>
+    <UnityVersion>5.3.1f1</UnityVersion>
     <RootNamespace></RootNamespace>
+    <LangVersion Condition=" '$(VisualStudioVersion)' != '10.0' ">4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -26,7 +27,7 @@
     <IntermediateOutputPath>Temp\UnityVS_obj\Debug\</IntermediateOutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DefineConstants>DEBUG;TRACE;UNITY_5_2_1;UNITY_5_2;UNITY_5;ENABLE_NEW_BUGREPORTER;ENABLE_2D_PHYSICS;ENABLE_4_6_FEATURES;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_REFLECTION_BUFFERS;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;INCLUDE_DIRECTX12;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;ENABLE_LOCALIZATION;ENABLE_ANDROID_ATLAS_ETC1_COMPRESSION;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_TEXTUREID_MAP;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_LOG_MIXED_STACKTRACE;ENABLE_UNITYWEBREQUEST;ENABLE_EVENT_QUEUE;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;UNITY_5_3_1;UNITY_5_3;UNITY_5;UNITY_PURCHASING;ENABLE_NEW_BUGREPORTER;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_SPRITE_POLYGON;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;INCLUDE_DIRECTX12;PLATFORM_SUPPORTS_MONO;ENABLE_LOCALIZATION;ENABLE_ANDROID_ATLAS_ETC1_COMPRESSION;ENABLE_EDITOR_TESTS_RUNNER;UNITY_ANDROID;UNITY_ANDROID_API;ENABLE_SUBSTANCE;UNITY_ANDROID_API;ENABLE_TEXTUREID_MAP;ENABLE_EGL;ENABLE_NETWORK;ENABLE_RUNTIME_GI;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_LOG_MIXED_STACKTRACE;ENABLE_UNITYWEBREQUEST;PLATFORM_SUPPORTS_ADS_ID;ENABLE_UNITYADS_RUNTIME;UNITY_UNITYADS_API;ENABLE_MONO;DEVELOPMENT_BUILD;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN</DefineConstants>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -36,7 +37,7 @@
     <IntermediateOutputPath>Temp\UnityVS_obj\Release\</IntermediateOutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DefineConstants>TRACE;UNITY_5_2_1;UNITY_5_2;UNITY_5;ENABLE_NEW_BUGREPORTER;ENABLE_2D_PHYSICS;ENABLE_4_6_FEATURES;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_REFLECTION_BUFFERS;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;INCLUDE_DIRECTX12;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;ENABLE_LOCALIZATION;ENABLE_ANDROID_ATLAS_ETC1_COMPRESSION;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_TEXTUREID_MAP;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_LOG_MIXED_STACKTRACE;ENABLE_UNITYWEBREQUEST;ENABLE_EVENT_QUEUE;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN</DefineConstants>
+    <DefineConstants>TRACE;UNITY_5_3_1;UNITY_5_3;UNITY_5;UNITY_PURCHASING;ENABLE_NEW_BUGREPORTER;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_SPRITE_POLYGON;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;INCLUDE_DIRECTX12;PLATFORM_SUPPORTS_MONO;ENABLE_LOCALIZATION;ENABLE_ANDROID_ATLAS_ETC1_COMPRESSION;ENABLE_EDITOR_TESTS_RUNNER;UNITY_ANDROID;UNITY_ANDROID_API;ENABLE_SUBSTANCE;UNITY_ANDROID_API;ENABLE_TEXTUREID_MAP;ENABLE_EGL;ENABLE_NETWORK;ENABLE_RUNTIME_GI;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_LOG_MIXED_STACKTRACE;ENABLE_UNITYWEBREQUEST;PLATFORM_SUPPORTS_ADS_ID;ENABLE_UNITYADS_RUNTIME;UNITY_UNITYADS_API;ENABLE_MONO;DEVELOPMENT_BUILD;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN</DefineConstants>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
@@ -51,26 +52,17 @@
     <Reference Include="UnityEngine">
       <HintPath>Library\UnityAssemblies\UnityEngine.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.Advertisements">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Advertisements.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Networking">
       <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.Analytics">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Analytics.dll</HintPath>
+    <Reference Include="UnityEngine.Purchasing">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Purchasing.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
-    </Reference>
-    <Reference Include="Mono.Cecil">
-      <HintPath>Library\UnityAssemblies\Mono.Cecil.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
-      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
     </Reference>
     <Reference Include="SmartLocalization_Runtime">
       <HintPath>Assets\Extensions\SmartLocalization\SmartLocalization_Runtime.dll</HintPath>
@@ -87,6 +79,15 @@
     <Reference Include="DOTween50">
       <HintPath>Assets\Plugins\Demigiant\DOTween\DOTween50.dll</HintPath>
     </Reference>
+    <Reference Include="Stores">
+      <HintPath>Assets\Plugins\UnityPurchasing\Bin\Stores.dll</HintPath>
+    </Reference>
+    <Reference Include="Apple">
+      <HintPath>Assets\Plugins\UnityPurchasing\Bin\Apple\Apple.dll</HintPath>
+    </Reference>
+    <Reference Include="winrt">
+      <HintPath>Assets\Plugins\UnityPurchasing\winrt\winrt.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="BlurRunner.CSharp.Plugins.csproj">
@@ -95,6 +96,22 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Appodeal\Api\Appodeal.cs" />
+    <Compile Include="Assets\Appodeal\Common\IAdListener.cs" />
+    <Compile Include="Assets\Appodeal\Common\IAppodealAdsClient.cs" />
+    <Compile Include="Assets\Appodeal\Common\IBannerAdListener.cs" />
+    <Compile Include="Assets\Appodeal\Common\IInterstitialAdListener.cs" />
+    <Compile Include="Assets\Appodeal\Common\IRewardedVideoAdListener.cs" />
+    <Compile Include="Assets\Appodeal\Common\IVideoAdListener.cs" />
+    <Compile Include="Assets\Appodeal\Platforms\Android\AndroidAppodealClient.cs" />
+    <Compile Include="Assets\Appodeal\Platforms\Android\AppodealBannerCallbacks.cs" />
+    <Compile Include="Assets\Appodeal\Platforms\Android\AppodealInterstitialCallbacks.cs" />
+    <Compile Include="Assets\Appodeal\Platforms\Android\AppodealRewardedVideoCallbacks.cs" />
+    <Compile Include="Assets\Appodeal\Platforms\Android\AppodealVideoCallbacks.cs" />
+    <Compile Include="Assets\Appodeal\Platforms\Android\Utils.cs" />
+    <Compile Include="Assets\Appodeal\Platforms\AppodealAdsClientFactory.cs" />
+    <Compile Include="Assets\Appodeal\Platforms\iOS\AppodealAdsClient.cs" />
+    <Compile Include="Assets\Appodeal\Platforms\iOS\AppodealObjCBridge.cs" />
     <Compile Include="Assets\Extensions\CustomAssetBuilder\CustomAsset.cs" />
     <Compile Include="Assets\Extensions\CustomAssetBuilder\CustomAssetUtility.cs" />
     <Compile Include="Assets\Extensions\LoggingHelper\Scripts\LoggingHelper.cs" />
@@ -305,77 +322,78 @@
     <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Util\DecoratorInstaller.cs" />
     <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Util\SceneDecoratorCompositionRoot.cs" />
     <Compile Include="Assets\Extensions\Zenject\Main\Scripts\Util\UnityUtil.cs" />
+    <Compile Include="Assets\Scripts\Ads\AdManager.cs" />
+    <Compile Include="Assets\Scripts\Ads\IAdManager.cs" />
+    <Compile Include="Assets\Scripts\Currency\CurrencyType.cs" />
+    <Compile Include="Assets\Scripts\Currency\ICurrency.cs" />
+    <Compile Include="Assets\Scripts\Currency\Storage\CurrencyStorage.cs" />
+    <Compile Include="Assets\Scripts\Currency\Storage\ICurrencyStorage.cs" />
     <Compile Include="Assets\Scripts\Debug\TimeStop.cs" />
-    <Compile Include="Assets\Scripts\EndlessEngine\AbstractGenerator.cs" />
-    <Compile Include="Assets\Scripts\EndlessEngine\Background\BackgroundGenerator.cs" />
-    <Compile Include="Assets\Scripts\EndlessEngine\Background\BackgroundPool.cs" />
-    <Compile Include="Assets\Scripts\EndlessEngine\Background\HillFactory.cs" />
-    <Compile Include="Assets\Scripts\EndlessEngine\Background\HillItem.cs" />
-    <Compile Include="Assets\Scripts\EndlessEngine\Background\HillStrategy.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\Actions\CameraAction.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\Actions\LevelEndAction.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\Actions\LevelStartCameraAction.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\Actions\MonoAction.cs" />
     <Compile Include="Assets\Scripts\EndlessEngine\Bonuses\BonusCollector.cs" />
     <Compile Include="Assets\Scripts\EndlessEngine\Bonuses\BonusFactory.cs" />
-    <Compile Include="Assets\Scripts\EndlessEngine\Bonuses\BonusGenerator.cs" />
-    <Compile Include="Assets\Scripts\EndlessEngine\Bonuses\BonusStrategy.cs" />
-    <Compile Include="Assets\Scripts\EndlessEngine\Bonuses\BonusesPool.cs" />
-    <Compile Include="Assets\Scripts\EndlessEngine\Bonuses\IBonusGenerator.cs" />
-    <Compile Include="Assets\Scripts\EndlessEngine\Decorations\DecorationGenerator.cs" />
-    <Compile Include="Assets\Scripts\EndlessEngine\Decorations\DecorationItem.cs" />
-    <Compile Include="Assets\Scripts\EndlessEngine\Decorations\DecorationPool.cs" />
-    <Compile Include="Assets\Scripts\EndlessEngine\Decorations\DecorationStrategy.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\Bonuses\Bonuses.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\Bonuses\IBonuses.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\Checkpoints\Checkpoint.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\Checkpoints\HeroSpawner.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\Decorations\Decoration.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\Decorations\DecorationLayer.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\Decorations\Decorations.cs" />
     <Compile Include="Assets\Scripts\EndlessEngine\Decorations\DecorationsFactory.cs" />
-    <Compile Include="Assets\Scripts\EndlessEngine\Decorations\IDecorationGenerator.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\Ground\Ground.cs" />
     <Compile Include="Assets\Scripts\EndlessEngine\Ground\GroundBlock.cs" />
     <Compile Include="Assets\Scripts\EndlessEngine\Ground\GroundFactory.cs" />
-    <Compile Include="Assets\Scripts\EndlessEngine\Ground\GroundGenerator.cs" />
-    <Compile Include="Assets\Scripts\EndlessEngine\Ground\GroundPool.cs" />
-    <Compile Include="Assets\Scripts\EndlessEngine\Ground\GroundStrategy.cs" />
     <Compile Include="Assets\Scripts\EndlessEngine\Ground\IGroundBlock.cs" />
-    <Compile Include="Assets\Scripts\EndlessEngine\Ground\IGroundGenerator.cs" />
-    <Compile Include="Assets\Scripts\EndlessEngine\HidingItem.cs" />
-    <Compile Include="Assets\Scripts\EndlessEngine\HidingItemGenerator.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\Ground\IGroundFactory.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\Hills\HillLayer.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\IGenerator.cs" />
     <Compile Include="Assets\Scripts\EndlessEngine\IRemovable.cs" />
-    <Compile Include="Assets\Scripts\EndlessEngine\Interfaces\IHiding.cs" />
-    <Compile Include="Assets\Scripts\EndlessEngine\ObjectRemoveTrigger.cs" />
-    <Compile Include="Assets\Scripts\EndlessEngine\SolidGenerator.cs" />
-    <Compile Include="Assets\Scripts\EndlessEngine\SolidItem.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\Levels\ILevelGenerator.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\Levels\LevelGenerator.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\Obstacles\Obstacle.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\Obstacles\ObstacleFactory.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\Obstacles\ObstacleGenerator.cs" />
     <Compile Include="Assets\Scripts\EndlessEngine\Strategy\AbstractStrategy.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\Strategy\DistanceRandomStrategy.cs" />
     <Compile Include="Assets\Scripts\EndlessEngine\Strategy\IGeneratingStrategy.cs" />
-    <Compile Include="Assets\Scripts\EndlessEngine\Strategy\TimeRandomStrategy.cs" />
+    <Compile Include="Assets\Scripts\EndlessEngine\Strategy\RandomStrategy.cs" />
+    <Compile Include="Assets\Scripts\Engine\AbstractGenerator.cs" />
+    <Compile Include="Assets\Scripts\Engine\Camera\SmoothFollow2D.cs" />
     <Compile Include="Assets\Scripts\Engine\Extensions\CameraExtensions.cs" />
     <Compile Include="Assets\Scripts\Engine\Extensions\EnumerableExtensions.cs" />
+    <Compile Include="Assets\Scripts\Engine\Extensions\EventHandlerExtensions.cs" />
+    <Compile Include="Assets\Scripts\Engine\Extensions\GameObjectExtensions.cs" />
     <Compile Include="Assets\Scripts\Engine\Extensions\ListExtensions.cs" />
     <Compile Include="Assets\Scripts\Engine\Extensions\TransformExtensions.cs" />
     <Compile Include="Assets\Scripts\Engine\Factory\AbstractGameObjectFactory.cs" />
+    <Compile Include="Assets\Scripts\Engine\Factory\ChooseStrategies\ChanceStrategy.cs" />
+    <Compile Include="Assets\Scripts\Engine\Factory\ChooseStrategies\CompatibleStrategy.cs" />
+    <Compile Include="Assets\Scripts\Engine\Factory\ChooseStrategies\IWeightable.cs" />
+    <Compile Include="Assets\Scripts\Engine\Factory\ChooseStrategies\RandomStrategy.cs" />
+    <Compile Include="Assets\Scripts\Engine\Factory\IChooseStrategy.cs" />
     <Compile Include="Assets\Scripts\Engine\Factory\IFactory.cs" />
-    <Compile Include="Assets\Scripts\Engine\Factory\MultipleGameObjectFactory.cs" />
-    <Compile Include="Assets\Scripts\Engine\Factory\SingleGameObjectFactory.cs" />
-    <Compile Include="Assets\Scripts\Engine\Factory\Strategy\ChooseStrategy.cs" />
-    <Compile Include="Assets\Scripts\Engine\Factory\Strategy\CompatibleStrategy.cs" />
-    <Compile Include="Assets\Scripts\Engine\Factory\Strategy\FirstAvailableStrategy.cs" />
-    <Compile Include="Assets\Scripts\Engine\Factory\Strategy\IChooseStrategy.cs" />
-    <Compile Include="Assets\Scripts\Engine\Factory\Strategy\RandomStrategy.cs" />
+    <Compile Include="Assets\Scripts\Engine\IGameLoopUpdatable.cs" />
     <Compile Include="Assets\Scripts\Engine\Input\IInputController.cs" />
     <Compile Include="Assets\Scripts\Engine\Input\InputController.cs" />
     <Compile Include="Assets\Scripts\Engine\MonoBehaviourBase.cs" />
-    <Compile Include="Assets\Scripts\Engine\Moving\IMovingController.cs" />
-    <Compile Include="Assets\Scripts\Engine\Moving\Movable.cs" />
-    <Compile Include="Assets\Scripts\Engine\Moving\MovingController.cs" />
     <Compile Include="Assets\Scripts\Engine\ObjectAnchor.cs" />
     <Compile Include="Assets\Scripts\Engine\Physics\CenterOfMass.cs" />
     <Compile Include="Assets\Scripts\Engine\Physics\RotationLimiter.cs" />
-    <Compile Include="Assets\Scripts\Engine\Pool\GameObjectPool.cs" />
     <Compile Include="Assets\Scripts\Engine\Pool\ICompatible.cs" />
-    <Compile Include="Assets\Scripts\Engine\Pool\IObjectPool.cs" />
-    <Compile Include="Assets\Scripts\Engine\Pool\PoolBusyException.cs" />
-    <Compile Include="Assets\Scripts\Engine\Presenter\IPresenter.cs" />
-    <Compile Include="Assets\Scripts\Engine\Presenter\Presenter.cs" />
-    <Compile Include="Assets\Scripts\Engine\Presenter\PresenterFactory.cs" />
+    <Compile Include="Assets\Scripts\Engine\RandomDistanceGenerator.cs" />
     <Compile Include="Assets\Scripts\Engine\Scrollers\IRoundScroller.cs" />
     <Compile Include="Assets\Scripts\Engine\Scrollers\IScrollerItem.cs" />
     <Compile Include="Assets\Scripts\Engine\Scrollers\RoundScroller.cs" />
+    <Compile Include="Assets\Scripts\Engine\Utils\GameObjectDisabler.cs" />
     <Compile Include="Assets\Scripts\Engine\Utils\StatedObjects\ImageStatesObject.cs" />
     <Compile Include="Assets\Scripts\Engine\Utils\StatedObjects\StatedObject.cs" />
+    <Compile Include="Assets\Scripts\Engine\Utils\SymbolText.cs" />
     <Compile Include="Assets\Scripts\Engine\Utils\Timer.cs" />
+    <Compile Include="Assets\Scripts\Engine\Video\IVideoPlatform.cs" />
+    <Compile Include="Assets\Scripts\Engine\Video\MobileVideoPlatform.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Bonuses\Bonus.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Bonuses\IBonus.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Bonuses\Implementations\Negative\BrokenLifeBonus.cs" />
@@ -384,29 +402,54 @@
     <Compile Include="Assets\Scripts\Gameplay\Bonuses\Implementations\Negative\KnifeBonus.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Bonuses\Implementations\Negative\NegativeBonus.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Bonuses\Implementations\Positive\BarbellBonus.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\Bonuses\Implementations\Positive\CoinBonus.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Bonuses\Implementations\Positive\KettlebelBonus.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Bonuses\Implementations\Positive\LifeBonus.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Bonuses\Implementations\Positive\PositiveBonus.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Bonuses\Implementations\Positive\VitamineBonus.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Consts\GameState.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Consts\Identifiers.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\Events\GameFinishedEventArgs.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\Events\GameLoseEventArgs.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\Events\GameProgressChangedArgs.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\Events\GameStartedEventArgs.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\Events\GameWinEventArgs.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Game.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\GameState\Manager\GameStateChangedArgs.cs" />
     <Compile Include="Assets\Scripts\Gameplay\GameState\Manager\GameStateManager.cs" />
     <Compile Include="Assets\Scripts\Gameplay\GameState\Manager\IGameStateManager.cs" />
     <Compile Include="Assets\Scripts\Gameplay\GameState\StateChangedSources\IWinSource.cs" />
-    <Compile Include="Assets\Scripts\Gameplay\Heroes\Foot.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\GameState\StateChangedSources\WinSourceArgs.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Heroes\Hero.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\Heroes\JumpEngines\HeroJumpingEngine.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\Heroes\JumpEngines\RigidbodyJumpEngine.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\Heroes\RunEngines\HeroRunningEngine.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\Heroes\RunEngines\RigidbodyRunningEngine.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\Heroes\RunEngines\WheelRunningEngine.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\Heroes\StateBehaviours\DiedStateBehaviour.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\Heroes\StateBehaviours\HeroStateBehaviour.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\Heroes\StateBehaviours\JumpStateBehaviour.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\Heroes\StateBehaviours\RunStateBehaviour.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\Heroes\StateBehaviours\StateEventArgs.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\Heroes\StateBehaviours\StumbledStateBehaviour.cs" />
     <Compile Include="Assets\Scripts\Gameplay\IGame.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\Obstacles\IDanger.cs" />
+    <Compile Include="Assets\Scripts\GeneratingHelpers\HillsGenerator.cs" />
     <Compile Include="Assets\Scripts\Localization\ILocalizable.cs" />
     <Compile Include="Assets\Scripts\Localization\LocalizableText.cs" />
     <Compile Include="Assets\Scripts\Purchases\Handlers\EditorInAppHandler.cs" />
     <Compile Include="Assets\Scripts\Purchases\Handlers\IInAppHandler.cs" />
+    <Compile Include="Assets\Scripts\Purchases\Handlers\UnityIAPHandler.cs" />
     <Compile Include="Assets\Scripts\Purchases\IInAppItem.cs" />
     <Compile Include="Assets\Scripts\Purchases\InAppItem.cs" />
     <Compile Include="Assets\Scripts\Purchases\Storage\IInAppStorage.cs" />
     <Compile Include="Assets\Scripts\Purchases\Storage\InAppStorage.cs" />
     <Compile Include="Assets\Scripts\Purchases\Wheel\ItemDescription.cs" />
     <Compile Include="Assets\Scripts\Purchases\Wheel\PurchaseWheelController.cs" />
+    <Compile Include="Assets\Scripts\Services\AndroidServicesConfig.cs" />
+    <Compile Include="Assets\Scripts\Services\BaseServiceConfig.cs" />
+    <Compile Include="Assets\Scripts\Services\IServicesConfig.cs" />
+    <Compile Include="Assets\Scripts\State\IGameStartedHandler.cs" />
     <Compile Include="Assets\Scripts\State\Levels\Data\LevelData.cs" />
     <Compile Include="Assets\Scripts\State\Levels\ILevel.cs" />
     <Compile Include="Assets\Scripts\State\Levels\Level.cs" />
@@ -414,8 +457,10 @@
     <Compile Include="Assets\Scripts\State\Levels\Loaders\ResourcesLevelLoader.cs" />
     <Compile Include="Assets\Scripts\State\Levels\Storage\ILevelStorage.cs" />
     <Compile Include="Assets\Scripts\State\Levels\Storage\LevelStorage.cs" />
-    <Compile Include="Assets\Scripts\State\Progress\ILevelProgress.cs" />
-    <Compile Include="Assets\Scripts\State\Progress\LevelProgress.cs" />
+    <Compile Include="Assets\Scripts\State\PlayerPrefs\IPlayerPrefs.cs" />
+    <Compile Include="Assets\Scripts\State\PlayerPrefs\KeyNotFoundException.cs" />
+    <Compile Include="Assets\Scripts\State\PlayerPrefs\PlayerPrefs.cs" />
+    <Compile Include="Assets\Scripts\State\Progress\AgeChangedArgs.cs" />
     <Compile Include="Assets\Scripts\State\Progress\Score\IScoreSource.cs" />
     <Compile Include="Assets\Scripts\State\Progress\Storage\IProgressStorage.cs" />
     <Compile Include="Assets\Scripts\State\Progress\Storage\ProgressStorage.cs" />
@@ -423,21 +468,23 @@
     <Compile Include="Assets\Scripts\State\ScenesInteraction\Controllers\LevelsController.cs" />
     <Compile Include="Assets\Scripts\State\ScenesInteraction\Controllers\ShopController.cs" />
     <Compile Include="Assets\Scripts\State\ScenesInteraction\Loaders\ISceneLoader.cs" />
+    <Compile Include="Assets\Scripts\State\ScenesInteraction\Loaders\IWorldLoader.cs" />
+    <Compile Include="Assets\Scripts\State\ScenesInteraction\Loaders\InitializingLoader.cs" />
+    <Compile Include="Assets\Scripts\State\ScenesInteraction\Loaders\LevelWorld.cs" />
     <Compile Include="Assets\Scripts\State\ScenesInteraction\Loaders\SceneLoader.cs" />
+    <Compile Include="Assets\Scripts\State\ScenesInteraction\Loaders\WorldLoader.cs" />
     <Compile Include="Assets\Scripts\UI\Graphics\GraphicCacheKeys.cs" />
     <Compile Include="Assets\Scripts\UI\Graphics\GraphicsCache.cs" />
     <Compile Include="Assets\Scripts\UI\Menus\Game\GuiController.cs" />
     <Compile Include="Assets\Scripts\UI\Menus\Levels\ILevelChoosingMenu.cs" />
+    <Compile Include="Assets\Scripts\UI\Menus\Levels\InGameLevelChoosingMenu.cs" />
     <Compile Include="Assets\Scripts\UI\Menus\Levels\LevelItem\ILevelItem.cs" />
     <Compile Include="Assets\Scripts\UI\Menus\Levels\LevelItem\LevelItem.cs" />
-    <Compile Include="Assets\Scripts\UI\Menus\Levels\LevelItem\Presenter\LevelItemPresenter.cs" />
     <Compile Include="Assets\Scripts\UI\Menus\Levels\LevelsChoosingMenu.cs" />
-    <Compile Include="Assets\Scripts\UI\Menus\Levels\Presenter\LevelChoosingPresenter.cs" />
     <Compile Include="Assets\Scripts\UI\Menus\Logo\LogoSceneController.cs" />
     <Compile Include="Assets\Scripts\UI\Popups\Controller\IPopupController.cs" />
     <Compile Include="Assets\Scripts\UI\Popups\Controller\PopupController.cs" />
     <Compile Include="Assets\Scripts\UI\Popups\Factory\PopupFactory.cs" />
-    <Compile Include="Assets\Scripts\UI\Popups\Factory\PopupPool.cs" />
     <Compile Include="Assets\Scripts\UI\Popups\Factory\PopupStrategy.cs" />
     <Compile Include="Assets\Scripts\UI\Popups\IPopup.cs" />
     <Compile Include="Assets\Scripts\UI\Popups\Implementations\CompletedPopup.cs" />
@@ -445,8 +492,9 @@
     <Compile Include="Assets\Scripts\UI\Popups\Implementations\LevelFinishedPopup.cs" />
     <Compile Include="Assets\Scripts\UI\Popups\Implementations\PausePopup.cs" />
     <Compile Include="Assets\Scripts\UI\Popups\Popup.cs" />
-    <Compile Include="Assets\Scripts\UI\Visualizers\Bonuses\BonusVisualizer.cs" />
-    <Compile Include="Assets\Scripts\UI\Visualizers\Bonuses\IBonusVisualizer.cs" />
+    <Compile Include="Assets\Scripts\UI\Popups\PopupEventArgs.cs" />
+    <Compile Include="Assets\Scripts\UI\Visualizers\Age\AgeVisualizer.cs" />
+    <Compile Include="Assets\Scripts\UI\Visualizers\Age\IAgeVisualizer.cs" />
     <Compile Include="Assets\Scripts\UI\Visualizers\InApps\VisualPurchase.cs" />
     <Compile Include="Assets\Scripts\ZenjectConfig\DebugInstaller.cs" />
     <Compile Include="Assets\Scripts\ZenjectConfig\GameplayInstaller.cs" />
@@ -456,7 +504,15 @@
     <Compile Include="Assets\Scripts\ZenjectConfig\GuiInstaller.cs" />
     <Compile Include="Assets\Scripts\ZenjectConfig\InputInstaller.cs" />
     <Compile Include="Assets\Scripts\ZenjectConfig\LevelChooseInstaller.cs" />
+    <Compile Include="Assets\Scripts\ZenjectConfig\LogoInstaller.cs" />
     <Compile Include="Assets\Scripts\ZenjectConfig\ShopInstaller.cs" />
+    <Compile Include="Assets\Scripts\ZenjectConfig\SplashInstaller.cs" />
+    <Compile Include="Assets\WaypointPro\Sample\Script\MouseClickDemo.cs" />
+    <Compile Include="Assets\WaypointPro\Sample\Script\PlayerDemo.cs" />
+    <Compile Include="Assets\WaypointPro\Script\Cooltimer.cs" />
+    <Compile Include="Assets\WaypointPro\Script\PathData.cs" />
+    <Compile Include="Assets\WaypointPro\Script\PathFollower.cs" />
+    <Compile Include="Assets\WaypointPro\Script\WaypointManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Extensions\SmartLocalization\Editor\SmartLocalization_Editor.XML" />
@@ -469,6 +525,161 @@
     <None Include="Assets\Extensions\SpritesAndBones\Shader\Sprites-Skeleton-Diffuse.shader" />
     <None Include="Assets\Extensions\SpritesAndBones\license-attributions.txt" />
     <None Include="Assets\Extensions\Zenject\LICENSE.txt" />
+    <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\AndroidManifest.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\README.txt" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\proguard.txt" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\color\common_signin_btn_text_dark.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\color\common_signin_btn_text_light.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\color\wallet_primary_text_holo_light.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\color\wallet_secondary_text_holo_dark.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\drawable\cast_ic_notification_connecting.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\drawable\common_signin_btn_icon_dark.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\drawable\common_signin_btn_icon_light.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\drawable\common_signin_btn_text_dark.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\drawable\common_signin_btn_text_light.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-af\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-am\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-am\wallet_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-ar\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-ar\wallet_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-az-rAZ\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-bg\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-bg\wallet_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-bn-rBD\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-ca\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-ca\wallet_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-cs\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-cs\wallet_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-da\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-da\wallet_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-de\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-de\wallet_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-el\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-el\wallet_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-en-rAU\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-en-rAU\wallet_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-en-rGB\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-en-rGB\wallet_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-en-rIN\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-en-rIN\wallet_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-es-rUS\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-es-rUS\wallet_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-es\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-es\wallet_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-et-rEE\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-eu-rES\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-fa\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-fa\wallet_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-fi\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-fi\wallet_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-fr-rCA\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-fr\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-fr\wallet_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-gl-rES\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-gu-rIN\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-hi\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-hi\wallet_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-hr\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-hr\wallet_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-hu\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-hu\wallet_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-hy-rAM\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-in\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-in\wallet_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-is-rIS\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-it\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-it\wallet_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-iw\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-iw\wallet_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-ja\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-ja\wallet_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-ka-rGE\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-kk-rKZ\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-km-rKH\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-kn-rIN\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-ko\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-ko\wallet_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-ky-rKG\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-lo-rLA\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-lt\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-lt\wallet_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-lv\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-lv\wallet_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-mk-rMK\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-ml-rIN\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-mn-rMN\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-mr-rIN\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-ms-rMY\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-ms-rMY\wallet_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-my-rMM\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-nb\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-nb\wallet_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-ne-rNP\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-nl\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-nl\wallet_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-pa-rIN\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-pl\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-pl\wallet_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-pt-rBR\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-pt-rBR\wallet_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-pt-rPT\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-pt-rPT\wallet_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-pt\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-pt\wallet_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-ro\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-ro\wallet_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-ru\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-ru\wallet_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-si-rLK\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-sk\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-sk\wallet_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-sl\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-sl\wallet_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-sq-rAL\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-sr\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-sr\wallet_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-sv\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-sv\wallet_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-sw\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-sw\wallet_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-ta-rIN\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-te-rIN\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-th\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-th\wallet_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-tl\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-tl\wallet_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-tr\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-tr\wallet_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-uk\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-uk\wallet_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-ur-rPK\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-uz-rUZ\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-vi\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-vi\wallet_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-zh-rCN\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-zh-rCN\wallet_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-zh-rHK\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-zh-rHK\wallet_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-zh-rTW\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-zh-rTW\wallet_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-zu\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values\admob_ads_attrs.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values\admob_iap_style.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values\admob_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values\auth_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values\base_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values\cast_ids.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values\cast_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values\common_attrs.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values\common_colors.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values\common_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values\maps_attrs.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values\version.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values\wallet_attrs.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values\wallet_colors.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values\wallet_strings.xml" />
+    <None Include="Assets\Plugins\Android\google-play-services_lib\res\values\wallet_styles.xml" />
     <None Include="Assets\Plugins\Demigiant\DOTween\DOTween.XML" />
     <None Include="Assets\Plugins\Demigiant\DOTween\DOTween43.xml" />
     <None Include="Assets\Plugins\Demigiant\DOTween\DOTween46.xml" />

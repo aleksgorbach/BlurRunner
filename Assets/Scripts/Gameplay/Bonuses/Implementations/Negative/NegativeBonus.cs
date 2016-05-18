@@ -1,5 +1,5 @@
 ﻿// Created 02.11.2015
-// Modified by Александр 02.11.2015 at 19:59
+// Modified by  14.12.2015 at 14:32
 
 namespace Assets.Scripts.Gameplay.Bonuses.Implementations.Negative {
     internal abstract class NegativeBonus : Bonus {

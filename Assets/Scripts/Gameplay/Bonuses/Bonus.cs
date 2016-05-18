@@ -1,38 +1,35 @@
-﻿// Created 09.11.2015 
-// Modified by Gorbach Alex 09.11.2015 at 8:43
+﻿// Created 28.10.2015
+// Modified by  14.01.2016 at 9:52
 
 namespace Assets.Scripts.Gameplay.Bonuses {
     #region References
 
     using System;
-    using EndlessEngine;
     using EndlessEngine.Bonuses;
+    using Engine;
+    using Engine.Factory.ChooseStrategies;
     using UnityEngine;
 
     #endregion
 
-    internal abstract class Bonus : HidingItem<Bonus>, IBonus {
-        private bool _isCollectedNow = false;
+    internal abstract class Bonus : MonoBehaviourBase, IBonus, IWeightable {
+        private bool _isCollectedNow;
 
         protected abstract int Direction { get; }
         protected abstract int Force { get; }
-
-        protected override Bonus Instance {
-            get {
-                return this;
-            }
-        }
 
         public event Action<Bonus> Collected;
         public event Action<Bonus> EndCollected;
 
         public int Points {
-            get {
-                return Force * Direction;
-            }
+            get { return Force*Direction; }
         }
 
         public abstract void Apply();
+
+        public virtual float Weight {
+            get { return 1; }
+        }
 
         public void OnTriggerEnter2D(Collider2D collision) {
             if (_isCollectedNow) {
@@ -59,6 +56,7 @@ namespace Assets.Scripts.Gameplay.Bonuses {
             if (handler != null) {
                 handler.Invoke(this);
             }
+            //Destroy(gameObject);
         }
 
         protected virtual void CollectAnimation() {

@@ -1,14 +1,14 @@
-﻿// Created 06.11.2015 
-// Modified by Gorbach Alex 06.11.2015 at 14:30
+﻿// Created 06.11.2015
+// Modified by  27.11.2015 at 9:25
 
 namespace Assets.Scripts.EndlessEngine.Strategy {
     #region References
 
-    using System;
+    
 
     #endregion
 
     internal interface IGeneratingStrategy {
-        event Action NeedGenerate;
+        float DistanceToGenerate { get; }
     }
 }

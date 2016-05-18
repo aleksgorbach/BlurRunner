@@ -158,6 +158,9 @@
 	<data name="ui.popups.pause" xml:space="preserve">
 		<value>Paused</value>
 	</data>
+	<data name="ui.popups.pause.continue" xml:space="preserve">
+		<value>Continue</value>
+	</data>
 	<data name="ui.shop.buy" xml:space="preserve">
 		<value>Buy</value>
 	</data>

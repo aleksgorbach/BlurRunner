@@ -39,20 +39,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f72a824f0928db14baae5f72779e06c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _background: {fileID: 21300000, guid: 22a3bdacdfd08da4ba772b99ed902473, type: 3}
-  _decorations:
-  - {fileID: 11499664, guid: 5705839b278c71b47a0f343e10c64393, type: 2}
-  - {fileID: 11420900, guid: 089d63c6c5e75cb4988ec1fca2e16d70, type: 2}
-  - {fileID: 11411558, guid: b5afe0fb3f086644b876859d78542da6, type: 2}
-  - {fileID: 11444340, guid: e1aa0085d4a6eeb4fb4bfba0f12931b8, type: 2}
-  - {fileID: 11440520, guid: 62d85bdf735a2bc4a9684540eee20af9, type: 2}
-  _hero: {fileID: 11493252, guid: 5ec4f305a40dcbe4f9f580306274ff00, type: 2}
-  _length: 15000
+  _background: {fileID: 21300000, guid: 1157cf6ed65be2848abed4416dfe09a7, type: 3}
   _levelNumber: 0
-  _obstacles:
-  - {fileID: 11472908, guid: 0ec6ef19fadf7074c82122bde0a8ed8d, type: 2}
-  - {fileID: 11491086, guid: 1dc59cdc5042da74cbebb9ea5f13bf43, type: 2}
-  _startPoint: {fileID: 21300000, guid: 89ed97b3bd378394f915c24284416c74, type: 3}
+  _age: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -61,17 +50,29 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 0}
+      propertyPath: _hills.Array.size
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _ground.Array.size
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _bonuses.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: _obstacles.Array.size
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: _decorations.Array.size
-      value: 5
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: _background
       value: 
-      objectReference: {fileID: 21300000, guid: 22a3bdacdfd08da4ba772b99ed902473,
+      objectReference: {fileID: 21300000, guid: 1157cf6ed65be2848abed4416dfe09a7,
         type: 3}
     - target: {fileID: 0}
       propertyPath: _hero
@@ -85,8 +86,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: _startPoint
       value: 
-      objectReference: {fileID: 21300000, guid: 89ed97b3bd378394f915c24284416c74,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: _decorations.Array.data[3]
       value: 
@@ -97,6 +97,35 @@ Prefab:
       value: 
       objectReference: {fileID: 11440520, guid: 62d85bdf735a2bc4a9684540eee20af9,
         type: 2}
+    - target: {fileID: 0}
+      propertyPath: _obstacles.Array.data[0]
+      value: 
+      objectReference: {fileID: 11472908, guid: 0ec6ef19fadf7074c82122bde0a8ed8d,
+        type: 2}
+    - target: {fileID: 0}
+      propertyPath: _obstacles.Array.data[1]
+      value: 
+      objectReference: {fileID: 11491086, guid: 1dc59cdc5042da74cbebb9ea5f13bf43,
+        type: 2}
+    - target: {fileID: 0}
+      propertyPath: _decorations.Array.data[0]
+      value: 
+      objectReference: {fileID: 11499664, guid: 5705839b278c71b47a0f343e10c64393,
+        type: 2}
+    - target: {fileID: 0}
+      propertyPath: _decorations.Array.data[1]
+      value: 
+      objectReference: {fileID: 11420900, guid: 089d63c6c5e75cb4988ec1fca2e16d70,
+        type: 2}
+    - target: {fileID: 0}
+      propertyPath: _decorations.Array.data[2]
+      value: 
+      objectReference: {fileID: 11411558, guid: b5afe0fb3f086644b876859d78542da6,
+        type: 2}
+    - target: {fileID: 0}
+      propertyPath: _age
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 199096}

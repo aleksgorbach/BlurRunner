@@ -1,26 +1,15 @@
-﻿// Created 22.10.2015
-// Modified by Александр 05.11.2015 at 20:19
+﻿// Created 20.10.2015
+// Modified by  28.01.2016 at 12:23
 
 namespace Assets.Scripts.ZenjectConfig {
     #region References
 
-    using Engine.Presenter;
-    using UI.Menus.Levels.LevelItem;
-    using UI.Menus.Levels.Presenter;
-    using UnityEngine;
     using Zenject;
 
     #endregion
 
     internal class LevelChooseInstaller : MonoInstaller {
-        [SerializeField]
-        private LevelItem _levelPrefab;
-
         public override void InstallBindings() {
-            //todo перенести эту фабрику в глобальный инсталлер
-            Container.Bind<PresenterFactory>().ToSingle();
-            Container.BindGameObjectFactory<LevelItem.Factory>(_levelPrefab.gameObject);
-            Container.Bind<LevelChoosingPresenter>().ToTransient();
         }
     }
 }

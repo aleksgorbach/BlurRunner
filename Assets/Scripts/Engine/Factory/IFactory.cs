@@ -1,21 +1,18 @@
 ﻿// Created 20.10.2015
-// Modified by  23.11.2015 at 12:38
+// Modified by  30.11.2015 at 9:04
 
 namespace Assets.Scripts.Engine.Factory {
-    #region References
-
-    using System;
-    using Zenject;
-
-    #endregion
 
     #region References
 
     #endregion
 
-    internal interface IFactory<out T>
+    #region References
+
+    #endregion
+
+    internal interface IFactory<T>
         where T : class {
-        T Create(IInstantiator instantiator);
-        event Action Loaded;
+        void Init(T[] prefabs, IChooseStrategy<T> strategy);
     }
 }

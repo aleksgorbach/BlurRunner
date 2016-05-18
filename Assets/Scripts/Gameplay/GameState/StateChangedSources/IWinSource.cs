@@ -1,5 +1,5 @@
-﻿// Created 05.11.2015 
-// Modified by Gorbach Alex 05.11.2015 at 12:44
+﻿// Created 05.11.2015
+// Modified by  14.01.2016 at 9:03
 
 namespace Assets.Scripts.Gameplay.GameState.StateChangedSources {
     #region References
@@ -9,6 +9,6 @@ namespace Assets.Scripts.Gameplay.GameState.StateChangedSources {
     #endregion
 
     internal interface IWinSource {
-        event Action<IWinSource> Win;
+        event EventHandler<WinSourceArgs> Win;
     }
 }

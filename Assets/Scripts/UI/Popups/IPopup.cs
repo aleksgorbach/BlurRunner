@@ -1,5 +1,5 @@
-﻿// Created 23.10.2015 
-// Modified by Gorbach Alex 06.11.2015 at 9:46
+﻿// Created 23.10.2015
+// Modified by  28.01.2016 at 12:40
 
 namespace Assets.Scripts.UI.Popups {
     #region References
@@ -9,6 +9,7 @@ namespace Assets.Scripts.UI.Popups {
     #endregion
 
     internal interface IPopup {
-        event Action<IPopup> Closed;
+        event Action<Popup> Closed;
+        void Close();
     }
 }

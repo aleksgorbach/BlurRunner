@@ -18,6 +18,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &149806
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 22451486}
+  - 114: {fileID: 11441700}
+  m_Layer: 0
+  m_Name: AgeText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &169090
 GameObject:
   m_ObjectHideFlags: 0
@@ -69,6 +85,38 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11441700
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d08dc8d1ba819f4eb63fc851dbadea6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _symbols:
+  - Prefab: {fileID: 125224, guid: a2834b89eaff50c459c96355c26bdc0a, type: 2}
+    Symbol: 48
+  - Prefab: {fileID: 154702, guid: 66d0d8f9670120c49bb338b566f3311e, type: 2}
+    Symbol: 49
+  - Prefab: {fileID: 180166, guid: 0f5c9617bca73484e98c0d7e0ceef21d, type: 2}
+    Symbol: 50
+  - Prefab: {fileID: 167528, guid: a0bf700b16721604aa04e0fab896dc33, type: 2}
+    Symbol: 51
+  - Prefab: {fileID: 115462, guid: 55df0960917284b499e0e2dcccda7e14, type: 2}
+    Symbol: 52
+  - Prefab: {fileID: 127296, guid: 721d5044bf782f34ca4de8665c93e9e0, type: 2}
+    Symbol: 53
+  - Prefab: {fileID: 164058, guid: 02e87a7611c25284c9fe9747759d8605, type: 2}
+    Symbol: 54
+  - Prefab: {fileID: 153272, guid: bdd3c85198b615e428f7d5e8df7212ae, type: 2}
+    Symbol: 55
+  - Prefab: {fileID: 144408, guid: f535c6bc8d854dd47859a7efdfb16495, type: 2}
+    Symbol: 56
+  - Prefab: {fileID: 115502, guid: 3f78669816c125848bd624bf1ff5655b, type: 2}
+    Symbol: 57
 --- !u!114 &11458562
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -89,11 +137,11 @@ MonoBehaviour:
   m_Transition: 3
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: .960784316, g: .960784316, b: .960784316, a: 1}
-    m_PressedColor: {r: .784313738, g: .784313738, b: .784313738, a: 1}
-    m_DisabledColor: {r: .784313738, g: .784313738, b: .784313738, a: .501960814}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
-    m_FadeDuration: .100000001
+    m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
@@ -186,6 +234,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad9e1e84b1af088489c435bc4f9417ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _ageText: {fileID: 11441700}
   _background: {fileID: 11461668}
 --- !u!222 &22281210
 CanvasRenderer:
@@ -215,7 +264,24 @@ RectTransform:
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!224 &22451486
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149806}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 22455838}
+  m_RootOrder: 2
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 180, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22455838
 RectTransform:
   m_ObjectHideFlags: 1
@@ -228,13 +294,14 @@ RectTransform:
   m_Children:
   - {fileID: 22487784}
   - {fileID: 22408230}
+  - {fileID: 22451486}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_AnchorMin: {x: 0, y: .5}
-  m_AnchorMax: {x: 0, y: .5}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 370, y: 270}
-  m_Pivot: {x: -4.09781933e-08, y: .5}
+  m_Pivot: {x: -0.000000040978193, y: 0.5}
 --- !u!224 &22487784
 RectTransform:
   m_ObjectHideFlags: 1
@@ -251,7 +318,7 @@ RectTransform:
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 2.5, y: 1}
   m_SizeDelta: {x: -15, y: -93}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

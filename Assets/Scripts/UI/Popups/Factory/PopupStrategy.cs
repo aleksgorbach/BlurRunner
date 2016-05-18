@@ -1,28 +1,26 @@
-﻿// Created 12.11.2015 
-// Modified by Gorbach Alex 12.11.2015 at 10:33
+﻿// Created 30.11.2015
+// Modified by  30.11.2015 at 11:01
 
 namespace Assets.Scripts.UI.Popups.Factory {
     #region References
 
     using System;
     using System.Collections.Generic;
-    using Engine.Factory.Strategy;
+    using System.Linq;
+    using Engine.Factory;
     using ModestTree;
 
     #endregion
 
-    internal class PopupStrategy : RandomStrategy<Popup> {
+    internal class PopupStrategy : IChooseStrategy<Popup> {
         private Type _type;
 
-        public void SetTarget<TPopup>() where TPopup : Popup {
-            _type = typeof(TPopup);
+        public Popup Choose(IEnumerable<Popup> items) {
+            return items.OfType(_type).First();
         }
 
-        protected override IEnumerable<Popup> Filter(IEnumerable<Popup> items) {
-            if (_type == null) {
-                return base.Filter(items);
-            }
-            return base.Filter(items).OfType(_type);
+        public void SetType<T>() where T : Popup {
+            _type = typeof (T);
         }
     }
 }

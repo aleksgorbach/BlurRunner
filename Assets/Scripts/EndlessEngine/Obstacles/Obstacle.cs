@@ -1,10 +1,21 @@
 ﻿// Created 20.11.2015
-// Modified by  20.11.2015 at 13:37
+// Modified by  24.12.2015 at 11:06
 
 namespace Assets.Scripts.EndlessEngine.Obstacles {
-    internal class Obstacle : HidingItem<Obstacle> {
-        protected override Obstacle Instance {
-            get { return this; }
+    #region References
+
+    using Engine;
+    using Gameplay.Obstacles;
+    using UnityEngine;
+
+    #endregion
+
+    internal class Obstacle : MonoBehaviourBase, IDanger {
+        [SerializeField]
+        private int _damage;
+
+        public int Damage {
+            get { return _damage; }
         }
     }
 }
