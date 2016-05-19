@@ -6,15 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/StaticAssets/1 - Logo/LogoScene.unity
+    path: Assets/StaticAssets/1 - Logo/SplashScene.unity
   - enabled: 1
     path: Assets/StaticAssets/2 - LevelChoose/LevelChooseScene.unity
   - enabled: 1
     path: Assets/StaticAssets/3 - Shop/ShopScene.unity
   - enabled: 1
     path: Assets/StaticAssets/4 - Game/GameScene.unity
-  - enabled: 0
-    path: Assets/StaticAssets/4 - Game/Levels/0_prev/level_0.unity
+  - enabled: 1
+    path: Assets/StaticAssets/4 - Game/Levels/0/level_0.unity
   - enabled: 1
     path: Assets/StaticAssets/4 - Game/Levels/1/level_1.unity
   - enabled: 1
@@ -24,4 +24,103 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/StaticAssets/4 - Game/Levels/4/Level_4.unity
   - enabled: 1
-    path: Assets/StaticAssets/4 - Game/Levels/0/level_0.unity
+    path: Assets/StaticAssets/4 - Game/Levels/6/Level_6.unity
+  - enabled: 1
+    path: Assets/StaticAssets/4 - Game/Levels/7/Level_7.unity
+  - enabled: 1
+    path: "Assets/StaticAssets/4 - Game/Levels/\u0423\u0440\u043E\u0432\u043D\u0438
+      \u042F\u0440\u043E\u0441\u043B\u0430\u0432/\u0423\u0440\u043E\u0432\u0435\u043D\u044C
+      76 (\u043F\u0443\u0441\u0442\u044B\u043D\u044F 2).unity"
+  - enabled: 1
+    path: "Assets/StaticAssets/4 - Game/Levels/\u0423\u0440\u043E\u0432\u043D\u0438
+      \u042F\u0440\u043E\u0441\u043B\u0430\u0432/\u0423\u0440\u043E\u0432\u0435\u043D\u044C
+      77 (\u043F\u0443\u0441\u0442\u044B\u043D\u044F).unity"
+  - enabled: 1
+    path: "Assets/StaticAssets/4 - Game/Levels/\u0423\u0440\u043E\u0432\u043D\u0438
+      \u042F\u0440\u043E\u0441\u043B\u0430\u0432/\u0423\u0440\u043E\u0432\u0435\u043D\u044C
+      78 (\u0441\u043A\u0430\u043D\u0434\u0438\u043D\u0430\u0432\u0438\u044F 4).unity"
+  - enabled: 1
+    path: "Assets/StaticAssets/4 - Game/Levels/\u0423\u0440\u043E\u0432\u043D\u0438
+      \u042F\u0440\u043E\u0441\u043B\u0430\u0432/\u0423\u0440\u043E\u0432\u0435\u043D\u044C
+      79 (\u043F\u043B\u044F\u0436 2).unity"
+  - enabled: 1
+    path: "Assets/StaticAssets/4 - Game/Levels/\u0423\u0440\u043E\u0432\u043D\u0438
+      \u042F\u0440\u043E\u0441\u043B\u0430\u0432/\u0423\u0440\u043E\u0432\u0435\u043D\u044C
+      80 (\u0441\u043A\u0430\u043D\u0434\u0438\u043D\u0430\u0432\u0438\u044F 3).unity"
+  - enabled: 1
+    path: "Assets/StaticAssets/4 - Game/Levels/\u0423\u0440\u043E\u0432\u043D\u0438
+      \u042F\u0440\u043E\u0441\u043B\u0430\u0432/\u0423\u0440\u043E\u0432\u0435\u043D\u044C
+      81 (\u043F\u043B\u044F\u0436) - \u043A\u043E\u043F\u0438\u044F.unity"
+  - enabled: 1
+    path: "Assets/StaticAssets/4 - Game/Levels/\u0423\u0440\u043E\u0432\u043D\u0438
+      \u042F\u0440\u043E\u0441\u043B\u0430\u0432/\u0423\u0440\u043E\u0432\u0435\u043D\u044C
+      82 (\u0441\u043A\u0430\u043D\u0434\u0438\u043D\u0430\u0432\u0438\u044F 2).unity"
+  - enabled: 1
+    path: "Assets/StaticAssets/4 - Game/Levels/\u0423\u0440\u043E\u0432\u043D\u0438
+      \u042F\u0440\u043E\u0441\u043B\u0430\u0432/\u0423\u0440\u043E\u0432\u0435\u043D\u044C
+      83 (\u0441\u043A\u0430\u043D\u0434\u0438\u043D\u0430\u0432\u0438\u044F 1).unity"
+  - enabled: 1
+    path: "Assets/StaticAssets/4 - Game/Levels/\u0423\u0440\u043E\u0432\u043D\u0438
+      \u042F\u0440\u043E\u0441\u043B\u0430\u0432/\u0423\u0440\u043E\u0432\u0435\u043D\u044C
+      84 (\u043A\u0430\u043C\u0435\u043D\u0438\u0441\u0442\u043E\u0435 \u043F\u043B\u0430\u0442\u043E
+      2).unity"
+  - enabled: 1
+    path: "Assets/StaticAssets/4 - Game/Levels/\u0423\u0440\u043E\u0432\u043D\u0438
+      \u042F\u0440\u043E\u0441\u043B\u0430\u0432/\u0423\u0440\u043E\u0432\u0435\u043D\u044C
+      85 (\u0433\u043E\u0440\u044B 2).unity"
+  - enabled: 1
+    path: "Assets/StaticAssets/4 - Game/Levels/\u0423\u0440\u043E\u0432\u043D\u0438
+      \u042F\u0440\u043E\u0441\u043B\u0430\u0432/\u0423\u0440\u043E\u0432\u0435\u043D\u044C
+      86 (\u0433\u043E\u0440\u044B).unity"
+  - enabled: 1
+    path: "Assets/StaticAssets/4 - Game/Levels/\u0423\u0440\u043E\u0432\u043D\u0438
+      \u042F\u0440\u043E\u0441\u043B\u0430\u0432/\u0423\u0440\u043E\u0432\u0435\u043D\u044C
+      87 (\u0437\u0438\u043C\u043D\u0438\u0439 \u0433\u043E\u0440\u043E\u0434).unity"
+  - enabled: 1
+    path: "Assets/StaticAssets/4 - Game/Levels/\u0423\u0440\u043E\u0432\u043D\u0438
+      \u042F\u0440\u043E\u0441\u043B\u0430\u0432/\u0423\u0440\u043E\u0432\u0435\u043D\u044C
+      88 (\u0437\u0438\u043C\u043D\u0438\u0439 \u043B\u0435\u0441).unity"
+  - enabled: 1
+    path: "Assets/StaticAssets/4 - Game/Levels/\u0423\u0440\u043E\u0432\u043D\u0438
+      \u042F\u0440\u043E\u0441\u043B\u0430\u0432/\u0423\u0440\u043E\u0432\u0435\u043D\u044C
+      89 (\u043A\u0430\u043C\u0435\u043D\u0438\u0441\u0442\u043E\u0435 \u043F\u043B\u0430\u0442\u043E).unity"
+  - enabled: 1
+    path: "Assets/StaticAssets/4 - Game/Levels/\u0423\u0440\u043E\u0432\u043D\u0438
+      \u042F\u0440\u043E\u0441\u043B\u0430\u0432/\u0423\u0440\u043E\u0432\u0435\u043D\u044C
+      91 (\u0433\u043E\u0440\u044B).unity"
+  - enabled: 1
+    path: "Assets/StaticAssets/4 - Game/Levels/\u0423\u0440\u043E\u0432\u043D\u0438
+      \u042F\u0440\u043E\u0441\u043B\u0430\u0432/\u0423\u0440\u043E\u0432\u0435\u043D\u044C
+      92 (\u043F\u043B\u0430\u0432\u043D\u044B\u0439 \u0441\u043F\u0443\u0441\u043A).unity"
+  - enabled: 1
+    path: "Assets/StaticAssets/4 - Game/Levels/\u0423\u0440\u043E\u0432\u043D\u0438
+      \u042F\u0440\u043E\u0441\u043B\u0430\u0432/\u0423\u0440\u043E\u0432\u0435\u043D\u044C
+      93 (\u0445\u043E\u043B\u043C\u044B).unity"
+  - enabled: 1
+    path: "Assets/StaticAssets/4 - Game/Levels/\u0423\u0440\u043E\u0432\u043D\u0438
+      \u042F\u0440\u043E\u0441\u043B\u0430\u0432/\u0423\u0440\u043E\u0432\u0435\u043D\u044C
+      94 (\u0445\u043E\u043B\u043C\u044B 2).unity"
+  - enabled: 1
+    path: "Assets/StaticAssets/4 - Game/Levels/\u0423\u0440\u043E\u0432\u043D\u0438
+      \u042F\u0440\u043E\u0441\u043B\u0430\u0432/\u0423\u0440\u043E\u0432\u0435\u043D\u044C
+      95 (\u043F\u0435\u0449\u0435\u0440\u0430 \u043E\u0431\u044B\u0447\u043D\u0430\u044F).unity"
+  - enabled: 1
+    path: "Assets/StaticAssets/4 - Game/Levels/\u0423\u0440\u043E\u0432\u043D\u0438
+      \u042F\u0440\u043E\u0441\u043B\u0430\u0432/\u0423\u0440\u043E\u0432\u0435\u043D\u044C
+      96 (\u0441\u043F\u0443\u0441\u043A).unity"
+  - enabled: 1
+    path: "Assets/StaticAssets/4 - Game/Levels/\u0423\u0440\u043E\u0432\u043D\u0438
+      \u042F\u0440\u043E\u0441\u043B\u0430\u0432/\u0423\u0440\u043E\u0432\u0435\u043D\u044C
+      97 (\u043F\u043E\u043B\u043D\u043E\u0435 \u043B\u0438\u043C\u0431\u043E).unity"
+  - enabled: 1
+    path: "Assets/StaticAssets/4 - Game/Levels/\u0423\u0440\u043E\u0432\u043D\u0438
+      \u042F\u0440\u043E\u0441\u043B\u0430\u0432/\u0423\u0440\u043E\u0432\u0435\u043D\u044C
+      98 (\u043F\u0435\u0449\u0435\u0440\u0430 \u041B\u0438\u043C\u0431\u043E).unity"
+  - enabled: 1
+    path: "Assets/StaticAssets/4 - Game/Levels/\u0423\u0440\u043E\u0432\u043D\u0438
+      \u042F\u0440\u043E\u0441\u043B\u0430\u0432/\u0423\u0440\u043E\u0432\u0435\u043D\u044C
+      99 (\u0431\u0440\u0435\u0434).unity"
+  - enabled: 1
+    path: "Assets/StaticAssets/4 - Game/Levels/\u0423\u0440\u043E\u0432\u043D\u0438
+      \u042F\u0440\u043E\u0441\u043B\u0430\u0432/\u0423\u0440\u043E\u0432\u0435\u043D\u044C
+      100 (\u0431\u0440\u0435\u0434 2).unity"
