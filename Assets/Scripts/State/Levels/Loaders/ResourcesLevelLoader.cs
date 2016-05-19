@@ -6,9 +6,7 @@ namespace Assets.Scripts.State.Levels.Loaders {
 
     using System;
     using System.Collections.Generic;
-    using System.Linq;
     using Data;
-    using UnityEngine;
 
     #endregion
 
@@ -20,8 +18,8 @@ namespace Assets.Scripts.State.Levels.Loaders {
         }
 
         public void Load() {
-            var data = Resources.LoadAll<LevelData>(_path);
-            OnLoaded(data.ToList());
+            //var data = Resources.LoadAll<LevelData>(_path);
+            //OnLoaded(data.ToList());
         }
 
         public event Action<List<LevelData>> Loaded;

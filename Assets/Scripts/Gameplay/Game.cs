@@ -6,6 +6,7 @@ namespace Assets.Scripts.Gameplay {
 
     using System;
     using System.Collections.Generic;
+    using Consts;
     using Engine;
     using Engine.Camera;
     using Engine.Extensions;
@@ -154,8 +155,10 @@ namespace Assets.Scripts.Gameplay {
             world.BackgroundCamera = _foregroundCamera;
             world.transform.SetParent(transform);
             world.transform.SetAsFirstSibling();
-            _background.sprite = world.Background;
-            _hero = _container.InstantiatePrefabForComponent<Hero>(world.HeroPrefab.gameObject);
+            _background.sprite = Resources.Load<Sprite>(Pathes.Backgrounds + _levelStorage.CurrentLevel.Background);
+            _hero =
+                _container.InstantiatePrefabForComponent<Hero>(
+                    Resources.Load<GameObject>(Pathes.Heroes + _levelStorage.CurrentLevel.HeroPrefab));
             _hero.transform.SetParent(world.StartPoint);
             _hero.transform.localPosition = Vector3.zero;
             LevelLength = world.Length;

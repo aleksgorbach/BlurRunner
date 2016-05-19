@@ -7,6 +7,7 @@ namespace Assets.Scripts.State.ScenesInteraction.Loaders {
     using System.Collections;
     using System.Linq;
     using Engine;
+    using Levels;
     using UnityEngine;
     using UnityEngine.SceneManagement;
     using UnityEngine.UI;
@@ -50,8 +51,8 @@ namespace Assets.Scripts.State.ScenesInteraction.Loaders {
             StartCoroutine(LoadScene());
         }
 
-        public IEnumerator LoadLevelAdditive(int number) {
-            var sceneName = string.Format("Level_{0}", number);
+        public IEnumerator LoadLevelAdditive(ILevel level) {
+            var sceneName = string.Format(level.SceneName);
             yield return SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
         }
 

@@ -42,7 +42,7 @@ namespace Assets.Scripts.State.Levels.Storage {
         }
 
         private void OnLoaded(List<LevelData> data) {
-            _levels = data.ToDictionary(x => x.Number, x => new Level(x));
+            _levels = data.ToDictionary(x => x.LevelNumber, x => new Level(x));
         }
     }
 }

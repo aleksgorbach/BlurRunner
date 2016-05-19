@@ -4,18 +4,15 @@
 namespace Assets.Scripts.State.Levels {
     #region References
 
-    using EndlessEngine.Decorations;
-    using EndlessEngine.Ground;
-    using EndlessEngine.Obstacles;
-    using Gameplay.Bonuses;
-    using Gameplay.Heroes;
-    using UnityEngine;
+    
 
     #endregion
 
     internal interface ILevel {
         int Number { get; }
-        Sprite Background { get; }
+        string Background { get; }
         int HeroAge { get; }
+        string HeroPrefab { get; }
+        string SceneName { get; }
     }
 }

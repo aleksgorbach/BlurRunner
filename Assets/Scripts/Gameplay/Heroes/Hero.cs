@@ -2,6 +2,7 @@
     #region References
 
     using System;
+    using Effects.Vibro;
     using Engine;
     using Engine.Extensions;
     using Engine.Input;
@@ -46,6 +47,9 @@
         [Inject]
         private IInputController _controller;
 
+        [Inject]
+        private VibroManager _vibroManager;
+
         #endregion
 
         #region Interface
@@ -71,6 +75,7 @@
         #region Events
 
         public event EventHandler<HeroEventArgs> Died;
+        public event EventHandler<HeroEventArgs> Stumbled;
 
         #endregion
 
@@ -97,6 +102,8 @@
         }
 
         private void OnStumbleStateEntered(object sender, StateEventArgs e) {
+            Stumbled.SafeInvoke(this, new HeroEventArgs(this));
+            _vibroManager.Play(null);
         }
 
         #endregion

@@ -19,26 +19,13 @@
         private Vector3 _velocity = Vector3.zero;
         private Vector3 _targetPos;
         private float interpVelocity = 20f;
-        private Vector3 offset = new Vector2(30, 10);
+        private Vector3 offset = new Vector2(30, 15);
 
 
         public Camera Camera {
             get { return _camera; }
         }
 
-        //protected void LateUpdate() {
-        //    Update();
-        //    if (_target) {
-        //        var point = _camera.WorldToViewportPoint(_target.position);
-        //        var delta = _target.position - _camera.ViewportToWorldPoint(new Vector3(0.25f, 0.3f, point.z));
-        //        if (delta.magnitude < 20) {
-        //            return;
-        //        }
-        //        Vector2 destination = transform.position + delta;
-        //        var pos = Vector3.SmoothDamp(transform.position, destination, ref _velocity, 0.0f);
-        //        transform.position = new Vector3(pos.x, pos.y, transform.position.z);
-        //    }
-        //}
         private void FixedUpdate() {
             if (_target) {
                 var posNoZ = transform.position;

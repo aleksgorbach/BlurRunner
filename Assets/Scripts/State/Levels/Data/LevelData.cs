@@ -2,33 +2,16 @@
 // Modified by  30.11.2015 at 14:02
 
 namespace Assets.Scripts.State.Levels.Data {
-    #region References
 
-    using Engine;
-    using UnityEngine;
+    #region References
 
     #endregion
 
-    internal class LevelData : MonoBehaviourBase {
-        [SerializeField]
-        private Sprite _background;
-
-        [SerializeField]
-        private int _levelNumber;
-
-        [SerializeField]
-        private int _age;
-
-        public int Number {
-            get { return _levelNumber; }
-        }
-
-        public Sprite Background {
-            get { return _background; }
-        }
-
-        public int HeroAge {
-            get { return _age; }
-        }
+    public class LevelData {
+        public string Background { get; set; }
+        public int LevelNumber { get; set; }
+        public int HeroAge { get; set; }
+        public string Hero { get; set; }
+        public string Scene { get; set; }
     }
 }

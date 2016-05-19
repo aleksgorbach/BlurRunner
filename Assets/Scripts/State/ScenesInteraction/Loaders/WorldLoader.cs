@@ -6,7 +6,7 @@ namespace Assets.Scripts.State.ScenesInteraction.Loaders {
 
     using System;
     using System.Collections;
-    using Gameplay.Consts;
+    using Levels.Storage;
     using Zenject;
 
     #endregion
@@ -19,14 +19,14 @@ namespace Assets.Scripts.State.ScenesInteraction.Loaders {
         [Inject]
         private ISceneLoader _sceneLoader;
 
-        [Inject(Identifiers.Levels.CurrentLevel)]
-        private int _levelNumber;
+        [Inject]
+        private ILevelStorage _levelStorage;
 
         #endregion
 
         private IEnumerator LevelLoading() {
             //var sceneName = string.Format("Level_{0}", levelNumber);
-            yield return _sceneLoader.LoadLevelAdditive(_levelNumber);
+            yield return _sceneLoader.LoadLevelAdditive(_levelStorage.CurrentLevel);
             _world = FindObjectOfType<LevelWorld>();
             OnLoaded(_world);
         }

@@ -5,11 +5,12 @@ namespace Assets.Scripts.State.ScenesInteraction.Loaders {
     #region References
 
     using System.Collections;
+    using Levels;
 
     #endregion
 
     internal enum Scene {
-        Logo,
+        Splash,
         LevelChoose,
         Shop,
         Game
@@ -29,6 +30,6 @@ namespace Assets.Scripts.State.ScenesInteraction.Loaders {
         void GoToScene(Scene scene);
 
 
-        IEnumerator LoadLevelAdditive(int number);
+        IEnumerator LoadLevelAdditive(ILevel level);
     }
 }

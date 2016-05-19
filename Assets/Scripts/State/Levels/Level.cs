@@ -5,7 +5,6 @@ namespace Assets.Scripts.State.Levels {
     #region References
 
     using Data;
-    using UnityEngine;
 
     #endregion
 
@@ -17,15 +16,23 @@ namespace Assets.Scripts.State.Levels {
         }
 
         public int Number {
-            get { return _data.Number; }
+            get { return _data.LevelNumber; }
         }
 
-        public Sprite Background {
+        public string Background {
             get { return _data.Background; }
         }
 
         public int HeroAge {
             get { return _data.HeroAge; }
+        }
+
+        public string HeroPrefab {
+            get { return _data.Hero; }
+        }
+
+        public string SceneName {
+            get { return _data.Scene; }
         }
     }
 }

@@ -6,43 +6,39 @@ namespace Assets.Scripts.State.ScenesInteraction.Controllers {
 
     using Ads;
     using Engine;
-    using Levels;
-    using Levels.Storage;
     using Loaders;
-    using UI.Menus.Levels;
-    using UnityEngine;
-    using UnityEngine.UI;
+    using UI.Popups.Controller;
+    using UI.Popups.Implementations;
     using Zenject;
 
     #endregion
 
     internal class LevelsController : MonoBehaviourBase {
         [Inject]
-        private ILevelStorage _levelStorage;
-
-        [SerializeField]
-        private Button _openShopButton;
-
-        [Inject]
         private ISceneLoader _sceneLoader;
 
         [Inject]
         private IAdManager _adManager;
 
-        protected override void Awake() {
-            base.Awake();
-            _openShopButton.onClick.AddListener(OpenShop);
-        }
-        
+        [Inject]
+        private IPopupController _popupController;
 
         protected override void Start() {
             base.Start();
             _adManager.ShowBanner();
         }
 
-        private void OpenShop() {
+        public void OpenShop() {
             _adManager.ShowFullscreen();
             _sceneLoader.GoToScene(Scene.Shop);
+        }
+
+        public void OpenSettings() {
+            _popupController.Show<SettingsPopup>();
+        }
+
+        public void BackToSplash() {
+            _sceneLoader.GoToScene(Scene.Splash);
         }
     }
 }

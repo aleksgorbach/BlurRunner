@@ -4,6 +4,7 @@
 namespace Assets.Scripts.UI.Menus.Levels {
     #region References
 
+    using System.Linq;
     using Engine;
     using LevelItem;
     using State.Levels;
@@ -43,7 +44,7 @@ namespace Assets.Scripts.UI.Menus.Levels {
         [PostInject]
         private void PostInject() {
             var length = 0f;
-            foreach (var level in _levelStorage) {
+            foreach (var level in _levelStorage.OrderBy(x => x.Number)) {
                 var item = _factory.Create();
                 item.transform.SetParent(transform);
                 var width = item.rectTransform.sizeDelta.x;

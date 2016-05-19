@@ -14,6 +14,11 @@ namespace Assets.Scripts.EndlessEngine.Obstacles {
         [SerializeField]
         private int _damage;
 
+        protected override void Awake() {
+            base.Awake();
+            GetComponent<Collider2D>().isTrigger = true;
+        }
+
         public int Damage {
             get { return _damage; }
         }

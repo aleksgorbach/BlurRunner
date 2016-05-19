@@ -7,29 +7,24 @@ namespace Assets.Scripts.State.ScenesInteraction.Loaders {
     using EndlessEngine.Actions;
     using Engine;
     using Gameplay.GameState.StateChangedSources;
-    using Gameplay.Heroes;
     using UnityEngine;
 
     #endregion
 
     internal class LevelWorld : MonoBehaviourBase {
         [SerializeField]
-        private Sprite _background;
-
-        [SerializeField]
         private Canvas _backgroundCanvas;
-
-        [SerializeField]
-        private LevelEndAction _endPoint;
 
         [SerializeField]
         private Canvas _foregroundCanvas;
 
-        [SerializeField]
-        private Hero _heroPrefab;
+        private LevelEndAction _levelEnd;
 
-        [SerializeField]
-        private Transform _startPoint;
+        protected override void Awake() {
+            base.Awake();
+            _levelEnd = FindObjectOfType<LevelEndAction>();
+            StartPoint = GameObject.Find("HeroSpawner").transform;
+        }
 
         public Camera ForegroundCamera {
             set { _foregroundCanvas.worldCamera = value; }
@@ -39,24 +34,14 @@ namespace Assets.Scripts.State.ScenesInteraction.Loaders {
             set { _backgroundCanvas.worldCamera = value; }
         }
 
-        public Sprite Background {
-            get { return _background; }
-        }
-
-        public Hero HeroPrefab {
-            get { return _heroPrefab; }
-        }
-
-        public Transform StartPoint {
-            get { return _startPoint; }
-        }
+        public Transform StartPoint { get; private set; }
 
         public IWinSource EndPoint {
-            get { return _endPoint; }
+            get { return _levelEnd; }
         }
 
         public float Length {
-            get { return _endPoint.transform.position.x - _startPoint.transform.position.x; }
+            get { return _levelEnd.transform.position.x - StartPoint.transform.position.x; }
         }
     }
 }

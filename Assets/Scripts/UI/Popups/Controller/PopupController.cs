@@ -9,9 +9,6 @@ namespace Assets.Scripts.UI.Popups.Controller {
     using System.Collections.Generic;
     using Engine;
     using Factory;
-    using Gameplay.Consts;
-    using Gameplay.GameState.Manager;
-    using Implementations;
     using UnityEngine;
     using Zenject;
 
@@ -22,9 +19,6 @@ namespace Assets.Scripts.UI.Popups.Controller {
 
         [Inject]
         private PopupFactory _factory;
-
-        [Inject]
-        private IGameStateManager _stateManager;
 
         #endregion
 
@@ -45,7 +39,7 @@ namespace Assets.Scripts.UI.Popups.Controller {
         private Stack<Popup> _popups;
 
 
-        private IPopup Show<TPopup>() where TPopup : Popup {
+        public IPopup Show<TPopup>() where TPopup : Popup {
             var popup = _factory.Create<TPopup>();
             StartCoroutine(PopupShowingCoroutine(popup));
             return popup;
@@ -72,24 +66,6 @@ namespace Assets.Scripts.UI.Popups.Controller {
             popup.Closed -= OnClose;
         }
 
-        private void Subscribe() {
-            _stateManager.StateChanged += OnStateChanged;
-        }
-
-        private void OnStateChanged(object sender, GameStateChangedArgs e) {
-            switch (e.State) {
-                case GameState.Paused:
-                    Show<PausePopup>();
-                    break;
-                case GameState.Win:
-                    Show<CompletedPopup>();
-                    break;
-                case GameState.Lose:
-                    Show<FailedPopup>();
-                    break;
-            }
-        }
-
         private void OnClose(Popup popup) {
             if (_popups.Count > 0) {
                 var top = _popups.Pop();
@@ -102,11 +78,6 @@ namespace Assets.Scripts.UI.Popups.Controller {
         protected override void Awake() {
             base.Awake();
             _popups = new Stack<Popup>();
-        }
-
-        [PostInject]
-        private void PostInject() {
-            Subscribe();
         }
 
         private void OnPopupOpened(IPopup popup) {
