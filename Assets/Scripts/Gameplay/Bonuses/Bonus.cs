@@ -35,7 +35,7 @@ namespace Assets.Scripts.Gameplay.Bonuses {
             if (_isCollectedNow) {
                 return;
             }
-            var collector = collision.GetComponent<BonusCollector>();
+            var collector = collision.GetComponent<Heroes.Hero>();
             if (collector != null) {
                 CollectAnimation();
                 OnCollected();

@@ -69,7 +69,7 @@
                     var maxLevel = _levels.Max(x => x.LevelNumber);
                     _levels.Add(new LevelData {
                         Background = "7",
-                        Hero = "Hero_new",
+                        Hero = "Hero",
                         LevelNumber = maxLevel + 1,
                         HeroAge = maxLevel + 2,
                         Scene = "Level_" + (maxLevel + 1)

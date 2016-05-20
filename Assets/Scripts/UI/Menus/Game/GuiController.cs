@@ -30,7 +30,6 @@ namespace Assets.Scripts.UI.Menus.Game {
         [PostInject]
         private void PostInject() {
             _popupController.PopupOpened += OnPopupCountChanged;
-            _popupController.PopupClosed += OnPopupCountChanged;
         }
 
         private void OnPopupCountChanged(object sender, PopupEventArgs args) {
@@ -40,6 +39,11 @@ namespace Assets.Scripts.UI.Menus.Game {
             else {
                 _stateManager.Resume();
             }
+        }
+        
+        protected override void OnDestroy(){
+            base.OnDestroy();
+            _popupController.PopupOpened -= OnPopupCountChanged;
         }
 
         public void Exit() {
