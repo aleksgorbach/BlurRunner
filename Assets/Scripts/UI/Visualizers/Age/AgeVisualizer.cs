@@ -13,7 +13,7 @@ namespace Assets.Scripts.UI.Visualizers.Age {
     #endregion
 
     internal class AgeVisualizer : MonoBehaviourBase, IAgeVisualizer {
-        private const int MAX_AGE = 2;
+        private const int MAX_AGE = 10;
         private const float MAX_GAP = 1f;
 
         #region Visible in inspector
@@ -24,12 +24,6 @@ namespace Assets.Scripts.UI.Visualizers.Age {
         [SerializeField]
         private Slider _actualProgress;
 
-        [SerializeField]
-        private Color _normalColor;
-
-        [SerializeField]
-        private Color _failedColor;
-
         #endregion
 
         #region Injected dependencies
@@ -39,13 +33,10 @@ namespace Assets.Scripts.UI.Visualizers.Age {
 
         #endregion
 
-        private Image _sliderFillImage;
-
         protected override void Start() {
             base.Start();
             _biologicalProgress.maxValue = MAX_AGE;
             _actualProgress.maxValue = MAX_AGE;
-            _sliderFillImage = _actualProgress.fillRect.GetComponent<Image>();
         }
 
         private void FixedUpdate() {
@@ -61,7 +52,6 @@ namespace Assets.Scripts.UI.Visualizers.Age {
         private float ActualProgress {
             set {
                 _actualProgress.value = value;
-                _sliderFillImage.color = Color.Lerp(_normalColor, _failedColor, (Progress - value)/MAX_GAP);
             }
         }
     }
